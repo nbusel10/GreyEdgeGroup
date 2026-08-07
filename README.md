@@ -12,8 +12,16 @@ otherwise any Node 22+ works.
 
 ```bash
 pnpm install
-pnpm dev          # http://localhost:5173
+pnpm dev          # http://localhost:8446
 ```
+
+On Windows, `run.bat` does all of that in one step — frees the port if a previous
+server is still holding it, installs dependencies if needed, starts the dev server, and
+opens a browser tab once the port is actually accepting connections.
+
+The dev server runs on **8446**, chosen to stay clear of the other projects in
+`C:\WebProjects` (GreyEdge on 8444, SkinProtocolRX on 8443/8445, RKidds on 8765) so
+they can all run at the same time. Override it with the `PORT` environment variable.
 
 ## Scripts
 
@@ -61,7 +69,7 @@ CRM later means setting one environment variable.
 
 ## Checks
 
-Both need a server running — dev on `:5173`, or set `BASE` to a preview URL.
+Both need a server running — dev on `:8446`, or set `BASE` to a preview URL.
 
 ```bash
 node scripts/check-links.mjs   # crawls every route: broken links, anchors, alt text, page metadata
