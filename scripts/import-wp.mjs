@@ -84,6 +84,14 @@ const SITE_IMAGES = {
   'growth-flexibility': '2026/05/TGEG_Long-Term_Growth_and_Flexibility_Cityscape-scaled.webp',
 }
 
+/** A few media items have no alt text in WordPress. Descriptions for those. */
+const ALT_FALLBACKS = {
+  'hero-district': 'Engineers reviewing a district thermal energy system in a mechanical plant room',
+  'hero-cityscape': 'Dense urban skyline served by district-scale thermal infrastructure',
+  'global-projects': 'Map of GreyEdge thermal energy network projects across the world',
+  'edge-only-white': 'The GreyEdge edge mark',
+}
+
 const BRAND_IMAGES = {
   'logo-white': '2025/12/greyEdge-Logo-White.webp',
   'logo-dark': '2026/05/greyedge-group-logo-darkGrey-transparent.webp',
@@ -504,7 +512,11 @@ async function importImageSet(media, set, dir) {
       continue
     }
     const local = await download(fullSize(m.source_url), dir, name)
-    if (local) map[name] = { src: local, alt: decode(m.alt_text) }
+    if (!local) continue
+
+    const alt = decode(m.alt_text) || ALT_FALLBACKS[name]
+    if (!alt) warn(`${dir} image "${name}" has no alt text in WordPress and no fallback`)
+    map[name] = { src: local, alt: alt || '' }
   }
   return map
 }

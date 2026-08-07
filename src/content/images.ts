@@ -14,7 +14,7 @@ export const site = {
   },
   "hero-district": {
     src: "/images/site/hero-district.webp",
-    alt: ""
+    alt: "Engineers reviewing a district thermal energy system in a mechanical plant room"
   },
   "hero-mountain": {
     src: "/images/site/hero-mountain.webp",
@@ -22,7 +22,7 @@ export const site = {
   },
   "hero-cityscape": {
     src: "/images/site/hero-cityscape.webp",
-    alt: ""
+    alt: "Dense urban skyline served by district-scale thermal infrastructure"
   },
   "design-session": {
     src: "/images/site/design-session.webp",
@@ -82,7 +82,7 @@ export const site = {
   },
   "global-projects": {
     src: "/images/site/global-projects.webp",
-    alt: ""
+    alt: "Map of GreyEdge thermal energy network projects across the world"
   },
   contact: {
     src: "/images/site/contact.webp",
@@ -122,7 +122,7 @@ export const brand = {
   },
   "edge-only-white": {
     src: "/images/brand/edge-only-white.webp",
-    alt: ""
+    alt: "The GreyEdge edge mark"
   },
   favicon: {
     src: "/images/brand/favicon.webp",

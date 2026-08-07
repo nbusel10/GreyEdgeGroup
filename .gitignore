@@ -25,5 +25,10 @@ logs
 .vite
 *.tsbuildinfo
 
-# Visual QA output
-scripts/.shots
+# Visual QA and scratch output from scripts/
+scripts/.*/
+
+# Written into public/ by scripts/gen-assets.mjs on every build
+public/sitemap.xml
+public/images/og-greyedge.webp
+

@@ -5,13 +5,14 @@
  *   node scripts/shots.mjs /projects 768        one route at one width
  *   node scripts/shots.mjs / 1280 --full        full-page rather than viewport
  *
- * Requires the dev server on :5173. Output lands in scripts/.shots/ (gitignored).
+ * Points at the dev server by default; set BASE to hit `vite preview` instead when you
+ * want to check the built output. Output lands in scripts/.shots/ (gitignored).
  */
 import { chromium } from 'playwright'
 import { mkdir, rm } from 'node:fs/promises'
 import sharp from 'sharp'
 
-const BASE = 'http://localhost:5173'
+const BASE = process.env.BASE ?? 'http://localhost:5173'
 const OUT = 'scripts/.shots'
 
 const ALL_ROUTES = [

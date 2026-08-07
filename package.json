@@ -6,7 +6,7 @@
   "description": "The GreyEdge Group — Thermal Utility Master Planners",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "node scripts/gen-assets.mjs && tsc --noEmit && vite build",
     "preview": "vite preview",
     "import:wp": "node scripts/import-wp.mjs"
   },

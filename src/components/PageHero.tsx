@@ -22,7 +22,14 @@ export default function PageHero({
     <section className="relative overflow-hidden bg-ge-black pb-16 pt-32 md:pb-20 md:pt-40">
       {image && (
         <>
-          <img src={image} alt={imageAlt ?? ''} className="absolute inset-0 h-full w-full object-cover" />
+          <img
+            src={image}
+            alt={imageAlt ?? ''}
+            // Purely atmospheric behind the heading; hidden from assistive tech when
+            // no caller supplies a description.
+            aria-hidden={imageAlt ? undefined : true}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
           <div
             className="absolute inset-0"
             aria-hidden="true"
