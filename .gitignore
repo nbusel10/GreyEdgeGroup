@@ -24,3 +24,6 @@ logs
 # Vite / TS caches
 .vite
 *.tsbuildinfo
+
+# Visual QA output
+scripts/.shots

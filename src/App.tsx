@@ -1,9 +1,46 @@
+import { Route, Routes } from 'react-router-dom'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
+import ScrollIndicator from './components/ScrollIndicator'
+import Home from './pages/Home'
+import Approach from './pages/Approach'
+import Projects from './pages/Projects'
+import ProjectDetail from './pages/ProjectDetail'
+import Geothermal101 from './pages/Geothermal101'
+import About from './pages/About'
+import TeamMemberPage from './pages/TeamMember'
+import Insights from './pages/Insights'
+import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
+
 export default function App() {
   return (
-    <div className="min-h-screen bg-ge-offwhite text-ge-black font-body flex items-center justify-center">
-      <p className="font-display text-4xl uppercase tracking-widest">
-        Grey<span className="text-ge-accent">Edge</span>
-      </p>
+    <div className="flex min-h-screen flex-col bg-ge-offwhite font-body text-ge-black">
+      <ScrollToTop />
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-ge-black focus:px-5 focus:py-3 focus:font-body focus:text-xs focus:uppercase focus:tracking-widest focus:text-white"
+      >
+        Skip to content
+      </a>
+      <Header />
+      <main id="main" className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/approach" element={<Approach />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
+          <Route path="/geothermal-101" element={<Geothermal101 />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/team/:slug" element={<TeamMemberPage />} />
+          <Route path="/insights" element={<Insights />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+      <ScrollIndicator />
     </div>
   )
 }

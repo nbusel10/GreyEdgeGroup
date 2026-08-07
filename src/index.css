@@ -30,16 +30,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Respect users who don't want motion. */
+/* Respect users who don't want motion.
+   Entrance animations are cancelled and pinned to their finished state rather than
+   merely shortened — a near-zero duration can leave an element stranded on its opening
+   keyframe, which hides the content entirely. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
+  .fade-slide-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Looping decorative motion (the flowing pipes) stops outright. The diagram sets
+     these inline, so they need the override. */
+  .animate-flow,
+  .animate-flow-reverse,
+  svg line {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
