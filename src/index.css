@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Grey ramp — near-black through off-white */
+  --color-ge-black: #14171a;
+  --color-ge-ink: #1a1d20;
+  --color-ge-charcoal: #2e3338;
+  --color-ge-graphite: #5a6168;
+  --color-ge-steel: #7a8288;
+  --color-ge-silver: #9aa1a6;
+  --color-ge-light: #e4e6e8;
+  --color-ge-offwhite: #f7f7f8;
+
+  /* Single accent. Used sparingly — never as a background wash. */
+  --color-ge-accent: #5a9835;
+  --color-ge-accent-bright: #6fb544;
+  --color-ge-accent-deep: #47792a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Respect users who don't want motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Visible focus ring for keyboard users, in the accent. */
+:focus-visible {
+  outline: 2px solid var(--color-ge-accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-ge-accent);
+  color: #fff;
+}
+
+/* ── Motion ──────────────────────────────────────────────────────────────── */
+
+@keyframes flow {
+  from {
+    stroke-dashoffset: 120;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes flowReverse {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 120;
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drawIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-flow {
+  animation: flow 3s linear infinite;
+}
+
+.animate-flow-reverse {
+  animation: flowReverse 4s linear infinite;
+}
+
+.fade-slide-up {
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+
+/* Scroll-reveal: elements start hidden, then get .is-visible from useReveal(). */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Type helpers ────────────────────────────────────────────────────────── */
+
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
+/* Underline that grows on hover — used on cards and text links. */
+.rule-grow {
+  display: block;
+  height: 1px;
+  width: 0;
+  background: var(--color-ge-accent);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .rule-grow {
+  width: 2rem;
+}

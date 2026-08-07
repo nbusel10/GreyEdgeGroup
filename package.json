@@ -1,0 +1,29 @@
+{
+  "name": "greyedge-group",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "The GreyEdge Group — Thermal Utility Master Planners",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "import:wp": "node scripts/import-wp.mjs"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "node-html-parser": "^7.0.1",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0",
+    "vite": "^8.0.0"
+  }
+}
