@@ -1,64 +1,18 @@
-import { anchorQuote, capabilities, capabilityNote, doors, lessons, stats } from '../../content/advantage'
-import { site } from '../../content/images'
-import GMark, { GBullet, GWatermark } from '../GMark'
-import { Btn, Container, Eyebrow, Reveal, Section, StatBlock } from '../ui'
+import { capabilities, capabilityNote, doors, lessons } from '../../content/advantage'
+import { Btn, Container, Eyebrow, Reveal, Section } from '../ui'
 
 /**
- * "The Collaborative Advantage", reworked per the Aug 5 review.
+ * Approach-page depth for "The Collaborative Advantage".
  *
- * Order matters here. The section leads with lessons rather than services: a service
- * menu invites piecemeal shopping, which Matt doesn't want, while a body of hard-won
- * knowledge invites trust and still shows a newcomer the full depth. Capabilities appear
- * only after the lessons, and as one continuous list rather than a grid of cards —
- * Joe was explicit that he didn't want them "chopped up into little blocks."
+ * The black partnership claim (with CTAs) lives on home/preview via PartnerBrief.
+ * This section leads with lessons rather than services: a service menu invites
+ * piecemeal shopping, while hard-won knowledge invites trust. Capabilities follow
+ * as a numbered grid; Megan's two doors close the section.
  */
 export default function CollaborativeAdvantage() {
   return (
     <section id="advantage" className="scroll-mt-20">
-      {/* 1. The claim, and the line Matt keeps coming back to. */}
-      <div className="relative overflow-hidden bg-ge-black py-20 md:py-28">
-        <GWatermark className="text-white/[0.03]" side="right" />
-        <Container className="relative">
-          <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_1fr]">
-            <Reveal>
-              <Eyebrow tone="light">The Partnership</Eyebrow>
-              <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-[0.98] tracking-tight text-white sm:text-5xl md:text-6xl">
-                District-scale systems,
-                <br />
-                <span className="text-ge-accent">one accountable partner.</span>
-              </h2>
-              <blockquote className="mt-9 border-l-2 border-ge-accent pl-6">
-                <p className="font-display text-2xl font-semibold uppercase leading-snug tracking-wide text-white sm:text-3xl">
-                  {anchorQuote}
-                </p>
-              </blockquote>
-              <p className="mt-8 max-w-xl font-body text-base leading-relaxed text-ge-silver">
-                We support every phase, from first design through final delivery. Whether we execute the work directly
-                or coordinate alongside other specialist teams, we stay accountable to your outcome.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <div className="relative">
-                <img
-                  src={site['design-session'].src}
-                  alt={site['design-session'].alt}
-                  className="aspect-[4/3] w-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute -bottom-px -right-px bg-ge-black px-6 py-4">
-                  <div className="font-display text-3xl font-bold leading-none text-ge-accent">300+</div>
-                  <div className="mt-1 font-body text-[10px] uppercase tracking-[0.2em] text-ge-silver">
-                    Years in the field
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </div>
-
-      {/* 2. What we've learned — the trust-building spine of the section. */}
+      {/* What we've learned — the trust-building spine of the section. */}
       <Section className="bg-ge-offwhite">
         <Container>
           <Reveal>
@@ -90,7 +44,7 @@ export default function CollaborativeAdvantage() {
                       Where we come in
                     </div>
                     <div className="mt-2 flex items-start gap-2">
-                      <GBullet className="mt-1 text-ge-accent" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-ge-accent" aria-hidden="true" />
                       <span className="font-body text-sm leading-snug text-ge-charcoal">{l.capability}</span>
                     </div>
                   </div>
@@ -101,46 +55,44 @@ export default function CollaborativeAdvantage() {
         </Container>
       </Section>
 
-      {/* 3. Total capabilities — deliberately one continuous list, not a card grid. */}
+      {/* Total capabilities — numbered grid, header + note side by side. */}
       <Section id="capabilities" className="border-t border-ge-light bg-white">
         <Container>
           <Reveal>
-            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:items-end md:gap-14 lg:gap-20">
               <div>
                 <Eyebrow>Total Capability</Eyebrow>
-                <h3 className="mt-5 max-w-2xl font-display text-3xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-4xl">
-                  Everything a thermal utility needs, under one roof
+                <h3 className="mt-5 max-w-2xl font-display text-3xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-4xl md:text-5xl">
+                  Everything a thermal utility needs, through one trusted partner
                 </h3>
               </div>
-              <p className="max-w-sm font-body text-sm leading-relaxed text-ge-graphite">{capabilityNote}</p>
+              <p className="max-w-md font-body text-base leading-relaxed text-ge-graphite md:justify-self-end md:text-[15px]">
+                {capabilityNote}
+              </p>
             </div>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-4 border-y-2 border-ge-black py-9">
-              {capabilities.map((c) => (
-                <li key={c} className="flex items-center gap-2.5">
-                  <GMark className="h-3 w-3 shrink-0 text-ge-accent" />
-                  <span className="font-display text-lg font-semibold uppercase tracking-wide text-ge-charcoal sm:text-xl">
+            <ul className="mt-12 grid grid-cols-1 border-l border-t border-ge-light sm:grid-cols-2 lg:grid-cols-4">
+              {capabilities.map((c, i) => (
+                <li
+                  key={c}
+                  className="group border-b border-r border-ge-light bg-ge-offwhite px-6 py-8 transition-colors duration-200 hover:bg-white"
+                >
+                  <span className="font-body text-[10px] tracking-[0.18em] text-ge-steel transition-colors duration-200 group-hover:text-ge-accent">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="mt-3 block font-display text-base font-bold uppercase leading-snug tracking-wide text-ge-black transition-colors duration-200 group-hover:text-ge-accent sm:text-lg">
                     {c}
                   </span>
                 </li>
               ))}
             </ul>
           </Reveal>
-
-          {/* 4. The proof numbers. */}
-          <Reveal delay={0.12}>
-            <div className="mt-16 grid grid-cols-2 gap-y-12 md:grid-cols-4">
-              {stats.map((s) => (
-                <StatBlock key={s.label} value={s.value} label={s.label} prefix={s.prefix} suffix={s.suffix} />
-              ))}
-            </div>
-          </Reveal>
         </Container>
       </Section>
 
-      {/* 5. Megan's two doors: education and consultation, at equal weight. */}
+      {/* Megan's two doors: education and consultation, at equal weight. */}
       <div className="border-t border-ge-light bg-ge-offwhite py-16 md:py-20">
         <Container>
           <Reveal>
