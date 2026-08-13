@@ -36,6 +36,22 @@ export const site = {
     src: "/images/site/design-meeting.webp",
     alt: "GreyEdge engineers gathered around a illuminated physical district model reviewing Thermal Energy Network plans, blueprints, and digital engineering data in their design office."
   },
+  "district-scale-site-planning": {
+    src: "/images/site/district-scale-thermal-systems-site-planning.webp",
+    alt: "Construction and engineering team in hard hats reviewing blueprints and a laptop during an on-site planning meeting for a district-scale thermal energy system."
+  },
+  "thermal-plant-inspection": {
+    src: "/images/site/thermal-plant-engineers-system-inspection.webp",
+    alt: "Engineers inspecting industrial thermal plant equipment and piping during a system walkthrough at a heating and cooling facility."
+  },
+  "advisory-meeting": {
+    src: "/images/site/advisory-meeting.webp",
+    alt: "Professionals reviewing architectural floor plans together at a table during a planning meeting."
+  },
+  "training-classroom": {
+    src: "/images/site/training-classroom.webp",
+    alt: "Instructor explaining an Ambient Temperature Loop diagram on a whiteboard during a professional training session."
+  },
   "team-photo": {
     src: "/images/site/team-photo.webp",
     alt: "GreyEdge's engineers and energy professionals from standing together in an office."

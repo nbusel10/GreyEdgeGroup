@@ -26,9 +26,9 @@ const navItems: NavItem[] = [
     label: 'Approach',
     to: '/approach',
     children: [
-      { label: 'The Collaborative Advantage', desc: 'What 300+ years in the field taught us', to: '/approach#advantage' },
-      { label: 'Capabilities', desc: 'Every role we can play on a project', to: '/approach#capabilities' },
-      { label: 'Our Process', desc: 'Evaluate, design, commission, evolve', to: '/approach#process' },
+      { label: 'Built on Experience', desc: 'What 300+ years in the field taught us', to: '/approach#advantage' },
+      { label: 'Our Process', desc: 'Evaluate, design, execute, evolve', to: '/approach#process' },
+      { label: 'Our Services', desc: 'Every role we can play on a project', to: '/approach#services' },
     ],
   },
   { label: 'Projects', to: '/projects' },
@@ -38,7 +38,7 @@ const navItems: NavItem[] = [
     children: [
       { label: 'Thermal Energy Networks', desc: 'District-scale shared infrastructure', to: '/geothermal-101#networks' },
       { label: 'Ambient Temperature Loops', desc: 'The circulatory system of a network', to: '/geothermal-101#ambient-loops' },
-      { label: 'The Thermal Highway', desc: 'How energy moves across a district', to: '/geothermal-101#thermal-highway' },
+      { label: 'The Thermal Highway©', desc: 'How energy moves across a district', to: '/geothermal-101#thermal-highway' },
     ],
   },
   {
@@ -61,7 +61,7 @@ export default function Header() {
   const [mobileSection, setMobileSection] = useState<string | null>(null)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const onHome = pathname === '/'
+  const onHome = pathname === '/' || pathname === '/preview-home'
   // Transparent over the home hero only, and only before scrolling.
   const overHero = onHome && !scrolled && !openMenu
 
@@ -114,9 +114,9 @@ export default function Header() {
     >
       <Container>
         <div className="flex h-16 items-center justify-between gap-4 lg:h-[72px]">
-          <Link to="/" className="shrink-0 text-xl sm:text-2xl" aria-label="The GreyEdge Group — home">
-            <Logo tone={overHero ? 'light' : 'dark'} />
-          </Link>
+            <Link to="/" className="shrink-0 text-2xl sm:text-[1.65rem]" aria-label="The GreyEdge Group — home">
+              <Logo tone={overHero ? 'light' : 'dark'} />
+            </Link>
 
           {/* Desktop navigation */}
           <nav className="hidden items-center lg:flex lg:gap-5 xl:gap-8" aria-label="Main">

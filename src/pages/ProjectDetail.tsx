@@ -1,6 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getProject, projects } from '../content/projects'
-import GMark from '../components/GMark'
 import FinalCta from '../components/sections/FinalCta'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
@@ -22,8 +21,8 @@ export default function ProjectDetail() {
   if (!project) return <Navigate to="/projects" replace />
 
   const stats = [
-    { label: 'Square feet', value: project.sqFeet },
-    { label: 'Buildings', value: project.buildings },
+    { label: 'Square feet', value: project.sqFeet ?? 'In progress' },
+    { label: 'Buildings', value: project.buildings ?? 'In progress' },
     { label: 'Completion', value: project.completion },
     { label: 'Location', value: project.location },
   ].filter((s) => s.value)
@@ -50,14 +49,14 @@ export default function ProjectDetail() {
             <span aria-hidden="true">&larr;</span> All projects
           </Link>
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <span className="border border-ge-accent px-2.5 py-1 font-body text-[10px] uppercase tracking-[0.18em] text-ge-accent-bright">
+            <span className="border border-white/50 px-2.5 py-1 font-body text-[10px] uppercase tracking-[0.18em] text-white">
               {project.status}
             </span>
             <span className="font-body text-xs uppercase tracking-[0.16em] text-white/70">{project.location}</span>
           </div>
           <h1
             className="mt-4 font-display font-bold uppercase leading-[0.95] tracking-tight text-white"
-            style={{ fontSize: 'clamp(2.6rem, 7vw, 5.5rem)' }}
+            style={{ fontSize: '65px' }}
           >
             {project.name}
           </h1>
@@ -68,9 +67,19 @@ export default function ProjectDetail() {
       {stats.length > 0 && (
         <div className="border-b border-ge-light bg-white">
           <Container>
-            <dl className="grid grid-cols-2 gap-x-8 gap-y-8 py-10 md:grid-cols-4">
+            <dl
+              className={`grid gap-x-8 gap-y-8 py-10 text-center ${
+                stats.length === 1
+                  ? 'grid-cols-1'
+                  : stats.length === 2
+                    ? 'grid-cols-2'
+                    : stats.length === 3
+                      ? 'grid-cols-2 md:grid-cols-3'
+                      : 'grid-cols-2 md:grid-cols-4'
+              }`}
+            >
               {stats.map((s) => (
-                <div key={s.label}>
+                <div key={s.label} className="flex flex-col items-center">
                   <dt className="font-body text-[10px] uppercase tracking-[0.2em] text-ge-steel">{s.label}</dt>
                   <dd className="mt-2 font-display text-2xl font-bold uppercase tracking-wide text-ge-black md:text-3xl">
                     {s.value}
@@ -98,21 +107,51 @@ export default function ProjectDetail() {
             <Reveal delay={0.08}>
               <div className="border border-ge-light bg-white p-8">
                 <div className="flex items-center gap-2">
-                  <GMark className="h-4 w-4 text-ge-accent" />
+                  <span className="text-ge-accent" aria-hidden="true">
+                    //
+                  </span>
                   <h2 className="font-display text-lg font-bold uppercase tracking-wide text-ge-black">
                     The project team
                   </h2>
                 </div>
-                {/*
-                  Team assignments per project aren't in the CMS yet — Nancy flagged this
-                  in the review as something to collect before launch.
-                */}
-                <p className="mt-4 font-body text-sm leading-relaxed text-ge-graphite">
-                  Project team details are being compiled. In the meantime, meet the specialists behind our work.
-                </p>
-                <Btn to="/about#team" variant="outline" className="mt-6 w-full">
-                  Meet the team
-                </Btn>
+                {project.team.length > 0 ? (
+                  <ul className="mt-5 space-y-3">
+                    {project.team.map((member) => (
+                      <li key={member.name} className="font-body text-sm leading-snug text-ge-charcoal">
+                        {member.url ? (
+                          member.url.startsWith('/') ? (
+                            <Link
+                              to={member.url}
+                              className="italic text-ge-charcoal underline decoration-ge-light underline-offset-2 transition-colors hover:text-ge-accent hover:decoration-ge-accent"
+                            >
+                              {member.name}
+                            </Link>
+                          ) : (
+                            <a
+                              href={member.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="italic text-ge-charcoal underline decoration-ge-light underline-offset-2 transition-colors hover:text-ge-accent hover:decoration-ge-accent"
+                            >
+                              {member.name}
+                            </a>
+                          )
+                        ) : (
+                          member.name
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <>
+                    <p className="mt-4 font-body text-sm leading-relaxed text-ge-graphite">
+                      Project team details are being compiled. In the meantime, meet the specialists behind our work.
+                    </p>
+                    <Btn to="/about#team" variant="outline" className="mt-6 w-full">
+                      Meet the team
+                    </Btn>
+                  </>
+                )}
               </div>
 
               {project.articles.length > 0 && (

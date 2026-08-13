@@ -1,5 +1,7 @@
 import CollaborativeAdvantage from '../components/sections/CollaborativeAdvantage'
 import Process from '../components/sections/Process'
+import Services from '../components/sections/Services'
+import TwoDoors from '../components/sections/TwoDoors'
 import FinalCta from '../components/sections/FinalCta'
 import PageHero from '../components/PageHero'
 import { site } from '../content/images'
@@ -17,13 +19,13 @@ export default function Approach() {
     <>
       <PageHero
         eyebrow="The Partnership"
-        title="One team. No handoff gaps."
-        lead="Most projects are a relay race between disconnected experts. We operate as a single system from the first conversation — one strategy, one set of numbers, one shared obligation for how the thing performs."
-        image={site['design-meeting'].src}
-        imageAlt={site['design-meeting'].alt}
+        title="Our Approach"
+        lead="Most projects are a relay race between disconnected experts. We operate as a single system from the first conversation: one strategy, one set of numbers, one shared obligation for how the thing performs."
       />
       <CollaborativeAdvantage />
       <Process />
+      <Services />
+      <TwoDoors />
       <FinalCta />
     </>
   )

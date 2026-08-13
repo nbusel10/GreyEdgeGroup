@@ -4,6 +4,9 @@ import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollIndicator from './components/ScrollIndicator'
 import Home from './pages/Home'
+import PreviewHome from './pages/PreviewHome'
+import PreviewLessons from './pages/PreviewLessons'
+import PreviewServices from './pages/PreviewServices'
 import Approach from './pages/Approach'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
@@ -11,6 +14,7 @@ import Geothermal101 from './pages/Geothermal101'
 import About from './pages/About'
 import TeamMemberPage from './pages/TeamMember'
 import Insights from './pages/Insights'
+import InsightDetail from './pages/InsightDetail'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 
@@ -28,6 +32,9 @@ export default function App() {
       <main id="main" className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/preview-home" element={<PreviewHome />} />
+          <Route path="/preview-lessons" element={<PreviewLessons />} />
+          <Route path="/preview-services" element={<PreviewServices />} />
           <Route path="/approach" element={<Approach />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />
@@ -35,6 +42,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/team/:slug" element={<TeamMemberPage />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/insights/:slug" element={<InsightDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

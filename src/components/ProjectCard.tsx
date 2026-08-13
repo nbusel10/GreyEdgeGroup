@@ -3,6 +3,7 @@ import type { Project } from '../content/projects'
 
 const statusTone: Record<Project['status'], string> = {
   Completed: 'border-ge-accent text-ge-accent-bright',
+  Operational: 'border-white/50 text-white',
   'In Progress': 'border-white/50 text-white',
   'In Development': 'border-white/40 text-white/85',
 }
@@ -13,9 +14,9 @@ export default function ProjectCard({ project, eager = false }: { project: Proje
   return (
     <Link
       to={`/projects/${slug}`}
-      className="group flex flex-col border border-ge-light bg-white transition-colors hover:border-ge-accent"
+      className="group flex h-full flex-col border border-ge-light bg-white transition-colors hover:border-ge-accent"
     >
-      <div className="relative h-60 overflow-hidden bg-ge-light md:h-64">
+      <div className="relative h-60 shrink-0 overflow-hidden bg-ge-light md:h-64">
         {image && (
           <img
             src={image}
@@ -42,24 +43,21 @@ export default function ProjectCard({ project, eager = false }: { project: Proje
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <p className="flex-1 font-body text-sm leading-relaxed text-ge-graphite">{summary}</p>
-        {(sqFeet || buildings) && (
-          <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-ge-light pt-5">
-            {sqFeet && (
-              <div>
-                <dt className="font-body text-[10px] uppercase tracking-[0.18em] text-ge-steel">Square feet</dt>
-                <dd className="mt-1 font-display text-lg font-bold text-ge-black">{sqFeet}</dd>
-              </div>
-            )}
-            {buildings && (
-              <div>
-                <dt className="font-body text-[10px] uppercase tracking-[0.18em] text-ge-steel">Buildings</dt>
-                <dd className="mt-1 font-display text-lg font-bold text-ge-black">{buildings}</dd>
-              </div>
-            )}
+        <p className="font-body text-sm leading-relaxed text-ge-graphite">{summary}</p>
+        <div className="mt-auto pt-5">
+          <dl className="flex flex-col gap-3">
+            <div className="flex items-center gap-3">
+              <dt className="shrink-0 font-body text-[10px] uppercase tracking-[0.18em] text-ge-steel">Square feet</dt>
+              <span aria-hidden className="stat-leader" />
+              <dd className="shrink-0 font-display text-lg font-bold text-ge-black">{sqFeet ?? 'In progress'}</dd>
+            </div>
+            <div className="flex items-center gap-3">
+              <dt className="shrink-0 font-body text-[10px] uppercase tracking-[0.18em] text-ge-steel">Buildings</dt>
+              <span aria-hidden className="stat-leader stat-leader-delay" />
+              <dd className="shrink-0 font-display text-lg font-bold text-ge-black">{buildings ?? 'In progress'}</dd>
+            </div>
           </dl>
-        )}
-        <span className="rule-grow mt-5" />
+        </div>
       </div>
     </Link>
   )

@@ -1,3 +1,5 @@
+import { site } from './images'
+
 /**
  * "The Collaborative Advantage", reworked per the Aug 5 review.
  *
@@ -13,65 +15,122 @@ export const anchorQuote =
   'We paid our dues in the field years ago, and our clients benefit from that hard-earned wisdom on every project.'
 
 export interface Lesson {
+  /** Short picker label. */
+  short: string
   lesson: string
   detail: string
   /** The role GreyEdge plays when this comes up. */
   capability: string
+  image: string
+  imageAlt: string
 }
 
 export const lessons: Lesson[] = [
   {
+    short: 'The seams',
     lesson: 'Projects rarely fail in engineering. They fail in the gaps between the people doing it.',
     detail:
       'A design team, a drilling contractor, and a mechanical contractor can each do competent work and still hand you a system that underperforms. Someone has to own the seams.',
     capability: 'Master planning and owner’s representation',
+    image: site.puzzle.src,
+    imageAlt: site.puzzle.alt,
   },
   {
+    short: 'Early decisions',
     lesson: 'The most expensive decisions get made before anyone opens a drawing.',
     detail:
       'Ownership structure, phasing, and which resources you plan around are set early and quietly. By the time they show up in construction cost, they are no longer decisions.',
     capability: 'Feasibility and resource studies',
+    image: site.blueprints.src,
+    imageAlt: site.blueprints.alt,
   },
   {
+    short: 'Right-sizing',
     lesson: 'A system sized for today’s load becomes tomorrow’s bottleneck.',
     detail:
       'Right-sizing is not the same as building small. Loop architecture and borefield capacity can leave room for phase two without paying for phase two now.',
     capability: 'Thermal engineering and energy modeling',
+    image: site['campus-build'].src,
+    imageAlt: site['campus-build'].alt,
   },
   {
+    short: 'Verification',
     lesson: 'What gets built matches what got designed only when someone stays to verify it.',
     detail:
       'Sequences get value-engineered, setpoints get changed during startup, and controls get left in hand-off mode. Verification is where design intent either survives or quietly disappears.',
     capability: 'Commissioning and performance validation',
+    image: site['thermal-plant-inspection'].src,
+    imageAlt: site['thermal-plant-inspection'].alt,
   },
   {
+    short: 'Existing assets',
     lesson: 'Existing infrastructure is usually an asset that was written off too early.',
     detail:
       'Cooling towers, boilers, and utility tunnels are often treated as things to remove. Frequently they are the cheapest capacity on the site.',
     capability: 'Third-party review and forensic analysis',
+    image: site['onsite-work'].src,
+    imageAlt: site['onsite-work'].alt,
   },
 ]
 
-/**
- * The full capability set, deliberately presented as one continuous list rather than a
- * grid of service cards. Joe was explicit in the review that he did not want these
- * "chopped up into little blocks."
- */
-export const capabilities: string[] = [
-  'Thermal utility master planning',
-  'Feasibility and resource studies',
-  'Building and portfolio energy modeling',
-  'Hydrogeology and subsurface analysis',
-  'Thermal network engineering',
-  'Ambient temperature loop design',
-  'Drilling and geoexchange design',
-  'Construction and constructability coordination',
-  'Commissioning and performance validation',
-  'Third-party and peer review',
-  'Owner’s representation',
-  'Subject-matter expertise and expert testimony',
-  'Long-term optimization and expansion planning',
+export interface ServiceGroup {
+  short: string
+  title: string
+  image: string
+  imageAlt: string
+  items: string[]
+}
+
+/** Services grouped for the Approach photo-card layout. */
+export const serviceGroups: ServiceGroup[] = [
+  {
+    short: 'Planning',
+    title: 'Planning & studies',
+    image: site['design-meeting'].src,
+    imageAlt: site['design-meeting'].alt,
+    items: [
+      'Thermal utility master planning',
+      'Feasibility and resource studies',
+      'Building and portfolio energy modeling',
+    ],
+  },
+  {
+    short: 'Resources',
+    title: 'Ground & resources',
+    image: site['district-scale-site-planning'].src,
+    imageAlt: site['district-scale-site-planning'].alt,
+    items: ['Hydrogeology and subsurface analysis', 'Drilling and geoexchange design'],
+  },
+  {
+    short: 'Networks',
+    title: 'Network design',
+    image: site['network-diagram'].src,
+    imageAlt: site['network-diagram'].alt,
+    items: ['Thermal network engineering', 'Ambient temperature loop design'],
+  },
+  {
+    short: 'Delivery',
+    title: 'Delivery & verification',
+    image: site['thermal-plant-inspection'].src,
+    imageAlt: site['thermal-plant-inspection'].alt,
+    items: ['Construction and constructability coordination', 'Commissioning and performance validation'],
+  },
+  {
+    short: 'Advisory',
+    title: 'Advisory & stewardship',
+    image: site['advisory-meeting'].src,
+    imageAlt: site['advisory-meeting'].alt,
+    items: [
+      'Third-party and peer review',
+      'Owner’s representation',
+      'Subject-matter expertise and expert testimony',
+      'Long-term optimization and expansion planning',
+    ],
+  },
 ]
+
+/** Flat capability list, derived from the grouped services. */
+export const capabilities: string[] = serviceGroups.flatMap((g) => g.items)
 
 export const capabilityNote =
   'One team, one accountability. Engage us across the whole arc, or bring us in where the gap is.'
@@ -101,7 +160,7 @@ export const doors = {
   intro: 'Not sure yet whether this applies to your project?',
   education: {
     label: 'Learn how these systems work',
-    detail: 'Start with the fundamentals — no meeting required.',
+    detail: 'Start with the fundamentals. No meeting required.',
     cta: 'Read Geothermal 101',
     to: '/geothermal-101',
   },

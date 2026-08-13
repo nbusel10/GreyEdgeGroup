@@ -16,9 +16,9 @@
   --color-ge-offwhite: #f7f7f8;
 
   /* Single accent. Used sparingly — never as a background wash. */
-  --color-ge-accent: #5a9835;
-  --color-ge-accent-bright: #6fb544;
-  --color-ge-accent-deep: #47792a;
+  --color-ge-accent: #426255;
+  --color-ge-accent-bright: #5a8574;
+  --color-ge-accent-deep: #314a40;
 }
 
 html {
@@ -123,6 +123,36 @@ body {
   animation: fadeSlideUp 0.5s ease forwards;
 }
 
+@keyframes scrollTip {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(2.75rem + 100%));
+    opacity: 0;
+  }
+}
+
+.hero-scroll-tip {
+  animation: scrollTip 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-tip {
+    animation: none;
+    top: 0;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Scroll-reveal: elements start hidden, then get .is-visible from useReveal(). */
 .reveal {
   opacity: 0;
@@ -141,6 +171,71 @@ body {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Process: 4 stages, 3 connectors. Accent draws L→R on hover. */
+.process-seg {
+  transform: scaleX(0);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-seg.is-on {
+  transform: scaleX(1);
+}
+
+.process-seg-1.is-on {
+  transition-delay: 0.1s;
+}
+.process-seg-2.is-on {
+  transition-delay: 0.2s;
+}
+
+/* Card divider: centered in its row; accent draws L→R on hover. */
+.process-rule {
+  position: relative;
+}
+
+.process-rule::before,
+.process-rule::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+}
+
+.process-rule::before {
+  background: var(--color-ge-light);
+  transform: translateY(-50%);
+}
+
+.process-rule::after {
+  background: var(--color-ge-accent);
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .process-rule::after {
+  transform: translateY(-50%) scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-seg,
+  .process-rule::after {
+    transform: none;
+    transition: none;
+  }
+
+  .process-rule::after {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  .group:hover .process-rule::after {
+    opacity: 1;
   }
 }
 
@@ -165,4 +260,69 @@ body {
 
 .group:hover .rule-grow {
   width: 2rem;
+}
+
+/* Leader line between a label and its value — light rule always on; accent draws L→R on hover. */
+.stat-leader {
+  position: relative;
+  flex: 1 1 auto;
+  height: 1px;
+  min-width: 1rem;
+  align-self: center;
+  background: var(--color-ge-light);
+}
+
+.stat-leader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-ge-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stat-leader-delay::after {
+  transition-delay: 0.08s;
+}
+
+.group:hover .stat-leader::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-leader::after {
+    transform: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .group:hover .stat-leader::after {
+    opacity: 1;
+  }
+}
+
+/* ── Image frames ────────────────────────────────────────────────────────── */
+
+/*
+ * Diagonal slash cutouts at the bottom-right corner — same ~35° / bands as the
+ * EDGE half of the wordmark (two parallel cuts).
+ * Mask punches transparent slits so the page background shows through.
+ *
+ * Geometry: bands run bottom-left → top-right. For θ=35°, a right-edge y maps to
+ * bottom-edge x = 80 - (80 - y) / tan(35°).
+ */
+.img-cut {
+  --img-slash-size: 5.75rem;
+  --img-slash-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpolygon fill='%23fff' points='80,58 80,65 54.3,80 44.3,80'/%3E%3Cpolygon fill='%23fff' points='80,34 80,41 20.0,80 10.0,80'/%3E%3C/svg%3E");
+  -webkit-mask-image: linear-gradient(#000 0 0), var(--img-slash-mask);
+  -webkit-mask-size: 100% 100%, var(--img-slash-size) var(--img-slash-size);
+  -webkit-mask-position: 0 0, 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-composite: destination-out;
+  mask-image: linear-gradient(#000 0 0), var(--img-slash-mask);
+  mask-size: 100% 100%, var(--img-slash-size) var(--img-slash-size);
+  mask-position: 0 0, 100% 100%;
+  mask-repeat: no-repeat;
+  mask-composite: subtract;
 }
