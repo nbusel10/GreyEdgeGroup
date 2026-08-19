@@ -1,8 +1,8 @@
-name: Publish cPanel staging
+name: Publish cPanel site
 
 on:
   push:
-    branches: [main]
+    branches: [dev]
   workflow_dispatch:
 
 permissions:
@@ -32,11 +32,11 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Publish dist to cpanel-staging
+      - name: Publish dist to main
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: cpanel-staging
+          publish_branch: main
           publish_dir: ./dist
           force_orphan: true
-          commit_message: 'Publish built staging site'
+          commit_message: 'Publish built site to main'
