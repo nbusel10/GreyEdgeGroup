@@ -179,7 +179,6 @@ function OptionB() {
 /** C — Image left, clickable list right. */
 function OptionC() {
   const [active, setActive] = useState(0)
-  const l = lessons[active]
   const img = media[active]
 
   return (

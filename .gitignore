@@ -34,3 +34,6 @@ tmp/
 public/sitemap.xml
 public/images/og-greyedge.webp
 
+# Local staging overlay for GreenGeeks File Manager upload
+greyedge-staging-dist.zip
+

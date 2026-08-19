@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://greyedgegroup.com/sitemap.xml
+Disallow: /
