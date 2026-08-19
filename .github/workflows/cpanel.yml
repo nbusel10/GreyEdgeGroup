@@ -32,11 +32,28 @@ jobs:
       - name: Build
         run: pnpm build
 
+      # Fast-forward only. Do not force-push or orphan: cPanel Git cannot
+      # Update from Remote unless origin/main is a descendant of its HEAD.
       - name: Publish dist to main
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main
-          publish_dir: ./dist
-          force_orphan: true
-          commit_message: 'Publish built site to main'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          rm -rf /tmp/ge-dist
+          mkdir /tmp/ge-dist
+          cp -a dist/. /tmp/ge-dist/
+
+          git fetch origin main
+          git checkout -B main origin/main
+
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -a /tmp/ge-dist/. .
+
+          git add -A
+          if git diff --cached --quiet; then
+            git commit --allow-empty -m "Publish built site from ${GITHUB_SHA:0:7}"
+          else
+            git commit -m "Publish built site from ${GITHUB_SHA:0:7}"
+          fi
+          git push origin HEAD:main
