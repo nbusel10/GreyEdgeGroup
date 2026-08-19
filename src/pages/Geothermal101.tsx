@@ -1,18 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { site } from '../content/images'
 import { doors } from '../content/advantage'
-import GMark, { GBullet } from '../components/GMark'
 import PageHero from '../components/PageHero'
-import ThermalHighway from '../components/ThermalHighway'
+import AtlExplainer from '../components/sections/AtlExplainer'
 import FinalCta from '../components/sections/FinalCta'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 
+const schematic = {
+  src: '/images/site/atl-schematic-nextemp.png',
+  alt: 'Schematic of an ambient temperature loop connecting buildings and thermal resources, including geoexchange, surface water, solar thermal and storage.',
+}
+
 const sources = [
-  { name: 'The ground', detail: 'Stable year-round temperature a few hundred feet down, in every climate.' },
+  { name: 'The ground', detail: 'A stable thermal reservoir available year-round in virtually every climate.' },
   { name: 'Wastewater', detail: 'Municipal sewer mains carry a remarkably consistent thermal load.' },
-  { name: 'Industrial waste heat', detail: 'Data centres, laundries and process plants reject heat continuously.' },
-  { name: 'Solar thermal', detail: 'Direct collection, typically used to recharge a borefield in summer.' },
+  { name: 'Industrial waste heat', detail: 'Data centers, laundries, manufacturing and other processes can reject large amounts of usable heat.' },
+  { name: 'Solar thermal', detail: 'Solar energy captured as heat and stored in the ground for later use.' },
   { name: 'Mine water', detail: 'Flooded workings hold enormous stable thermal mass near former mining towns.' },
   { name: 'Surface water', detail: 'Lakes, rivers and reservoirs, where permitting allows.' },
 ]
@@ -27,12 +31,20 @@ const faqs = [
     a: 'Particularly well. Below about six metres, ground temperature stays near the local annual average all year, so a system in Steamboat Springs is drawing from roughly 45°F ground while the air outside is below zero. The colder the air, the bigger the advantage over an air-source system.',
   },
   {
+    q: 'Can an existing building connect to a Thermal Energy Network?',
+    a: 'Often, yes. The building ties into the shared loop through a heat pump, or hydronics already able to work at those temperatures, so it can take heat from the network and give heat back. That is a connection, not a promise that the existing plant plugs in unchanged. Buildings still do the final lift locally; they no longer have to source or reject every unit of heat on their own.',
+  },
+  {
+    q: 'What happens when heating and cooling loads don’t balance?',
+    a: 'The loop uses thermal resources as a balancing account. When buildings cannot offset one another directly, surplus heat goes into the ground, wastewater, or another sink on the network, and a shortfall is drawn from the same places. That is why geoexchange, process heat and storage sit on the loop: they absorb the difference so far less heat has to be rejected or produced from scratch.',
+  },
+  {
     q: 'How much does it cost compared with conventional systems?',
     a: 'First cost is usually higher and operating cost is substantially lower, so the comparison only makes sense over the life of the asset. At district scale the maths changes again: sharing a loop across buildings with different load profiles means you install far less total capacity than the sum of the individual buildings would need.',
   },
   {
     q: 'How long do these systems last?',
-    a: 'The ground loop is the long-lived part — the polyethylene piping is typically warranted for 50 years and expected to last longer. Heat pumps are replaced on a normal mechanical cycle of roughly 20 to 25 years. We maintain operating relationships with systems that have run continuously for 15 to 18 years.',
+    a: 'The ground loop is the long-lived part. The polyethylene piping is typically warranted for 50 years and expected to last longer. Heat pumps are replaced on a normal mechanical cycle of roughly 20 to 25 years. We maintain operating relationships with systems that have run continuously for 15 to 18 years.',
   },
   {
     q: 'How much land does a borefield need?',
@@ -44,22 +56,41 @@ export default function Geothermal101() {
   usePageMeta({
     title: 'Geothermal 101 — The GreyEdge Group',
     description:
-      'How Thermal Energy Networks, ambient temperature loops and district-scale geothermal actually work — explained without the jargon.',
+      'How Thermal Energy Networks, ambient temperature loops and district-scale geothermal actually work, explained without the jargon.',
     image: site['network-diagram'].src,
   })
 
   const [openFaq, setOpenFaq] = useState<number | null>(0)
+  const [schematicOpen, setSchematicOpen] = useState(false)
+  const schematicBtnRef = useRef<HTMLButtonElement>(null)
+  const schematicCloseRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (!schematicOpen) return
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    schematicCloseRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSchematicOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = prevOverflow
+      window.removeEventListener('keydown', onKey)
+      schematicBtnRef.current?.focus()
+    }
+  }, [schematicOpen])
 
   return (
     <>
       <PageHero
-        eyebrow="Geothermal 101"
-        title="How this actually works"
+        eyebrow="How it works"
+        title="Geothermal 101"
         lead="No pitch, no meeting required. This is the shared vocabulary our clients wish they'd had at the start of their first project."
       />
 
       {/* What is a TEN */}
-      <Section id="networks" className="bg-ge-offwhite">
+      <Section id="networks" className="bg-white">
         <Container>
           <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
             <Reveal>
@@ -73,29 +104,43 @@ export default function Geothermal101() {
               </p>
               <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
                 It is a simple idea with a large consequence. An office rejecting heat in the afternoon and apartments
-                needing heat in the evening are, on a shared loop, solving each other&rsquo;s problem. Every building
-                you add makes the network more efficient rather than less, because loads rarely peak at the same
-                moment.
+                needing heat in the evening are, on a shared loop, solving each other&rsquo;s problem. The more diverse
+                the buildings and loads on the network, the more efficiently the system can operate, because their
+                heating and cooling needs rarely peak at the same moment.
               </p>
               <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
                 That diversity is why a district system installs far less total capacity than the same buildings would
-                need standing alone — and why the electrical service can often stay as it is.
+                need standing alone, and why peak electrical demand can be far lower than a building-by-building
+                conversion would require.
               </p>
             </Reveal>
-            <Reveal delay={0.08}>
-              <img
-                src={site['network-diagram'].src}
-                alt={site['network-diagram'].alt}
-                className="w-full object-cover"
-                loading="lazy"
-              />
+            <Reveal delay={0.08} className="flex items-center justify-center">
+              <button
+                ref={schematicBtnRef}
+                type="button"
+                onClick={() => setSchematicOpen(true)}
+                aria-haspopup="dialog"
+                aria-expanded={schematicOpen}
+                title="View schematic"
+                className="group relative mx-auto w-full cursor-zoom-in border border-ge-light bg-ge-offwhite p-4 md:p-6"
+              >
+                <img src={schematic.src} alt={schematic.alt} className="w-full" loading="lazy" />
+                <span className="pointer-events-none absolute inset-0 flex items-end justify-end bg-gradient-to-t from-ge-black/25 via-transparent to-transparent p-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 md:p-6">
+                  <span className="inline-flex items-center gap-2 bg-ge-black px-3 py-2 font-body text-[10px] font-medium uppercase tracking-[0.18em] text-white">
+                    <svg className="h-3 w-3" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                    View schematic
+                  </span>
+                </span>
+              </button>
             </Reveal>
           </div>
         </Container>
       </Section>
 
       {/* Ambient temperature loops */}
-      <Section id="ambient-loops" className="border-t border-ge-light bg-white">
+      <Section id="ambient-loops" className="border-t border-ge-light bg-ge-offwhite">
         <Container>
           <Reveal>
             <Eyebrow>The Mechanism</Eyebrow>
@@ -104,9 +149,9 @@ export default function Geothermal101() {
             </h2>
             <p className="mt-6 max-w-3xl font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
               Traditional district energy pushes hot water out at 180°F and loses heat every foot of the way. An
-              ambient loop runs close to ground temperature — roughly 50 to 80°F — and lets a heat pump in each
-              building do the final lift. Because the loop is near the temperature of the earth around it, the
-              distribution losses that plague hot-water districts largely disappear.
+              ambient loop runs close to local ground temperature and lets a heat pump in each building do the
+              final lift. Because the loop is near the temperature of the earth around it, the distribution losses
+              that plague hot-water districts largely disappear.
             </p>
           </Reveal>
 
@@ -114,7 +159,7 @@ export default function Geothermal101() {
             {[
               {
                 t: 'Low temperature, low loss',
-                b: 'A loop near ambient ground temperature barely exchanges heat with the soil it passes through, so the pipe can run for miles without meaningful loss.',
+                b: 'A loop near ambient ground temperature barely exchanges heat with the soil it passes through, so the loop can extend over long distances with very little distribution loss.',
               },
               {
                 t: 'Two-way by design',
@@ -122,12 +167,14 @@ export default function Geothermal101() {
               },
               {
                 t: 'Grows by connection',
-                b: 'Adding a building means a tap into the existing main, not a new central plant. Phase two costs a fraction of phase one.',
+                b: 'Adding a building means a connection into the existing main, not a new central plant. Later phases use the infrastructure already in the ground, rather than starting over with a new central plant.',
               },
             ].map((c, i) => (
               <Reveal key={c.t} delay={i * 0.06} className="bg-white">
                 <div className="h-full p-8">
-                  <GMark className="h-5 w-5 text-ge-accent" />
+                  <span className="text-ge-accent" aria-hidden="true">
+                    //
+                  </span>
                   <h3 className="mt-5 font-display text-xl font-bold uppercase leading-tight tracking-wide text-ge-black">
                     {c.t}
                   </h3>
@@ -139,49 +186,39 @@ export default function Geothermal101() {
         </Container>
       </Section>
 
-      {/* Thermal Highway diagram */}
-      <Section id="thermal-highway" className="bg-ge-black">
-        <Container>
-          <Reveal>
-            <Eyebrow tone="light">The Thermal Highway©</Eyebrow>
-            <h2 className="mt-5 max-w-3xl font-display text-4xl font-bold uppercase leading-tight tracking-tight text-white sm:text-5xl">
-              One loop, many sources, no waste
-            </h2>
-            <p className="mt-6 max-w-3xl font-body text-base leading-relaxed text-ge-silver sm:text-lg">
-              The Thermal Highway is our architecture for connecting a whole district to a single ambient loop, with
-              multiple thermal sources feeding it and a borefield acting as the balancing account. Heat rejected here
-              is heat delivered there; whatever is left over goes into the ground until the season turns.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1} className="mt-14">
-            <ThermalHighway />
-          </Reveal>
-        </Container>
-      </Section>
+      <AtlExplainer />
 
       {/* Sources */}
-      <Section className="border-t border-ge-light bg-ge-offwhite">
+      <Section id="thermal-resources" className="border-t border-ge-light bg-ge-offwhite">
         <Container>
           <div className="grid gap-14 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
             <Reveal>
-              <Eyebrow>The Inputs</Eyebrow>
+              <Eyebrow>The Resources</Eyebrow>
               <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
-                Where the heat comes from
+                Where heat comes from and where it goes
               </h2>
               <p className="mt-6 font-body text-base leading-relaxed text-ge-graphite">
-                Most districts have more usable thermal energy on site than anyone has counted. Part of our evaluation
-                work is finding it.
+                A thermal resource is a source or sink of heat that is already on the site, or can be connected to it.
+                Buildings exchange heat too; they are the loads. Resources give the loop additional places to put
+                surplus heat or draw heat from when buildings cannot balance one another directly.
+              </p>
+              <blockquote className="my-8 border-l-2 border-ge-accent pl-7">
+                <p className="font-display text-2xl font-semibold uppercase leading-snug tracking-wide text-ge-black">
+                  Most districts have more usable thermal energy on site than anyone has counted.
+                </p>
+              </blockquote>
+              <p className="font-body text-base leading-relaxed text-ge-graphite">
+                Part of our evaluation work is finding it.
               </p>
               <Btn to="/contact" variant="outline" className="mt-8">
-                What&rsquo;s on your site?
+                Evaluate your resources
               </Btn>
             </Reveal>
             <Reveal delay={0.08}>
               <ul className="border-t border-ge-light">
                 {sources.map((s) => (
                   <li key={s.name} className="flex gap-4 border-b border-ge-light py-5">
-                    <GBullet className="mt-1.5 text-ge-accent" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-ge-accent" aria-hidden="true" />
                     <div>
                       <div className="font-display text-lg font-bold uppercase tracking-wide text-ge-black">
                         {s.name}
@@ -244,7 +281,7 @@ export default function Geothermal101() {
                   Still have a question?
                 </h3>
                 <p className="mt-2 max-w-xl font-body text-sm leading-relaxed text-ge-graphite">
-                  Bring us what you have — a site, a study, a constraint, or just a hunch. We&rsquo;ll tell you what we
+                  Bring us what you have: a site, a study, a constraint, or just a hunch. We&rsquo;ll tell you what we
                   see.
                 </p>
               </div>
@@ -257,6 +294,41 @@ export default function Geothermal101() {
       </Section>
 
       <FinalCta />
+
+      {schematicOpen && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-ge-black/85 p-4 md:p-10"
+          onClick={() => setSchematicOpen(false)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="schematic-dialog-title"
+            className="relative max-h-full max-w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 id="schematic-dialog-title" className="sr-only">
+              Ambient temperature loop schematic
+            </h2>
+            <button
+              ref={schematicCloseRef}
+              type="button"
+              onClick={() => setSchematicOpen(false)}
+              aria-label="Close schematic"
+              className="absolute -right-1 -top-1 z-10 flex h-10 w-10 items-center justify-center bg-ge-black text-white transition-colors hover:text-ge-accent-bright"
+            >
+              <svg className="h-4 w-4 rotate-45" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+            </button>
+            <img
+              src={schematic.src}
+              alt={schematic.alt}
+              className="max-h-[90vh] w-auto max-w-full"
+            />
+          </div>
+        </div>
+      )}
     </>
   )
 }

@@ -20,7 +20,7 @@ export const challenges: Challenge[] = [
     label: 'Decarbonization and Compliance',
     short: 'Decarbonization',
     problem:
-      'Organizations face growing pressure to reduce emissions, meet evolving energy codes, and comply with ambitious climate mandates — often while working within aging infrastructure, limited electrical capacity, and strict capital budgets.',
+      'Organizations face growing pressure to reduce emissions, meet evolving energy codes, and comply with ambitious climate mandates, often while working within aging infrastructure, limited electrical capacity, and strict capital budgets.',
     approach:
       'We develop practical, phased decarbonization strategies that align regulatory requirements with long-term operational and financial goals. By evaluating existing infrastructure, available thermal resources, future growth, and utility constraints, we design scalable thermal energy solutions that reduce emissions and avoid unnecessary overbuilding.',
     outcome: 'A clear, phased path to compliance with defined decision points and cost clarity before construction begins.',
@@ -67,7 +67,7 @@ export const challenges: Challenge[] = [
       'Energy systems are often designed around today’s needs, making future expansion costly or technically difficult. As campuses grow, change ownership, add buildings, or adopt new energy sources, inflexible infrastructure limits options and forces premature replacement.',
     approach:
       'We plan thermal infrastructure as a scalable platform rather than a fixed one-time solution. Through phased development, modular capacity, interconnected systems, and the ability to add thermal sources over time, we help clients expand at their own pace.',
-    outcome: 'Infrastructure that grows with you — adding buildings, resources, and load without starting over.',
+    outcome: 'Infrastructure that grows with you: adding buildings, resources, and load without starting over.',
     image: site['growth-flexibility'].src,
     imageAlt: site['growth-flexibility'].alt,
   },

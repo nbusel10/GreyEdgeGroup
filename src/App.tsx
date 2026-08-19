@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import PreviewHome from './pages/PreviewHome'
 import PreviewLessons from './pages/PreviewLessons'
 import PreviewServices from './pages/PreviewServices'
+import PreviewAtlIcons from './pages/PreviewAtlIcons'
 import Approach from './pages/Approach'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
@@ -35,6 +36,8 @@ export default function App() {
           <Route path="/preview-home" element={<PreviewHome />} />
           <Route path="/preview-lessons" element={<PreviewLessons />} />
           <Route path="/preview-services" element={<PreviewServices />} />
+          {/* Temporary: icon review for the ATL explainer. Remove with the page. */}
+          <Route path="/preview-atl-icons" element={<PreviewAtlIcons />} />
           <Route path="/approach" element={<Approach />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />

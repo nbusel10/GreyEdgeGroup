@@ -13,8 +13,7 @@
 export const headline = 'We don’t just work in this industry. Many members of our team helped build it.'
 
 export const intro =
-  'Our members helped establish the modern geothermal standards, wrote the training programs behind key industry certifications, and continue to teach them. When a state or a utility needs to figure out what good policy looks like, these are the people they call.'
-
+  "We don't just work in thermal energy, we've helped shape the industry. Our team has contributed to the development of modern geothermal standards, authored training programs behind leading certifications, and continues to educate the next generation of professionals. When communities, utilities, and policymakers need trusted expertise, they turn to the people who helped build the foundation."
 export interface Credit {
   title: string
   detail: string
@@ -25,12 +24,12 @@ export interface Credit {
 export const credits: Credit[] = [
   {
     title: 'Resource-efficient decarbonization framework',
-    org: 'NYSERDA — New York',
+    org: 'NYSERDA, New York',
     detail:
       'Our members shaped the framework New York uses to evaluate resource-efficient decarbonization at scale.',
   },
   {
-    title: 'HEAT Kickstart',
+    title: 'Heet',
     org: 'Massachusetts',
     detail:
       'Selected as one of twelve firms supporting the Commonwealth’s thermal energy network kickstart program.',
@@ -45,7 +44,7 @@ export const credits: Credit[] = [
     title: 'Certification and training programs',
     org: 'Industry-wide',
     detail:
-      'Authored the training programs behind key industry certifications — and still teach them.',
+      'Authored the training programs behind key industry certifications, and still teach them.',
   },
   {
     title: 'Ambient temperature loop practice',
@@ -63,4 +62,4 @@ export const credits: Credit[] = [
 
 /** Countering the regional perception, stated plainly. */
 export const reach =
-  'Our work reaches well beyond Colorado and Utah — including thermal energy network advisory work on the East Coast, and feasibility studies that are driving state-level policy decisions.'
+  'Our work reaches well beyond Colorado and Utah, including thermal energy network advisory work on the East Coast, and feasibility studies that are driving state-level policy decisions.'

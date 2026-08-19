@@ -29,6 +29,7 @@ const CONTENT_DIR = 'src/content'
 // below is a descriptor taken from that person's own bio copy, not an invented job
 // title — they still need Matt's confirmation before launch.
 const ROLE_OVERRIDES = {
+  'bill-odonnell': 'Engineering',
   'megan-lim': 'Marketing and Business Development',
   'garen-ewbank': 'Ground Loop and Drilling Specialist',
   'stephen-hamstra': 'Thermal Energy Systems Specialist',
@@ -43,7 +44,7 @@ const ROLE_OVERRIDES = {
 // Matt selected these three as the homepage features.
 const FEATURED = ['aspen', 'vail', 'steamboat-springs']
 
-// Founders / board, shown as a separate group above the full team grid.
+// Founders / board flag (used on homepage leadership callouts).
 const LEADERSHIP = [
   'matthew-garlick',
   'richard-b-white',
@@ -52,6 +53,25 @@ const LEADERSHIP = [
   'garen-ewbank',
   'stephen-hamstra',
   'paul-bony',
+]
+
+/** Grid order from the legacy Our Team page (5-across). */
+const TEAM_ORDER = [
+  'matthew-garlick',
+  'richard-b-white',
+  'cary-smith',
+  'paul-bony',
+  'garen-ewbank',
+  'stephen-hamstra',
+  'john-mclennan',
+  'bill-odonnell',
+  'roshan-revankar',
+  'garry-sexton',
+  'mark-smith',
+  'jaiden-marriott',
+  'megan-lim',
+  'delaini-moss-marriott',
+  'ian-talbot',
 ]
 
 // Site photography worth keeping, mapped to stable local names so the React code
@@ -113,6 +133,10 @@ const PUBLISHERS = {
   'summitdaily.com': 'Summit Daily',
   'www.parkrecord.com': 'Park Record',
   'parkrecord.com': 'Park Record',
+  'www.kpcw.org': 'KPCW',
+  'kpcw.org': 'KPCW',
+  'coloradosun.com': 'The Colorado Sun',
+  'www.coloradosun.com': 'The Colorado Sun',
   'www.linkedin.com': 'LinkedIn',
 }
 
@@ -274,6 +298,12 @@ function scrapeProject(dom) {
   const region = localityIdx > -1 ? heads[localityIdx + 1] : null
   const country = localityIdx > -1 ? heads[localityIdx + 2] : null
 
+  // Team partners live in the heading after "The Project Team:" as a mix of links and plain text.
+  const team = scrapeProjectTeam(dom)
+  const teamUrls = new Set(
+    team.map((m) => m.url).filter((u) => u && /^https?:/i.test(u)).map((u) => u.replace(/\s+$/, '')),
+  )
+
   const articles = [
     ...new Set(
       dom
@@ -284,7 +314,8 @@ function scrapeProject(dom) {
             h &&
             h.startsWith('http') &&
             !h.includes('buselmeier') &&
-            !/linkedin|facebook|twitter|x\.com|instagram|greyedgegroup\.com/i.test(h),
+            !/linkedin|facebook|twitter|x\.com|instagram|greyedgegroup\.com/i.test(h) &&
+            !teamUrls.has(h.replace(/\s+$/, '')),
         ),
     ),
   ]
@@ -297,12 +328,67 @@ function scrapeProject(dom) {
     buildings: after('# of Buildings:'),
     completion: after('Completion Year:'),
     description: after('About the Project:'),
-    articles: articles.map((url) => ({ title: titleFromUrl(url), publisher: publisher(url), url })),
+    team,
+    articles: articles.map((url) => ({
+      title: titleFromUrl(url.trim()),
+      publisher: publisher(url.trim()),
+      url: url.trim(),
+    })),
   }
+}
+
+/**
+ * Parse "Name, Name, Name" from the Project Team value heading, preserving optional hrefs.
+ * GreyEdge's own home URL on the WP site becomes "/" for the React app.
+ */
+function scrapeProjectTeam(dom) {
+  const heads = dom.querySelectorAll('h1,h2,h3')
+  const labelIdx = heads.findIndex((h) =>
+    clean(h.text).toLowerCase().startsWith('the project team:'),
+  )
+  if (labelIdx === -1) return []
+  const valueEl = heads[labelIdx + 1]
+  if (!valueEl) return []
+  // Skip if the next heading is another label (empty team).
+  if (PROJECT_LABELS.some((l) => clean(valueEl.text).toLowerCase().startsWith(l.toLowerCase()))) {
+    return []
+  }
+
+  const members = []
+  const push = (name, url) => {
+    const n = decode(name).replace(/\s+/g, ' ').trim().replace(/^,\s*|,\s*$/g, '')
+    if (!n) return
+    const entry = { name: n }
+    if (url) {
+      const href = url.trim()
+      if (/buselmeier\.com\/?$/i.test(href) || href === BASE || href === `${BASE}/`) {
+        entry.url = '/'
+      } else if (/^https?:/i.test(href)) {
+        entry.url = href
+      }
+    }
+    members.push(entry)
+  }
+
+  const walk = (node) => {
+    if (node.nodeType === 3) {
+      // Text nodes may hold multiple comma-separated unlinked names.
+      for (const part of node.text.split(',')) push(part)
+      return
+    }
+    if (node.tagName === 'A') {
+      push(node.text, node.getAttribute('href'))
+      return
+    }
+    for (const child of node.childNodes || []) walk(child)
+  }
+  walk(valueEl)
+  return members
 }
 
 function deriveStatus(completion) {
   if (!completion) return 'In Development'
+  if (/operational/i.test(completion)) return 'Operational'
   if (/progress/i.test(completion)) return 'In Progress'
   if (/development|planning|feasibility/i.test(completion)) return 'In Development'
   if (/^\s*\d{4}\s*$/.test(completion)) return 'Completed'
@@ -344,6 +430,7 @@ async function importProjects(media) {
       status: deriveStatus(s.completion),
       summary: decode(p.excerpt?.rendered),
       description: s.description ? decode(s.description) : '',
+      team: s.team || [],
       articles: s.articles || [],
       image,
       imageAlt,
@@ -401,6 +488,7 @@ function scrapeBio(dom) {
   const email = grab('email')
   const phone = grab('phone')
   const website = grab('website') || grab('url')
+  const linkedin = grab('linkedin')
 
   // Walk the body in document order, bucketing content under its <h4> heading.
   // Content before the first <h4> is the intro.
@@ -442,6 +530,7 @@ function scrapeBio(dom) {
     email,
     phone,
     website,
+    linkedin,
     bio,
     sections: sections.filter((s) => s.items.length),
   }
@@ -483,6 +572,7 @@ async function importTeam(media) {
       email: b.email || null,
       phone: b.phone || null,
       website: b.website || null,
+      linkedin: b.linkedin || null,
       bio: b.bio || [],
       sections: b.sections || [],
       image,
@@ -493,8 +583,11 @@ async function importTeam(media) {
   }
 
   out.sort((a, b) => {
-    if (a.leadership !== b.leadership) return a.leadership ? -1 : 1
-    if (a.leadership) return LEADERSHIP.indexOf(a.slug) - LEADERSHIP.indexOf(b.slug)
+    const ai = TEAM_ORDER.indexOf(a.slug)
+    const bi = TEAM_ORDER.indexOf(b.slug)
+    const aRank = ai === -1 ? Number.MAX_SAFE_INTEGER : ai
+    const bRank = bi === -1 ? Number.MAX_SAFE_INTEGER : bi
+    if (aRank !== bRank) return aRank - bRank
     return a.name.localeCompare(b.name)
   })
   return out
@@ -552,6 +645,12 @@ export interface ProjectArticle {
   url: string
 }
 
+/** Partner / org credited on a project page. Optional url when the source links them. */
+export interface ProjectTeamMember {
+  name: string
+  url?: string
+}
+
 export interface Project {
   slug: string
   name: string
@@ -560,9 +659,11 @@ export interface Project {
   sqFeet: string | null
   buildings: string | null
   completion: string | null
-  status: 'In Progress' | 'In Development' | 'Completed'
+  status: 'In Progress' | 'In Development' | 'Operational' | 'Completed'
   summary: string
   description: string
+  /** Project partners / collaborating orgs. Empty when not yet collected. */
+  team: ProjectTeamMember[]
   articles: ProjectArticle[]
   image: string | null
   imageAlt: string
@@ -593,6 +694,7 @@ export interface TeamMember {
   email: string | null
   phone: string | null
   website: string | null
+  linkedin: string | null
   bio: string[]
   /** Awards, publications, education etc. — varies per person. */
   sections: BioSection[]
@@ -601,7 +703,18 @@ export interface TeamMember {
   leadership: boolean
 }
 
+/**
+ * Grid order from the legacy Our Team page (5-across).
+ */
+export const teamOrder = ${ts(TEAM_ORDER)} as const
+
 export const team: TeamMember[] = ${ts(team)}
+
+const orderIndex = (slug: string) => {
+  const i = (teamOrder as readonly string[]).indexOf(slug)
+  return i === -1 ? Number.MAX_SAFE_INTEGER : i
+}
+team.sort((a, b) => orderIndex(a.slug) - orderIndex(b.slug))
 
 export const leadership = team.filter((m) => m.leadership)
 

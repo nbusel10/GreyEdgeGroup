@@ -3,7 +3,6 @@ import type { FormEvent } from 'react'
 import { org } from '../content/site'
 import { site } from '../content/images'
 import { doors } from '../content/advantage'
-import GMark from '../components/GMark'
 import PageHero from '../components/PageHero'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
@@ -21,7 +20,7 @@ const ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT
 const FORM_NAME = 'greyedge-contact'
 
 const helpOptions = [
-  'Not sure yet — exploring options',
+  'Not sure yet (exploring options)',
   'Feasibility or resource study',
   'Master planning a campus or district',
   'Design or engineering support',
@@ -36,7 +35,7 @@ export default function Contact() {
   usePageMeta({
     title: 'Contact — The GreyEdge Group',
     description:
-      'Tell us about your project — a site, a study, a constraint, or just a hunch. We’ll tell you what we see.',
+      'Tell us about your project: a site, a study, a constraint, or just a hunch. We’ll tell you what we see.',
     image: site.contact.src,
   })
 
@@ -80,10 +79,8 @@ export default function Contact() {
     <>
       <PageHero
         eyebrow="Start Planning"
-        title="Let's engineer what's next"
-        lead="Whether you're advancing a master-planned development, evaluating district-scale infrastructure, or navigating grid constraints — bring us what you have and we'll tell you what we see."
-        image={site.contact.src}
-        imageAlt={site.contact.alt}
+        title="Let's plan what's next"
+        lead="Whether you're advancing a master-planned development, evaluating district-scale infrastructure, or navigating grid constraints, bring us what you have and we'll tell you what we see."
       />
 
       <Section className="bg-ge-offwhite">
@@ -92,12 +89,14 @@ export default function Contact() {
             <Reveal>
               {status === 'sent' ? (
                 <div className="border border-ge-accent bg-white p-10 text-center">
-                  <GMark className="mx-auto h-10 w-10 text-ge-accent" />
+                  <span className="text-ge-accent" aria-hidden="true">
+                    //
+                  </span>
                   <h2 className="mt-6 font-display text-3xl font-bold uppercase tracking-wide text-ge-black">
                     Thank you
                   </h2>
                   <p className="mx-auto mt-4 max-w-md font-body text-base leading-relaxed text-ge-graphite">
-                    Your message is with us. Someone from the team will be in touch shortly — usually within one
+                    Your message is with us. Someone from the team will be in touch shortly, usually within one
                     business day.
                   </p>
                   <Btn to="/geothermal-101" variant="outline" className="mt-8">
@@ -206,8 +205,10 @@ export default function Contact() {
 
               {/* The other door, for readers who aren't ready for a conversation. */}
               <div className="mt-6 border border-ge-light bg-ge-black p-8">
-                <GMark className="h-6 w-6 text-ge-accent" />
-                <h2 className="mt-5 font-display text-2xl font-bold uppercase tracking-wide text-white">
+                <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-white">
+                  <span className="text-ge-accent" aria-hidden="true">
+                    //{' '}
+                  </span>
                   Not ready to talk yet?
                 </h2>
                 <p className="mt-3 font-body text-sm leading-relaxed text-ge-silver">{doors.education.detail}</p>

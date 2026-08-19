@@ -20,7 +20,7 @@ export default function Approach() {
       <PageHero
         eyebrow="The Partnership"
         title="Our Approach"
-        lead="Most projects are a relay race between disconnected experts. We operate as a single system from the first conversation: one strategy, one set of numbers, one shared obligation for how the thing performs."
+        lead="Every engagement starts somewhere different: a feasibility question, an existing plant, a growth plan, or a decarbonization goal. Our approach is built to meet that starting point with hard-earned experience, a clear process, and the services to carry it through."
       />
       <CollaborativeAdvantage />
       <Process />

@@ -23,15 +23,15 @@ const SPINE_Y = 135
 const fillFor = (kind?: Node['kind']) =>
   kind === 'storage' ? '#14171A' : kind === 'source' ? '#1e2124' : '#25292d'
 const strokeFor = (kind?: Node['kind']) =>
-  kind === 'storage' ? '#5A9835' : kind === 'source' ? '#7A8288' : '#3c4247'
-const textFor = (kind?: Node['kind']) => (kind === 'storage' ? '#6FB544' : kind === 'source' ? '#9AA1A6' : '#7A8288')
+  kind === 'storage' ? '#426255' : kind === 'source' ? '#7A8288' : '#3c4247'
+const textFor = (kind?: Node['kind']) => (kind === 'storage' ? '#5a8574' : kind === 'source' ? '#9AA1A6' : '#7A8288')
 // Kept in step with strokeFor so the legend below actually describes the drawing.
 const flowFor = (kind?: Node['kind']) =>
-  kind === 'storage' ? '#5A9835' : kind === 'source' ? '#9AA1A6' : '#5a6168'
+  kind === 'storage' ? '#426255' : kind === 'source' ? '#9AA1A6' : '#5a6168'
 
 /**
  * The Thermal Highway: one shared ambient loop that every building both draws from and
- * returns to, so a data centre rejecting heat becomes the heat source for housing next
+ * returns to, so a data center rejecting heat becomes the heat source for housing next
  * door. Ported from the Figma build and recoloured — sources are grey, thermal storage
  * carries the accent.
  */
@@ -44,10 +44,10 @@ export default function ThermalHighway() {
         role="img"
         aria-labelledby="thermal-highway-title thermal-highway-desc"
       >
-        <title id="thermal-highway-title">Thermal Highway network diagram</title>
+        <title id="thermal-highway-title">Thermal Highway© network diagram</title>
         <desc id="thermal-highway-desc">
-          Ten buildings and thermal resources — including a university, data centre, wastewater plant, solar thermal
-          array and a borefield — all connected to a single shared ambient temperature loop running horizontally
+          Ten buildings and thermal resources (including a university, data center, wastewater plant, solar thermal
+          array and a borefield) all connected to a single shared ambient temperature loop running horizontally
           through the district.
         </desc>
 
@@ -58,7 +58,7 @@ export default function ThermalHighway() {
           y1={SPINE_Y}
           x2="780"
           y2={SPINE_Y}
-          stroke="#5A9835"
+          stroke="#426255"
           strokeWidth="2"
           strokeDasharray="24 36"
           className="animate-flow"
@@ -132,7 +132,7 @@ export default function ThermalHighway() {
         {[
           { label: 'Buildings', color: '#3c4247' },
           { label: 'Thermal sources', color: '#7A8288' },
-          { label: 'Storage and balancing', color: '#5A9835' },
+          { label: 'Storage and balancing', color: '#426255' },
         ].map((l) => (
           <span key={l.label} className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 border" style={{ borderColor: l.color }} aria-hidden="true" />

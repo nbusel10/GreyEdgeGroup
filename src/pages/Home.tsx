@@ -1,19 +1,28 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { hero, org } from '../content/site'
 import { featuredProjects } from '../content/projects'
 import { insights } from '../content/insights'
-import { site } from '../content/images'
 import Challenges from '../components/sections/Challenges'
-import CollaborativeAdvantage from '../components/sections/CollaborativeAdvantage'
-import Process from '../components/sections/Process'
+import PartnerBrief from '../components/sections/PartnerBrief'
 import Leadership from '../components/sections/Leadership'
 import FinalCta from '../components/sections/FinalCta'
 import ProjectCard from '../components/ProjectCard'
-import GMark from '../components/GMark'
+import HeroScrollCue from '../components/HeroScrollCue'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 
 export default function Home() {
+  const [preferReducedMotion, setPreferReducedMotion] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPreferReducedMotion(mq.matches)
+    const onChange = () => setPreferReducedMotion(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
   usePageMeta({
     title: `${org.name} — ${org.tagline}`,
     description:
@@ -23,13 +32,27 @@ export default function Home() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative flex min-h-[640px] items-end overflow-hidden bg-ge-black lg:h-[92vh] lg:min-h-[720px]">
-        <img
-          src={hero.image}
-          alt={hero.imageAlt}
-          className="absolute inset-0 h-full w-full object-cover"
-          fetchPriority="high"
-        />
+      <section className="relative flex min-h-svh items-end overflow-hidden bg-ge-black lg:h-[92vh] lg:min-h-[720px]">
+        {preferReducedMotion ? (
+          <img
+            src={hero.image}
+            alt={hero.imageAlt}
+            className="absolute inset-0 h-full w-full object-cover"
+            fetchPriority="high"
+          />
+        ) : (
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={hero.image}
+            aria-hidden="true"
+          >
+            <source src={hero.video} type="video/mp4" />
+          </video>
+        )}
         <div
           className="absolute inset-0"
           aria-hidden="true"
@@ -38,77 +61,61 @@ export default function Home() {
               'linear-gradient(to bottom, rgba(20,23,26,0.78) 0%, rgba(20,23,26,0.32) 26%, rgba(20,23,26,0.6) 58%, rgba(20,23,26,0.94) 100%)',
           }}
         />
-        <Container className="relative pb-16 pt-28 md:pb-20">
-          <div className="fade-slide-up">
-            <div className="flex flex-wrap items-baseline gap-x-4">
-              {hero.words.map((w, i) => (
-                <span
-                  key={w}
-                  className={`font-display text-3xl font-bold uppercase tracking-tight sm:text-4xl ${
-                    i === hero.words.length - 1 ? 'text-ge-accent' : 'text-white/90'
-                  }`}
-                >
-                  {w}
-                </span>
-              ))}
-            </div>
-            <h1
-              className="mt-6 max-w-4xl font-display font-bold uppercase leading-[0.94] tracking-tight text-white"
-              style={{ fontSize: 'clamp(2.6rem, 7vw, 6.2rem)' }}
-            >
-              Build the thermal infrastructure your future requires.
+        <div className="relative mx-auto w-full max-w-[1280px] pb-28 pl-4 pr-5 pt-24 sm:pl-5 sm:pr-8 md:pt-28 lg:pb-32 lg:pl-6">
+          <div className="fade-slide-up max-w-4xl lg:max-w-5xl">
+            <p className="font-body text-base font-semibold uppercase tracking-wide text-ge-light [word-spacing:0.55em] sm:text-lg md:text-xl">
+              {hero.words.join(' ')}
+            </p>
+            <h1 className="mt-4 font-display text-[2.5rem] font-bold uppercase leading-[1.05] tracking-tight text-white sm:text-5xl md:text-[65px] lg:max-w-[50vw]">
+              {hero.headline}
             </h1>
-            <p className="mt-7 max-w-xl font-body text-base leading-relaxed text-ge-light sm:text-lg">{hero.body}</p>
-
-            <ul className="mt-9 flex flex-wrap gap-x-7 gap-y-3">
-              {hero.promises.map((p) => (
-                <li key={p} className="flex items-center gap-2">
-                  <GMark className="h-3 w-3 shrink-0 text-ge-accent" />
-                  <span className="font-body text-xs uppercase tracking-[0.12em] text-white/85">{p}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <p className="mt-5 max-w-2xl font-body text-sm leading-relaxed text-ge-light sm:text-base md:text-lg">
+              {hero.body}
+            </p>
+            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start">
               <Btn to="/contact" variant="light">
                 Start planning
               </Btn>
-              <Btn to="/geothermal-101" variant="ghost">
-                See how it works
+              <Btn to="/projects" variant="ghost">
+                See our work
               </Btn>
             </div>
           </div>
-        </Container>
+        </div>
+        <HeroScrollCue />
       </section>
 
       <Challenges />
-      <CollaborativeAdvantage />
-      <Process />
+      <PartnerBrief />
 
       {/* ── Featured projects ── */}
       <Section className="border-t border-ge-light bg-ge-offwhite">
         <Container>
           <Reveal>
-            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <div>
-                <Eyebrow>The Proof</Eyebrow>
-                <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
-                  Projects that close.
-                </h2>
-                <p className="mt-5 max-w-2xl font-body text-base leading-relaxed text-ge-graphite">
-                  Capacity ceilings, subsurface uncertainty, utility delays and mechanical risk. We turn those
-                  constraints into infrastructure that scales.
-                </p>
+            <div>
+              <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+                <div>
+                  <Eyebrow>The Proof</Eyebrow>
+                  <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl md:text-6xl">
+                    Featured Projects
+                  </h2>
+                </div>
+                <Btn to="/projects" variant="outline" className="shrink-0 self-start">
+                  View all projects
+                </Btn>
               </div>
-              <Btn to="/projects" variant="outline" className="shrink-0 self-start">
-                View all projects
-              </Btn>
+              <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
+                Every project faces challenges, from site constraints and subsurface uncertainty to utility
+                coordination and mechanical complexity. TGEG helps clients navigate these obstacles with
+                rigorous analysis, innovative thermal network strategies, and practical solutions that deliver
+                reliable, long-term energy infrastructure.
+              </p>
             </div>
           </Reveal>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {featuredProjects.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 0.07}>
+              <Reveal key={p.slug} delay={i * 0.07} className="h-full">
                 <ProjectCard project={p} />
               </Reveal>
             ))}
@@ -125,7 +132,7 @@ export default function Home() {
             <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div>
                 <Eyebrow>The Edge</Eyebrow>
-                <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
+                <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl md:text-6xl">
                   From education to execution.
                 </h2>
               </div>
@@ -142,7 +149,7 @@ export default function Home() {
                   to={item.to}
                   className="group flex h-full flex-col border border-ge-light bg-white transition-colors hover:border-ge-accent"
                 >
-                  <div className="h-44 overflow-hidden bg-ge-light">
+                  <div className="img-cut h-44 overflow-hidden bg-ge-light">
                     <img
                       src={item.image}
                       alt={item.imageAlt}
@@ -170,32 +177,19 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* ── LinkedIn ── */}
-      <Section className="border-t border-ge-light bg-white">
+      <Section className="!py-10 border-t border-ge-light bg-ge-offwhite md:!py-12">
         <Container>
           <Reveal>
-            <div className="grid items-center gap-10 border border-ge-light md:grid-cols-[1.2fr_1fr]">
-              <div className="p-8 md:p-12">
-                <Eyebrow>Follow Along</Eyebrow>
-                <h2 className="mt-5 font-display text-3xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-4xl">
-                  What we&rsquo;re working on now
-                </h2>
-                <p className="mt-5 max-w-lg font-body text-base leading-relaxed text-ge-graphite">
-                  Project milestones, industry commentary and the occasional look inside a mechanical room. LinkedIn is
-                  where we post first.
-                </p>
-                <Btn href={org.social.linkedin} variant="solid" className="mt-8">
-                  Follow on LinkedIn
-                </Btn>
-              </div>
-              <div className="relative h-64 md:h-full md:min-h-[300px]">
-                <img
-                  src={site['team-group'].src}
-                  alt={site['team-group'].alt}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
+            <div className="flex flex-col items-start justify-between gap-4 border border-ge-light bg-white px-5 py-5 md:flex-row md:items-center md:px-6 md:py-5">
+              <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-ge-black md:text-3xl">
+                More on LinkedIn
+              </h2>
+              <Btn
+                href={org.social.linkedin}
+                className="shrink-0 !bg-ge-accent px-6 py-3 hover:!bg-ge-accent-deep"
+              >
+                Follow GreyEdge
+              </Btn>
             </div>
           </Reveal>
         </Container>

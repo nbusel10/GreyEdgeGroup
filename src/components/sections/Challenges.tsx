@@ -5,7 +5,7 @@ import { Container, Eyebrow, Reveal, Section } from '../ui'
 
 /**
  * "The Barriers" — five simultaneous pressures, each with the GreyEdge response.
- * Tabs on desktop, accordion on mobile, so the copy stays readable at 375px.
+ * Header on top; horizontal tabs + detail panel on desktop; accordion on mobile.
  */
 export default function Challenges() {
   const [activeIdx, setActiveIdx] = useState(0)
@@ -34,53 +34,72 @@ export default function Challenges() {
           </p>
         </Reveal>
 
-        {/* Desktop: tab rail + detail panel */}
+        {/* Desktop: horizontal tabs + detail panel */}
         <Reveal className="mt-12 hidden md:block">
-          <div className="grid grid-cols-[minmax(240px,300px)_1fr] border border-ge-light bg-white">
-            <div role="tablist" aria-label="Project pressures" className="border-r border-ge-light">
-              {challenges.map((c, i) => (
-                <button
-                  key={c.label}
-                  role="tab"
-                  aria-selected={activeIdx === i}
-                  onClick={() => setActiveIdx(i)}
-                  className={`group flex w-full items-start gap-3 border-b border-ge-light px-6 py-5 text-left transition-colors last:border-b-0 ${
-                    activeIdx === i ? 'bg-ge-offwhite' : 'hover:bg-ge-offwhite/60'
-                  }`}
-                >
-                  <span
-                    className={`mt-1 font-body text-[10px] tracking-[0.18em] ${
-                      activeIdx === i ? 'text-ge-accent' : 'text-ge-light'
+          <div className="border border-ge-light">
+            <div
+              role="tablist"
+              aria-label="Project pressures"
+              className="grid grid-cols-5 border-b border-ge-light bg-ge-offwhite"
+            >
+              {challenges.map((c, i) => {
+                const selected = activeIdx === i
+                return (
+                  <button
+                    key={c.label}
+                    role="tab"
+                    aria-selected={selected}
+                    onClick={() => setActiveIdx(i)}
+                    className={`group relative flex flex-col items-start gap-2 border-r border-ge-light px-3 py-5 text-left transition-colors last:border-r-0 lg:px-5 lg:py-6 ${
+                      selected ? 'bg-white' : 'hover:bg-white/60'
                     }`}
                   >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span
-                    className={`font-display text-lg font-bold uppercase leading-tight tracking-wide transition-colors ${
-                      activeIdx === i ? 'text-ge-black' : 'text-ge-steel group-hover:text-ge-graphite'
-                    }`}
-                  >
-                    {c.label}
-                  </span>
-                </button>
-              ))}
+                    <span
+                      className={`font-body text-[10px] tracking-[0.18em] ${
+                        selected ? 'text-ge-accent' : 'text-ge-steel'
+                      }`}
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span
+                      className={`font-display text-[13px] font-bold uppercase leading-snug tracking-wide transition-colors lg:text-base ${
+                        selected ? 'text-ge-black' : 'text-ge-steel group-hover:text-ge-graphite'
+                      }`}
+                    >
+                      <span className="lg:hidden">{c.short}</span>
+                      <span className="hidden lg:inline">{c.label}</span>
+                    </span>
+                    <span
+                      className={`absolute inset-x-0 bottom-0 h-0.5 transition-colors ${
+                        selected ? 'bg-ge-black' : 'bg-transparent'
+                      }`}
+                      aria-hidden="true"
+                    />
+                  </button>
+                )
+              })}
             </div>
 
-            <div key={activeIdx} className="fade-slide-up">
-              <div className="relative h-44 overflow-hidden bg-ge-light lg:h-56">
-                <img src={active.image} alt={active.imageAlt} className="h-full w-full object-cover" loading="lazy" />
+            <div key={activeIdx} className="fade-slide-up grid bg-white lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
+              <div className="img-cut relative min-h-56 overflow-hidden bg-ge-light lg:min-h-full">
+                <img
+                  src={active.image}
+                  alt={active.imageAlt}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
                 <div
                   className="absolute inset-0"
-                  style={{ background: 'linear-gradient(to top, rgba(20,23,26,0.55), transparent 70%)' }}
+                  style={{ background: 'linear-gradient(to top, rgba(20,23,26,0.45), transparent 65%)' }}
                 />
               </div>
-              <div className="space-y-7 p-8 lg:p-10">
+              <div className="space-y-7 p-8 lg:space-y-8 lg:p-10">
                 <div>
                   <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-steel">The challenge</div>
                   <p className="mt-3 font-body text-[15px] leading-relaxed text-ge-graphite">{active.problem}</p>
                 </div>
                 <div>
-                  <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-steel">
+                  <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-accent">
                     The GreyEdge approach
                   </div>
                   <p className="mt-3 font-body text-[15px] leading-relaxed text-ge-graphite">{active.approach}</p>
@@ -123,12 +142,23 @@ export default function Challenges() {
                 </svg>
               </button>
               {openIdx === i && (
-                <div className="fade-slide-up space-y-4 px-5 pb-6">
-                  <img src={c.image} alt={c.imageAlt} className="h-36 w-full object-cover" loading="lazy" />
-                  <p className="font-body text-sm leading-relaxed text-ge-graphite">{c.problem}</p>
-                  <p className="font-body text-sm leading-relaxed text-ge-steel">{c.approach}</p>
+                <div className="fade-slide-up space-y-5 px-5 pb-6">
+                  <img src={c.image} alt={c.imageAlt} className="img-cut h-36 w-full object-cover" loading="lazy" />
+                  <div>
+                    <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-steel">The challenge</div>
+                    <p className="mt-2 font-body text-sm leading-relaxed text-ge-graphite">{c.problem}</p>
+                  </div>
+                  <div>
+                    <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-accent">
+                      The GreyEdge approach
+                    </div>
+                    <p className="mt-2 font-body text-sm leading-relaxed text-ge-graphite">{c.approach}</p>
+                  </div>
                   <div className="border-l-2 border-ge-accent pl-4">
-                    <p className="font-display text-base font-bold uppercase tracking-wide text-ge-black">{c.outcome}</p>
+                    <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-steel">Outcome</div>
+                    <p className="mt-2 font-display text-base font-bold uppercase tracking-wide text-ge-black">
+                      {c.outcome}
+                    </p>
                   </div>
                 </div>
               )}
@@ -136,9 +166,12 @@ export default function Challenges() {
           ))}
         </div>
 
-        <Reveal className="mt-12">
-          <p className="font-display text-2xl font-bold uppercase tracking-tight text-ge-black sm:text-3xl">
+        <Reveal className="mt-16 border-t border-ge-light pt-12 md:mt-20">
+          <p className="font-display text-3xl font-bold uppercase tracking-tight text-ge-black sm:text-4xl md:text-5xl">
             {barriers.closing}
+            <br />
+            {barriers.closingLead}{' '}
+            <span className="text-ge-accent">{barriers.closingAccent}</span>
           </p>
           <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-ge-graphite">
             Navigating this complexity takes more than a consultant. It takes a partner with decades of proven

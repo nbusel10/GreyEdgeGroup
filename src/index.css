@@ -19,6 +19,51 @@
   --color-ge-accent: #426255;
   --color-ge-accent-bright: #5a8574;
   --color-ge-accent-deep: #314a40;
+
+  /* ── ATL diagram ──────────────────────────────────────────────────────────
+     Sampled out of docs/references/atl-schematic-nextemp.png so the animation
+     inherits the real drawing's flat-fill grammar rather than an approximation
+     of it. Only six colors in that file are genuine object fills; the rest of
+     its grey ramp is anti-aliasing on black strokes and type.
+
+     The schematic spends cyan #6ac6ef, blue-violet #4f6cb2 and red #e95a55 on
+     static objects — buildings, the storage tank, the river, the loop outline.
+     Here red and blue mean thermal energy and nothing else, so none of those
+     three can appear. What survives the rule is the near-black, the grey and
+     the tan; the remaining fills come from the site's own ramp. */
+  --color-atl-outline: #292929;
+  --color-atl-pipe: #292929;
+  /* The pill is stroked 3 wide against the icons' 1.5, so matching their near-black would
+     make the loop the heaviest line on the page. A mid grey costs it enough weight to sit
+     behind them while still holding its shape on white. Separate from --color-atl-outline
+     so it can be tuned without touching every icon. */
+  --color-atl-pill-outline: var(--color-ge-steel);
+  --color-atl-surface: #ffffff;
+  --color-atl-window: #ffffff;
+  --color-atl-roof: var(--color-ge-graphite);
+
+  --color-atl-bldg-civic: #c1c1c1;
+  --color-atl-bldg-campus: #bf9359;
+  --color-atl-bldg-housing: #b5aea6;
+  --color-atl-bldg-hospital: var(--color-ge-steel);
+
+  --color-atl-resource: var(--color-ge-accent);
+  --color-atl-resource-bright: var(--color-ge-accent-bright);
+
+  /* Earth behind the borefield. A tan, not a thermal colour — Mode 2's charge is a
+     red or blue glow around this patch. Neutral is this fill showing through. */
+  --color-atl-ground: #d4c8b4;
+
+  /* The only red and blue in the drawing. Everything static above is a neutral, a tan
+     or the accent precisely so these two can mean thermal energy and nothing else.
+     Both are darkened off the schematic's originals to clear 4.5:1 on the white pill
+     they run across — #c0392b reads 5.4:1, #1a5fd0 reads 5.9:1. */
+  --color-atl-heat: #c0392b;
+  --color-atl-cool: #1a5fd0;
+
+  /* The loop's own circulation, which runs whether or not a pulse is riding it. Mid grey,
+     so it stays clearly beneath the thermal colours rather than competing with them. */
+  --color-atl-flow: var(--color-ge-silver);
 }
 
 html {
@@ -49,8 +94,36 @@ body {
      these inline, so they need the override. */
   .animate-flow,
   .animate-flow-reverse,
+  .atl-flow,
   svg line {
     animation: none !important;
+  }
+
+  /* ATL thermal pulses are <path>, so the `svg line` rule above never reaches them.
+     Pinned rather than hidden, so each mode still renders a readable still frame: the
+     offset below leaves the dash occupying the last stretch of its route, which puts every
+     pulse on the riser it is arriving at. A mode then reads as which buildings are being
+     served, which is the part the motion was there to say. */
+  .atl-pulse {
+    animation: none !important;
+    stroke-dashoffset: -82px;
+  }
+
+  /* Mode 2's charged earth. Motion is arrival-driven steps (soft / medium / dark
+     red, then back through tan to blue); the still frame pins a readable mid/dark
+     red so the ground still reads as holding heat, and kills the blue overlay so
+     it cannot sit on top of that. !important beats the inline opacity 0 rest state. */
+  .atl-ground-glow {
+    animation: none !important;
+  }
+
+  .atl-ground-hot {
+    opacity: 0.72 !important;
+    fill: var(--color-atl-heat) !important;
+  }
+
+  .atl-ground-cool {
+    opacity: 0 !important;
   }
 
   *,
@@ -119,8 +192,81 @@ body {
   animation: flowReverse 4s linear infinite;
 }
 
+/* ── ATL thermal pulses ──────────────────────────────────────────────────────
+ *
+ * One keyframe drives every pulse on every route. Each route path carries
+ * pathLength="100", so its real geometry drops out and the dash maths below is the same
+ * whether the journey is a short hop or the full length of the loop.
+ *
+ * A pulse is a single dash chased by a very long gap. With dash D and gap G the pattern
+ * repeats every D+G, so animating stroke-dashoffset from D down to -G advances it by
+ * exactly one period: the dash enters at the start of the path, sweeps it, leaves at the
+ * end, and the frame it lands on is identical to the one it started from. The loop is
+ * therefore seamless at any duration, with no JS clock and nothing to remount.
+ *
+ * G is sized just longer than the path so a second dash cannot wrap onto it. Timing —
+ * when a pulse leaves, how long it travels, the idle until the cycle restarts — lives
+ * in per-pulse keyframes that AtlDiagram writes, because CSS animation-delay only waits
+ * before the first iteration.
+ */
+
+/* Lengths rather than numbers, and the units matter. stroke-dashoffset takes either, but the
+   two ends of the keyframe have to agree: a plain number against the calc() below leaves
+   Chromium with endpoints it considers different types, so it drops to discrete interpolation
+   and the pulse sits on its opening frame for half the cycle and then jumps. Under
+   pathLength="100" a px here is one hundredth of the route, whatever the route's real size. */
+@property --atl-pulse-dash {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 8px;
+}
+
+@property --atl-pulse-gap {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 100px;
+}
+
+@keyframes atlPulse {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: calc(-1 * var(--atl-pulse-gap));
+  }
+}
+
+/* Duration and the keyframe name are set inline per pulse; everything invariant is here.
+   Registering the two properties above means a pulse that somehow arrives without them
+   still animates off its initial-value instead of dropping an invalid declaration. */
+.atl-pulse {
+  stroke-dasharray: var(--atl-pulse-dash) var(--atl-pulse-gap);
+  /* Hidden until the keyframe puts the comet on the path. fill-mode both applies the 0%
+     frame immediately: delay-0 pulses sit on their source, delayed ones stay off-path. */
+  stroke-dashoffset: var(--atl-pulse-dash);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation-name: atlPulse;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+/* Off-screen pause: the explainer toggles this on the figure so pulses, the charged
+   earth and the baseline circulation all freeze together. Auto-advance is a separate
+   JS timer and stops on its own. */
+.atl-is-paused .atl-pulse,
+.atl-is-paused .atl-ground-glow,
+.atl-is-paused .atl-flow {
+  animation-play-state: paused;
+}
+
 .fade-slide-up {
   animation: fadeSlideUp 0.5s ease forwards;
+  /* Keep a single compositor layer so Safari doesn't double-paint
+     tracked white type (the ghost CTA) during the entrance. */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 @keyframes scrollTip {

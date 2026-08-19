@@ -10,7 +10,10 @@ export default function NotFound() {
       <GWatermark className="text-white/[0.04]" side="right" />
       <Container className="relative">
         <Eyebrow tone="light">Error 404</Eyebrow>
-        <h1 className="mt-5 font-display text-5xl font-bold uppercase leading-none tracking-tight text-white sm:text-7xl">
+        <h1
+          className="mt-5 font-display font-bold uppercase leading-none tracking-tight text-white"
+          style={{ fontSize: '65px' }}
+        >
           This one&rsquo;s <span className="text-ge-accent">off the map.</span>
         </h1>
         <p className="mt-6 max-w-lg font-body text-base leading-relaxed text-ge-silver">

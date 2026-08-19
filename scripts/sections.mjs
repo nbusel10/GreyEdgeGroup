@@ -18,7 +18,7 @@ const targets = [
   ['/', 'capabilities', '#capabilities'],
   ['/', 'doors', '#advantage > div:last-child'],
   ['/', 'process', '#process'],
-  ['/', 'featured-projects', 'section:has(h2:text-is("Projects that close."))'],
+  ['/', 'featured-projects', 'section:has(h2:text-is("Featured Projects"))'],
   ['/', 'leadership', '#leadership'],
   ['/', 'linkedin', 'section:has(h2:text-is("What we’re working on now"))'],
   ['/', 'final-cta', 'footer'],

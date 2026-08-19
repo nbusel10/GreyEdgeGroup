@@ -1,6 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getMember, team } from '../content/team'
-import GMark from '../components/GMark'
 import FinalCta from '../components/sections/FinalCta'
 import { Container, Eyebrow, Reveal, Section } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
@@ -33,11 +32,14 @@ export default function TeamMemberPage() {
           <div className="mt-10 grid gap-10 md:grid-cols-[280px_1fr] md:gap-14">
             <div className="max-w-[280px]">
               {member.image && (
-                <img src={member.image} alt={member.imageAlt} className="aspect-[4/5] w-full object-cover" />
+                <img src={member.image} alt={member.imageAlt} className="img-cut aspect-[4/5] w-full object-cover" />
               )}
             </div>
             <div>
-              <h1 className="font-display text-4xl font-bold uppercase leading-none tracking-tight text-white sm:text-5xl md:text-6xl">
+              <h1
+                className="font-display font-bold uppercase leading-none tracking-tight text-white"
+                style={{ fontSize: '65px' }}
+              >
                 {member.name}
               </h1>
               {member.role && (
@@ -91,6 +93,21 @@ export default function TeamMemberPage() {
                     </dd>
                   </div>
                 )}
+                {member.linkedin && (
+                  <div>
+                    <dt className="font-body text-[10px] uppercase tracking-[0.2em] text-ge-steel">LinkedIn</dt>
+                    <dd className="mt-1">
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-body text-sm text-ge-light transition-colors hover:text-ge-accent-bright"
+                      >
+                        View profile
+                      </a>
+                    </dd>
+                  </div>
+                )}
               </dl>
             </div>
           </div>
@@ -128,7 +145,9 @@ export default function TeamMemberPage() {
                   {member.sections.map((s) => (
                     <div key={s.heading} className="border border-ge-light bg-white p-7">
                       <div className="flex items-center gap-2">
-                        <GMark className="h-3.5 w-3.5 text-ge-accent" />
+                        <span className="text-ge-accent" aria-hidden="true">
+                          //
+                        </span>
                         <h2 className="font-display text-base font-bold uppercase tracking-wide text-ge-black">
                           {s.heading}
                         </h2>

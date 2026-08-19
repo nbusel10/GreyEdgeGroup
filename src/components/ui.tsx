@@ -2,6 +2,10 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { useCountUp, useReveal } from '../lib/hooks'
 
+/** Italic underline used for in-prose jumps (About names, glossary terms). */
+export const proseLinkClass =
+  'italic text-ge-charcoal underline decoration-ge-light underline-offset-2 transition-colors hover:text-ge-accent hover:decoration-ge-accent'
+
 /** Standard page gutter and max width, shared by every section. */
 export function Container({ className = '', children }: { className?: string; children: ReactNode }) {
   return <div className={`mx-auto w-full max-w-[1280px] px-5 sm:px-8 ${className}`}>{children}</div>
@@ -20,7 +24,7 @@ export function Eyebrow({
   return (
     <div
       className={`font-body text-[11px] font-medium uppercase tracking-[0.28em] ${
-        tone === 'light' ? 'text-ge-silver' : 'text-ge-graphite'
+        tone === 'light' ? 'text-ge-light' : 'text-ge-graphite'
       } ${className}`}
     >
       <span className="text-ge-accent" aria-hidden="true">
@@ -57,7 +61,7 @@ export function Reveal({
 type BtnVariant = 'solid' | 'outline' | 'light' | 'ghost'
 
 const btnBase =
-  'inline-flex items-center justify-center gap-2 font-body text-[11px] font-medium uppercase tracking-[0.22em] px-8 py-4 transition-colors duration-200'
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap font-body text-[11px] font-medium uppercase tracking-[0.22em] px-8 py-4 transition-colors duration-200'
 
 const btnVariants: Record<BtnVariant, string> = {
   solid: 'bg-ge-black text-white hover:bg-ge-accent',
@@ -102,7 +106,7 @@ export function Btn({
   )
 }
 
-/** A counted statistic. Numerals carry the accent. */
+/** A counted statistic. Numerals in black; labels muted. */
 export function StatBlock({
   value,
   label,
@@ -119,7 +123,7 @@ export function StatBlock({
   const { ref, value: shown } = useCountUp(value)
   return (
     <div ref={ref} className="text-center">
-      <div className="font-display text-5xl font-bold leading-none tracking-tight text-ge-accent md:text-6xl">
+      <div className="font-display text-5xl font-bold leading-none tracking-tight text-ge-black md:text-6xl">
         {prefix}
         {shown.toLocaleString('en-US')}
         {suffix}

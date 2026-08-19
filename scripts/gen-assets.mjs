@@ -71,7 +71,7 @@ async function ogImage() {
         </linearGradient>
       </defs>
       <rect width="${W}" height="${H}" fill="url(#g)"/>
-      <rect x="80" y="470" width="120" height="5" fill="#5A9835"/>
+      <rect x="80" y="470" width="120" height="5" fill="#426255"/>
     </svg>`,
   )
 

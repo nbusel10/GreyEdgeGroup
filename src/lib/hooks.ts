@@ -82,6 +82,34 @@ export function useScrollProgress() {
   return progress
 }
 
+/**
+ * Subscribes to a media query so a change re-renders.
+ *
+ * The private `prefersReducedMotion()` above reads `matches` once and never listens, which is
+ * fine for firing a one-shot effect but can't pick a layout: the ATL diagram swaps between two
+ * coordinate tables, so it has to re-render when the query flips. Starts false so the server
+ * and the first client paint agree, then corrects in an effect.
+ */
+export function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const mql = window.matchMedia(query)
+    const onChange = () => setMatches(mql.matches)
+    onChange()
+    mql.addEventListener('change', onChange)
+    return () => mql.removeEventListener('change', onChange)
+  }, [query])
+
+  return matches
+}
+
+/** Subscribes to prefers-reduced-motion. The private helper above is a one-shot read. */
+export function usePrefersReducedMotion() {
+  return useMediaQuery('(prefers-reduced-motion: reduce)')
+}
+
 /** True once the page has scrolled past `offset`. Drives the sticky header state. */
 export function useScrolled(offset = 40) {
   const [scrolled, setScrolled] = useState(false)

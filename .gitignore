@@ -27,6 +27,8 @@ logs
 
 # Visual QA and scratch output from scripts/
 scripts/.*/
+tmp-crops/
+tmp/
 
 # Written into public/ by scripts/gen-assets.mjs on every build
 public/sitemap.xml
