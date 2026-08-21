@@ -1,7 +1,8 @@
 /**
  * Industry Leadership.
  *
- * Headline is the second sentence Matt likes, moved up from the team page.
+ * Home uses Matt’s preferred line as a teaser. About uses a distinct headline
+ * so the full credits block doesn’t clone the homepage.
  *
  * The advisory credits are the ones Megan named in the review. They are attributed as
  * member-led work because several were contracted to individual members rather than to
@@ -10,7 +11,25 @@
  * and Utah, which Joe raised.
  */
 
-export const headline = 'We don’t just work in this industry. Many members of our team helped build it.'
+/** Home teaser — Matt’s preferred line. */
+export const teaserHeadline = {
+  lead: 'We don’t just work in this industry.',
+  accent: 'Many members of our team helped build it.',
+}
+
+/** Short org labels for the Home teaser proof strip (from real credits). */
+export const teaserProof = [
+  'ASHRAE & IGSHPA',
+  'NYSERDA',
+  'Heet',
+  'Thermal Highway©',
+]
+
+/** About full section — restates leadership without repeating the Home line. */
+export const aboutHeadline = {
+  lead: 'The people who wrote the playbook',
+  accent: 'still show up on the project.',
+}
 
 export const intro =
   "We don't just work in thermal energy, we've helped shape the industry. Our team has contributed to the development of modern geothermal standards, authored training programs behind leading certifications, and continues to educate the next generation of professionals. When communities, utilities, and policymakers need trusted expertise, they turn to the people who helped build the foundation."

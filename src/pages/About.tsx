@@ -204,7 +204,7 @@ export default function About() {
         </Container>
       </Section>
 
-      <Leadership />
+      <Leadership variant="full" />
       <FinalCta />
     </>
   )

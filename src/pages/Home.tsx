@@ -123,7 +123,7 @@ export default function Home() {
         </Container>
       </Section>
 
-      <Leadership />
+      <Leadership variant="teaser" />
 
       {/* ── Insights ── */}
       <Section className="border-t border-ge-light bg-ge-offwhite">

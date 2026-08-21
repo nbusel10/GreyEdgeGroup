@@ -19,6 +19,10 @@ const sources = [
   { name: 'Solar thermal', detail: 'Solar energy captured as heat and stored in the ground for later use.' },
   { name: 'Mine water', detail: 'Flooded workings hold enormous stable thermal mass near former mining towns.' },
   { name: 'Surface water', detail: 'Lakes, rivers and reservoirs, where permitting allows.' },
+  {
+    name: 'A unique mix',
+    detail: 'Sources, sinks, and storage are unique to each site and network—not a generic template.',
+  },
 ]
 
 const faqs = [

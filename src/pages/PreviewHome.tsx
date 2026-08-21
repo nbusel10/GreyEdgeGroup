@@ -135,7 +135,7 @@ export default function PreviewHome() {
         </Container>
       </Section>
 
-      <Leadership />
+      <Leadership variant="teaser" />
       <Educate />
       <FinalCta />
     </>

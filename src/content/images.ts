@@ -54,7 +54,7 @@ export const site = {
   },
   "team-photo": {
     src: "/images/site/team-photo.webp",
-    alt: "GreyEdge's engineers and energy professionals from standing together in an office."
+    alt: "About ten GreyEdge Group team members standing together indoors in business casual attire for a group portrait."
   },
   "team-group": {
     src: "/images/site/team-group.webp",

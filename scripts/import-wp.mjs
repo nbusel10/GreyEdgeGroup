@@ -112,6 +112,12 @@ const ALT_FALLBACKS = {
   'edge-only-white': 'The GreyEdge edge mark',
 }
 
+/** Prefer these over WordPress alt_text so local corrections survive `pnpm import:wp`. */
+const ALT_OVERRIDES = {
+  'team-photo':
+    'About ten GreyEdge Group team members standing together indoors in business casual attire for a group portrait.',
+}
+
 const BRAND_IMAGES = {
   'logo-white': '2025/12/greyEdge-Logo-White.webp',
   'logo-dark': '2026/05/greyedge-group-logo-darkGrey-transparent.webp',
@@ -607,7 +613,7 @@ async function importImageSet(media, set, dir) {
     const local = await download(fullSize(m.source_url), dir, name)
     if (!local) continue
 
-    const alt = decode(m.alt_text) || ALT_FALLBACKS[name]
+    const alt = ALT_OVERRIDES[name] || decode(m.alt_text) || ALT_FALLBACKS[name]
     if (!alt) warn(`${dir} image "${name}" has no alt text in WordPress and no fallback`)
     map[name] = { src: local, alt: alt || '' }
   }
