@@ -7,6 +7,7 @@ import Challenges from '../components/sections/Challenges'
 import PartnerBrief from '../components/sections/PartnerBrief'
 import Leadership from '../components/sections/Leadership'
 import FinalCta from '../components/sections/FinalCta'
+import GreyEdgeBand from '../components/sections/GreyEdgeBand'
 import ProjectCard from '../components/ProjectCard'
 import HeroScrollCue from '../components/HeroScrollCue'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
@@ -176,6 +177,8 @@ export default function Home() {
           </div>
         </Container>
       </Section>
+
+      <GreyEdgeBand />
 
       <Section className="!py-10 border-t border-ge-light bg-ge-offwhite md:!py-12">
         <Container>

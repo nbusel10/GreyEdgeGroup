@@ -5,6 +5,7 @@ import { featuredProjects } from '../content/projects'
 import Challenges from '../components/sections/Challenges'
 import PartnerBrief from '../components/sections/PartnerBrief'
 import Leadership from '../components/sections/Leadership'
+import GreyEdgeBand from '../components/sections/GreyEdgeBand'
 import Educate from '../components/sections/Educate'
 import FinalCta from '../components/sections/FinalCta'
 import ProjectCard from '../components/ProjectCard'
@@ -99,6 +100,7 @@ export default function PreviewHome() {
 
       <Challenges />
       <PartnerBrief />
+      <GreyEdgeBand />
 
       {/* ── Featured projects ── */}
       <Section className="border-t border-ge-light bg-ge-offwhite">

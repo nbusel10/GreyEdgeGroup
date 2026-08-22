@@ -131,6 +131,21 @@ body {
   *::after {
     transition-duration: 0.01ms !important;
   }
+
+  .ge-word-reel-track,
+  .ge-word-flap-card,
+  .ge-word-bump-out,
+  .ge-word-bump-in,
+  .ge-word-fly-item,
+  .ge-word-fly-dot,
+  .ge-word-fly-leave,
+  .ge-word-fly-grey,
+  .ge-word-gold-line {
+    animation: none !important;
+    transform: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+  }
 }
 
 /* Visible focus ring for keyboard users, in the accent. */
@@ -182,6 +197,297 @@ body {
   to {
     transform: scaleX(1);
   }
+}
+
+/* ── GreyEdge word cycle ───────────────────────────────────────────────────
+ *
+ * GreyEdge word-cycle skins. Timing lives as --ge-word-* on .ge-word so the
+ * sequencer and CSS stay on the same clock. Gold underline is preview gold
+ * (#c4a35a), not a brand token.
+
+.ge-word,
+.ge-word-fly-pack {
+  --ge-word-dwell: 0.8s;
+  --ge-word-trans: 0.35s;
+  --ge-word-lock: 3.5s;
+  --ge-word-bump: 0.72s;
+  --ge-word-gold: #c4a35a;
+  white-space: nowrap;
+}
+
+.ge-word-reel {
+  display: block;
+  height: 1.25em;
+  overflow: hidden;
+}
+
+.ge-word-reel-track {
+  display: flex;
+  flex-direction: column;
+}
+
+.ge-word-reel-item {
+  display: flex;
+  height: 1.25em;
+  align-items: baseline;
+  justify-content: flex-end;
+  padding-bottom: 0.2em;
+  white-space: nowrap;
+}
+
+.ge-word-reel.is-trans .ge-word-reel-track {
+  animation: ge-word-reel var(--ge-word-trans) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes ge-word-reel {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.ge-word-flap-row {
+  display: flex;
+  height: 1.32em;
+  align-items: stretch;
+  justify-content: flex-end;
+  gap: 0.015em;
+  perspective: 720px;
+}
+
+.ge-word-flap {
+  position: relative;
+  display: block;
+  width: 0.72em;
+  height: 1.32em;
+  overflow: hidden;
+  background: #1a1d20;
+}
+
+.ge-word-flap-card {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+.ge-word-flap-card.is-flipping {
+  animation: ge-word-flap 0.22s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.ge-word-flap-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1d20;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  font-size: 1em;
+  line-height: 1;
+}
+
+.ge-word-flap-back {
+  transform: rotateX(-180deg);
+}
+
+.ge-word-flap-seam {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  height: 2px;
+  margin-top: -1px;
+  background: #14171a;
+  pointer-events: none;
+}
+
+@keyframes ge-word-flap {
+  to {
+    transform: rotateX(180deg);
+  }
+}
+
+.ge-word-bump {
+  display: grid;
+  width: 100%;
+  justify-items: end;
+  overflow: visible;
+}
+
+.ge-word-bump > span {
+  grid-area: 1 / 1;
+  transform-origin: center bottom;
+  white-space: nowrap;
+}
+
+.ge-word-bump.is-trans .ge-word-bump-out {
+  animation: ge-word-bump-out var(--ge-word-bump) both;
+}
+
+.ge-word-bump.is-trans .ge-word-bump-in {
+  animation: ge-word-bump-in var(--ge-word-bump) both;
+}
+
+@keyframes ge-word-bump-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  16% {
+    transform: translateY(0.05em) scaleY(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-1.7em) rotate(-8deg);
+  }
+}
+
+@keyframes ge-word-bump-in {
+  0% {
+    transform: translateY(0.58em);
+  }
+  16% {
+    transform: translateY(0.06em);
+  }
+  62% {
+    transform: translateY(-0.1em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.ge-word-fly-pack {
+  position: relative;
+  display: inline-flex;
+  overflow: visible;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0.36em;
+}
+
+.ge-word-fly-row {
+  display: flex;
+  min-height: 1.15em;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 0.32em;
+  font-family: var(--font-display);
+  font-size: 0.42em;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.2;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.ge-word-fly-cell {
+  position: relative;
+  display: inline-flex;
+}
+
+.ge-word-fly-sizer {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ge-word-fly-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform-origin: center center;
+}
+
+.ge-word-fly-dot {
+  margin: 0 0.4em;
+  opacity: 0;
+  color: rgb(255 255 255 / 0.5);
+  transition: opacity 0.35s ease;
+}
+
+.ge-word-fly-item.is-in:not(.is-flying),
+.ge-word-fly-dot.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.ge-word-fly-item.is-flying {
+  animation: ge-word-fly-arrive 0.45s cubic-bezier(0.22, 0.82, 0.28, 1) both;
+}
+
+.ge-word-fly-row.is-reset .ge-word-fly-item,
+.ge-word-fly-row.is-reset .ge-word-fly-dot {
+  opacity: 0;
+  transform: translate3d(0, -0.12em, 0);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.ge-word-fly-leave {
+  display: inline-block;
+  transform-origin: center center;
+  animation: ge-word-fly-leave 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.ge-word-fly-grey {
+  display: inline-block;
+  animation: ge-word-fly-grey 0.35s ease-out both;
+}
+
+@keyframes ge-word-fly-arrive {
+  from {
+    opacity: 0.4;
+    transform: translate3d(var(--ge-fly-x, 0px), var(--ge-fly-y, 0px), 0) scale(2.38);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ge-word-fly-leave {
+  to {
+    opacity: 0;
+    transform: translate3d(var(--ge-fly-x, 0px), var(--ge-fly-y, 0px), 0) scale(0.42);
+  }
+}
+
+@keyframes ge-word-fly-grey {
+  from {
+    opacity: 0;
+    transform: translateY(0.18em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ge-word-gold-line {
+  position: absolute;
+  right: 0;
+  bottom: -0.14em;
+  left: 0;
+  height: 3px;
+  background: var(--ge-word-gold);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--ge-word-trans) ease;
+}
+
+.ge-word-fly-pack > .ge-word-gold-line {
+  bottom: 0.08em;
+}
+
+.ge-word.is-locked .ge-word-gold-line,
+.ge-word-fly-pack.is-locked .ge-word-gold-line {
+  transform: scaleX(1);
 }
 
 .animate-flow {
