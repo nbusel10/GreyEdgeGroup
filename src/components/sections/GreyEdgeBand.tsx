@@ -13,13 +13,13 @@ export default function GreyEdgeBand({
   forceReducedMotion?: boolean
 }) {
   return (
-    <section className="ge-word-band border-t border-ge-charcoal bg-ge-black py-12 md:py-16" aria-label="GreyEdge">
+    <section className="ge-word-band border-t border-ge-charcoal bg-ge-black py-10 md:py-12" aria-label="GreyEdge">
       <Container>
         <div className="flex justify-center">
           <GreyEdgeCycle
             variant="fly-up-row"
             forceReducedMotion={forceReducedMotion}
-            className="text-[clamp(1.35rem,3.2vw,3.25rem)]"
+            className="text-[clamp(1.75rem,4.2vw,4rem)]"
           />
         </div>
       </Container>

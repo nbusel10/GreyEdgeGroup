@@ -203,7 +203,7 @@ body {
  *
  * GreyEdge word-cycle skins. Timing lives as --ge-word-* on .ge-word so the
  * sequencer and CSS stay on the same clock. Gold underline is preview gold
- * (#c4a35a), not a brand token.
+ * (#c4a35a), not a brand token. */
 
 .ge-word,
 .ge-word-fly-pack {
@@ -480,14 +480,10 @@ body {
   bottom: -0.14em;
   left: 0;
   height: 3px;
-  background: var(--ge-word-gold);
+  background: var(--ge-word-gold, #c4a35a);
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform var(--ge-word-trans) ease;
-}
-
-.ge-word-fly-pack > .ge-word-gold-line {
-  bottom: 0.08em;
+  transition: transform var(--ge-word-trans, 0.35s) ease;
 }
 
 .ge-word.is-locked .ge-word-gold-line,

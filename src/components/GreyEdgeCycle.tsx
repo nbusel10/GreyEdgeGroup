@@ -327,7 +327,11 @@ function FlyUpPack({ state }: { state: FlyUpState }) {
           flyY={path ? -path.leaveY : 0}
         />
       </span>
-      <span className="ge-word relative inline-flex items-baseline leading-[1.25]">
+      <span
+        className={`ge-word relative inline-flex items-baseline leading-[1.25] pb-[0.22em] ${
+          state.isLocked ? 'is-locked' : ''
+        }`}
+      >
         <Slot clip={false}>
           <span
             key={slotWord}
@@ -343,8 +347,8 @@ function FlyUpPack({ state }: { state: FlyUpState }) {
           </span>
         </Slot>
         <span className="text-white">{ANCHOR_WORD}</span>
+        <span className="ge-word-gold-line" />
       </span>
-      <span className="ge-word-gold-line" />
     </span>
   )
 }
@@ -393,6 +397,7 @@ export default function GreyEdgeCycle({
     '--ge-word-dwell': WORD_CYCLE_CSS.dwell,
     '--ge-word-trans': WORD_CYCLE_CSS.transition,
     '--ge-word-lock': WORD_CYCLE_CSS.lockHold,
+    '--ge-word-gold': '#c4a35a',
   } as CSSProperties
 
   const locked =
