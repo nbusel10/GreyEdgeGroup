@@ -328,16 +328,20 @@ function FlyUpPack({ state }: { state: FlyUpState }) {
         />
       </span>
       <span className="ge-word relative inline-flex items-baseline leading-[1.25]">
-        <span
-          key={slotWord}
-          ref={slotRef}
-          className={`${wordTone(slotWord)} ${flySlotMotion(phase, leaving)}`}
-          style={
-            leaving ? ({ '--ge-fly-x': `${path.leaveX}px`, '--ge-fly-y': `${path.leaveY}px` } as CSSProperties) : undefined
-          }
-        >
-          {slotWord}
-        </span>
+        <Slot clip={false}>
+          <span
+            key={slotWord}
+            ref={slotRef}
+            className={`${wordTone(slotWord)} ${flySlotMotion(phase, leaving)}`}
+            style={
+              leaving
+                ? ({ '--ge-fly-x': `${path.leaveX}px`, '--ge-fly-y': `${path.leaveY}px` } as CSSProperties)
+                : undefined
+            }
+          >
+            {slotWord}
+          </span>
+        </Slot>
         <span className="text-white">{ANCHOR_WORD}</span>
       </span>
       <span className="ge-word-gold-line" />

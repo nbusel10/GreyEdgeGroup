@@ -365,11 +365,15 @@ body {
 .ge-word-fly-pack {
   position: relative;
   display: inline-flex;
-  max-width: 100%;
   overflow: visible;
   flex-direction: column;
   align-items: center;
   padding-bottom: 0.36em;
+}
+
+/* On the black band, graphite Grey disappears — lift it so GreyEdge reads. */
+.ge-word-band .text-ge-graphite {
+  color: rgb(255 255 255 / 0.55);
 }
 
 .ge-word-fly-row {
@@ -377,7 +381,7 @@ body {
   min-height: 1.15em;
   align-items: baseline;
   justify-content: center;
-  margin-bottom: 0.32em;
+  margin-bottom: 0.28em;
   font-family: var(--font-display);
   font-size: 0.42em;
   font-style: normal;
@@ -443,8 +447,8 @@ body {
 
 @keyframes ge-word-fly-arrive {
   from {
-    opacity: 0.4;
-    transform: translate3d(var(--ge-fly-x, 0px), var(--ge-fly-y, 0px), 0) scale(2.38);
+    opacity: 0.45;
+    transform: translate3d(var(--ge-fly-x, 0px), var(--ge-fly-y, 0px), 0) scale(1.85);
   }
   to {
     opacity: 1;
