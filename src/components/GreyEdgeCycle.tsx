@@ -299,6 +299,7 @@ function FlyUpPack({ state }: { state: FlyUpState }) {
       className={`ge-word-fly-pack ${state.isLocked ? 'is-locked' : ''}`}
       aria-hidden="true"
     >
+      {/* Top row sizes the pack; mark + gold line share its horizontal center. */}
       <span className={`ge-word-fly-row ${phase === 'reset' ? 'is-reset' : ''}`}>
         <FlyCell
           word={ADJECTIVES[0]}
@@ -327,8 +328,9 @@ function FlyUpPack({ state }: { state: FlyUpState }) {
           flyY={path ? -path.leaveY : 0}
         />
       </span>
-      <span className="ge-word relative inline-flex items-baseline leading-[1.25] pb-[0.22em]">
-        <Slot clip={false}>
+      {/* Size to the live word (not Competitive Slot) so GreyEdge shares the row's center axis. */}
+      <span className="ge-word-fly-lock-slot">
+        <span className="ge-word-fly-mark">
           <span
             key={slotWord}
             ref={slotRef}
@@ -341,10 +343,10 @@ function FlyUpPack({ state }: { state: FlyUpState }) {
           >
             {slotWord}
           </span>
-        </Slot>
-        <span className="text-white">{ANCHOR_WORD}</span>
+          <span className="text-white">{ANCHOR_WORD}</span>
+        </span>
       </span>
-      {/* Width matches the top row — the pack is sized by Leading · Cutting · Competitive. */}
+      {/* Absolute left/right of pack = top-row width (lock slot cannot widen the pack). */}
       <span className="ge-word-gold-line" />
     </span>
   )

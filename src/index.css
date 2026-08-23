@@ -392,6 +392,25 @@ body {
   white-space: nowrap;
 }
 
+/* Live-word lockup (no Competitive Slot sizer) — stays centered under the row.
+ * Lock slot stretches to the pack (row) width and min-width:0 so a longer
+ * live word cannot widen the pack past the adjective row. */
+.ge-word-fly-lock-slot {
+  display: flex;
+  align-self: stretch;
+  justify-content: center;
+  min-width: 0;
+  overflow: visible;
+}
+
+.ge-word-fly-mark {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  padding-bottom: 0.22em;
+  line-height: 1.25;
+}
+
 .ge-word-fly-cell {
   position: relative;
   display: inline-flex;
@@ -486,9 +505,14 @@ body {
   transition: transform var(--ge-word-trans, 0.35s) ease;
 }
 
-/* On the fly-up pack the line spans the top row width (pack is sized by that row). */
+/*
+ * Fly-up pack width is driven by the adjective row when GreyEdge is narrower.
+ * Gold line left/right = that row; mark is column-centered on the same axis.
+ * If a longer live slot word briefly widens the pack, the line still spans the pack.
+ */
 .ge-word-fly-pack > .ge-word-gold-line {
   bottom: 0.06em;
+  transform-origin: center center;
 }
 
 .ge-word.is-locked .ge-word-gold-line,
