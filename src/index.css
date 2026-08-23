@@ -372,9 +372,18 @@ body {
 }
 
 /* On the black band, graphite Grey disappears — lift it so GreyEdge reads.
- * Home fly-up band underline uses brand accent (not preview gold). */
-.ge-word-band {
+ * Home fly-up underline must be brand accent. `.ge-word-fly-pack` / `.ge-word`
+ * set --ge-word-gold to preview gold (#c4a35a); re-assert accent on those
+ * nodes (and paint the line explicitly) so gold cannot win via inheritance. */
+.ge-word-band,
+.ge-word-band .ge-word,
+.ge-word-band .ge-word-fly-pack {
   --ge-word-gold: var(--color-ge-accent);
+}
+
+.ge-word-band .ge-word-gold-line,
+.ge-word-band .ge-word-fly-pack > .ge-word-gold-line {
+  background: var(--color-ge-accent);
 }
 
 .ge-word-band .text-ge-graphite {
@@ -513,7 +522,7 @@ body {
 /*
  * Fly-up pack width is driven by the adjective row when GreyEdge is narrower.
  * Underline left/right = that row; mark is column-centered on the same axis.
- * Band sets --ge-word-gold to var(--color-ge-accent).
+ * Color: see .ge-word-band overrides above (accent, not preview gold).
  */
 .ge-word-fly-pack > .ge-word-gold-line {
   bottom: 0.06em;
