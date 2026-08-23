@@ -371,7 +371,12 @@ body {
   padding-bottom: 0.36em;
 }
 
-/* On the black band, graphite Grey disappears — lift it so GreyEdge reads. */
+/* On the black band, graphite Grey disappears — lift it so GreyEdge reads.
+ * Home fly-up band underline uses brand accent (not preview gold). */
+.ge-word-band {
+  --ge-word-gold: var(--color-ge-accent);
+}
+
 .ge-word-band .text-ge-graphite {
   color: rgb(255 255 255 / 0.55);
 }
@@ -507,8 +512,8 @@ body {
 
 /*
  * Fly-up pack width is driven by the adjective row when GreyEdge is narrower.
- * Gold line left/right = that row; mark is column-centered on the same axis.
- * If a longer live slot word briefly widens the pack, the line still spans the pack.
+ * Underline left/right = that row; mark is column-centered on the same axis.
+ * Band sets --ge-word-gold to var(--color-ge-accent).
  */
 .ge-word-fly-pack > .ge-word-gold-line {
   bottom: 0.06em;

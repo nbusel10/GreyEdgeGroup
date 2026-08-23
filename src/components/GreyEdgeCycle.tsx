@@ -396,7 +396,8 @@ export default function GreyEdgeCycle({
     '--ge-word-dwell': WORD_CYCLE_CSS.dwell,
     '--ge-word-trans': WORD_CYCLE_CSS.transition,
     '--ge-word-lock': WORD_CYCLE_CSS.lockHold,
-    '--ge-word-gold': '#c4a35a',
+    // Fly-up home band uses brand accent; other skins keep preview gold.
+    '--ge-word-gold': variant === 'fly-up-row' ? 'var(--color-ge-accent)' : '#c4a35a',
   } as CSSProperties
 
   const locked =

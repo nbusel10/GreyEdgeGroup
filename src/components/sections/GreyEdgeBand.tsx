@@ -4,8 +4,9 @@ import { Container } from '../ui'
 /**
  * Full-bleed fly-up GreyEdge lockup (preview option 6).
  * Leading / Cutting / Competitive park beside Edge, then zoom up into the
- * row and stay; Grey locks with the gold underline. Sized in vw so the top
- * row always fits — no overflow clipping that shoves the lockup off-screen.
+ * row and stay; Grey locks with the brand-accent underline. Sized in vw so
+ * the top row always fits — no overflow clipping that shoves the lockup
+ * off-screen.
  */
 export default function GreyEdgeBand({
   forceReducedMotion = false,
