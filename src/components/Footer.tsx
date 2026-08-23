@@ -102,7 +102,7 @@ export default function Footer() {
 
           {columns.map((col) => (
             <nav key={col.title} aria-label={col.title}>
-              <div className="font-body text-[11px] uppercase tracking-[0.24em] text-ge-steel">
+              <div className="font-body text-[11px] uppercase tracking-[0.24em] text-ge-accent">
                 <span className="text-ge-accent" aria-hidden="true">
                   //{' '}
                 </span>
