@@ -19,7 +19,7 @@ export default function GreyEdgeBand({
           <GreyEdgeCycle
             variant="fly-up-row"
             forceReducedMotion={forceReducedMotion}
-            className="text-[clamp(1.75rem,4.2vw,4rem)]"
+            className="text-[clamp(2rem,4.8vw,4.5rem)]"
           />
         </div>
       </Container>

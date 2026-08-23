@@ -383,7 +383,7 @@ body {
   justify-content: center;
   margin-bottom: 0.28em;
   font-family: var(--font-display);
-  font-size: 0.42em;
+  font-size: 0.46em;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
@@ -484,6 +484,11 @@ body {
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform var(--ge-word-trans, 0.35s) ease;
+}
+
+/* On the fly-up pack the line spans the top row width (pack is sized by that row). */
+.ge-word-fly-pack > .ge-word-gold-line {
+  bottom: 0.06em;
 }
 
 .ge-word.is-locked .ge-word-gold-line,
