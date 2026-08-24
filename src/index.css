@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Lato:wght@700&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -140,6 +140,7 @@ body {
   .ge-word-fly-dot,
   .ge-word-fly-leave,
   .ge-word-fly-grey,
+  .ge-word-block-cube,
   .ge-word-gold-line {
     animation: none !important;
     transform: none !important;
@@ -364,11 +365,13 @@ body {
 
 .ge-word-fly-pack {
   position: relative;
-  display: inline-flex;
+  display: inline-grid;
+  justify-items: center;
   overflow: visible;
-  flex-direction: column;
-  align-items: center;
   padding-bottom: 0.36em;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 /* On the black band, graphite Grey disappears — lift it so GreyEdge reads.
@@ -396,7 +399,7 @@ body {
   align-items: baseline;
   justify-content: center;
   margin-bottom: 0.28em;
-  font-family: var(--font-display);
+  font-family: inherit;
   font-size: 0.46em;
   font-style: normal;
   font-weight: 400;
@@ -406,12 +409,25 @@ body {
   white-space: nowrap;
 }
 
-/* Live-word lockup (no Competitive Slot sizer) — stays centered under the row.
- * Lock slot stretches to the pack (row) width and min-width:0 so a longer
- * live word cannot widen the pack past the adjective row. */
+.ge-word-fly-pack > .ge-word-fly-row--below {
+  grid-column: 1;
+  align-self: stretch;
+  width: 100%;
+  margin-top: 0.48em;
+  margin-bottom: 0;
+  font-weight: inherit;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.ge-word-fly-pack > .ge-word-fly-row--below .ge-word-fly-dot.is-in {
+  color: rgb(255 255 255 / 0.45);
+}
+
+/* Live-word lockup — centered above the adjective row. */
 .ge-word-fly-lock-slot {
   display: flex;
-  align-self: stretch;
+  grid-column: 1;
   justify-content: center;
   min-width: 0;
   overflow: visible;
@@ -423,6 +439,7 @@ body {
   align-items: baseline;
   padding-bottom: 0.22em;
   line-height: 1.25;
+  letter-spacing: 0.02em;
 }
 
 .ge-word-fly-cell {
@@ -532,6 +549,115 @@ body {
 .ge-word.is-locked .ge-word-gold-line,
 .ge-word-fly-pack.is-locked .ge-word-gold-line {
   transform: scaleX(1);
+}
+
+/* Invisible 3D block — GreyEdge on top; adjective row centered below (mirrors fly-up). */
+.ge-word-block-pack {
+  position: relative;
+  display: inline-grid;
+  justify-items: center;
+  overflow: visible;
+}
+
+.ge-word-block-lock-slot {
+  display: flex;
+  grid-column: 1;
+  justify-content: center;
+  min-width: 0;
+  overflow: visible;
+}
+
+.ge-word-block-mark {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.ge-word-block-adj {
+  position: relative;
+  display: inline-grid;
+  justify-items: end;
+  perspective: 900px;
+  perspective-origin: center center;
+}
+
+.ge-word-block-sizer {
+  visibility: hidden;
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+
+.ge-word-block-cube {
+  --ge-block-depth: 0.42em;
+
+  position: relative;
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 1.25em;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.34, 0.82, 0.36, 1);
+}
+
+.ge-word-block-slot-word {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.ge-word-block-slot-word.ge-word-fly-leave {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ge-word-block-pack > .ge-word-fly-row--below {
+  grid-column: 1;
+  align-self: stretch;
+  width: 100%;
+  margin-top: 0.48em;
+  margin-bottom: 0;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.ge-word-fly-row--below.is-reset .ge-word-fly-item,
+.ge-word-fly-row--below.is-reset .ge-word-fly-dot {
+  opacity: 0;
+  transform: translate3d(0, 0.12em, 0);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.ge-word-block-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  white-space: nowrap;
+}
+
+.ge-word-block-face--front {
+  transform: rotateY(0deg) translateZ(var(--ge-block-depth));
+}
+
+.ge-word-block-face--top {
+  transform: rotateX(90deg) translateZ(var(--ge-block-depth));
+}
+
+.ge-word-block-face--back {
+  transform: rotateX(180deg) translateZ(var(--ge-block-depth));
+}
+
+.ge-word-block-face--bottom {
+  transform: rotateX(-90deg) translateZ(var(--ge-block-depth));
+}
+
+.ge-word-block .text-ge-graphite {
+  color: rgb(255 255 255 / 0.55);
 }
 
 .animate-flow {

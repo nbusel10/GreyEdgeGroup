@@ -46,6 +46,10 @@ export const FLY_UP_MS = {
   reset: 280,
 } as const
 
+export const BLOCK_ROTATE_MS = {
+  spin: 650,
+} as const
+
 export type WordCycleVariant =
   | 'slot-reel'
   | 'scramble'
@@ -53,6 +57,7 @@ export type WordCycleVariant =
   | 'random-fill'
   | 'bump-bounce'
   | 'fly-up-row'
+  | 'block-rotate'
 
 export type FlyUpPhase =
   | 'lead'
@@ -424,15 +429,19 @@ export function useRandomFillCycle({
 export function useFlyUpRowCycle({
   active,
   reducedMotion,
+  once = false,
 }: {
   active: boolean
   reducedMotion: boolean
+  /** Run a single pass and hold on GreyEdge; never restart after the first trigger. */
+  once?: boolean
 }): FlyUpState {
   const [state, setState] = useState<FlyUpState>(() =>
     reducedMotion
       ? { phase: 'lock', isLocked: true, generation: 0 }
       : { phase: 'lead', isLocked: false, generation: 0 },
   )
+  const hasPlayedRef = useRef(false)
 
   useEffect(() => {
     if (reducedMotion) {
@@ -440,7 +449,9 @@ export function useFlyUpRowCycle({
       return
     }
     if (!active) return
+    if (once && hasPlayedRef.current) return
 
+    hasPlayedRef.current = true
     let cancelled = false
     let timer = 0
 
@@ -449,9 +460,115 @@ export function useFlyUpRowCycle({
         timer = window.setTimeout(resolve, ms)
       })
 
+    const playPass = async () => {
+      setState((s) => ({ phase: 'lead', isLocked: false, generation: s.generation + 1 }))
+      await wait(FLY_UP_MS.leadHold)
+      if (cancelled) return
+
+      setState((s) => ({ ...s, phase: 'flyLead' }))
+      await wait(FLY_UP_MS.fly)
+      if (cancelled) return
+
+      setState((s) => ({ ...s, phase: 'cutting' }))
+      await wait(FLY_UP_MS.slotHold)
+      if (cancelled) return
+
+      setState((s) => ({ ...s, phase: 'flyCutting' }))
+      await wait(FLY_UP_MS.fly)
+      if (cancelled) return
+
+      setState((s) => ({ ...s, phase: 'competitive' }))
+      await wait(FLY_UP_MS.slotHold)
+      if (cancelled) return
+
+      setState((s) => ({ ...s, phase: 'flyCompetitive' }))
+      await wait(FLY_UP_MS.fly)
+      if (cancelled) return
+
+      setState((s) => ({ ...s, phase: 'grey' }))
+      await wait(FLY_UP_MS.wordIn)
+      if (cancelled) return
+
+      setState((s) => ({ ...s, phase: 'lock', isLocked: true }))
+      await wait(FLY_UP_MS.lockHold)
+    }
+
+    const run = async () => {
+      if (once) {
+        await playPass()
+        return
+      }
+
+      while (!cancelled) {
+        await playPass()
+        if (cancelled) return
+
+        setState((s) => ({ ...s, phase: 'reset', isLocked: false }))
+        await wait(FLY_UP_MS.reset)
+      }
+    }
+
+    void run()
+
+    if (once) return
+
+    return () => {
+      cancelled = true
+      window.clearTimeout(timer)
+    }
+  }, [active, reducedMotion, once])
+
+  return state
+}
+
+export type BlockRotatePhase = FlyUpPhase
+
+export type BlockRotateState = {
+  phase: BlockRotatePhase
+  rotation: number
+  generation: number
+}
+
+/** Same beat map as fly-up-row, but cube tumbles between words and the row sits below. */
+export function useBlockRotateCycle({
+  active,
+  reducedMotion,
+}: {
+  active: boolean
+  reducedMotion: boolean
+}): BlockRotateState {
+  const [state, setState] = useState<BlockRotateState>(() =>
+    reducedMotion
+      ? { phase: 'lock', rotation: -270, generation: 0 }
+      : { phase: 'lock', rotation: -270, generation: 0 },
+  )
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setState({ phase: 'lock', rotation: -270, generation: 0 })
+      return
+    }
+    if (!active) return
+
+    let cancelled = false
+    let timer = 0
+    let rotation = -270
+
+    const wait = (ms: number) =>
+      new Promise<void>((resolve) => {
+        timer = window.setTimeout(resolve, ms)
+      })
+
+    const spin = async () => {
+      setState((s) => ({ ...s, rotation }))
+      await wait(BLOCK_ROTATE_MS.spin)
+    }
+
     const run = async () => {
       while (!cancelled) {
-        setState((s) => ({ phase: 'lead', isLocked: false, generation: s.generation + 1 }))
+        rotation -= 90
+        setState((s) => ({ phase: 'lead', rotation, generation: s.generation + 1 }))
+        await spin()
         await wait(FLY_UP_MS.leadHold)
         if (cancelled) return
 
@@ -459,7 +576,9 @@ export function useFlyUpRowCycle({
         await wait(FLY_UP_MS.fly)
         if (cancelled) return
 
-        setState((s) => ({ ...s, phase: 'cutting' }))
+        rotation -= 90
+        setState((s) => ({ ...s, phase: 'cutting', rotation }))
+        await spin()
         await wait(FLY_UP_MS.slotHold)
         if (cancelled) return
 
@@ -467,7 +586,9 @@ export function useFlyUpRowCycle({
         await wait(FLY_UP_MS.fly)
         if (cancelled) return
 
-        setState((s) => ({ ...s, phase: 'competitive' }))
+        rotation -= 90
+        setState((s) => ({ ...s, phase: 'competitive', rotation }))
+        await spin()
         await wait(FLY_UP_MS.slotHold)
         if (cancelled) return
 
@@ -475,15 +596,17 @@ export function useFlyUpRowCycle({
         await wait(FLY_UP_MS.fly)
         if (cancelled) return
 
-        setState((s) => ({ ...s, phase: 'grey' }))
+        rotation -= 90
+        setState((s) => ({ ...s, phase: 'grey', rotation }))
+        await spin()
         await wait(FLY_UP_MS.wordIn)
         if (cancelled) return
 
-        setState((s) => ({ ...s, phase: 'lock', isLocked: true }))
+        setState((s) => ({ ...s, phase: 'lock' }))
         await wait(FLY_UP_MS.lockHold)
         if (cancelled) return
 
-        setState((s) => ({ ...s, phase: 'reset', isLocked: false }))
+        setState((s) => ({ ...s, phase: 'reset' }))
         await wait(FLY_UP_MS.reset)
       }
     }

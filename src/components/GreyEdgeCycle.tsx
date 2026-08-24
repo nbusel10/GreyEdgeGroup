@@ -11,11 +11,14 @@ import {
   WORD_CYCLE_CSS,
   WORD_CYCLE_MS,
   scrambleText,
+  useBlockRotateCycle,
   useFlyUpRowCycle,
   useInView,
   useRandomFillCycle,
   useTypeFromECycle,
   useWordCycle,
+  type BlockRotatePhase,
+  type BlockRotateState,
   type FlyUpPhase,
   type FlyUpState,
   type WordCycleState,
@@ -299,8 +302,24 @@ function FlyUpPack({ state }: { state: FlyUpState }) {
       className={`ge-word-fly-pack ${state.isLocked ? 'is-locked' : ''}`}
       aria-hidden="true"
     >
-      {/* Top row sizes the pack; mark + gold line share its horizontal center. */}
-      <span className={`ge-word-fly-row ${phase === 'reset' ? 'is-reset' : ''}`}>
+      <span className="ge-word-fly-lock-slot">
+        <span className="ge-word-fly-mark">
+          <span
+            key={slotWord}
+            ref={slotRef}
+            className={`${slotWord === LOCK_WORD ? 'text-ge-graphite' : 'text-ge-accent'} ${flySlotMotion(phase, leaving)}`}
+            style={
+              leaving
+                ? ({ '--ge-fly-x': `${path.leaveX}px`, '--ge-fly-y': `${path.leaveY}px` } as CSSProperties)
+                : undefined
+            }
+          >
+            {slotWord}
+          </span>
+          <span className="text-white">{ANCHOR_WORD}</span>
+        </span>
+      </span>
+      <span className={`ge-word-fly-row ge-word-fly-row--below ${phase === 'reset' ? 'is-reset' : ''}`}>
         <FlyCell
           word={ADJECTIVES[0]}
           visible={leadingIn && (phase !== 'flyLead' || leaving)}
@@ -328,26 +347,128 @@ function FlyUpPack({ state }: { state: FlyUpState }) {
           flyY={path ? -path.leaveY : 0}
         />
       </span>
-      {/* Size to the live word (not Competitive Slot) so GreyEdge shares the row's center axis. */}
-      <span className="ge-word-fly-lock-slot">
-        <span className="ge-word-fly-mark">
-          <span
-            key={slotWord}
-            ref={slotRef}
-            className={`${wordTone(slotWord)} ${flySlotMotion(phase, leaving)}`}
-            style={
-              leaving
-                ? ({ '--ge-fly-x': `${path.leaveX}px`, '--ge-fly-y': `${path.leaveY}px` } as CSSProperties)
-                : undefined
-            }
-          >
-            {slotWord}
+      <span className="ge-word-gold-line" />
+    </span>
+  )
+}
+
+function blockHiddenFace(phase: BlockRotatePhase) {
+  if (phase === 'flyLead') return 'front'
+  if (phase === 'flyCutting') return 'top'
+  if (phase === 'flyCompetitive') return 'back'
+  return null
+}
+
+function BlockRotateCube({
+  rotation,
+  hiddenFace,
+}: {
+  rotation: number
+  hiddenFace: 'front' | 'top' | 'back' | 'bottom' | null
+}) {
+  const hide = (face: 'front' | 'top' | 'back' | 'bottom') =>
+    hiddenFace === face ? 'opacity-0' : ''
+
+  return (
+    <span className="ge-word-block-cube" style={{ transform: `rotateX(${rotation}deg)` }}>
+      <span className={`ge-word-block-face ge-word-block-face--front text-ge-accent ${hide('front')}`}>
+        {ADJECTIVES[0]}
+      </span>
+      <span className={`ge-word-block-face ge-word-block-face--top text-ge-accent ${hide('top')}`}>
+        {ADJECTIVES[1]}
+      </span>
+      <span className={`ge-word-block-face ge-word-block-face--back text-ge-accent ${hide('back')}`}>
+        {ADJECTIVES[2]}
+      </span>
+      <span className={`ge-word-block-face ge-word-block-face--bottom text-ge-graphite ${hide('bottom')}`}>
+        {LOCK_WORD}
+      </span>
+    </span>
+  )
+}
+
+function BlockRotatePack({ state }: { state: BlockRotateState }) {
+  const { phase, rotation } = state
+  const leadingIn = flyRowOn(phase, 'flyLead')
+  const cuttingIn = flyRowOn(phase, 'flyCutting')
+  const competitiveIn = flyRowOn(phase, 'flyCompetitive')
+  const slotWord = flySlotWord(phase)
+  const flying = phase === 'flyLead' || phase === 'flyCutting' || phase === 'flyCompetitive'
+
+  const slotRef = useRef<HTMLSpanElement>(null)
+  const leadSizerRef = useRef<HTMLSpanElement>(null)
+  const cutSizerRef = useRef<HTMLSpanElement>(null)
+  const compSizerRef = useRef<HTMLSpanElement>(null)
+  const [path, setPath] = useState<{ leaveX: number; leaveY: number } | null>(null)
+
+  useLayoutEffect(() => {
+    if (!flying) {
+      setPath(null)
+      return
+    }
+    const slot = slotRef.current
+    const dest =
+      phase === 'flyLead' ? leadSizerRef.current : phase === 'flyCutting' ? cutSizerRef.current : compSizerRef.current
+    if (!slot || !dest) return
+    const { x, y } = flyCenters(slot, dest)
+    setPath({ leaveX: x, leaveY: y })
+  }, [flying, phase])
+
+  const leaving = flying && path !== null
+  const leadFlying = phase === 'flyLead' && leaving
+  const cutFlying = phase === 'flyCutting' && leaving
+  const compFlying = phase === 'flyCompetitive' && leaving
+
+  return (
+    <span key={state.generation} className="ge-word-block-pack" aria-hidden="true">
+      <span className="ge-word-block-lock-slot">
+        <span className="ge-word-block-mark">
+          <span className="ge-word-block-adj">
+            <span className="ge-word-block-sizer">{SLOT_WORD}</span>
+            <BlockRotateCube rotation={rotation} hiddenFace={blockHiddenFace(phase)} />
+            <span
+              ref={slotRef}
+              className={`ge-word-block-slot-word ${wordTone(slotWord)} ${leaving ? 'ge-word-fly-leave' : ''}`}
+              style={
+                leaving
+                  ? ({ '--ge-fly-x': `${path.leaveX}px`, '--ge-fly-y': `${path.leaveY}px` } as CSSProperties)
+                  : undefined
+              }
+            >
+              {slotWord}
+            </span>
           </span>
           <span className="text-white">{ANCHOR_WORD}</span>
         </span>
       </span>
-      {/* Absolute left/right of pack = top-row width (lock slot cannot widen the pack). */}
-      <span className="ge-word-gold-line" />
+      <span className={`ge-word-fly-row ge-word-fly-row--below ${phase === 'reset' ? 'is-reset' : ''}`}>
+        <FlyCell
+          word={ADJECTIVES[0]}
+          visible={leadingIn && (phase !== 'flyLead' || leaving)}
+          flying={leadFlying}
+          sizerRef={leadSizerRef}
+          flyX={path ? -path.leaveX : 0}
+          flyY={path ? -path.leaveY : 0}
+        />
+        <span className={`ge-word-fly-dot ${cuttingIn ? 'is-in' : ''}`}>·</span>
+        <FlyCell
+          word={ADJECTIVES[1]}
+          visible={cuttingIn && (phase !== 'flyCutting' || leaving)}
+          flying={cutFlying}
+          sizerRef={cutSizerRef}
+          flyX={path ? -path.leaveX : 0}
+          flyY={path ? -path.leaveY : 0}
+        />
+        <span className={`ge-word-fly-dot ${competitiveIn ? 'is-in' : ''}`}>·</span>
+        <FlyCell
+          word={ADJECTIVES[2]}
+          visible={competitiveIn && (phase !== 'flyCompetitive' || leaving)}
+          flying={compFlying}
+          sizerRef={compSizerRef}
+          flyX={path ? -path.leaveX : 0}
+          flyY={path ? -path.leaveY : 0}
+        />
+      </span>
     </span>
   )
 }
@@ -355,8 +476,8 @@ function FlyUpPack({ state }: { state: FlyUpState }) {
 /**
  * Rotates Leading / Cutting / Competitive, then holds GreyEdge. Most skins pin
  * a static Edge beside the slot; random-fill puts Edge on the flap board;
- * fly-up-row parks each adjective beside Edge, then flies it into a fixed
- * left / center / right seat in the row above. Slot reel and scramble
+ * fly-up-row parks each adjective beside Edge, then flies it down into a row
+ * below. Slot reel and scramble
  * share one clock; type-from-E, random-fill, and fly-up-row run their own
  * sequencers. Reduced motion is static GreyEdge.
  */
@@ -364,15 +485,22 @@ export default function GreyEdgeCycle({
   variant,
   className = '',
   forceReducedMotion = false,
+  playOnce = false,
 }: {
   variant: WordCycleVariant
   className?: string
   forceReducedMotion?: boolean
+  /** Fly-up row only: run once when scrolled into view, then hold on GreyEdge. */
+  playOnce?: boolean
 }) {
   const osReduced = usePrefersReducedMotion()
   const reducedMotion = forceReducedMotion || osReduced
   const { ref, inView } = useInView<HTMLDivElement>()
-  const ownClock = variant === 'type-from-e' || variant === 'random-fill' || variant === 'fly-up-row'
+  const ownClock =
+    variant === 'type-from-e' ||
+    variant === 'random-fill' ||
+    variant === 'fly-up-row' ||
+    variant === 'block-rotate'
   const cycle = useWordCycle({
     active: inView && !reducedMotion && !ownClock,
     reducedMotion,
@@ -390,15 +518,12 @@ export default function GreyEdgeCycle({
   const fly = useFlyUpRowCycle({
     active: inView && !reducedMotion && variant === 'fly-up-row',
     reducedMotion,
+    once: playOnce,
   })
-
-  const vars = {
-    '--ge-word-dwell': WORD_CYCLE_CSS.dwell,
-    '--ge-word-trans': WORD_CYCLE_CSS.transition,
-    '--ge-word-lock': WORD_CYCLE_CSS.lockHold,
-    // Fly-up home band uses brand accent; other skins keep preview gold.
-    '--ge-word-gold': variant === 'fly-up-row' ? 'var(--color-ge-accent)' : '#c4a35a',
-  } as CSSProperties
+  const block = useBlockRotateCycle({
+    active: inView && !reducedMotion && variant === 'block-rotate',
+    reducedMotion,
+  })
 
   const locked =
     variant === 'type-from-e'
@@ -408,6 +533,13 @@ export default function GreyEdgeCycle({
         : variant === 'fly-up-row'
           ? fly.isLocked
           : cycle.isLocked
+
+  const vars = {
+    '--ge-word-dwell': WORD_CYCLE_CSS.dwell,
+    '--ge-word-trans': WORD_CYCLE_CSS.transition,
+    '--ge-word-lock': WORD_CYCLE_CSS.lockHold,
+    '--ge-word-gold': variant === 'fly-up-row' ? 'var(--color-ge-accent)' : '#c4a35a',
+  } as CSSProperties
   const markClass = `ge-word relative inline-flex items-baseline font-display leading-[1.25] ${
     variant === 'random-fill'
       ? 'font-bold tracking-normal'
@@ -438,11 +570,23 @@ export default function GreyEdgeCycle({
     return (
       <div
         ref={ref}
-        className={`inline-flex flex-col items-center font-display font-semibold tracking-[0.02em] ${className}`}
+        className={`inline-flex flex-col items-center font-bold tracking-[0.02em] ${className}`}
         style={vars}
         aria-label="GreyEdge"
       >
         <FlyUpPack state={fly} />
+      </div>
+    )
+  }
+
+  if (variant === 'block-rotate') {
+    return (
+      <div
+        ref={ref}
+        className={`inline-flex flex-col items-center font-display font-semibold tracking-[0.02em] ${className}`}
+        aria-label="GreyEdge"
+      >
+        <BlockRotatePack state={block} />
       </div>
     )
   }

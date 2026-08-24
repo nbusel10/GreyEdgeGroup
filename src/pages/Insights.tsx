@@ -51,17 +51,17 @@ export default function Insights() {
             <Reveal className="mt-10">
               <div className="border border-ge-light bg-white p-10 md:p-14">
                 <span className="font-body text-[10px] uppercase tracking-[0.18em] text-ge-accent">
-                  {filter === 'Case Study' ? 'Case Study' : filter}
+                  {filter === 'Case Studies' ? 'Case Studies' : filter}
                 </span>
                 <h2 className="mt-4 font-display text-2xl font-bold uppercase tracking-wide text-ge-black sm:text-3xl">
                   Coming soon
                 </h2>
                 <p className="mt-4 max-w-xl font-body text-sm leading-relaxed text-ge-graphite">
-                  {filter === 'Case Study'
+                  {filter === 'Case Studies'
                     ? 'Narrative case studies are being written. In the meantime, see built work on Projects.'
                     : 'Nothing in this category yet.'}
                 </p>
-                {filter === 'Case Study' && (
+                {filter === 'Case Studies' && (
                   <Btn to="/projects" variant="outline" className="mt-8">
                     View projects
                   </Btn>

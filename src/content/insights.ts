@@ -7,7 +7,7 @@ export interface InsightSection {
 
 export interface Insight {
   slug: string
-  category: 'Technical Education' | 'Case Study' | 'Industry and Policy'
+  category: 'Technical Education' | 'Case Studies' | 'Industry and Policy'
   level: 'Foundational' | 'Applied' | 'Strategic'
   title: string
   summary: string
@@ -25,7 +25,7 @@ export function getInsight(slug: string): Insight | undefined {
   return insights.find((i) => i.slug === slug)
 }
 
-export const insightCategories = ['All', 'Technical Education', 'Case Study', 'Industry and Policy'] as const
+export const insightCategories = ['All', 'Technical Education', 'Case Studies', 'Industry and Policy'] as const
 export type InsightCategoryFilter = (typeof insightCategories)[number]
 
 /**
@@ -36,7 +36,7 @@ export type InsightCategoryFilter = (typeof insightCategories)[number]
 export const insights: Insight[] = [
   {
     slug: 'colorado-mesa-university',
-    category: 'Case Study',
+    category: 'Case Studies',
     level: 'Applied',
     title: 'Colorado Mesa University: what a campus ATL actually delivers',
     summary:
@@ -77,7 +77,7 @@ export const insights: Insight[] = [
   },
   {
     slug: 'mountain-town-decarbonization',
-    category: 'Case Study',
+    category: 'Case Studies',
     level: 'Strategic',
     title: 'Mountain towns, snowmelt, and the last 10%',
     summary:
@@ -158,7 +158,7 @@ export const insights: Insight[] = [
   },
   {
     slug: 'weber-state-four-pipes',
-    category: 'Case Study',
+    category: 'Case Studies',
     level: 'Applied',
     title: 'Four pipes to two: Weber State’s TEN retrofit',
     summary:

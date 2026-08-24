@@ -102,20 +102,25 @@ export default function Geothermal101() {
               <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
                 Thermal Energy Networks
               </h2>
-              <p className="mt-6 font-body text-lg leading-relaxed text-ge-charcoal">
-                A Thermal Energy Network connects multiple buildings to a shared loop of water, so heat can move
-                between them instead of being made and thrown away separately in each one.
+              <div className="mt-6 border-l-2 border-ge-accent pl-6">
+                <p className="font-body text-lg leading-relaxed text-ge-charcoal">
+                  A Thermal Energy Network connects multiple buildings through a shared water loop, allowing heat to
+                  move where it is needed instead of being generated, rejected, and replaced by each building
+                  independently.
+                </p>
+              </div>
+              <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
+                The power of the system comes from diversity. Offices, apartments, schools, hospitals, and other
+                building types rarely need heating and cooling at the same time. By sharing energy across the network,
+                one building&rsquo;s excess heat can become another&rsquo;s resource, improving overall system
+                efficiency and reducing wasted energy.
               </p>
               <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
-                It is a simple idea with a large consequence. An office rejecting heat in the afternoon and apartments
-                needing heat in the evening are, on a shared loop, solving each other&rsquo;s problem. The more diverse
-                the buildings and loads on the network, the more efficiently the system can operate, because their
-                heating and cooling needs rarely peak at the same moment.
-              </p>
-              <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
-                That diversity is why a district system installs far less total capacity than the same buildings would
-                need standing alone, and why peak electrical demand can be far lower than a building-by-building
-                conversion would require.
+                As communities work to reduce emissions, manage electrical demand, and plan for future growth, Thermal
+                Energy Networks offer a practical framework for delivering heating and cooling at scale. They require
+                less installed capacity, lower peak demand, improve system resilience, and become more effective as
+                additional buildings are connected. Simply put, the larger and more diverse the network, the stronger
+                the performance and economics become.
               </p>
             </Reveal>
             <Reveal delay={0.08} className="flex items-center justify-center">
@@ -148,14 +153,21 @@ export default function Geothermal101() {
         <Container>
           <Reveal>
             <Eyebrow>The Mechanism</Eyebrow>
-            <h2 className="mt-5 max-w-3xl font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
+            <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
               Ambient temperature loops
             </h2>
-            <p className="mt-6 max-w-3xl font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
-              Traditional district energy pushes hot water out at 180°F and loses heat every foot of the way. An
-              ambient loop runs close to local ground temperature and lets a heat pump in each building do the
-              final lift. Because the loop is near the temperature of the earth around it, the distribution losses
-              that plague hot-water districts largely disappear.
+            <p className="mt-6 font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
+              An Ambient Temperature Loop is the backbone of a modern Thermal Energy Network. Rather than
+              distributing high-temperature water throughout a district, the loop operates near the natural
+              temperature of the surrounding ground, creating a shared thermal resource that all connected
+              buildings can access.
+            </p>
+            <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
+              Each building uses heat pumps to provide the precise heating or cooling it needs, while the network
+              continuously moves thermal energy where it creates the most value. Because the loop is maintained
+              close to ambient ground temperatures, distribution losses are significantly reduced, efficiency is
+              improved, and buildings can exchange energy across the network with far less infrastructure than
+              traditional district energy systems.
             </p>
           </Reveal>
 

@@ -3,10 +3,8 @@ import { Container } from '../ui'
 
 /**
  * Full-bleed fly-up GreyEdge lockup (preview option 6).
- * Leading / Cutting / Competitive park beside Edge, then zoom up into the
- * row and stay; Grey locks with the brand-accent underline. Sized in vw so
- * the top row always fits — no overflow clipping that shoves the lockup
- * off-screen.
+ * Animation starts when the band scrolls into view, plays once, and holds on
+ * GreyEdge with the filled adjective row and brand-accent underline.
  */
 export default function GreyEdgeBand({
   forceReducedMotion = false,
@@ -19,6 +17,7 @@ export default function GreyEdgeBand({
         <div className="flex justify-center">
           <GreyEdgeCycle
             variant="fly-up-row"
+            playOnce
             forceReducedMotion={forceReducedMotion}
             className="text-[clamp(2rem,4.8vw,4.5rem)]"
           />
