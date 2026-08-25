@@ -84,21 +84,20 @@ export default function AtlExplainer() {
               eyebrow="The Exchange"
               heading={
                 <>
-                  Four modes, <span className="text-ge-accent">one loop</span>
+                  How <span className="text-ge-accent">One Loop</span> Does It All.
                 </>
               }
             />
             <p className="mt-6 font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
-              The Thermal Highway© is our architecture for connecting an entire district on a single ambient loop.
-              Buildings and{' '}
+              The Thermal Highway® is our approach to connecting buildings and{' '}
               <a href="#thermal-resources" className={proseLinkClass}>
                 thermal resources
               </a>{' '}
-              (places that can give or take heat) are distributed along the network, including geoexchange, wastewater,
-              data centers and a borefield that acts as a balancing resource. Heat rejected by one building can be
-              used by another, stored in the ground until it is needed, recovered from a process that would
-              otherwise release it, or supplied from more than one source at once. The four modes below are not
-              separate systems&mdash;they&rsquo;re different jobs performed by the same loop.
+              across a district through a single ambient temperature loop. As energy moves through the network, it
+              can be exchanged between buildings, stored for later use, recovered from sources like wastewater or
+              data centers, or supplied by multiple thermal resources working together. The four modes below
+              illustrate how the same loop continuously balances, moves, and delivers energy wherever it creates
+              the most value.
             </p>
           </Reveal>
 

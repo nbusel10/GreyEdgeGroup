@@ -31,6 +31,14 @@ const faqs = [
     a: 'No. Geothermal power generation taps very high temperature resources to spin a turbine, and only works in a few places on earth. What we do is ground-source heat exchange: we use the stable moderate temperature of the shallow ground as a place to put heat in summer and take heat from in winter. It works essentially anywhere.',
   },
   {
+    q: 'How is a Thermal Energy Network different from conventional district heating and cooling?',
+    a: 'Conventional district systems push hot or chilled water from a central plant to every building. A Thermal Energy Network is an ambient temperature loop: buildings and thermal resources trade usable heat on a shared pipe, and each building’s heat pumps make the final temperature lift. Central plant can be smaller, hybrid, or eventually backup, because diversity does work the plant used to do alone.',
+  },
+  {
+    q: 'Does every Thermal Energy Network need a geothermal borefield?',
+    a: 'No. Geoexchange is one common source, sink, and storage option, not a requirement for every network. Wastewater, process heat, surface water, mine water, and building-to-building diversity can share the load, which often shrinks how much field you need. When you do drill, bores go down rather than out and commonly sit under parking, fields, or the building footprint.',
+  },
+  {
     q: 'Does it work in cold climates?',
     a: 'Particularly well. Below about six metres, ground temperature stays near the local annual average all year, so a system in Steamboat Springs is drawing from roughly 45°F ground while the air outside is below zero. The colder the air, the bigger the advantage over an air-source system.',
   },
@@ -39,20 +47,28 @@ const faqs = [
     a: 'Often, yes. The building ties into the shared loop through a heat pump, or hydronics already able to work at those temperatures, so it can take heat from the network and give heat back. That is a connection, not a promise that the existing plant plugs in unchanged. Buildings still do the final lift locally; they no longer have to source or reject every unit of heat on their own.',
   },
   {
-    q: 'What happens when heating and cooling loads don’t balance?',
-    a: 'The loop uses thermal resources as a balancing account. When buildings cannot offset one another directly, surplus heat goes into the ground, wastewater, or another sink on the network, and a shortfall is drawn from the same places. That is why geoexchange, process heat and storage sit on the loop: they absorb the difference so far less heat has to be rejected or produced from scratch.',
+    q: 'Can the network be built in phases as a development grows?',
+    a: 'Yes, and that is usually how districts get built. Design the backbone for known phase-one loads, then leave connection points and reserved capacity so later buildings or thermal resources can join without rebuilding the pipe. The goal is expandable infrastructure, not a one-shot plant sized only for today’s tenants.',
   },
   {
-    q: 'How much does it cost compared with conventional systems?',
-    a: 'First cost is usually higher and operating cost is substantially lower, so the comparison only makes sense over the life of the asset. At district scale the maths changes again: sharing a loop across buildings with different load profiles means you install far less total capacity than the sum of the individual buildings would need.',
+    q: 'What happens when heating and cooling loads don’t balance?',
+    a: 'The loop uses thermal resources as a balancing account. When buildings cannot offset one another directly, surplus heat goes into the ground, wastewater, or another sink on the network, and a shortfall is drawn from the same places. That is why geoexchange, process heat and storage sit on the loop: they absorb the difference so far less heat has to be rejected or produced from scratch.',
   },
   {
     q: 'How long do these systems last?',
     a: 'The ground loop is the long-lived part. The polyethylene piping is typically warranted for 50 years and expected to last longer. Heat pumps are replaced on a normal mechanical cycle of roughly 20 to 25 years. We maintain operating relationships with systems that have run continuously for 15 to 18 years.',
   },
   {
-    q: 'How much land does a borefield need?',
-    a: 'Less than people expect. Bores go down rather than out, typically 400 to 1,000 feet, and are commonly placed under parking lots, playing fields or the building footprint itself. On constrained urban sites, angled drilling from a small staging area is often viable.',
+    q: 'What does a Thermal Energy Network cost, and when does it make financial sense?',
+    a: 'Compare lifecycle cost and avoided capacity, not bid-day HVAC alone. First cost can be higher or, with diversity and incentives, competitive; operating cost is usually where networks win. Sharing a loop across different load profiles means less coincident plant, less electrical peak, and often less field than sizing every building independently.',
+  },
+  {
+    q: 'Who owns and operates the network, and what happens if the development changes?',
+    a: 'Ownership can sit with a public entity, a utility, or a third party. Settle early who finances, operates, meters, and decides when the network expands. Load diversity modeling and reserved capacity are how you plan for buildings joining, leaving, or changing use without treating every lease change as a redesign.',
+  },
+  {
+    q: 'Will a Thermal Energy Network require an electrical service upgrade?',
+    a: 'Often the upgrade is smaller than building-by-building electrification, and sometimes it is avoided, because diversity and thermal storage flatten coincident peaks. It is still site-specific: the right question is whether the network’s coincident load fits the feeder, not a promise that no upgrade is ever required.',
   },
 ]
 
@@ -90,7 +106,7 @@ export default function Geothermal101() {
       <PageHero
         eyebrow="How it works"
         title="Geothermal 101"
-        lead="No pitch, no meeting required. This is the shared vocabulary our clients wish they'd had at the start of their first project."
+        lead="Built from decades of industry experience, this guide explains what thermal energy networks are, why they work, and how they help solve the energy, cost, and infrastructure challenges facing communities today."
       />
 
       {/* What is a TEN */}
@@ -123,7 +139,7 @@ export default function Geothermal101() {
                 the performance and economics become.
               </p>
             </Reveal>
-            <Reveal delay={0.08} className="flex items-center justify-center">
+            <Reveal delay={0.08} className="flex flex-col justify-center">
               <button
                 ref={schematicBtnRef}
                 type="button"
@@ -174,27 +190,25 @@ export default function Geothermal101() {
           <div className="mt-12 grid gap-px bg-ge-light md:grid-cols-3">
             {[
               {
-                t: 'Low temperature, low loss',
-                b: 'A loop near ambient ground temperature barely exchanges heat with the soil it passes through, so the loop can extend over long distances with very little distribution loss.',
+                t: 'Expandable by Design',
+                b: 'New buildings can connect to the loop over time, allowing the network to grow as community needs evolve.',
               },
               {
-                t: 'Two-way by design',
-                b: 'Every connection both takes and gives. A building in cooling mode is a heat source for its neighbours, not a nuisance to be exhausted to the sky.',
+                t: 'Energy Sharing Network',
+                b: 'Buildings can exchange thermal energy with one another, reducing wasted heat and improving overall system efficiency.',
               },
               {
-                t: 'Grows by connection',
-                b: 'Adding a building means a connection into the existing main, not a new central plant. Later phases use the infrastructure already in the ground, rather than starting over with a new central plant.',
+                t: 'Low-Loss Distribution',
+                b: 'Because the loop operates near ground temperature, energy can move through the network with minimal distribution losses.',
               },
             ].map((c, i) => (
               <Reveal key={c.t} delay={i * 0.06} className="bg-white">
-                <div className="h-full p-8">
-                  <span className="text-ge-accent" aria-hidden="true">
-                    //
-                  </span>
-                  <h3 className="mt-5 font-display text-xl font-bold uppercase leading-tight tracking-wide text-ge-black">
+                <div className="group flex h-full flex-col p-8">
+                  <span className="rule-grow mb-5" />
+                  <h3 className="font-display text-xl font-bold uppercase leading-tight tracking-wide text-ge-black">
                     {c.t}
                   </h3>
-                  <p className="mt-4 font-body text-sm leading-relaxed text-ge-graphite">{c.b}</p>
+                  <p className="mt-4 flex-1 font-body text-sm leading-relaxed text-ge-graphite">{c.b}</p>
                 </div>
               </Reveal>
             ))}
@@ -211,16 +225,17 @@ export default function Geothermal101() {
             <Reveal>
               <Eyebrow>The Resources</Eyebrow>
               <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
-                Where heat comes from and where it goes
+                Unlocking Local Energy Resources
               </h2>
               <p className="mt-6 font-body text-base leading-relaxed text-ge-graphite">
-                A thermal resource is a source or sink of heat that is already on the site, or can be connected to it.
-                Buildings exchange heat too; they are the loads. Resources give the loop additional places to put
-                surplus heat or draw heat from when buildings cannot balance one another directly.
+                Thermal resources are the places a network can draw heat from, store heat, or reject excess heat. Many
+                communities already have valuable thermal assets hidden in plain sight, including geoexchange,
+                wastewater systems, data centers, and industrial processes. Together, these resources help balance the
+                network, improve efficiency, and reduce the need for new energy inputs year-round.
               </p>
               <blockquote className="my-8 border-l-2 border-ge-accent pl-7">
                 <p className="font-display text-2xl font-semibold uppercase leading-snug tracking-wide text-ge-black">
-                  Most districts have more usable thermal energy on site than anyone has counted.
+                  The energy your network needs may already be flowing through your community.
                 </p>
               </blockquote>
               <p className="font-body text-base leading-relaxed text-ge-graphite">

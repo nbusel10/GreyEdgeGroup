@@ -123,6 +123,42 @@ export const site = {
   "growth-flexibility": {
     src: "/images/site/growth-flexibility.webp",
     alt: "Aerial view of a modern city skyline surrounded by greenery, symbolizing sustainable urban growth and adaptable infrastructure."
+  },
+  "insight-cmu": {
+    src: "/images/site/insight-cmu.webp",
+    alt: "Colorado Mesa University campus at sunset with brick buildings, blossoming trees, and the Grand Mesa on the horizon."
+  },
+  "insight-50-90": {
+    src: "/images/site/insight-50-90.webp",
+    alt: "Mountain resort village with red-roofed lodges nestled in a green valley under a clear blue sky."
+  },
+  "insight-first-cost": {
+    src: "/images/site/insight-first-cost.webp",
+    alt: "Hands reviewing architectural blueprints with drafting tools, a hard hat, and a building model on a wooden table."
+  },
+  "insight-implementing-tens": {
+    src: "/images/site/insight-implementing-tens.webp",
+    alt: "Historic small-town main street lined with brick storefronts, autumn trees, and American flags under a bright blue sky."
+  },
+  "insight-mountain-town": {
+    src: "/images/site/insight-mountain-town.webp",
+    alt: "Historic mountain-town main street with brick buildings, American flags, and a steep forested peak at the end of the block."
+  },
+  "insight-weber-state": {
+    src: "/images/site/insight-weber-state.webp",
+    alt: "Weber State University campus with a fountain reflecting in a pond, clock tower, and the white W on the mountain behind."
+  },
+  "insight-colorado-policy": {
+    src: "/images/site/insight-colorado-policy.webp",
+    alt: "Aerial view of a Colorado mountain town surrounded by green forests and snow-capped peaks under a clear blue sky."
+  },
+  "insight-finance": {
+    src: "/images/site/insight-finance.webp",
+    alt: "Team reviewing financial charts on a laptop, tablet, and printed reports while taking notes in a notebook."
+  },
+  "insight-share-a-site": {
+    src: "/images/site/insight-share-a-site.webp",
+    alt: "Aerial view of a suburban school campus with athletic fields, parking, and surrounding neighborhoods under a blue sky."
   }
 } satisfies Record<string, Img>
 

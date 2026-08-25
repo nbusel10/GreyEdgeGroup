@@ -48,7 +48,7 @@ export default function InsightDetail() {
             <span aria-hidden="true">&larr;</span> All insights
           </Link>
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <span className="border border-ge-accent px-2.5 py-1 font-body text-[10px] uppercase tracking-[0.18em] text-ge-accent-bright">
+            <span className="border border-white/70 px-2.5 py-1 font-body text-[10px] uppercase tracking-[0.18em] text-white">
               {insight.category}
             </span>
             <span className="font-body text-xs uppercase tracking-[0.16em] text-white/70">{insight.readTime}</span>
@@ -56,7 +56,7 @@ export default function InsightDetail() {
           <h1 className="mt-4 max-w-4xl font-display text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl">
             {insight.title}
           </h1>
-          <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-ge-silver sm:text-lg">{insight.summary}</p>
+          <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-ge-light sm:text-lg">{insight.summary}</p>
         </Container>
       </section>
 
