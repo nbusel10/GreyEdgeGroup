@@ -309,7 +309,13 @@ export const projects: Project[] = [
       { name: "Weber State University", url: "https://www.weber.edu/" },
       { name: "The GreyEdge Group", url: "/" },
     ],
-    articles: [],
+    articles: [
+      {
+        title: "Geothermal Wells Deepen Weber State's Sustainability Efforts",
+        publisher: "Standard-Examiner",
+        url: "https://www.standard.net/news/environment/2016/may/29/geothermal-wells-deepen-weber-states-sustainability-efforts/"
+      }
+    ],
     image: "/images/projects/weber-state-university.webp",
     imageAlt: "Weber State University Campus Project Picture",
     featured: false
