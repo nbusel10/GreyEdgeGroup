@@ -24,7 +24,6 @@ const helpOptions = [
   'Feasibility or resource study',
   'Master planning a campus or district',
   'Design or engineering support',
-  'Review of work done by others',
   'Commissioning or troubleshooting',
   'Optimizing an existing system',
 ]
@@ -80,7 +79,7 @@ export default function Contact() {
       <PageHero
         eyebrow="Start Planning"
         title="Let's plan what's next"
-        lead="Whether you're advancing a master-planned development, evaluating district-scale infrastructure, or navigating grid constraints, bring us what you have and we'll tell you what we see."
+        lead="Whether you're planning a new community, evaluating district-scale infrastructure, or working through grid constraints, bring us your vision, your data, or your questions. We'll help you uncover the opportunities and chart the path forward."
       />
 
       <Section className="bg-ge-offwhite">
@@ -172,7 +171,6 @@ export default function Contact() {
                     <Btn type="submit" disabled={status === 'sending'} className="disabled:opacity-60">
                       {status === 'sending' ? 'Sending…' : 'Send message'}
                     </Btn>
-                    <p className="font-body text-xs text-ge-steel">We reply to everything, usually within a day.</p>
                   </div>
                 </form>
               )}
@@ -186,18 +184,15 @@ export default function Contact() {
                 </h2>
                 <a
                   href={`mailto:${org.email}`}
-                  className="mt-3 inline-block font-body text-base text-ge-charcoal underline decoration-ge-accent decoration-2 underline-offset-4 transition-colors hover:text-ge-accent"
+                  className="mt-3 block font-body text-base text-ge-charcoal underline decoration-ge-accent decoration-2 underline-offset-4 transition-colors hover:text-ge-accent"
                 >
                   {org.email}
                 </a>
-                <p className="mt-6 font-body text-sm leading-relaxed text-ge-graphite">
-                  Our team works across {org.region}, with active projects in Colorado, Utah and on the East Coast.
-                </p>
                 <a
                   href={org.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-block font-body text-[11px] uppercase tracking-[0.18em] text-ge-graphite transition-colors hover:text-ge-accent"
+                  className="mt-6 block font-body text-[11px] uppercase tracking-[0.18em] text-ge-graphite transition-colors hover:text-ge-accent"
                 >
                   Connect on LinkedIn &rarr;
                 </a>
@@ -209,9 +204,12 @@ export default function Contact() {
                   <span className="text-ge-accent" aria-hidden="true">
                     //{' '}
                   </span>
-                  Not ready to talk yet?
+                  Still Exploring?
                 </h2>
-                <p className="mt-3 font-body text-sm leading-relaxed text-ge-silver">{doors.education.detail}</p>
+                <p className="mt-3 font-body text-sm leading-relaxed text-ge-silver">
+                  Learn how thermal energy networks work, what resources are available, and where the opportunities
+                  may exist within your community.
+                </p>
                 <Btn to={doors.education.to} variant="ghost" className="mt-6">
                   {doors.education.cta}
                 </Btn>

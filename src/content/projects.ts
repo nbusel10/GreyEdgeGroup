@@ -44,7 +44,12 @@ export const projects: Project[] = [
     status: "In Progress",
     summary: "See how the Aspen School District is evaluating next-generation energy infrastructure that supports students, facilities, and long-term sustainability goals.",
     description: "The Aspen School District project demonstrates how educational facilities can use shared thermal infrastructure to support sustainability, comfort, and long-term operational performance in Aspen, Colorado. The proposed Ambient Temperature Loop connects Aspen Elementary School, Aspen Middle School, and Aspen High School into a unified Thermal Energy Network. The campus includes approximately 414,173 square feet of facilities, including conditioned space and snowmelt infrastructure. By linking multiple educational facilities into one system, the district can take advantage of load diversity and shared resources. The project supports district goals for decarbonization, resiliency, and future cooling capability. The GreyEdge Group identified a pathway for modernizing campus infrastructure while maintaining reliable operations. The GreyEdge Group evaluated thermal assets including geoexchange borefields, co-generation, Genesys CLAD technology, solar thermal, wastewater energy recovery, and snowmelt heat recovery. These resources support approximately 709 tons of peak heating and 234 tons of peak cooling capacity. The proposed network is expected to reduce heating-related greenhouse gas emissions by approximately 75 percent, or about 654 metric tons of CO2 annually. The Ambient Temperature Loop provides a flexible platform for future campus expansion and infrastructure upgrades. The project highlights how K-12 campuses can become leaders in sustainable community infrastructure.",
-    team: [],
+    team: [
+      { name: "The GreyEdge Group", url: "/" },
+      { name: "Aspen School District", url: "https://www.aspenk12.net/" },
+      { name: "McKinstry", url: "https://www.mckinstry.com/" },
+      { name: "Holy Cross Energy", url: "https://www.holycross.com/" },
+    ],
     articles: [
       {
         title: "Aspen Schools Look Underground For Sustainable Energy For Cooling And Heating",
@@ -52,9 +57,9 @@ export const projects: Project[] = [
         url: "https://bigpivots.com/aspen-schools-look-underground-for-sustainable-energy-for-cooling-and-heating/"
       },
       {
-        title: "",
+        title: "ASD Summer Initiatives Underway",
         publisher: "Aspen Daily News",
-        url: "https://www.aspendailynews.com/news/asd-summer-initiatives-underway/article_c9934f63-9bd8-4dd9-9a63-e096b8a7c13b.html"
+        url: "https://www.aspendailynews.com/news/asd-summer-initiatives-underway-f50edad5"
       },
       {
         title: "Aspen School District Sees Groundbreaking Success With Foot Geo Bore",
@@ -112,7 +117,17 @@ export const projects: Project[] = [
     status: "In Progress",
     summary: "Explore how renewable energy resources and innovative district planning could help power the future of one of Colorado’s premier mountain destinations.",
     description: "The Steamboat Springs project evaluates a Thermal Energy Network centered around the Gondola Transit Center and surrounding development areas in Steamboat Springs, Colorado. The study includes public facilities, resort infrastructure, future development, and snowmelt systems. GreyEdge assessed how a shared thermal network could meet significant heating demands in a challenging mountain climate. The project is designed to support growth while reducing long-term emissions and energy costs. A phased Ambient Temperature Loop approach allows multiple resources to work together within a unified system. This strategy creates a scalable foundation for future expansion. Thermal assets include geoexchange borefields, Yampa River heat exchange, snowmelt solar collection, wastewater energy recovery, solar thermal resources, and existing boilers for peak demand service. Project analysis identified the potential for approximately 85 percent reductions in heating-related carbon emissions. Prior evaluations estimated annual reductions of roughly 7,191 metric tons of CO2 under a fully renewable scenario. The project focuses on reducing borefield requirements while maximizing renewable resource opportunities. Steamboat Springs illustrates how mountain resort communities can integrate diverse thermal assets into a cohesive energy strategy.",
-    team: [],
+    team: [
+      { name: "The GreyEdge Group", url: "/" },
+      { name: "City of Steamboat Springs", url: "https://steamboatsprings.net/" },
+      { name: "Steamboat Springs Redevelopment Authority (SSRA)" },
+      { name: "Steamboat Ski & Resort Corporation (SSRC)", url: "https://www.steamboat.com/" },
+      { name: "McKinstry", url: "https://www.mckinstry.com/" },
+      { name: "Landmark Consultants" },
+      { name: "Mount Werner Water", url: "https://www.mwwsd.org/" },
+      { name: "Bertram Drilling" },
+      { name: "Zeven Element Design Institute" },
+    ],
     articles: [],
     image: "/images/projects/steamboat-springs.webp",
     imageAlt: "A mountain town at the base of snow‑covered ski slopes in Steamboat Springs, Colorado, showing residential and resort buildings surrounded by green hills and peaks.",
@@ -129,7 +144,15 @@ export const projects: Project[] = [
     status: "In Progress",
     summary: "Learn how a small mountain community is creating a replicable model for sustainable district energy and community-scale decarbonization.",
     description: "The Carbondale 32ZED project is a community-scale Thermal Energy Network designed to support a zero-energy district in Carbondale, Colorado. The district includes 43 buildings consisting of townhomes, a school, a library, offices, affordable housing, and community-serving facilities. The project area encompasses approximately 164,490 square feet of mixed-use development. GreyEdge serves as the technical lead supporting a phased transition away from conventional fossil-fuel heating. The initiative demonstrates how district energy can support affordability, sustainability, and economic resilience. The project establishes a replicable model for small communities pursuing decarbonization goals. Thermal assets include geo-connected infrastructure, water-source heat pumps, vertical and horizontal exchange fields, photovoltaic systems, and potential battery storage. The broader effort has been described as part of a $13 million initiative, with $700,000 in federal funding supporting investigation and design activities. Initial deployment targets approximately 25 percent of district heating and cooling demand with future expansion toward full district service. Project analysis identified the potential to eliminate approximately 3.2 billion Btu of natural gas consumption annually. The project demonstrates how Ambient Temperature Loop technologies can advance community-scale energy transformation.",
-    team: [],
+    team: [
+      { name: "The GreyEdge Group", url: "/" },
+      { name: "Clean Energy Economy for the Region (CLEER)", url: "https://www.cleanenergyeconomy.net/" },
+      { name: "Town of Carbondale", url: "https://www.carbondalegov.org/" },
+      { name: "National Renewable Energy Laboratory (NREL)", url: "https://www.nrel.gov/" },
+      { name: "Third Street Center", url: "https://thirdstreetcenter.net/" },
+      { name: "Colorado Mountain College", url: "https://coloradomtn.edu/" },
+      { name: "U.S. Department of Energy (DOE)", url: "https://www.energy.gov/" },
+    ],
     articles: [
       {
         title: "Vail Colorado Explores Geothermal Heating For Snowmelt System",
@@ -152,7 +175,16 @@ export const projects: Project[] = [
     status: "In Progress",
     summary: "Learn how Breckenridge is laying the groundwork for a scalable thermal energy network designed to support sustainability, resilience, and future development.",
     description: "The Breckenridge project evaluates a community-scale Ambient Temperature Loop for one of Colorado’s premier mountain communities. Initial planning identified Town Hall, the Professional Building, the Parking Structure, the Transit Center, and City Market as potential anchor facilities. Additional future housing and community assets are also being considered for connection. The project focuses on creating a resilient energy platform capable of supporting future growth. GreyEdge is using a phased planning approach to evaluate routing, loads, and implementation strategies. This effort provides a roadmap for long-term municipal decarbonization. Thermal assets include CLAD systems, vertical geothermal bores, wastewater energy recovery, freshwater heat recovery, mine-water resources, solar thermal systems, and snowmelt heat collection. These resources are intended to reduce borefield requirements and improve overall system economics. The project is focused on replacing fossil fuel demand with renewable thermal resources. Breckenridge demonstrates how thermal asset diversity can support future district-energy development.",
-    team: [],
+    team: [
+      { name: "The GreyEdge Group", url: "/" },
+      { name: "Town of Breckenridge", url: "https://www.townofbreckenridge.com/" },
+      { name: "Colorado Energy Office (CEO)", url: "https://energyoffice.colorado.gov/" },
+      { name: "Xcel Energy", url: "https://www.xcelenergy.com/" },
+      { name: "CanAmerica Drilling" },
+      { name: "Geothermal Resource Technologies Inc. (GRTI)", url: "https://www.grti.com/" },
+      { name: "Bertram Drilling (later phase references)" },
+      { name: "Vail Resorts / Breckenridge Ski Resort (snowmelt plaza project)", url: "https://www.vailresorts.com/" },
+    ],
     articles: [
       {
         title: "Breckenridge Eyes Proposal For An Energy Network That Could Take Some Town Owned Facilities Off The Natural Gas Pipeline",
@@ -175,7 +207,12 @@ export const projects: Project[] = [
     status: "Operational",
     summary: "A master scale transformation of the CMU campus utilizing the patented Thermal Highway© architecture. TGEG engineered a high-performance thermal backbone that integrates 22 buildings into a single, cohesive network. This proprietary system demonstrates the power of thermal energy sharing to drastically lower carbon intensity while providing institutional grade utility stability for future expansions",
     description: "Colorado Mesa University is a proven campus-scale Thermal Energy Network in Grand Junction, Colorado. The operational system serves approximately 19 academic, administrative, and student facilities across a 1.4 million-square-foot campus. A shared Ambient Temperature Loop enables buildings to exchange thermal energy and improve overall efficiency. The project demonstrates how phased implementation can support ongoing campus growth. GreyEdge considers CMU a leading precedent for higher-education thermal infrastructure. The network provides measurable operational and environmental benefits while improving resiliency. Thermal assets include seven geoexchange fields, an irrigation-water heat exchanger, ground-loop heat pumps, cooling towers, and backup boilers. The system capacity is approximately 4,700 tons. The Thermal Energy Network has provided a savings of $2 million in annual utility costs. The project has also reduced carbon emissions by more than 8,800 metric tons of CO2e. CMU demonstrates how an Ambient Temperature Loop can deliver scalable performance at the campus level.",
-    team: [],
+    team: [
+      { name: "The GreyEdge Group", url: "/" },
+      { name: "Bighorn Engineering", url: "https://www.bighornengineering.com/" },
+      { name: "Colorado Mesa University", url: "https://www.coloradomesa.edu/" },
+      { name: "McKinstry", url: "https://www.mckinstry.com/" },
+    ],
     articles: [
       {
         title: "Cmu Geothermal Expansion Builds Million Energy Savings",
@@ -198,7 +235,10 @@ export const projects: Project[] = [
     status: "In Progress",
     summary: "Discover how Crested Butte is leveraging local energy resources to create a resilient and scalable framework for community energy planning.",
     description: "The Crested Butte project evaluates municipal Thermal Energy Networks serving public facilities in Crested Butte, Colorado. The initial wastewater treatment district includes eight buildings totaling approximately 50,545 square feet. The project focuses on creating resilient infrastructure using locally available energy resources. The GreyEdge Group assessed opportunities to reduce energy consumption while supporting future district expansion. The study demonstrates how municipal facilities can benefit from shared thermal infrastructure. Thermal assets include wastewater effluent heat recovery, biofiltration heat exchange, geoexchange boreholes, solar thermal technologies, and existing boilers as peaking resources. The wastewater treatment district has an estimated peak heating load of approximately 230 tons. Analysis indicated that a hybrid Ambient Temperature Loop could reduce capital costs by approximately 39 percent, representing roughly $2.7 million in savings versus a geoexchange-only system. Energy consumption compared to current infrastructure is estimated to be reduced by approximately 87 percent. The project highlights how wastewater resources can become valuable thermal assets for municipal energy planning.",
-    team: [],
+    team: [
+      { name: "The GreyEdge Group", url: "/" },
+      { name: "Town of Crested Butte", url: "https://www.crestedbutte-co.gov/" },
+    ],
     articles: [],
     image: "/images/projects/crested-butte.jpeg",
     imageAlt: "Vibrant yellow and orange calendula flowers bloom in sharp focus in the foreground, with the historic colorful storefronts of downtown Crested Butte, Colorado, and the massive, snow-dusted peak of Crested Butte mountain blurred beautifully in the background under a clear blue sky.",
@@ -215,7 +255,13 @@ export const projects: Project[] = [
     status: "In Progress",
     summary: "See how Park City is evaluating shared energy infrastructure to support redevelopment, strengthen sustainability goals, and create a flexible framework for long-term community growth.",
     description: "The Park City project evaluates district-scale Thermal Energy Networks across key redevelopment areas including Bonanza Park in Park City, Utah. The study includes public facilities, private development opportunities, and future mixed-use construction. The GreyEdge Group assessed how shared infrastructure could support long-term redevelopment and sustainability goals. Planning identified opportunities for district energy systems that can grow alongside future development. The project provides a framework for community-scale electrification and resilient energy infrastructure. Thermal assets considered include wastewater energy recovery, mine-water resources, solar thermal systems, CLAD technology, vertical boreholes, groundwater infrastructure, snowmelt solar collection, and surface-water opportunities. The study is focused on identifying the most viable pathways for an Ambient Temperature Loop. The diverse portfolio of thermal resources provides significant flexibility for future implementation. Park City demonstrates how district-energy planning can be integrated into community redevelopment strategies.",
-    team: [],
+    team: [
+      { name: "The GreyEdge Group", url: "/" },
+      { name: "Park City Municipal Corporation", url: "https://www.parkcity.org/" },
+      { name: "Cairn Global" },
+      { name: "Snyderville Basin Water Reclamation District", url: "https://www.sbwrd.org/" },
+      { name: "Utah Department of Natural Resources", url: "https://naturalresources.utah.gov/" },
+    ],
     articles: [
       {
         title: "Park City Explores Thermal Technology As Energy Efficiency Tool",
@@ -238,7 +284,11 @@ export const projects: Project[] = [
     status: "In Progress",
     summary: "Discover how Telluride is combining housing, infrastructure, and clean energy planning to support long-term community goals and environmental leadership",
     description: "The Telluride project supports affordable housing, transit, commercial development, and municipal infrastructure in Telluride, Colorado. The development program includes approximately 265 housing units, 20,000 square feet of commercial space, parking facilities, childcare, and public-service infrastructure. Planned facilities include mixed-use developments at Lot L and Carhenge along with public works and transit assets. By integrating these uses into a shared Thermal Energy Network, the Town can support growth without relying on conventional heating approaches. The project aligns housing, transportation, and sustainability objectives within a single infrastructure strategy. GreyEdge identified a strong opportunity for district energy implementation in this rapidly evolving area. Thermal assets evaluated include wastewater energy recovery, energy piles, vertical boreholes, Genesys CLAD technology, solar thermal systems, snowmelt collection, and mine-water resources. Project studies identified an estimated 1,000-ton heating load excluding snowmelt energy. Modeling indicated a potential greenhouse gas reduction of approximately 53 percent compared with a natural gas boiler baseline. The Ambient Temperature Loop concept provides flexibility for future community expansion and redevelopment. The project illustrates how shared infrastructure can support climate goals while addressing community housing needs.",
-    team: [],
+    team: [
+      { name: "The GreyEdge Group", url: "/" },
+      { name: "Town of Telluride", url: "https://www.telluride-co.gov/" },
+      { name: "Colorado Energy Office (CEO)", url: "https://energyoffice.colorado.gov/" },
+    ],
     articles: [],
     image: "/images/projects/telluride.webp",
     imageAlt: "Looking down historic Colorado Avenue in downtown Telluride, Colorado, lined with historic brick and wooden buildings flying Colorado and US flags, leading the eye toward a massive mountain box canyon with green slopes, rocky cliffs, and a waterfall under a bright sky.",
@@ -255,7 +305,10 @@ export const projects: Project[] = [
     status: "Operational",
     summary: "Explore how Weber State University is transforming a traditional campus district energy system into a multi-source Thermal Energy Network, leveraging geothermal resources, electrification, and infrastructure to improve efficiency, resilience, sustainability.",
     description: "Weber State University represents a large-scale campus modernization effort centered on electrification and geothermal infrastructure in Ogden, Utah. The project encompasses approximately 31 academic, administrative, and support buildings totaling 3,273,915 square feet. GreyEdge-related planning evaluated how geothermal resources could support long-term campus sustainability goals. The phased approach allows the University to modernize infrastructure while maintaining reliable building operations. The project demonstrates how large institutions can transition from conventional heating systems over time. It also provides a model for higher education decarbonization and energy resiliency. Thermal assets include campus geothermal fields, building electrification measures, and connected thermal infrastructure. The project has resulted in a significant drop in annual energy consumption. The energy use intensity has dropped from 125kBtu/sf/yr to 60kBtu/sf/yr. The system retrofit has shown a 50 percent utility-cost reduction over a 15-year period. This project highlights the long-term value of phased geothermal implementation on higher-education campuses.",
-    team: [],
+    team: [
+      { name: "Weber State University", url: "https://www.weber.edu/" },
+      { name: "The GreyEdge Group", url: "/" },
+    ],
     articles: [],
     image: "/images/projects/weber-state-university.webp",
     imageAlt: "Weber State University Campus Project Picture",

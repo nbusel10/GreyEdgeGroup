@@ -23,7 +23,7 @@ export default function ProjectDetail() {
   const stats = [
     { label: 'Square feet', value: project.sqFeet ?? 'In progress' },
     { label: 'Buildings', value: project.buildings ?? 'In progress' },
-    { label: 'Completion', value: project.completion },
+    { label: 'Status', value: project.completion },
     { label: 'Location', value: project.location },
   ].filter((s) => s.value)
 

@@ -18,7 +18,7 @@ export default function FinalCta() {
                 Start planning
               </Btn>
               <Btn to={doors.education.to} variant="ghost">
-                Or just learn more
+                Learn More
               </Btn>
             </div>
           </Reveal>
