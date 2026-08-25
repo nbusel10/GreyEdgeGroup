@@ -476,7 +476,7 @@ export const team: TeamMember[] = [
   {
     slug: "ian-talbot",
     name: "Ian Talbot",
-    role: "Engineering and Design",
+    role: "Engineer in Training - EIT",
     credentials: null,
     email: "italbot@greyedgegroup.com",
     phone: "385-348-0281",

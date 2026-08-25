@@ -37,7 +37,7 @@ const ROLE_OVERRIDES = {
   'mark-smith': 'Geoexchange Design and Installation',
   'garry-sexton': 'Renewable Energy Engineering and Design',
   'roshan-revankar': 'Geothermal Design and Energy Modeling',
-  'ian-talbot': 'Engineering and Design',
+  'ian-talbot': 'Engineer in Training - EIT',
   'delaini-moss-marriott': 'Marketing and Creative',
 }
 

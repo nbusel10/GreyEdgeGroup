@@ -60,7 +60,7 @@ export default function About() {
       <PageHero
         eyebrow="Who we are"
         title="About Us"
-        lead="GreyEdge is a collective of practitioners, not a firm that hired its way into geothermal. The difference shows up in the details of every project."
+        lead="The GreyEdge Group is a collective of practitioners, not a firm that hired its way into geothermal. The difference shows up in the details of every project."
       />
 
       {/* Who we are */}
@@ -196,7 +196,7 @@ export default function About() {
 
           <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-5 lg:gap-6">
             {team.map((m, i) => (
-              <Reveal key={m.slug} delay={(i % 5) * 0.04}>
+              <Reveal key={m.slug} delay={(i % 5) * 0.04} className="h-full">
                 <TeamCard member={m} />
               </Reveal>
             ))}
@@ -270,7 +270,7 @@ function TeamCard({ member }: { member: TeamMember }) {
   }[]
 
   return (
-    <article className="group border border-ge-light bg-white transition-colors hover:border-ge-charcoal">
+    <article className="group flex h-full flex-col border border-ge-light bg-white transition-colors hover:border-ge-charcoal">
       <div className="relative aspect-[4/5] overflow-hidden bg-ge-light">
         <Link to={`/team/${member.slug}`} className="absolute inset-0 block" aria-label={`${member.name} profile`}>
           {member.image && (
@@ -303,7 +303,7 @@ function TeamCard({ member }: { member: TeamMember }) {
         )}
       </div>
 
-      <Link to={`/team/${member.slug}`} className="block p-4 text-center sm:p-5">
+      <Link to={`/team/${member.slug}`} className="flex flex-1 flex-col p-4 text-center sm:p-5">
         <div className="font-display text-base font-bold uppercase leading-tight tracking-wide text-ge-black transition-colors group-hover:text-ge-accent sm:text-lg">
           {member.name}
         </div>

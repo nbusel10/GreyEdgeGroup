@@ -31,7 +31,7 @@ export const story = {
   year: '2016',
   title: 'The GreyEdge Group founded',
   body: [
-    'GreyEdge was founded as something intentionally different: a collective of the Thermal Energy Networks industry’s most accomplished individual practitioners, brought together around a shared conviction that TENs represented the future of district-scale decarbonization.',
+    'The GreyEdge Group was founded as something intentionally different: a collective of the Thermal Energy Networks industry’s most accomplished individual practitioners, brought together around a shared conviction that TENs represented the future of district-scale decarbonization.',
     'Our founding members include the engineer who pioneered in-situ thermal conductivity testing in 1994, the hydronics specialist who brought the one-pipe ambient loop into the modern era, and a team that contributed significantly to every major geothermal standard and created the industry’s certification curricula.',
     'What began as a network of collaborating specialists has been forged into a focused, aligned team, one whose collective experience designing, building and operating real ambient loop systems is unmatched anywhere in North America.',
   ],
@@ -45,7 +45,7 @@ export const story = {
 export const whyUs = {
   eyebrow: 'The Mission',
   heading: 'Why choose us',
-  lead: 'Clients choose GreyEdge because successful thermal infrastructure takes more than good engineering. It takes practical solutions that balance performance, constructability, cost and long-term operational success.',
+  lead: 'Clients choose The GreyEdge Group because successful thermal infrastructure takes more than good engineering. It takes practical solutions that balance performance, constructability, cost and long-term operational success.',
   body: [
     'Using a deep understanding of heat pump optimization, we blend geothermal with a diverse array of localized energy sources: solar thermal, wastewater, industrial waste heat, thermal storage and mine water.',
     'By connecting these multi-source thermal districts across large geographic areas, we deliver predictable performance at higher efficiency, with lower capital and reduced operating costs compared to legacy systems.',
