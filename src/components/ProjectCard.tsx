@@ -16,7 +16,7 @@ export default function ProjectCard({ project, eager = false }: { project: Proje
       to={`/projects/${slug}`}
       className="group flex h-full flex-col border border-ge-light bg-white transition-colors hover:border-ge-accent"
     >
-      <div className="relative h-60 shrink-0 overflow-hidden bg-ge-light md:h-64">
+      <div className="img-cut relative h-60 shrink-0 overflow-hidden bg-white md:h-64">
         {image && (
           <img
             src={image}

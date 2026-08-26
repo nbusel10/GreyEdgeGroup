@@ -16,7 +16,7 @@ export default function NotFound() {
         >
           This one&rsquo;s <span className="text-ge-accent">off the map.</span>
         </h1>
-        <p className="mt-6 max-w-lg font-body text-base leading-relaxed text-ge-silver">
+        <p className="mt-6 max-w-lg font-body text-base leading-relaxed text-ge-light sm:text-lg">
           The page you were looking for doesn&rsquo;t exist. Here are a few places that do.
         </p>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">

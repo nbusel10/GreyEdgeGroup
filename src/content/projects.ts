@@ -23,7 +23,7 @@ export interface Project {
   completion: string | null
   status: 'In Progress' | 'In Development' | 'Operational' | 'Completed'
   summary: string
-  description: string
+  description: string | string[]
   /** Project partners / collaborating orgs. Empty when not yet collected. */
   team: ProjectTeamMember[]
   articles: ProjectArticle[]
@@ -206,7 +206,10 @@ export const projects: Project[] = [
     completion: "Operational / Phased Expansion",
     status: "Operational",
     summary: "See how Colorado Mesa University became a leading example of campus energy innovation through a phased geothermal and thermal network strategy.",
-    description: "Colorado Mesa University is a proven campus-scale Thermal Energy Network in Grand Junction, Colorado. The operational system serves approximately 19 academic, administrative, and student facilities across a 1.4 million-square-foot campus. A shared Ambient Temperature Loop enables buildings to exchange thermal energy and improve overall efficiency. The project demonstrates how phased implementation can support ongoing campus growth. GreyEdge considers CMU a leading precedent for higher-education thermal infrastructure. The network provides measurable operational and environmental benefits while improving resiliency. Thermal assets include seven geoexchange fields, an irrigation-water heat exchanger, ground-loop heat pumps, cooling towers, and backup boilers. The system capacity is approximately 4,700 tons. The Thermal Energy Network has provided a savings of $2 million in annual utility costs. The project has also reduced carbon emissions by more than 8,800 metric tons of CO2e. CMU demonstrates how an Ambient Temperature Loop can deliver scalable performance at the campus level.",
+    description: [
+      "Colorado Mesa University is a proven campus-scale Thermal Energy Network in Grand Junction, Colorado. Members of The GreyEdge Group, Cary Smith and Mark Smith, helped develop and implement the system, bringing firsthand experience that continues to inform our work today. The operational system serves approximately 19 academic, administrative, and student facilities across a 1.4 million-square-foot campus. A shared Ambient Temperature Loop enables buildings to exchange thermal energy and improve overall efficiency. The project demonstrates how phased implementation can support ongoing campus growth. GreyEdge considers CMU a leading precedent for higher-education thermal infrastructure. The network provides measurable operational and environmental benefits while improving resiliency.",
+      "Thermal assets include seven geoexchange fields, an irrigation-water heat exchanger, ground-loop heat pumps, cooling towers, and backup boilers. The system capacity is approximately 4,700 tons. The Thermal Energy Network has provided approximately $2 million in annual utility cost savings and reduced carbon emissions by more than 8,800 metric tons of CO₂e. CMU demonstrates how an Ambient Temperature Loop can deliver scalable performance at the campus level.",
+    ],
     team: [
       { name: "The GreyEdge Group", url: "/" },
       { name: "Bighorn Engineering", url: "https://www.bighornengineering.com/" },
@@ -215,10 +218,30 @@ export const projects: Project[] = [
     ],
     articles: [
       {
+        title: "Networked Geothermal: The National Picture",
+        publisher: "HEET",
+        url: "https://www.heet.org/blog-items/networked-geothermal-the-national-picture",
+      },
+      {
+        title: "Geo-Grid System",
+        publisher: "Colorado Mesa University",
+        url: "https://www.coloradomesa.edu/sustainability/initiatives/geo-grid.html",
+      },
+      {
+        title: "Geothermal Heat Pump Case Study: Colorado Mesa University",
+        publisher: "U.S. Department of Energy",
+        url: "https://www.energy.gov/hgeo/geothermal/geothermal-heat-pump-case-study-colorado-mesa-university",
+      },
+      {
+        title: "Colorado Mesa University Has Proven Geothermal Energy Can Largely Replace Fossil Fuels in Its Buildings. Now the World Is Taking Notice",
+        publisher: "CPR News",
+        url: "https://www.cpr.org/2025/04/23/colorado-mesa-university-geothermal-energy-use/",
+      },
+      {
         title: "Cmu Geothermal Expansion Builds Million Energy Savings",
         publisher: "kkco11news.com",
-        url: "https://www.kkco11news.com/2026/02/19/cmu-geothermal-expansion-builds-12-million-energy-savings/"
-      }
+        url: "https://www.kkco11news.com/2026/02/19/cmu-geothermal-expansion-builds-12-million-energy-savings/",
+      },
     ],
     image: "/images/projects/colorado-mesa.webp",
     imageAlt: "Colorado Mesa Project Site Picture",
@@ -304,17 +327,30 @@ export const projects: Project[] = [
     completion: "Operational / Phased Expansion 2040",
     status: "Operational",
     summary: "Explore how Weber State University is transforming a traditional campus district energy system into a multi-source Thermal Energy Network, leveraging geothermal resources, electrification, and infrastructure to improve efficiency, resilience, sustainability.",
-    description: "Weber State University represents a large-scale campus modernization effort centered on electrification and geothermal infrastructure in Ogden, Utah. The project encompasses approximately 31 academic, administrative, and support buildings totaling 3,273,915 square feet. GreyEdge-related planning evaluated how geothermal resources could support long-term campus sustainability goals. The phased approach allows the University to modernize infrastructure while maintaining reliable building operations. The project demonstrates how large institutions can transition from conventional heating systems over time. It also provides a model for higher education decarbonization and energy resiliency. Thermal assets include campus geothermal fields, building electrification measures, and connected thermal infrastructure. The project has resulted in a significant drop in annual energy consumption. The energy use intensity has dropped from 125kBtu/sf/yr to 60kBtu/sf/yr. The system retrofit has shown a 50 percent utility-cost reduction over a 15-year period. This project highlights the long-term value of phased geothermal implementation on higher-education campuses.",
+    description: [
+      "Weber State University represents a large-scale campus modernization effort centered on electrification and geothermal infrastructure in Ogden, Utah. Members of The GreyEdge Group, Cary Smith and Mark Smith, played key roles in advancing the geothermal and energy-transition strategies that helped shape the University's long-term infrastructure vision. The project encompasses approximately 31 academic, administrative, and support buildings totaling 3.27 million square feet. Planning efforts evaluated how geothermal resources could support campus-wide decarbonization, improve energy performance, and reduce reliance on conventional heating systems. Through a phased implementation approach, the University has been able to modernize critical infrastructure while maintaining reliable building operations. The project serves as a leading example of how higher education institutions can transition toward resilient, all-electric energy systems over time.",
+      "Thermal assets include campus geothermal fields, building electrification measures, and interconnected thermal infrastructure designed to support long-term sustainability goals. The project has resulted in a significant reduction in annual energy consumption, with campus energy use intensity decreasing from 125 kBtu/sf/yr to 60 kBtu/sf/yr. Over a 15-year period, the system retrofit has demonstrated approximately 50 percent utility cost savings. Weber State University highlights the long-term value of integrating geothermal infrastructure into a phased campus modernization strategy, while showcasing the type of transformational work that informs The GreyEdge Group's approach to higher-education energy systems today.",
+    ],
     team: [
       { name: "Weber State University", url: "https://www.weber.edu/" },
       { name: "The GreyEdge Group", url: "/" },
     ],
     articles: [
       {
+        title: "WSU's Climate Action Plan & Energy Strategy",
+        publisher: "Weber State University",
+        url: "https://www.weber.edu/sustainability/energy.html",
+      },
+      {
+        title: "Networked Geothermal: The National Picture",
+        publisher: "HEET",
+        url: "https://www.heet.org/blog-items/networked-geothermal-the-national-picture",
+      },
+      {
         title: "Geothermal Wells Deepen Weber State's Sustainability Efforts",
         publisher: "Standard-Examiner",
-        url: "https://www.standard.net/news/environment/2016/may/29/geothermal-wells-deepen-weber-states-sustainability-efforts/"
-      }
+        url: "https://www.standard.net/news/environment/2016/may/29/geothermal-wells-deepen-weber-states-sustainability-efforts/",
+      },
     ],
     image: "/images/projects/weber-state-university.webp",
     imageAlt: "Weber State University Campus Project Picture",

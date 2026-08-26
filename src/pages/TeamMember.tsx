@@ -1,8 +1,85 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
+import type { ReactNode } from 'react'
+import { firmLinks } from '../content/firms'
 import { getMember, team } from '../content/team'
+import { projects } from '../content/projects'
 import FinalCta from '../components/sections/FinalCta'
-import { Container, Eyebrow, Reveal, Section } from '../components/ui'
+import { Container, Eyebrow, Reveal, Section, proseLinkClass } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
+
+const contactLinkClass =
+  'font-body text-sm text-ge-light underline decoration-ge-accent decoration-2 underline-offset-4 transition-colors hover:text-ge-accent-bright'
+
+type ProseLink = { label: string; href: string; external?: boolean }
+
+/** Firms + project names — longest label first so shorter names don’t steal the match. */
+const namedLinks: ProseLink[] = [
+  ...firmLinks.map((f) => ({ label: f.label, href: f.href, external: true })),
+  ...projects.map((p) => ({ label: p.name, href: `/projects/${p.slug}`, external: false })),
+].sort((a, b) => b.label.length - a.label.length)
+
+const namedLinkPattern = new RegExp(
+  `(${namedLinks.map(({ label }) => label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`,
+  'g',
+)
+
+const namedLinkByLabel = new Map(namedLinks.map((l) => [l.label, l]))
+
+const urlPattern = /(https?:\/\/[^\s]+)/g
+
+function linkNode(hit: ProseLink, text: string, key: string): ReactNode {
+  if (hit.external) {
+    return (
+      <a key={key} href={hit.href} target="_blank" rel="noopener noreferrer" className={proseLinkClass}>
+        {text}
+      </a>
+    )
+  }
+  return (
+    <Link key={key} to={hit.href} className={proseLinkClass}>
+      {text}
+    </Link>
+  )
+}
+
+/** Link firm / project names and bare URLs in bio prose. */
+function linkBioProse(text: string): ReactNode[] {
+  const namedParts = text.split(namedLinkPattern)
+  const out: ReactNode[] = []
+
+  namedParts.forEach((part, i) => {
+    const hit = namedLinkByLabel.get(part)
+    if (hit) {
+      out.push(linkNode(hit, part, `${hit.href}-${i}`))
+      return
+    }
+
+    const urlParts = part.split(urlPattern)
+    urlParts.forEach((chunk, j) => {
+      if (!chunk) return
+      if (/^https?:\/\//i.test(chunk)) {
+        const href = chunk.replace(/[.,;:)]+$/, '')
+        const trailing = chunk.slice(href.length)
+        out.push(
+          <a
+            key={`url-${i}-${j}`}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={proseLinkClass}
+          >
+            {href}
+          </a>,
+        )
+        if (trailing) out.push(trailing)
+      } else {
+        out.push(chunk)
+      }
+    })
+  })
+
+  return out
+}
 
 export default function TeamMemberPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -56,10 +133,7 @@ export default function TeamMemberPage() {
                   <div>
                     <dt className="font-body text-[10px] uppercase tracking-[0.2em] text-ge-steel">Email</dt>
                     <dd className="mt-1">
-                      <a
-                        href={`mailto:${member.email}`}
-                        className="font-body text-sm text-ge-light underline decoration-ge-accent decoration-2 underline-offset-4 transition-colors hover:text-ge-accent-bright"
-                      >
+                      <a href={`mailto:${member.email}`} className={contactLinkClass}>
                         {member.email}
                       </a>
                     </dd>
@@ -69,10 +143,7 @@ export default function TeamMemberPage() {
                   <div>
                     <dt className="font-body text-[10px] uppercase tracking-[0.2em] text-ge-steel">Phone</dt>
                     <dd className="mt-1">
-                      <a
-                        href={`tel:${member.phone.replace(/[^\d+]/g, '')}`}
-                        className="font-body text-sm text-ge-light transition-colors hover:text-ge-accent-bright"
-                      >
+                      <a href={`tel:${member.phone.replace(/[^\d+]/g, '')}`} className={contactLinkClass}>
                         {member.phone}
                       </a>
                     </dd>
@@ -86,7 +157,7 @@ export default function TeamMemberPage() {
                         href={member.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-body text-sm text-ge-light transition-colors hover:text-ge-accent-bright"
+                        className={contactLinkClass}
                       >
                         {member.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}
                       </a>
@@ -101,7 +172,7 @@ export default function TeamMemberPage() {
                         href={member.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-body text-sm text-ge-light transition-colors hover:text-ge-accent-bright"
+                        className={contactLinkClass}
                       >
                         View profile
                       </a>
@@ -131,7 +202,7 @@ export default function TeamMemberPage() {
                             : 'font-body text-base leading-relaxed text-ge-graphite'
                         }
                       >
-                        {p}
+                        {linkBioProse(p)}
                       </p>
                     ))}
                   </div>
@@ -155,7 +226,7 @@ export default function TeamMemberPage() {
                       <ul className="mt-4 space-y-2.5">
                         {s.items.map((item, i) => (
                           <li key={i} className="font-body text-sm leading-relaxed text-ge-graphite">
-                            {item}
+                            {linkBioProse(item)}
                           </li>
                         ))}
                       </ul>

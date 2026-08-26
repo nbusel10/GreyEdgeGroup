@@ -38,8 +38,8 @@ export const story = {
   /** The longer form of the line Matt likes, from the current About page. */
   pullQuote:
     'We paid our dues years ago to learn the lessons many of our competitors are only getting to now. Every one of our projects benefits from that hard-earned wisdom.',
-  image: site.puzzle.src,
-  imageAlt: site.puzzle.alt,
+  image: site['shaping-the-future'].src,
+  imageAlt: site['shaping-the-future'].alt,
 }
 
 export const whyUs = {

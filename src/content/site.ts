@@ -16,7 +16,7 @@ export const org = {
 export const hero = {
   eyebrow: 'Thermal Utility Master Planners',
   words: ['Efficient.', 'Resilient.', 'Reliable.'],
-  headline: 'Your Partner for Heating & Cooling Solutions',
+  headline: 'Your Partner for Thermal Energy Network Solutions',
   body: 'With over 300 years of combined experience shaping the geothermal industry, we work with developers, campuses, and communities to build Thermal Energy Networks that deliver resilient, reliable, efficient heating and cooling.',
   image: site['hero-ski-town'].src,
   imageAlt: site['hero-ski-town'].alt,

@@ -1,4 +1,4 @@
-import { anchorQuote, stats } from '../../content/advantage'
+import { anchorQuote, partnerBriefBody, stats } from '../../content/advantage'
 import { site } from '../../content/images'
 import { GWatermark } from '../GMark'
 import { Btn, Container, Eyebrow, Reveal, StatBlock } from '../ui'
@@ -26,9 +26,8 @@ export default function PartnerBrief() {
                   {anchorQuote}
                 </p>
               </blockquote>
-              <p className="mt-8 max-w-xl font-body text-base leading-relaxed text-ge-silver">
-                We can support every phase from first design through final delivery, or join wherever a project already
-                is: one strategy, one set of numbers, one shared obligation for how the system performs.
+              <p className="mt-8 max-w-xl font-body text-base leading-relaxed text-ge-light sm:text-lg">
+                {partnerBriefBody}
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <Btn to="/approach" variant="light">

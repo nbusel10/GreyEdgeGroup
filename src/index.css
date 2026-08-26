@@ -766,12 +766,41 @@ body {
   animation: scrollTip 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
+/* Charcoal tip travels up the arrow shaft (inverse of hero scrollTip). */
+@keyframes scrollUpTip {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(-0.5rem - 100%));
+    opacity: 0;
+  }
+}
+
+.scroll-up-tip {
+  animation: scrollUpTip 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-scroll-tip {
     animation: none;
     top: 0;
     opacity: 1;
     transform: none;
+  }
+
+  .scroll-up-tip {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    top: 0;
   }
 }
 

@@ -206,7 +206,7 @@ export default function Contact() {
                   </span>
                   Still Exploring?
                 </h2>
-                <p className="mt-3 font-body text-sm leading-relaxed text-ge-silver">
+                <p className="mt-3 font-body text-sm leading-relaxed text-ge-light">
                   Learn how thermal energy networks work, what resources are available, and where the opportunities
                   may exist within your community.
                 </p>

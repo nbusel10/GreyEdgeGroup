@@ -72,7 +72,7 @@ export default function Footer() {
             <Link to="/" className="text-2xl">
               <Logo tone="light" />
             </Link>
-            <p className="mt-5 font-body text-xs leading-relaxed text-ge-silver">
+            <p className="mt-5 font-body text-xs leading-relaxed text-ge-light">
               {org.tagline}.
               <br />
               {org.region}.

@@ -80,6 +80,38 @@ export const site = {
     src: "/images/site/puzzle.webp",
     alt: "GreyEdge team members collaborate by fitting large grey puzzle pieces together."
   },
+  "approach-planning-session": {
+    src: "/images/site/approach-planning-session.webp",
+    alt: "Engineers and planners reviewing architectural blueprints at a wooden table with hard hats nearby during a collaborative design session."
+  },
+  "approach-existing-assets": {
+    src: "/images/site/approach-existing-assets.webp",
+    alt: "Large rooftop cooling towers and industrial HVAC piping on a commercial building under a clear blue sky."
+  },
+  "shaping-the-future": {
+    src: "/images/site/shaping-the-future.webp",
+    alt: "Two engineers in hard hats and safety vests reviewing a large infrastructure construction site at sunrise, with a highway overpass in the background."
+  },
+  "service-planning": {
+    src: "/images/site/service-planning.webp",
+    alt: "Engineer reviewing architectural blueprints with drafting tools, a laptop, and a building model on a design desk."
+  },
+  "service-ground": {
+    src: "/images/site/service-ground.webp",
+    alt: "Large drilling rig with spiral auger at a geothermal borefield construction site at sunset."
+  },
+  "service-network": {
+    src: "/images/site/service-network.webp",
+    alt: "Engineering team reviewing floor plans and thermal network blueprints at a table with a hard hat and laptop."
+  },
+  "service-delivery": {
+    src: "/images/site/service-delivery.webp",
+    alt: "Aerial view of a campus district with buildings, green spaces, and roads under a bright sky."
+  },
+  "service-advisory": {
+    src: "/images/site/service-advisory.webp",
+    alt: "Field professionals in hard hats and safety vests walking through a solar array during a site inspection."
+  },
   "campus-build": {
     src: "/images/site/campus-build.webp",
     alt: "An ariel view of a TEN being developed on a University campus"

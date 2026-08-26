@@ -14,6 +14,9 @@ import { site } from './images'
 export const anchorQuote =
   'We paid our dues in the field years ago, and our clients benefit from that hard-earned wisdom on every project.'
 
+export const partnerBriefBody =
+  'We bring together the expertise required to move Thermal Energy Networks from vision to reality. Through strategic planning, technical leadership, funding support, stakeholder coordination, and project execution, we provide the continuity needed to advance projects efficiently from early concept through long-term operation.'
+
 export interface Lesson {
   /** Short picker label. */
   short: string
@@ -32,8 +35,8 @@ export const lessons: Lesson[] = [
     detail:
       'A design team, a drilling contractor, and a mechanical contractor can each do competent work and still hand you a system that underperforms. Someone has to own the seams.',
     capability: 'Master planning and owner’s representation',
-    image: site.puzzle.src,
-    imageAlt: site.puzzle.alt,
+    image: site['approach-planning-session'].src,
+    imageAlt: site['approach-planning-session'].alt,
   },
   {
     short: 'Early decisions',
@@ -68,8 +71,8 @@ export const lessons: Lesson[] = [
     detail:
       'Cooling towers, boilers, and utility tunnels are often treated as things to remove. Frequently they are the cheapest capacity on the site.',
     capability: 'Third-party review and forensic analysis',
-    image: site['onsite-work'].src,
-    imageAlt: site['onsite-work'].alt,
+    image: site['approach-existing-assets'].src,
+    imageAlt: site['approach-existing-assets'].alt,
   },
 ]
 
@@ -86,8 +89,8 @@ export const serviceGroups: ServiceGroup[] = [
   {
     short: 'Planning',
     title: 'Planning & studies',
-    image: site['design-meeting'].src,
-    imageAlt: site['design-meeting'].alt,
+    image: site['service-planning'].src,
+    imageAlt: site['service-planning'].alt,
     items: [
       'Thermal utility master planning',
       'Feasibility and resource studies',
@@ -97,29 +100,29 @@ export const serviceGroups: ServiceGroup[] = [
   {
     short: 'Resources',
     title: 'Ground & resources',
-    image: site['district-scale-site-planning'].src,
-    imageAlt: site['district-scale-site-planning'].alt,
+    image: site['service-ground'].src,
+    imageAlt: site['service-ground'].alt,
     items: ['Hydrogeology and subsurface analysis', 'Drilling and geoexchange design'],
   },
   {
     short: 'Networks',
     title: 'Network design',
-    image: site['network-diagram'].src,
-    imageAlt: site['network-diagram'].alt,
+    image: site['service-network'].src,
+    imageAlt: site['service-network'].alt,
     items: ['Thermal network engineering', 'Ambient temperature loop design'],
   },
   {
     short: 'Delivery',
     title: 'Delivery & verification',
-    image: site['thermal-plant-inspection'].src,
-    imageAlt: site['thermal-plant-inspection'].alt,
+    image: site['service-delivery'].src,
+    imageAlt: site['service-delivery'].alt,
     items: ['Construction and constructability coordination', 'Commissioning and performance validation'],
   },
   {
     short: 'Advisory',
     title: 'Advisory & stewardship',
-    image: site['advisory-meeting'].src,
-    imageAlt: site['advisory-meeting'].alt,
+    image: site['service-advisory'].src,
+    imageAlt: site['service-advisory'].alt,
     items: [
       'Third-party and peer review',
       'Owner’s representation',
@@ -133,7 +136,7 @@ export const serviceGroups: ServiceGroup[] = [
 export const capabilities: string[] = serviceGroups.flatMap((g) => g.items)
 
 export const capabilityNote =
-  'One team, one accountability. Engage us across the whole arc, or bring us in where the gap is.'
+  'Every project is different. We can lead from concept through completion or provide focused expertise where it\u2019s needed most, helping you overcome obstacles and maintain momentum.'
 
 export interface Stat {
   value: number
@@ -147,7 +150,7 @@ export interface Stat {
 
 export const stats: Stat[] = [
   { value: 1000, suffix: '+', label: 'Geothermal projects' },
-  { value: 22, label: 'Thermal network specialists' },
+  { value: 15, label: 'Thermal network specialists' },
   { value: 300, suffix: '+', label: 'Years of combined experience' },
   { value: 80000, label: 'Tons of installed capacity' },
 ]

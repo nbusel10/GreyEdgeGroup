@@ -106,10 +106,10 @@ export default function Home() {
                 </Btn>
               </div>
               <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
-                Every project faces challenges, from site constraints and subsurface uncertainty to utility
-                coordination and mechanical complexity. TGEG helps clients navigate these obstacles with
-                rigorous analysis, innovative thermal network strategies, and practical solutions that deliver
-                reliable, long-term energy infrastructure.
+                Behind every successful thermal energy project is a series of complex decisions. From site
+                conditions and infrastructure constraints to utility integration and long-term performance, The
+                GreyEdge Group helps clients navigate each challenge with confidence, delivering practical
+                solutions that create lasting value.
               </p>
             </div>
           </Reveal>

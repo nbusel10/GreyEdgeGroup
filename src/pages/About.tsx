@@ -60,7 +60,7 @@ export default function About() {
       <PageHero
         eyebrow="Who we are"
         title="About Us"
-        lead="The GreyEdge Group is a collective of practitioners, not a firm that hired its way into geothermal. The difference shows up in the details of every project."
+        lead="The GreyEdge Group is more than a consulting firm. We are a team of practitioners whose experience was built in the field, on projects, and alongside clients. That foundation shapes the way we approach every opportunity, combining strategic guidance with practical insight to help projects succeed."
       />
 
       {/* Who we are */}
@@ -111,30 +111,44 @@ export default function About() {
       {/* Founding story */}
       <Section className="border-t border-ge-light bg-white">
         <Container>
-          <div className="grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-            <Reveal>
+          <div className="mt-10 grid gap-8 lg:mt-12 lg:grid-cols-[1.05fr_1fr] lg:items-stretch lg:gap-x-20 lg:gap-y-8">
+            <Reveal className="lg:col-start-1 lg:row-start-1">
               <Eyebrow>{story.eyebrow}</Eyebrow>
               <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
                 {story.heading}
               </h2>
-              <div className="mt-10">
-                <img src={story.image} alt={story.imageAlt} className="img-cut w-full object-cover" loading="lazy" />
-              </div>
             </Reveal>
 
-            <Reveal delay={0.08}>
+            <Reveal delay={0.08} className="lg:col-start-2 lg:row-start-1">
               <div className="flex items-baseline gap-5">
                 <span className="font-display text-6xl font-bold leading-none text-ge-accent">{story.year}</span>
                 <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-ge-black">{story.title}</h3>
               </div>
-              <div className="mt-8 space-y-5 border-l border-ge-light pl-7">
+            </Reveal>
+
+            <Reveal delay={0.06} className="h-full lg:col-start-1 lg:row-span-2 lg:row-start-2">
+              <div className="img-cut h-full min-h-64 overflow-hidden sm:min-h-72 lg:min-h-0">
+                <img
+                  src={story.image}
+                  alt={story.imageAlt}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.08} className="h-full lg:col-start-2 lg:row-start-2">
+              <div className="space-y-5 border-l border-ge-light pl-7">
                 {story.body.map((p) => (
                   <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-ge-graphite">
                     {p}
                   </p>
                 ))}
               </div>
-              <blockquote className="mt-10 border-l-2 border-ge-accent pl-7">
+            </Reveal>
+
+            <Reveal delay={0.12} className="lg:col-start-2 lg:row-start-3">
+              <blockquote className="border-l-2 border-ge-accent pl-7">
                 <p className="font-display text-2xl font-semibold uppercase leading-snug tracking-wide text-ge-black">
                   {story.pullQuote}
                 </p>

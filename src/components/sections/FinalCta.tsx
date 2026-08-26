@@ -12,7 +12,7 @@ export default function FinalCta() {
             <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-[0.98] tracking-tight text-white sm:text-5xl md:text-6xl">
               Let&rsquo;s plan <span className="text-ge-accent">what&rsquo;s next.</span>
             </h2>
-            <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-ge-silver">{finalCta.body}</p>
+            <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-ge-light sm:text-lg">{finalCta.body}</p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Btn to={doors.consultation.to} variant="light">
                 Start planning

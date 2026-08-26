@@ -2,6 +2,8 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { getProject, projects } from '../content/projects'
 import FinalCta from '../components/sections/FinalCta'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
+import { linkTeamNames } from '../lib/linkTeamNames'
+import { projectDescriptionParts } from '../lib/projectDescription'
 import { usePageMeta } from '../lib/meta'
 
 export default function ProjectDetail() {
@@ -30,17 +32,28 @@ export default function ProjectDetail() {
   return (
     <>
       <section className="relative flex min-h-[520px] items-end overflow-hidden bg-ge-black pt-28">
-        {project.image && (
-          <img src={project.image} alt={project.imageAlt} className="absolute inset-0 h-full w-full object-cover" />
+        {project.image ? (
+          <div className="img-cut absolute inset-0 bg-white">
+            <img src={project.image} alt={project.imageAlt} className="h-full w-full object-cover" />
+            <div
+              className="absolute inset-0"
+              aria-hidden="true"
+              style={{
+                background:
+                  'linear-gradient(to bottom, rgba(20,23,26,0.82) 0%, rgba(20,23,26,0.34) 38%, rgba(20,23,26,0.93) 100%)',
+              }}
+            />
+          </div>
+        ) : (
+          <div
+            className="absolute inset-0"
+            aria-hidden="true"
+            style={{
+              background:
+                'linear-gradient(to bottom, rgba(20,23,26,0.82) 0%, rgba(20,23,26,0.34) 38%, rgba(20,23,26,0.93) 100%)',
+            }}
+          />
         )}
-        <div
-          className="absolute inset-0"
-          aria-hidden="true"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(20,23,26,0.82) 0%, rgba(20,23,26,0.34) 38%, rgba(20,23,26,0.93) 100%)',
-          }}
-        />
         <Container className="relative pb-14">
           <Link
             to="/projects"
@@ -100,7 +113,13 @@ export default function ProjectDetail() {
                 {project.summary}
               </p>
               {project.description && (
-                <p className="mt-8 font-body text-base leading-relaxed text-ge-graphite">{project.description}</p>
+                <div className="mt-8 space-y-5">
+                  {projectDescriptionParts(project.description).map((para) => (
+                    <p key={para.slice(0, 48)} className="font-body text-base leading-relaxed text-ge-graphite">
+                      {linkTeamNames(para)}
+                    </p>
+                  ))}
+                </div>
               )}
             </Reveal>
 

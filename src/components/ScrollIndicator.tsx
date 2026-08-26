@@ -61,11 +61,18 @@ export default function ScrollIndicator() {
           strokeDashoffset={1 - progress}
         />
       </svg>
-      <span
-        className="relative block h-[14px] w-auto bg-current"
-        style={geMaskStyle}
-        aria-hidden="true"
-      />
+      <span className="flex flex-col items-center gap-1.5" aria-hidden="true">
+        <svg className="h-[5px] w-[8px] shrink-0 text-ge-black" viewBox="0 0 8 5" fill="none">
+          <path
+            d="M1 4L4 1L7 4"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        <span className="block h-[12px] w-auto shrink-0 bg-current" style={geMaskStyle} />
+      </span>
       <span className="sr-only">{Math.round(progress * 100)}% of page read</span>
     </button>
   )

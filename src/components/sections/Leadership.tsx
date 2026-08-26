@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { aboutHeadline, credits, intro, teaserHeadline, teaserProof } from '../../content/leadership'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../ui'
 
@@ -27,9 +28,12 @@ export default function Leadership({ variant = 'full' }: { variant?: LeadershipV
                   {i > 0 && (
                     <span className="mx-4 h-3 w-px bg-white/25 sm:mx-5" aria-hidden="true" />
                   )}
-                  <span className="font-body text-[10px] uppercase tracking-[0.18em] text-ge-light">
+                  <Link
+                    to="/about#leadership"
+                    className="font-body text-[10px] uppercase tracking-[0.18em] text-ge-light transition-colors hover:text-ge-accent"
+                  >
                     {label}
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>

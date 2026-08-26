@@ -32,16 +32,16 @@ export default function CollaborativeAdvantage() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-12 grid overflow-hidden border border-ge-light lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-            <div className="img-cut relative min-h-56 bg-ge-light sm:min-h-72 lg:min-h-full">
+          <div className="mt-12 grid overflow-hidden border border-ge-light lg:grid-cols-[minmax(260px,34%)_minmax(0,1fr)]">
+            <div className="img-cut relative aspect-[3/4] max-h-[28rem] bg-ge-light sm:max-h-[32rem] lg:aspect-auto lg:max-h-none lg:min-h-full">
               <img
                 key={current.image}
                 src={current.image}
                 alt={current.imageAlt}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
-            <div className="bg-white">
+            <div className="bg-ge-offwhite">
               {lessons.map((item, i) => {
                 const selected = active === i
                 return (
@@ -50,21 +50,21 @@ export default function CollaborativeAdvantage() {
                     type="button"
                     aria-pressed={selected}
                     onClick={() => setActive(i)}
-                    className={`w-full border-b border-ge-light px-6 py-5 text-left last:border-b-0 lg:px-8 ${
-                      selected ? 'bg-ge-offwhite' : 'bg-white hover:bg-ge-offwhite/60'
+                    className={`group w-full border-b border-ge-light px-6 py-5 text-left transition-colors last:border-b-0 lg:px-8 ${
+                      selected ? 'bg-white' : 'hover:bg-white/60'
                     }`}
                   >
                     <div className="flex items-baseline gap-4">
                       <span
                         className={`font-display text-xl font-bold leading-none ${
-                          selected ? 'text-ge-accent' : 'text-ge-light'
+                          selected ? 'text-ge-accent' : 'text-ge-steel'
                         }`}
                       >
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <span
-                        className={`font-display text-lg font-bold uppercase leading-snug tracking-wide ${
-                          selected ? 'text-ge-black' : 'text-ge-graphite'
+                        className={`font-display text-lg font-bold uppercase leading-snug tracking-wide transition-colors ${
+                          selected ? 'text-ge-black' : 'text-ge-steel group-hover:text-ge-graphite'
                         }`}
                       >
                         {item.short}
