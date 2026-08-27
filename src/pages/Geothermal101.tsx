@@ -4,7 +4,7 @@ import { doors } from '../content/advantage'
 import PageHero from '../components/PageHero'
 import AtlExplainer from '../components/sections/AtlExplainer'
 import FinalCta from '../components/sections/FinalCta'
-import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
+import { Btn, Container, Eyebrow, Reveal, Section, proseLinkClass } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 
 const schematic = {
@@ -112,7 +112,7 @@ export default function Geothermal101() {
       {/* What is a TEN */}
       <Section id="networks" className="bg-white">
         <Container>
-          <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+          <div className="grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
             <Reveal>
               <Eyebrow>The Concept</Eyebrow>
               <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
@@ -120,16 +120,26 @@ export default function Geothermal101() {
               </h2>
               <div className="mt-6 border-l-2 border-ge-accent pl-6">
                 <p className="font-body text-lg leading-relaxed text-ge-charcoal">
-                  A Thermal Energy Network connects multiple buildings through a shared water loop, allowing heat to
+                  A Thermal Energy Network connects buildings and thermal resources in a shared water loop, allowing heat to
                   move where it is needed instead of being generated, rejected, and replaced by each building
                   independently.
                 </p>
               </div>
               <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
-                The power of the system comes from diversity. Offices, apartments, schools, hospitals, and other
-                building types rarely need heating and cooling at the same time. By sharing energy across the network,
-                one building&rsquo;s excess heat can become another&rsquo;s resource, improving overall system
+                The power of the system comes from its ability to leverage diversity. Offices, apartments, schools, hospitals, and other
+                building types use heating and cooling on different schedules. By sharing energy across the network,
+                one building&rsquo;s cooling can become another&rsquo;s heat, improving overall system
                 efficiency and reducing wasted energy.
+              </p>
+              <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
+                A Thermal Energy Network is not a geothermal technology. It is a heat pump system that seeks to use
+                the most cost-effective source, sink, and storage option, or a mix of them, to satisfy the heating
+                and cooling needs of its buildings. Geoexchange is a common and extremely valuable resource that TENs
+                tap into, but it is one of many potential{' '}
+                <a href="#thermal-resources" className={proseLinkClass}>
+                  thermal resources
+                </a>{' '}
+                that can be connected to the network.
               </p>
               <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
                 As communities work to reduce emissions, manage electrical demand, and plan for future growth, Thermal
@@ -147,10 +157,10 @@ export default function Geothermal101() {
                 aria-haspopup="dialog"
                 aria-expanded={schematicOpen}
                 title="View schematic"
-                className="group relative mx-auto w-full cursor-zoom-in border border-ge-light bg-ge-offwhite p-4 md:p-6"
+                className="group relative w-full cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-ge-accent focus-visible:outline-offset-2"
               >
-                <img src={schematic.src} alt={schematic.alt} className="w-full" loading="lazy" />
-                <span className="pointer-events-none absolute inset-0 flex items-end justify-end bg-gradient-to-t from-ge-black/25 via-transparent to-transparent p-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 md:p-6">
+                <img src={schematic.src} alt={schematic.alt} className="img-cut w-full" loading="lazy" />
+                <span className="pointer-events-none absolute inset-0 flex items-end justify-end bg-gradient-to-t from-ge-black/25 via-transparent to-transparent p-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 md:p-3">
                   <span className="inline-flex items-center gap-2 bg-ge-black px-3 py-2 font-body text-[10px] font-medium uppercase tracking-[0.18em] text-white">
                     <svg className="h-3 w-3" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                       <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" />
@@ -174,8 +184,8 @@ export default function Geothermal101() {
             </h2>
             <p className="mt-6 font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
               An Ambient Temperature Loop is the backbone of a modern Thermal Energy Network. Rather than
-              distributing high-temperature water throughout a district, the loop operates near the natural
-              temperature of the surrounding ground, creating a shared thermal resource that all connected
+              distributing high-temperature and chilled water throughout a district, the loop operates near the natural
+              temperature of the surrounding ground, creating a shared thermal highway that all connected
               buildings can access.
             </p>
             <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite sm:text-lg">

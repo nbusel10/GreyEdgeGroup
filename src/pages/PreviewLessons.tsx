@@ -19,7 +19,7 @@ const media = [
   site['onsite-work'],
 ]
 
-const shorts = ['The seams', 'Early decisions', 'Right-sizing', 'Verification', 'Existing assets']
+const shorts = ['Risk mitigation', 'Leverage existing assets', 'The seams', 'Right-sizing', 'Performance realized']
 
 const variants = [
   { id: 'option-a', letter: 'A', title: 'Photo cards', note: 'Image on every lesson · 2+3 grid' },

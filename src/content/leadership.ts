@@ -19,10 +19,10 @@ export const teaserHeadline = {
 
 /** Short org labels for the Home teaser proof strip (from real credits). */
 export const teaserProof = [
-  'ASHRAE & IGSHPA',
+  'ASHRAE',
+  'IGSHPA',
   'NYSERDA',
   'Heet',
-  'Thermal Highway©',
 ]
 
 /** About full section — restates leadership without repeating the Home line. */
@@ -54,10 +54,16 @@ export const credits: Credit[] = [
       'Selected as one of twelve firms supporting the Commonwealth’s thermal energy network kickstart program.',
   },
   {
-    title: 'Geothermal design standards',
-    org: 'ASHRAE and IGSHPA',
+    title: 'Geothermal design standard',
+    org: 'IGSHPA',
     detail:
-      'Contributions to every major geothermal design standard in use in North America today.',
+      'Our members contributed to the geothermal design standard and certification programs IGSHPA maintains for the industry, including work on CSA/ANSI C448 and the training behind Certified Geo Designer and related credentials.',
+  },
+  {
+    title: 'Geothermal heat pump standards leadership',
+    org: 'ASHRAE',
+    detail:
+      'Cary Smith and Stephen Hamstra have served as chairs of ASHRAE Technical Committee 6.8, Geothermal Heat Pumps and Energy Recovery Applications, the committee that guides geothermal heat pump and energy recovery standards practice.',
   },
   {
     title: 'Certification and training programs',

@@ -1,7 +1,7 @@
 import { site } from './images'
 
 /**
- * "The Collaborative Advantage", reworked per the Aug 5 review.
+ * "The Advantage of Experience", reworked per the Aug 5 review.
  *
  * The section has to sell the end-to-end engagement while still showing newcomers the
  * full depth. It leads with lessons rather than services: a menu invites piecemeal
@@ -15,7 +15,7 @@ export const anchorQuote =
   'We paid our dues in the field years ago, and our clients benefit from that hard-earned wisdom on every project.'
 
 export const partnerBriefBody =
-  'We bring together the expertise required to move Thermal Energy Networks from vision to reality. Through strategic planning, technical leadership, funding support, stakeholder coordination, and project execution, we provide the continuity needed to advance projects efficiently from early concept through long-term operation.'
+  'We bring together the expertise required to move Thermal Energy Networks from vision to reality. Through strategic planning, technical leadership, governance facilitation, stakeholder coordination, and project execution, we provide the continuity needed to advance projects efficiently from early concept through long-term operation.'
 
 export interface Lesson {
   /** Short picker label. */
@@ -30,6 +30,24 @@ export interface Lesson {
 
 export const lessons: Lesson[] = [
   {
+    short: 'Risk mitigation',
+    lesson: 'Technical viability is not enough if governance is unsettled.',
+    detail:
+      'Projects risk non-performance, overruns, over-complication, and weak stakeholder and offtaker integration. We gather, refine, and vet the facts to describe technical potential and cut risk. Then we convene the right people around the three pillars—who pays, who owns, who operates—and help choose the fit. Many projects stall after they prove technically viable because those three stay undefined.',
+    capability: 'Phases 01 Evaluate and 02 Design—concept through design, engineering, and procurement',
+    image: site.blueprints.src,
+    imageAlt: site.blueprints.alt,
+  },
+  {
+    short: 'Leverage existing assets',
+    lesson: 'Existing infrastructure is usually an asset that was written off too early.',
+    detail:
+      'Cooling towers, boilers, and utility tunnels are often treated as things to remove. Frequently they are the cheapest capacity on the site.',
+    capability: 'Third-party review and forensic analysis',
+    image: site['approach-existing-assets'].src,
+    imageAlt: site['approach-existing-assets'].alt,
+  },
+  {
     short: 'The seams',
     lesson: 'Projects rarely fail in engineering. They fail in the gaps between the people doing it.',
     detail:
@@ -39,40 +57,22 @@ export const lessons: Lesson[] = [
     imageAlt: site['approach-planning-session'].alt,
   },
   {
-    short: 'Early decisions',
-    lesson: 'The most expensive decisions get made before anyone opens a drawing.',
-    detail:
-      'Ownership structure, phasing, and which resources you plan around are set early and quietly. By the time they show up in construction cost, they are no longer decisions.',
-    capability: 'Feasibility and resource studies',
-    image: site.blueprints.src,
-    imageAlt: site.blueprints.alt,
-  },
-  {
     short: 'Right-sizing',
-    lesson: 'A system sized for today’s load becomes tomorrow’s bottleneck.',
+    lesson: 'Over-engineered safety factors make systems too expensive—and impractical to build.',
     detail:
-      'Right-sizing is not the same as building small. Loop architecture and borefield capacity can leave room for phase two without paying for phase two now.',
-    capability: 'Thermal engineering and energy modeling',
+      'Right-sizing is a design-execution risk under real-world budget constraints. We design systems that perform without stacking engineering safety factors until the project can no longer be built or funded. Work within the budget, make it work, and do not over-engineer—if you know the rules that hold the system up, and when safety factors are actually needed.',
+    capability: 'Lean design and engineering—Phase 02 Design',
     image: site['campus-build'].src,
     imageAlt: site['campus-build'].alt,
   },
   {
-    short: 'Verification',
-    lesson: 'What gets built matches what got designed only when someone stays to verify it.',
+    short: 'Performance realized',
+    lesson: 'Verification is the difference between a good idea and a system that delivers.',
     detail:
-      'Sequences get value-engineered, setpoints get changed during startup, and controls get left in hand-off mode. Verification is where design intent either survives or quietly disappears.',
-    capability: 'Commissioning and performance validation',
+      'When the rubber meets the road, verification, commissioning, and performance validation turn design promises into operating results. Without them, a strong design stays an idea. With them, the system delivers what was promised.',
+    capability: 'Retro-commissioning and resource integration',
     image: site['thermal-plant-inspection'].src,
     imageAlt: site['thermal-plant-inspection'].alt,
-  },
-  {
-    short: 'Existing assets',
-    lesson: 'Existing infrastructure is usually an asset that was written off too early.',
-    detail:
-      'Cooling towers, boilers, and utility tunnels are often treated as things to remove. Frequently they are the cheapest capacity on the site.',
-    capability: 'Third-party review and forensic analysis',
-    image: site['approach-existing-assets'].src,
-    imageAlt: site['approach-existing-assets'].alt,
   },
 ]
 
@@ -102,21 +102,30 @@ export const serviceGroups: ServiceGroup[] = [
     title: 'Ground & resources',
     image: site['service-ground'].src,
     imageAlt: site['service-ground'].alt,
-    items: ['Hydrogeology and subsurface analysis', 'Drilling and geoexchange design'],
+    items: [
+      'Hydrogeology and subsurface analysis',
+      'Test drilling coordination',
+      'Geoexchange design',
+      'Resource integration',
+    ],
   },
   {
-    short: 'Networks',
-    title: 'Network design',
+    short: 'Design',
+    title: 'Design',
     image: site['service-network'].src,
     imageAlt: site['service-network'].alt,
-    items: ['Thermal network engineering', 'Ambient temperature loop design'],
+    items: ['Ambient temperature loop design', 'Cross-discipline design coordination'],
   },
   {
     short: 'Delivery',
     title: 'Delivery & verification',
     image: site['service-delivery'].src,
     imageAlt: site['service-delivery'].alt,
-    items: ['Construction and constructability coordination', 'Commissioning and performance validation'],
+    items: [
+      'Construction and constructability coordination',
+      'Commissioning and performance validation',
+      'Retro-commissioning',
+    ],
   },
   {
     short: 'Advisory',

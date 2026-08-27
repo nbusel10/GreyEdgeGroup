@@ -19,7 +19,7 @@ export default function Projects() {
       <PageHero
         eyebrow="The Proof"
         title="Our projects"
-        lead="Every project starts somewhere different - an idea, an existing system, a new development, a growth plan, or a decarbonization goal. Our portfolio reflects the many ways GreyEdge helps turn those starting points into practical, scalable thermal infrastructure."
+        lead="Every project starts somewhere different - an idea, an existing system, a new development, a growth plan, or a decarbonization goal. Our portfolio reflects the many ways The GreyEdge Group helps turn those starting points into practical, scalable thermal infrastructure."
       />
 
       {/*

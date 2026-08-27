@@ -42,7 +42,7 @@ export type AtlMode = {
   title: string
   /** The SVG's <desc>: what a listener needs, given they cannot watch the pulses. */
   desc: string
-  /** Sits above the figure, in the panel. Says what the motion means, not what it does. */
+  /** Sits above the figure, in the panel. Says what the animation shows. */
   caption: string
   /**
    * Length of one full pass, in milliseconds. Every pulse's animation runs for exactly this
@@ -82,9 +82,9 @@ const loadSharing: AtlMode = {
   tab: 'Energy sharing',
   title: 'Instantaneous energy sharing',
   desc:
-    'Heat leaves the hospital and the campus as they reject it, travels along the shared loop, and arrives at the housing block and the civic building that need it. Cooling follows those same three journeys a moment later. Journeys overlap, so energy is leaving one building while it is arriving at another.',
+    'Heat moves from the hospital and campus along the shared loop to housing and the civic building. Cooling follows on the same paths a moment later. Journeys overlap, so energy is leaving one building while it is arriving at another.',
   caption:
-    'Heat leaving the hospital and campus arrives at housing and the civic building; cooling follows the same paths.',
+    'Heat moves from the hospital and campus to housing and the civic building. Cooling follows on the same paths.',
   cycleMs: 12000,
   pulses: [
     { from: 'hospital', to: 'housing', thermal: 'heat', delay: 0, duration: 7.6 },
@@ -98,58 +98,73 @@ const loadSharing: AtlMode = {
 }
 
 /**
- * Overlay opacities for Mode 2's charged earth. One red (`--color-atl-heat`) at three
- * strengths, one blue (`--color-atl-cool`). Neutral is both at 0 so the tan patch shows.
+ * Overlay opacities for Mode 2's charged earth and warmed housing. Red and blue
+ * each climb the same three strengths; neutral is both at 0 so tan / the building
+ * fill shows through.
  */
 export const GROUND_GLOW = {
   soft: 0.28,
   medium: 0.55,
   dark: 0.88,
-  cool: 0.88,
 } as const
 
 export type GroundGlow = { heat: number; cool: number }
 
-type GroundLevel = 'blue' | 'tan' | 'soft' | 'medium' | 'dark'
+const GLOW_STEPS = [0, GROUND_GLOW.soft, GROUND_GLOW.medium, GROUND_GLOW.dark] as const
 
-function stepGround(level: GroundLevel, thermal: Thermal): GroundLevel {
-  if (thermal === 'heat') {
-    if (level === 'blue' || level === 'tan') return 'soft'
-    if (level === 'soft') return 'medium'
-    return 'dark'
-  }
-  if (level === 'dark' || level === 'medium') return 'soft'
-  if (level === 'soft') return 'tan'
-  return 'blue'
-}
-
-function glowForLevel(level: GroundLevel): GroundGlow {
-  switch (level) {
-    case 'soft':
-      return { heat: GROUND_GLOW.soft, cool: 0 }
-    case 'medium':
-      return { heat: GROUND_GLOW.medium, cool: 0 }
-    case 'dark':
-      return { heat: GROUND_GLOW.dark, cool: 0 }
-    case 'blue':
-      return { heat: 0, cool: GROUND_GLOW.cool }
-    default:
-      return { heat: 0, cool: 0 }
-  }
+function glowFromLevels(heatLevel: number, coolLevel: number): GroundGlow {
+  return { heat: GLOW_STEPS[heatLevel]!, cool: GLOW_STEPS[coolLevel]! }
 }
 
 /**
- * Heat/cool overlay opacities after each dash that enters the borefield, in pulse
- * order. Starts tan. Each heat arrival climbs the red ladder (and leaves blue on
- * the first step); each cool arrival steps dark → soft red → tan → blue.
+ * Ground overlay opacities after each dash that enters or leaves the borefield, in
+ * pulse order. Starts tan. Campus→borefield climbs the matching colour ladder;
+ * borefield→housing steps that ladder back to zero. Heat and cool never mix — a
+ * charge of one colour clears the other. Discharge steps only count when the mode
+ * also stores into the borefield, so multi-source leave-traffic does not dim earth.
  */
 export function groundChargeFor(pulses: Pulse[]): GroundGlow[] {
-  let level: GroundLevel = 'tan'
+  const stores = pulses.some((p) => p.to === 'borefield')
+  let heat = 0
+  let cool = 0
   const steps: GroundGlow[] = []
   for (const p of pulses) {
-    if (p.to !== 'borefield') continue
-    level = stepGround(level, p.thermal)
-    steps.push(glowForLevel(level))
+    if (p.to === 'borefield') {
+      if (p.thermal === 'heat') {
+        heat = Math.min(3, heat + 1)
+        cool = 0
+      } else {
+        cool = Math.min(3, cool + 1)
+        heat = 0
+      }
+      steps.push(glowFromLevels(heat, cool))
+    } else if (stores && p.from === 'borefield') {
+      if (p.thermal === 'heat') heat = Math.max(0, heat - 1)
+      else cool = Math.max(0, cool - 1)
+      steps.push(glowFromLevels(heat, cool))
+    }
+  }
+  return steps
+}
+
+/**
+ * Housing overlay opacities after each dash that arrives there. Same soft → medium
+ * → dark ladder as the ground; the first pulse of the other colour clears the last.
+ */
+export function housingChargeFor(pulses: Pulse[]): GroundGlow[] {
+  let heat = 0
+  let cool = 0
+  const steps: GroundGlow[] = []
+  for (const p of pulses) {
+    if (p.to !== 'housing') continue
+    if (p.thermal === 'heat') {
+      heat = Math.min(3, heat + 1)
+      cool = 0
+    } else {
+      cool = Math.min(3, cool + 1)
+      heat = 0
+    }
+    steps.push(glowFromLevels(heat, cool))
   }
   return steps
 }
@@ -157,37 +172,58 @@ export function groundChargeFor(pulses: Pulse[]): GroundGlow[] {
 /**
  * Mode 2 — ground as thermal storage.
  *
- * Heat goes into the borefield as a train of three dashes. The ground glow steps
- * with each dash that enters: tan → soft red → medium red → dark red. Cooling
- * follows the same clockwise path as three blue dashes and steps the other way:
- * dark red → soft red → tan → blue. A second heat train leaves the blue the same
- * way the first left tan — soft, then medium, then dark — so it never lingers on
- * leftover blue. That return is the cycle, not a draw-out to housing.
+ * Heat leaves the campus as three charges into the borefield. The ground glow
+ * climbs soft → medium → dark red as each dash enters. One second after the last
+ * enters, three red charges leave the ground (glow steps back to tan) and travel
+ * clockwise into housing, where the building glow climbs the same red ladder.
+ * Cooling then repeats the pattern in blue: campus → ground, pause, ground →
+ * housing.
  *
- * The colour at each step lives in groundCharge (derived from the nine arrivals).
- * AtlDiagram times those stops from destEntry, so the glow changes when a dash
- * actually enters the borefield, not when it leaves the campus.
+ * AtlDiagram times ground charge from destEntry (entering the borefield), ground
+ * discharge from sourceExit (leaving it), and housing glow from destEntry into
+ * the housing riser.
  *
- * One injection path keeps the volley as three dashes, not a swarm. Campus→borefield
- * is the longer clockwise run, so the train reads clearly. Wide-layout length at
- * ~200 u/s is ~6.2s. Cool waits until the heat train has landed; the second heat
- * waits until the ground is clearly blue.
+ * Campus→borefield at ~200 u/s is ~6.2s; borefield→housing is ~4.0s.
  */
-const GB_DURATION = 6.2
+const GB_STORE_DURATION = 6.2
+const GB_RECOVER_DURATION = 4.0
 const GB_DASHES = 3
 const GB_GAP = 0.45
-const GB_HEAT1_AT = 0
-const GB_COOL_AT = 7.4
-const GB_HEAT2_AT = 15.6
-const GROUND_BATTERY_CYCLE = 24.0
+const GB_WAIT = 1.0
+/** Dest-riser fraction for campus→borefield — head enters the ground near path end. */
+const GB_STORE_ENTRY_FRAC = 0.9
 
-const gbTrain = (thermal: Thermal, delay: number): Pulse[] =>
+const tenths = (n: number) => Math.round(n * 10) / 10
+
+const storeEntryAt = (trainStart: number) =>
+  trainStart + (GB_DASHES - 1) * GB_GAP + GB_STORE_DURATION * GB_STORE_ENTRY_FRAC
+
+const GB_HEAT_STORE_AT = 0
+const GB_HEAT_RECOVER_AT = tenths(storeEntryAt(GB_HEAT_STORE_AT) + GB_WAIT)
+const GB_HEAT_RECOVER_LAND =
+  GB_HEAT_RECOVER_AT + (GB_DASHES - 1) * GB_GAP + GB_RECOVER_DURATION
+const GB_COOL_STORE_AT = tenths(GB_HEAT_RECOVER_LAND + 0.5)
+const GB_COOL_RECOVER_AT = tenths(storeEntryAt(GB_COOL_STORE_AT) + GB_WAIT)
+const GB_COOL_RECOVER_LAND =
+  GB_COOL_RECOVER_AT + (GB_DASHES - 1) * GB_GAP + GB_RECOVER_DURATION
+const GROUND_BATTERY_CYCLE = tenths(GB_COOL_RECOVER_LAND + 1.5)
+
+const gbStore = (thermal: Thermal, delay: number): Pulse[] =>
   Array.from({ length: GB_DASHES }, (_, i) => ({
-    from: 'campus',
-    to: 'borefield',
+    from: 'campus' as const,
+    to: 'borefield' as const,
     thermal,
-    delay: delay + i * GB_GAP,
-    duration: GB_DURATION,
+    delay: tenths(delay + i * GB_GAP),
+    duration: GB_STORE_DURATION,
+  }))
+
+const gbRecover = (thermal: Thermal, delay: number): Pulse[] =>
+  Array.from({ length: GB_DASHES }, (_, i) => ({
+    from: 'borefield' as const,
+    to: 'housing' as const,
+    thermal,
+    delay: tenths(delay + i * GB_GAP),
+    duration: GB_RECOVER_DURATION,
   }))
 
 const groundBattery: AtlMode = {
@@ -195,21 +231,29 @@ const groundBattery: AtlMode = {
   tab: 'Thermal storage',
   title: 'Ground as thermal storage',
   desc:
-    'Heat leaves the campus as three charges, travels the shared loop, and goes into the geoexchange borefield. The ground glows a soft red as the first dash enters, a medium red as the second enters, and a dark red as the third enters. Cooling then follows the same journey as three charges: the first brings the glow back to soft red, the second to the earth\'s own colour, and the third to a blue glow. Heat goes in again and the ground steps back to red the same way.',
+    'Heat leaves the campus into the ground in three charges; the ground glows red as each one enters. After a short pause, three charges leave the ground — the glow fades — and warm housing. Cooling repeats the same pattern in blue.',
   caption:
-    'Heat leaving the campus goes into the ground in three charges — the earth glows soft, then medium, then dark red as each one enters. Cooling follows; the glow steps back through soft red and tan to blue. Heat goes in again and the ground returns to red.',
-  cycleMs: GROUND_BATTERY_CYCLE * 1000,
-  pulses: [...gbTrain('heat', GB_HEAT1_AT), ...gbTrain('cool', GB_COOL_AT), ...gbTrain('heat', GB_HEAT2_AT)],
+    'Heat leaves the campus into the ground in three charges, then three charges leave the ground to warm housing. Cooling repeats the same pattern in blue.',
+  cycleMs: Math.round(GROUND_BATTERY_CYCLE * 1000),
+  pulses: [
+    ...gbStore('heat', GB_HEAT_STORE_AT),
+    ...gbRecover('heat', GB_HEAT_RECOVER_AT),
+    ...gbStore('cool', GB_COOL_STORE_AT),
+    ...gbRecover('cool', GB_COOL_RECOVER_AT),
+  ],
 }
 
-/** Nine arrival steps for Mode 2: 3 heat, 3 cool, 3 heat. Timed in AtlDiagram. */
+/** Twelve ground steps for Mode 2: 3 heat in, 3 heat out, 3 cool in, 3 cool out. */
 export const groundCharge = groundChargeFor(groundBattery.pulses)
 
+/** Six housing steps for Mode 2: 3 heat arrivals, then 3 cool arrivals. */
+export const housingCharge = housingChargeFor(groundBattery.pulses)
+
 /**
- * Clockwise around-the-track lengths at ~200 u/s. Mode 3 and Mode 4 both fire every
- * source-to-building pair in a volley — four pulses leave each source together.
- * Same numbers either way. Mode 3 waits for the last red to land before blue;
- * Mode 4 lets cool leave while the longest heat is still in flight.
+ * Clockwise around-the-track lengths at ~200 u/s. Mode 3 uses the datacenter row
+ * for its four consecutive heat legs; Mode 4 fires every source-to-building pair
+ * in a volley — four pulses leave each source together — and lets cool leave
+ * while the longest heat is still in flight.
  */
 const MULTI_BUILDINGS: NodeId[] = ['civic', 'campus', 'housing', 'hospital']
 const MULTI_HEAT_SOURCES: NodeId[] = ['borefield', 'wastewater', 'datacenter']
@@ -220,8 +264,6 @@ const MULTI_DURATION: Record<string, Record<string, number>> = {
   wastewater: { civic: 2.9, campus: 4.0, housing: 5.1, hospital: 6.2 },
   datacenter: { civic: 4.0, campus: 5.1, housing: 6.2, hospital: 7.2 },
 }
-
-const tenths = (n: number) => Math.round(n * 10) / 10
 
 const multiPulses = (thermal: Thermal, sources: NodeId[], delay: number): Pulse[] =>
   sources.flatMap((from) =>
@@ -237,36 +279,41 @@ const multiPulses = (thermal: Thermal, sources: NodeId[], delay: number): Pulse[
 /**
  * Mode 3 — waste heat recovery.
  *
- * A simultaneous fan-out from each thermal resource: geoexchange, wastewater and
- * the data center each send four heat pulses at once, one into every building
- * (12 red dashes, all at delay 0). They arrive at different times because the
- * clockwise paths differ. Cool follows from the two thermal resources only —
- * the data center is a heat source, so it does not send blue — once the last
- * red has entered (datacenter→hospital at 7.2s), plus a short gap.
+ * Four consecutive red pulses leave the data center and travel clockwise around
+ * the shared loop, one into each building in turn: hospital, then housing, then
+ * campus, then civic. No other source fires, and there is no cool follow — the
+ * story is process heat leaving the data center and being taken up by the
+ * district.
  *
- * Heat delay: 0. Cool delay: 7.5s. Last cool (wastewater→hospital) lands at
- * 13.7s; the cycle is 14.0s.
+ * Stagger matches Mode 2's train gap (0.45s). Durations are the clockwise
+ * datacenter→building lengths above. The hospital leg is the longest flight
+ * (7.2s) and the first to leave, so it is also the last to land; a short quiet
+ * beat after that keeps the cycle from reading as continuous traffic.
  */
-const PROCESS_GAP = 0.3
+const PROCESS_TARGETS: NodeId[] = ['hospital', 'housing', 'campus', 'civic']
+const PROCESS_GAP = 0.45
 const PROCESS_HEAT_AT = 0
-const PROCESS_LAST_HEAT = MULTI_DURATION.datacenter!.hospital!
-const PROCESS_COOL_AT = tenths(PROCESS_HEAT_AT + PROCESS_LAST_HEAT + PROCESS_GAP)
-const PROCESS_LAST_COOL = tenths(PROCESS_COOL_AT + MULTI_DURATION.wastewater!.hospital!)
-const PROCESS_CYCLE = tenths(PROCESS_LAST_COOL + PROCESS_GAP)
+const PROCESS_LAST_LAND = Math.max(
+  ...PROCESS_TARGETS.map((to, i) => PROCESS_HEAT_AT + i * PROCESS_GAP + MULTI_DURATION.datacenter![to]!),
+)
+const PROCESS_CYCLE = tenths(PROCESS_LAST_LAND + 1.5)
 
 const processEnergy: AtlMode = {
   id: 'process-energy',
   tab: 'Waste heat',
   title: 'Waste heat recovery',
   desc:
-    'Heat leaves the geoexchange borefield, the wastewater exchanger and the data center at the same time, each sending a pulse into every building — civic, campus, housing and the hospital. Cooling then follows from the borefield and the wastewater exchanger into all four buildings.',
+    'Heat from the data center travels clockwise along the shared loop and arrives at the hospital, then housing, then campus, then the civic building.',
   caption:
-    'Waste heat, geoexchange and the data center feed every building as heat; cooling then follows from geoexchange and waste heat.',
+    'Heat from the data center arrives at the hospital, then housing, then campus, then the civic building.',
   cycleMs: Math.round(PROCESS_CYCLE * 1000),
-  pulses: [
-    ...multiPulses('heat', MULTI_HEAT_SOURCES, PROCESS_HEAT_AT),
-    ...multiPulses('cool', MULTI_COOL_SOURCES, PROCESS_COOL_AT),
-  ],
+  pulses: PROCESS_TARGETS.map((to, i) => ({
+    from: 'datacenter',
+    to,
+    thermal: 'heat' as const,
+    delay: tenths(PROCESS_HEAT_AT + i * PROCESS_GAP),
+    duration: MULTI_DURATION.datacenter![to]!,
+  })),
 }
 
 /**
@@ -286,9 +333,9 @@ const multiSource: AtlMode = {
   tab: 'Multi-Source',
   title: 'Multi-source feed',
   desc:
-    'Heat leaves the geoexchange borefield, the wastewater exchanger and the data center at the same time and arrives at every building — civic, campus, housing and the hospital. Cooling then follows from the borefield and the wastewater exchanger into all four buildings.',
+    'Heat from the geoexchange borefield, the wastewater exchanger, and the data center leaves at the same time and arrives at every building — civic, campus, housing, and the hospital. Cooling then follows from the borefield and the wastewater exchanger into all four buildings.',
   caption:
-    'The borefield, waste heat and the data center feed every building as heat; cooling then follows from the borefield and waste heat.',
+    'Heat from the borefield, wastewater exchanger, and data center feeds every building. Cooling then follows from the borefield and wastewater.',
   cycleMs: 14000,
   pulses: [...multiPulses('heat', MULTI_HEAT_SOURCES, 0), ...multiPulses('cool', MULTI_COOL_SOURCES, MULTI_COOL_AT)],
 }

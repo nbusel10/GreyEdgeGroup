@@ -17,9 +17,9 @@ export default function PartnerBrief() {
             <Reveal>
               <Eyebrow tone="light">Partnership</Eyebrow>
               <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-[0.98] tracking-tight text-white sm:text-5xl md:text-6xl">
-                Collaborative
+                The Advantage of
                 <br />
-                <span className="text-ge-accent">advantage.</span>
+                <span className="text-ge-accent">Experience</span>
               </h2>
               <blockquote className="mt-9 border-l-2 border-ge-accent pl-6">
                 <p className="font-display text-2xl font-semibold uppercase leading-snug tracking-wide text-white sm:text-3xl">

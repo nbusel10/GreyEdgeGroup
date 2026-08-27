@@ -1,6 +1,13 @@
 import { useId, type CSSProperties } from 'react'
 import { atlIconById } from './AtlIcons'
-import { atlModes, defaultAtlMode, groundChargeFor, type AtlMode, type Pulse } from '../content/atlModes'
+import {
+  atlModes,
+  defaultAtlMode,
+  groundChargeFor,
+  housingChargeFor,
+  type AtlMode,
+  type Pulse,
+} from '../content/atlModes'
 import { layoutFor, routeFor, trackPath, type Layout, type LayoutId } from '../lib/atl-geometry'
 import { useMediaQuery } from '../lib/hooks'
 
@@ -114,44 +121,63 @@ function Pulses({
 }
 
 /**
- * Mode 2's charged earth: red and blue glows around the borefield. Two overlays rather
- * than one fill, so the pass through the earth's own tan is a real gap and not a purple
- * mix of heat into cool.
+ * Mode 2's charged earth and warmed housing: red and blue glows as separate overlays
+ * so a pass through neutral is a real gap, not a purple mix of heat into cool.
  *
- * Colour at each step comes from groundChargeFor — three red opacities, then a walk
- * back through tan to blue. Timing is pulse arrival, not a colour clock. A dash
- * "enters the borefield" when its head reaches the destination riser — destEntry
- * along the route, adjusted for the comet length the keyframe is travelling. The
- * ground holds that step until the next dash arrives; a short ease at arrival keeps
- * the step from popping.
+ * Ground colour steps come from groundChargeFor — three red climbs into the
+ * borefield, three red discharges leaving it, then the same in blue. Housing
+ * steps come from housingChargeFor on arrivals there. Timing is pulse geometry,
+ * not a colour clock: charge on destEntry into the borefield, discharge on
+ * sourceExit leaving it, housing on destEntry into the building. A short ease at
+ * each step keeps the change from popping.
  */
-type GroundGlowStop = { at: number; opacity: number; ease?: boolean }
+type GlowStop = { at: number; opacity: number; ease?: boolean }
 
-const GROUND_FADE = 0.32
-const GROUND_LOOP_FADE = 0.6
+const GLOW_FADE = 0.32
+const GLOW_LOOP_FADE = 0.6
 
-function pulseBorefieldEntry(p: Pulse, layout: Layout) {
+function pulseAtFraction(p: Pulse, layout: Layout, pick: (route: ReturnType<typeof routeFor>) => number) {
   const route = routeFor(p.from, p.to, layout)
   const dash = (layout.pulseLength / route.length) * 100
-  return p.delay + p.duration * ((route.destEntry * 100) / (100 + dash))
+  return p.delay + p.duration * ((pick(route) * 100) / (100 + dash))
 }
 
-function pushHold(stops: GroundGlowStop[], at: number, from: number, to: number) {
+function pulseBorefieldEntry(p: Pulse, layout: Layout) {
+  return pulseAtFraction(p, layout, (r) => r.destEntry)
+}
+
+function pulseBorefieldLeave(p: Pulse, layout: Layout) {
+  return pulseAtFraction(p, layout, (r) => r.sourceExit)
+}
+
+function pulseHousingEntry(p: Pulse, layout: Layout) {
+  return pulseAtFraction(p, layout, (r) => r.destEntry)
+}
+
+function pushHold(stops: GlowStop[], at: number, from: number, to: number) {
   if (from === to) return
   stops.push({ at, opacity: from, ease: true })
-  stops.push({ at: at + GROUND_FADE, opacity: to })
+  stops.push({ at: at + GLOW_FADE, opacity: to })
 }
 
-function glowStopsFromArrivals(mode: AtlMode, layout: Layout) {
-  const cycle = mode.cycleMs / 1000
-  const arrivals = mode.pulses
-    .filter((p) => p.to === 'borefield')
-    .map((p) => pulseBorefieldEntry(p, layout))
-  const charge = groundChargeFor(mode.pulses)
+function closeGlowLoop(stops: GlowStop[], opacity: number, cycle: number) {
+  if (opacity > 0) {
+    stops.push({ at: cycle - GLOW_LOOP_FADE, opacity, ease: true })
+    stops.push({ at: cycle, opacity: 0 })
+  } else {
+    stops.push({ at: cycle, opacity: 0 })
+  }
+}
+
+function glowStopsFromSteps(
+  arrivals: number[],
+  charge: { heat: number; cool: number }[],
+  cycle: number,
+) {
   if (!arrivals.length) return null
 
-  const heat: GroundGlowStop[] = [{ at: 0, opacity: 0 }]
-  const cool: GroundGlowStop[] = [{ at: 0, opacity: 0 }]
+  const heat: GlowStop[] = [{ at: 0, opacity: 0 }]
+  const cool: GlowStop[] = [{ at: 0, opacity: 0 }]
   let heatOp = 0
   let coolOp = 0
 
@@ -163,25 +189,40 @@ function glowStopsFromArrivals(mode: AtlMode, layout: Layout) {
     coolOp = next.cool
   }
 
-  // Close the loop at tan so the next pass can start from the earth's own colour
-  // and the first heat train can climb the red ladder again.
-  if (heatOp > 0) {
-    heat.push({ at: cycle - GROUND_LOOP_FADE, opacity: heatOp, ease: true })
-    heat.push({ at: cycle, opacity: 0 })
-  } else {
-    heat.push({ at: cycle, opacity: 0 })
-  }
-  if (coolOp > 0) {
-    cool.push({ at: cycle - GROUND_LOOP_FADE, opacity: coolOp, ease: true })
-    cool.push({ at: cycle, opacity: 0 })
-  } else {
-    cool.push({ at: cycle, opacity: 0 })
-  }
+  closeGlowLoop(heat, heatOp, cycle)
+  closeGlowLoop(cool, coolOp, cycle)
 
   return { heat, cool }
 }
 
-function glowKeyframes(name: string, stops: GroundGlowStop[], cycle: number) {
+function groundGlowStops(mode: AtlMode, layout: Layout) {
+  const cycle = mode.cycleMs / 1000
+  const charge = groundChargeFor(mode.pulses)
+  if (!charge.length) return null
+  const stores = mode.pulses.some((p) => p.to === 'borefield')
+  const events = mode.pulses.flatMap((p) => {
+    if (p.to === 'borefield') return [pulseBorefieldEntry(p, layout)]
+    if (stores && p.from === 'borefield') return [pulseBorefieldLeave(p, layout)]
+    return []
+  })
+  if (events.length !== charge.length) return null
+  return glowStopsFromSteps(events, charge, cycle)
+}
+
+function housingGlowStops(mode: AtlMode, layout: Layout) {
+  const cycle = mode.cycleMs / 1000
+  const arrivals = mode.pulses
+    .filter((p) => p.to === 'housing')
+    .map((p) => pulseHousingEntry(p, layout))
+  if (!arrivals.length) return null
+  // Only Mode 2 authors housing charge steps; other modes that send pulses to
+  // housing (load sharing, waste heat, multi-source) leave the building unlit.
+  const charge = housingChargeFor(mode.pulses)
+  if (!charge.length) return null
+  return glowStopsFromSteps(arrivals, charge, cycle)
+}
+
+function glowKeyframes(name: string, stops: GlowStop[], cycle: number) {
   const pct = (t: number) => ((Math.min(Math.max(t, 0), cycle) / cycle) * 100).toFixed(2)
   const frames = stops
     .map((s) => {
@@ -192,21 +233,39 @@ function glowKeyframes(name: string, stops: GroundGlowStop[], cycle: number) {
   return `@keyframes ${name} {\n${frames}\n    }`
 }
 
-function groundChargeCss(mode: AtlMode, uid: string, layout: Layout) {
-  const g = glowStopsFromArrivals(mode, layout)
-  if (!g) return null
-  const cycle = mode.cycleMs / 1000
-  const safe = `${mode.id}-${uid.replace(/[^a-zA-Z0-9_-]/g, '')}`
-  const heat = `atlGround-${safe}-heat`
-  const cool = `atlGround-${safe}-cool`
+function pairGlowCss(
+  prefix: string,
+  stops: { heat: GlowStop[]; cool: GlowStop[] },
+  cycle: number,
+) {
+  const heat = `${prefix}-heat`
+  const cool = `${prefix}-cool`
   return {
     heat,
     cool,
-    css: `${glowKeyframes(heat, g.heat, cycle)}\n${glowKeyframes(cool, g.cool, cycle)}`,
+    css: `${glowKeyframes(heat, stops.heat, cycle)}\n${glowKeyframes(cool, stops.cool, cycle)}`,
   }
 }
 
-function GroundGlow({
+function groundChargeCss(mode: AtlMode, uid: string, layout: Layout) {
+  const g = groundGlowStops(mode, layout)
+  if (!g) return null
+  const cycle = mode.cycleMs / 1000
+  const safe = `${mode.id}-${uid.replace(/[^a-zA-Z0-9_-]/g, '')}`
+  return pairGlowCss(`atlGround-${safe}`, g, cycle)
+}
+
+function housingChargeCss(mode: AtlMode, uid: string, layout: Layout) {
+  // Housing bloom is Mode 2's recover story. Other modes reach housing without it.
+  if (mode.id !== 'ground-battery') return null
+  const g = housingGlowStops(mode, layout)
+  if (!g) return null
+  const cycle = mode.cycleMs / 1000
+  const safe = `${mode.id}-${uid.replace(/[^a-zA-Z0-9_-]/g, '')}`
+  return pairGlowCss(`atlHousing-${safe}`, g, cycle)
+}
+
+function GlowEllipse({
   kf,
   cycleMs,
   className,
@@ -216,7 +275,7 @@ function GroundGlow({
   kf: string
   cycleMs: number
   className: string
-  glow: Layout['ground']['glow']
+  glow: { cx: number; cy: number; rx: number; ry: number }
   filterId: string
 }) {
   return (
@@ -256,11 +315,13 @@ export default function AtlDiagram({
   const L = layoutFor(layout ?? (isWide ? 'wide' : 'narrow'))
   const mode = atlModes.find((m) => m.id === modeId) ?? defaultAtlMode
   const charge = groundChargeCss(mode, uid, L)
+  const housing = housingChargeCss(mode, uid, L)
   const motion = pulseMotion(mode, uid)
 
   return (
     <>
       {charge && <style key={`ground-${mode.id}`}>{charge.css}</style>}
+      {housing && <style key={`housing-${mode.id}`}>{housing.css}</style>}
       {motion.css && <style key={`pulses-${mode.id}`}>{motion.css}</style>}
       <svg
         viewBox={L.viewBox}
@@ -287,9 +348,9 @@ export default function AtlDiagram({
         height={L.ground.height}
         rx={L.ground.rx}
       />
-      {charge && (
-        <>
-          <defs>
+      {(charge || housing) && (
+        <defs>
+          {charge && (
             <filter
               id={`${safeUid}-ground-glow`}
               x="-120%"
@@ -300,24 +361,59 @@ export default function AtlDiagram({
             >
               <feGaussianBlur stdDeviation={L.ground.glow.blur} />
             </filter>
-          </defs>
-          <g key={mode.id}>
-            <GroundGlow
-              kf={charge.heat}
-              cycleMs={mode.cycleMs}
-              className="atl-ground-glow atl-ground-hot fill-atl-heat"
-              glow={L.ground.glow}
-              filterId={`${safeUid}-ground-glow`}
-            />
-            <GroundGlow
-              kf={charge.cool}
-              cycleMs={mode.cycleMs}
-              className="atl-ground-glow atl-ground-cool fill-atl-cool"
-              glow={L.ground.glow}
-              filterId={`${safeUid}-ground-glow`}
-            />
-          </g>
-        </>
+          )}
+          {housing && (
+            <filter
+              id={`${safeUid}-housing-glow`}
+              x="-120%"
+              y="-120%"
+              width="340%"
+              height="340%"
+              colorInterpolationFilters="sRGB"
+            >
+              <feGaussianBlur stdDeviation={L.housingGlow.blur} />
+            </filter>
+          )}
+        </defs>
+      )}
+      {charge && (
+        <g key={`ground-${mode.id}`}>
+          <GlowEllipse
+            kf={charge.heat}
+            cycleMs={mode.cycleMs}
+            className="atl-ground-glow atl-ground-hot fill-atl-heat"
+            glow={L.ground.glow}
+            filterId={`${safeUid}-ground-glow`}
+          />
+          <GlowEllipse
+            kf={charge.cool}
+            cycleMs={mode.cycleMs}
+            className="atl-ground-glow atl-ground-cool fill-atl-cool"
+            glow={L.ground.glow}
+            filterId={`${safeUid}-ground-glow`}
+          />
+        </g>
+      )}
+
+      {/* Mode 2 housing bloom behind the icon — same soft→medium→dark steps as the
+          ground, read as the building warming or cooling as recover pulses arrive. */}
+      {housing && (
+        <g key={`housing-${mode.id}`}>
+          <GlowEllipse
+            kf={housing.heat}
+            cycleMs={mode.cycleMs}
+            className="atl-housing-glow atl-housing-hot fill-atl-heat"
+            glow={L.housingGlow}
+            filterId={`${safeUid}-housing-glow`}
+          />
+          <GlowEllipse
+            kf={housing.cool}
+            cycleMs={mode.cycleMs}
+            className="atl-housing-glow atl-housing-cool fill-atl-cool"
+            glow={L.housingGlow}
+            filterId={`${safeUid}-housing-glow`}
+          />
+        </g>
       )}
 
       {/* Risers first: the pill is painted over them, which hides every join without needing

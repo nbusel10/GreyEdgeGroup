@@ -211,7 +211,7 @@ export const projects: Project[] = [
       "Thermal assets include seven geoexchange fields, an irrigation-water heat exchanger, ground-loop heat pumps, cooling towers, and backup boilers. The system capacity is approximately 4,700 tons. The Thermal Energy Network has provided approximately $2 million in annual utility cost savings and reduced carbon emissions by more than 8,800 metric tons of CO₂e. CMU demonstrates how an Ambient Temperature Loop can deliver scalable performance at the campus level.",
     ],
     team: [
-      { name: "The GreyEdge Group", url: "/" },
+      { name: "Sound Geothermal", url: "https://www.soundgt.com/" },
       { name: "Bighorn Engineering", url: "https://www.bighornengineering.com/" },
       { name: "Colorado Mesa University", url: "https://www.coloradomesa.edu/" },
       { name: "McKinstry", url: "https://www.mckinstry.com/" },
@@ -333,7 +333,7 @@ export const projects: Project[] = [
     ],
     team: [
       { name: "Weber State University", url: "https://www.weber.edu/" },
-      { name: "The GreyEdge Group", url: "/" },
+      { name: "Sound Geothermal", url: "https://www.soundgt.com/" },
     ],
     articles: [
       {

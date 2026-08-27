@@ -74,6 +74,11 @@ export type Layout = {
     rx: number
     glow: { cx: number; cy: number; rx: number; ry: number; blur: number }
   }
+  /**
+   * Soft bloom behind the housing icon for Mode 2's recover-to-housing phase.
+   * Same ellipse-plus-blur treatment as the ground glow.
+   */
+  housingGlow: { cx: number; cy: number; rx: number; ry: number; blur: number }
   nodes: PlacedNode[]
   nodeById: Record<AtlIconId, PlacedNode>
 }
@@ -138,6 +143,25 @@ function groundBehind(borefield: PlacedNode): Layout['ground'] {
       ry: height * 0.46,
       blur: 0.18 * Math.min(width, height),
     },
+  }
+}
+
+/**
+ * Soft bloom centred on the housing body (roof tip excluded) so Mode 2's recover
+ * pulses can warm or cool the building without painting a second filled shape.
+ */
+function housingGlowBehind(housing: PlacedNode): Layout['housingGlow'] {
+  const s = housing.scale
+  const x = housing.x + 4 * s
+  const y = housing.y + 10 * s
+  const width = 40 * s
+  const height = 34 * s
+  return {
+    cx: x + width / 2,
+    cy: y + height / 2,
+    rx: width * 0.48,
+    ry: height * 0.52,
+    blur: 0.22 * Math.min(width, height),
   }
 }
 
@@ -250,6 +274,7 @@ export function layoutWide(): Layout {
     flowWidth: 2.5,
     pulseLength: 52,
     ground: groundBehind(nodes.find((n) => n.id === 'borefield')!),
+    housingGlow: housingGlowBehind(nodes.find((n) => n.id === 'housing')!),
     nodes,
     nodeById: byId(nodes),
   }
@@ -329,6 +354,7 @@ export function layoutNarrow(): Layout {
     // journeys here, which are about half as long.
     pulseLength: 34,
     ground: groundBehind(nodes.find((n) => n.id === 'borefield')!),
+    housingGlow: housingGlowBehind(nodes.find((n) => n.id === 'housing')!),
     nodes,
     nodeById: byId(nodes),
   }
@@ -354,6 +380,12 @@ export type Route = {
    * ground does not change colour until a dash actually enters the borefield.
    */
   destEntry: number
+  /**
+   * 0–1 along the path where the source riser ends and the pulse joins the loop.
+   * Mode 2's discharge glow keys off this so the ground fades as a dash leaves the
+   * borefield, not when it later arrives at housing.
+   */
+  sourceExit: number
 }
 
 type Pt = { x: number; y: number }
@@ -561,7 +593,12 @@ export function routeFor(from: AtlIconId, to: AtlIconId, layout: Layout): Route 
   if (r < 1.5) {
     const d = `M${pt(src.tap)} L${pt(joinA)} ${walkTrack(t, sA, sB, true).d} L${pt(dst.tap)}`
     const length = riserA + around + riserB
-    return { d, length, destEntry: length > 0 ? (riserA + around) / length : 1 }
+    return {
+      d,
+      length,
+      sourceExit: length > 0 ? riserA / length : 0,
+      destEntry: length > 0 ? (riserA + around) / length : 1,
+    }
   }
 
   const sLand = wrapS(sA + r, t.perim)
@@ -579,9 +616,11 @@ export function routeFor(from: AtlIconId, to: AtlIconId, layout: Layout): Route 
     .filter(Boolean)
     .join(' ')
 
+  const srcLen = riserA - r + TURN_ARC * r
   const destLen = TURN_ARC * r + (riserB - r)
-  const length = riserA - r + TURN_ARC * r + mid.length + destLen
+  const length = srcLen + mid.length + destLen
+  const sourceExit = length > 0 ? Math.min(1, srcLen / length) : 0
   const destEntry = length > 0 ? Math.max(0, 1 - destLen / length) : 1
 
-  return { d, length, destEntry }
+  return { d, length, sourceExit, destEntry }
 }

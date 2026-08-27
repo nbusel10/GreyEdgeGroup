@@ -109,20 +109,23 @@ body {
     stroke-dashoffset: -82px;
   }
 
-  /* Mode 2's charged earth. Motion is arrival-driven steps (soft / medium / dark
-     red, then back through tan to blue); the still frame pins a readable mid/dark
-     red so the ground still reads as holding heat, and kills the blue overlay so
-     it cannot sit on top of that. !important beats the inline opacity 0 rest state. */
-  .atl-ground-glow {
+  /* Mode 2's charged earth and warmed housing. Motion is arrival-driven steps
+     (soft / medium / dark); the still frame pins a readable mid/dark red so both
+     still read as holding heat, and kills the blue overlays. !important beats the
+     inline opacity 0 rest state. */
+  .atl-ground-glow,
+  .atl-housing-glow {
     animation: none !important;
   }
 
-  .atl-ground-hot {
+  .atl-ground-hot,
+  .atl-housing-hot {
     opacity: 0.72 !important;
     fill: var(--color-atl-heat) !important;
   }
 
-  .atl-ground-cool {
+  .atl-ground-cool,
+  .atl-housing-cool {
     opacity: 0 !important;
   }
 
@@ -733,6 +736,7 @@ body {
    JS timer and stops on its own. */
 .atl-is-paused .atl-pulse,
 .atl-is-paused .atl-ground-glow,
+.atl-is-paused .atl-housing-glow,
 .atl-is-paused .atl-flow {
   animation-play-state: paused;
 }

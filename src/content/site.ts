@@ -27,10 +27,12 @@ export const barriers = {
   eyebrow: 'The Barriers',
   heading: 'The challenge ahead',
   words: ['Constraints.', 'Obstacles.', 'Pressure.'],
-  body: 'Modern developments aren’t failing because of one big problem. They’re straining under the weight of multiple simultaneous constraints that have become impossible to ignore.',
+  body: 'Modern energy systems aren’t failing because of one big problem. They’re straining under the weight of multiple simultaneous constraints that have become impossible to ignore.',
   closing: 'These aren’t problems we’ve read about.',
   closingLead: 'They’re problems we’ve',
   closingAccent: 'solved.',
+  closingBody:
+    'We’ve spent years learning these lessons that other firms are just getting around to. We aren’t learning on your project, we’re applying what that experience already taught us. We partner with you to help keep these complexities from becoming yours.',
 }
 
 export const finalCta = {

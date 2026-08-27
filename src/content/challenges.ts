@@ -28,26 +28,27 @@ export const challenges: Challenge[] = [
     imageAlt: site.decarbonization.alt,
   },
   {
-    label: 'Electrification Without Grid Overload',
+    label: 'Electrification & Infrastructure Constraints',
     short: 'Electrification',
     problem:
-      'Electrifying heating and cooling can significantly increase peak electrical demand, straining utility infrastructure and creating costly capacity upgrades. Organizations must balance electrification goals against grid limitations, reliability requirements, and compliance mandates.',
+      'Electrifying heating and cooling can significantly increase peak electrical demand, straining utility infrastructure and driving costly capacity upgrades. At the same time, aging mechanical systems, limited utility capacity, congested sites, and outdated distribution infrastructure restrict expansion and make modernization expensive. Organizations must balance electrification goals against grid limits, reliability needs, and the real constraints of the sites they already operate.',
     approach:
-      'We design high-efficiency thermal energy systems that reduce peak electrical demand while supporting long-term electrification goals. Through load diversity, thermal storage, ambient-temperature loops, and multiple thermal energy sources, we help clients electrify at a pace that aligns with their site, budget, and growth plans.',
-    outcome: 'Lower peak demand, a smaller utility interconnection, and grid upgrades deferred or avoided altogether.',
+      'We design high-efficiency thermal energy systems that reduce peak electrical demand while supporting long-term electrification goals. Through load diversity, thermal storage, ambient temperature loops, and multiple thermal energy sources, we help clients electrify at a pace that fits their site, budget, and growth plans. We also evaluate the full energy ecosystem to reuse, optimize, or expand existing infrastructure, connecting buildings and adding capacity where it delivers the greatest value.',
+    outcome: 'Lower peak demand, deferred grid upgrades, and projects that move forward by reusing constrained infrastructure.',
     image: site.electrification.src,
     imageAlt: site.electrification.alt,
   },
   {
-    label: 'Infrastructure and Grid Constraints',
-    short: 'Infrastructure',
+    label: 'Infrastructure Resiliency',
+    short: 'Resiliency',
     problem:
-      'Aging mechanical systems, limited utility capacity, congested sites, and outdated distribution infrastructure can restrict expansion and make modernization costly. Campuses must often support new buildings and higher energy demands without the capacity to accommodate them.',
+      'When heating or cooling your space is not an option, systems that depend on remote supply, exposed plant, or climate-sensitive resources leave you vulnerable. Comfort and operations cannot hinge on fragile delivery chains or infrastructure that is easy to disrupt.',
     approach:
-      'We evaluate the entire energy ecosystem to identify where existing infrastructure can be reused, optimized, or expanded. We develop phased thermal utility strategies that connect buildings, diversify energy sources, and add capacity where it delivers the greatest value.',
-    outcome: 'Projects that move forward despite real constraints, reusing assets that were written off too early.',
+      'Thermal Energy Networks use less energy overall, draw on local resources, and keep critical infrastructure buried. We design TENs that are locally resourced, not subject to the whims of the climate, and safer from tampering, so heating and cooling stay available when conventional systems cannot.',
+    outcome: 'Locally rooted thermal service that stays online when conventional systems fail.',
     image: site.infrastructure.src,
-    imageAlt: site.infrastructure.alt,
+    imageAlt:
+      'Urban district streetscape with buried utility corridors beneath patterned stone paving between commercial buildings, representing locally rooted, protected thermal infrastructure.',
   },
   {
     label: 'Capital and Lifecycle Cost Control',

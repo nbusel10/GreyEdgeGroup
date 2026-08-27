@@ -20,7 +20,7 @@ export default function Approach() {
       <PageHero
         eyebrow="The Partnership"
         title="Our Approach"
-        lead="Every engagement starts somewhere different: a feasibility question, an existing plant, a growth plan, or a decarbonization goal. Our approach is built to meet that starting point with hard-earned experience, a clear process, and the services to carry it through."
+        lead="Every engagement starts somewhere different: a feasibility question, an existing plant, a growth plan, or a decarbonization goal. Our approach is to meet your project where it's at with hard-earned experience, a clear process, and the services to carry it forward."
       />
       <CollaborativeAdvantage />
       <Process />

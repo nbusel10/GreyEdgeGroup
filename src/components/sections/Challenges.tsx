@@ -29,7 +29,7 @@ export default function Challenges() {
               </span>
             ))}
           </div>
-          <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
+          <p className="mt-6 max-w-none font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
             {barriers.body}
           </p>
         </Reveal>
@@ -173,9 +173,8 @@ export default function Challenges() {
             {barriers.closingLead}{' '}
             <span className="text-ge-accent">{barriers.closingAccent}</span>
           </p>
-          <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-ge-graphite">
-            Navigating this complexity takes more than a consultant. It takes a partner with decades of proven
-            experience who stays alongside you from first design through final delivery.
+          <p className="mt-4 max-w-none font-body text-base leading-relaxed text-ge-graphite">
+            {barriers.closingBody}
           </p>
         </Reveal>
       </Container>

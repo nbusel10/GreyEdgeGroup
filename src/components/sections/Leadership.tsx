@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { aboutHeadline, credits, intro, teaserHeadline, teaserProof } from '../../content/leadership'
+import { linkTeamNames } from '../../lib/linkTeamNames'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../ui'
 
 type LeadershipVariant = 'full' | 'teaser'
@@ -70,7 +71,7 @@ export default function Leadership({ variant = 'full' }: { variant?: LeadershipV
                     {c.org}
                   </span>
                 </div>
-                <p className="mt-2 font-body text-sm leading-relaxed text-ge-graphite">{c.detail}</p>
+                <p className="mt-2 font-body text-sm leading-relaxed text-ge-graphite">{linkTeamNames(c.detail)}</p>
               </li>
             ))}
           </ul>
