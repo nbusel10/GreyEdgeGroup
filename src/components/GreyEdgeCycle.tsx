@@ -486,12 +486,18 @@ export default function GreyEdgeCycle({
   className = '',
   forceReducedMotion = false,
   playOnce = false,
+  loops,
+  pauseBetweenMs,
 }: {
   variant: WordCycleVariant
   className?: string
   forceReducedMotion?: boolean
   /** Fly-up row only: run once when scrolled into view, then hold on GreyEdge. */
   playOnce?: boolean
+  /** Fly-up row only: finite pass count, then hold on GreyEdge. */
+  loops?: number
+  /** Fly-up row only: pause between finite passes (default 2s). */
+  pauseBetweenMs?: number
 }) {
   const osReduced = usePrefersReducedMotion()
   const reducedMotion = forceReducedMotion || osReduced
@@ -519,6 +525,8 @@ export default function GreyEdgeCycle({
     active: inView && !reducedMotion && variant === 'fly-up-row',
     reducedMotion,
     once: playOnce,
+    loops,
+    pauseBetweenMs,
   })
   const block = useBlockRotateCycle({
     active: inView && !reducedMotion && variant === 'block-rotate',

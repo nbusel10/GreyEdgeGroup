@@ -49,7 +49,7 @@ export default function PartnerBrief() {
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute bottom-8 right-8 bg-ge-accent px-6 py-4">
+                <div className="absolute bottom-8 right-8 border border-white bg-ge-accent px-6 py-4">
                   <div className="font-display text-3xl font-bold leading-none text-white">300+</div>
                   <div className="mt-1 font-body text-[10px] uppercase tracking-[0.2em] text-white/75">
                     Years in the field

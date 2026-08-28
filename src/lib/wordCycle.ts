@@ -44,6 +44,8 @@ export const FLY_UP_MS = {
   wordIn: 350,
   lockHold: 3500,
   reset: 280,
+  /** Pause on the locked GreyEdge mark between finite loop iterations. */
+  loopPause: 2000,
 } as const
 
 export const BLOCK_ROTATE_MS = {
@@ -425,16 +427,26 @@ export function useRandomFillCycle({
 /**
  * LeadingEdge hold. Leading flies up-right into a row. Cutting sits next to
  * Edge, then flies up; Competitive does the same. Grey locks beside Edge.
+ *
+ * `once` / `loops`: finite runs hold on GreyEdge after the last pass and never
+ * restart. Between finite iterations the locked mark pauses (`pauseBetweenMs`),
+ * then the adjective row resets before the next pass. Omit both for infinite.
  */
 export function useFlyUpRowCycle({
   active,
   reducedMotion,
   once = false,
+  loops,
+  pauseBetweenMs = FLY_UP_MS.loopPause,
 }: {
   active: boolean
   reducedMotion: boolean
   /** Run a single pass and hold on GreyEdge; never restart after the first trigger. */
   once?: boolean
+  /** Finite pass count (overrides infinite). `once` is treated as loops: 1. */
+  loops?: number
+  /** Extra hold on locked GreyEdge between finite passes (not after the last). */
+  pauseBetweenMs?: number
 }): FlyUpState {
   const [state, setState] = useState<FlyUpState>(() =>
     reducedMotion
@@ -442,6 +454,7 @@ export function useFlyUpRowCycle({
       : { phase: 'lead', isLocked: false, generation: 0 },
   )
   const hasPlayedRef = useRef(false)
+  const maxLoops = once ? 1 : loops
 
   useEffect(() => {
     if (reducedMotion) {
@@ -449,7 +462,7 @@ export function useFlyUpRowCycle({
       return
     }
     if (!active) return
-    if (once && hasPlayedRef.current) return
+    if (maxLoops != null && hasPlayedRef.current) return
 
     hasPlayedRef.current = true
     let cancelled = false
@@ -494,14 +507,17 @@ export function useFlyUpRowCycle({
     }
 
     const run = async () => {
-      if (once) {
-        await playPass()
-        return
-      }
-
+      let count = 0
       while (!cancelled) {
         await playPass()
         if (cancelled) return
+        count++
+        if (maxLoops != null && count >= maxLoops) return
+
+        if (maxLoops != null) {
+          await wait(pauseBetweenMs)
+          if (cancelled) return
+        }
 
         setState((s) => ({ ...s, phase: 'reset', isLocked: false }))
         await wait(FLY_UP_MS.reset)
@@ -510,13 +526,11 @@ export function useFlyUpRowCycle({
 
     void run()
 
-    if (once) return
-
     return () => {
       cancelled = true
       window.clearTimeout(timer)
     }
-  }, [active, reducedMotion, once])
+  }, [active, reducedMotion, maxLoops, pauseBetweenMs])
 
   return state
 }

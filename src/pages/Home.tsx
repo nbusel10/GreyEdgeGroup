@@ -68,7 +68,9 @@ export default function Home() {
               {hero.words.join(' ')}
             </p>
             <h1 className="mt-4 font-display text-[2.5rem] font-bold uppercase leading-[1.05] tracking-tight text-white sm:text-5xl md:text-[65px] lg:max-w-[50vw]">
-              {hero.headline}
+              <span className="block">{hero.headlineLead}</span>
+              <span className="block text-white">{hero.headlineEmphasis}</span>
+              <span className="block">{hero.headlineAccent}</span>
             </h1>
             <p className="mt-5 max-w-2xl font-body text-sm leading-relaxed text-ge-light sm:text-base md:text-lg">
               {hero.body}

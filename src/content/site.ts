@@ -17,6 +17,9 @@ export const hero = {
   eyebrow: 'Thermal Utility Master Planners',
   words: ['Efficient.', 'Resilient.', 'Reliable.'],
   headline: 'Your Partner for Thermal Energy Network Solutions',
+  headlineLead: 'Your Partner for',
+  headlineEmphasis: 'Thermal Energy Network',
+  headlineAccent: 'Solutions',
   body: 'With over 300 years of combined experience shaping the geothermal industry, we work with developers, campuses, and communities to build Thermal Energy Networks that deliver resilient, reliable, efficient heating and cooling.',
   image: site['hero-ski-town'].src,
   imageAlt: site['hero-ski-town'].alt,
@@ -32,7 +35,7 @@ export const barriers = {
   closingLead: 'They’re problems we’ve',
   closingAccent: 'solved.',
   closingBody:
-    'We’ve spent years learning these lessons that other firms are just getting around to. We aren’t learning on your project, we’re applying what that experience already taught us. We partner with you to help keep these complexities from becoming yours.',
+    'We’ve spent years learning lessons that other firms are only now confronting. We aren’t learning on your project — we’re applying what that experience already taught us. We partner with you to keep these complexities from becoming yours.',
 }
 
 export const finalCta = {

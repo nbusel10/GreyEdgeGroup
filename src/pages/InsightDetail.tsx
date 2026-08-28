@@ -26,6 +26,10 @@ export default function InsightDetail() {
   const next = idx < withBody.length - 1 ? withBody[idx + 1] : withBody[0]
   const showNav = withBody.length > 1
 
+  const related = insight.relatedLinks?.length
+    ? insight.relatedLinks
+    : [{ label: 'Geothermal 101', to: '/geothermal-101' }]
+
   return (
     <>
       <section className="relative flex min-h-[420px] items-end overflow-hidden bg-ge-black pt-28">
@@ -89,12 +93,14 @@ export default function InsightDetail() {
               <div className="mt-14 border-t border-ge-light pt-10">
                 <Eyebrow>Go deeper</Eyebrow>
                 <p className="mt-4 font-body text-sm leading-relaxed text-ge-graphite">
-                  New to the vocabulary? Start with the primer. Ready to talk through a site?
+                  Keep reading, or talk through a specific site with us.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Btn to="/geothermal-101" variant="outline">
-                    Geothermal 101
-                  </Btn>
+                  {related.map((link) => (
+                    <Btn key={link.to} to={link.to} variant="outline">
+                      {link.label}
+                    </Btn>
+                  ))}
                   <Btn to="/contact" variant="outline">
                     Get in touch
                   </Btn>

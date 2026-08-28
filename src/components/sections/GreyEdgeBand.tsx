@@ -3,8 +3,9 @@ import { Container } from '../ui'
 
 /**
  * Full-bleed fly-up GreyEdge lockup (preview option 6).
- * Animation starts when the band scrolls into view, plays once, and holds on
- * GreyEdge with the filled adjective row and brand-accent underline.
+ * Animation starts when the band scrolls into view, plays three times with a
+ * 2s pause between passes, then holds on GreyEdge with the filled adjective
+ * row and brand-accent underline.
  */
 export default function GreyEdgeBand({
   forceReducedMotion = false,
@@ -17,7 +18,8 @@ export default function GreyEdgeBand({
         <div className="flex justify-center">
           <GreyEdgeCycle
             variant="fly-up-row"
-            playOnce
+            loops={3}
+            pauseBetweenMs={2000}
             forceReducedMotion={forceReducedMotion}
             className="text-[clamp(2rem,4.8vw,4.5rem)]"
           />

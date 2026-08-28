@@ -93,13 +93,13 @@ async function main() {
   await page.addStyleTag({ content: HIDE_CHROME })
   await page.evaluate(() => document.fonts.ready)
 
-  const section = page.locator('#atl-explainer')
+  const section = page.locator('#thermal-highway')
   await section.scrollIntoViewIfNeeded()
   await sleep(800)
 
-  const tabs = page.locator('#atl-explainer [role="tab"]')
+  const tabs = page.locator('#thermal-highway [role="tab"]')
   const tabCount = await tabs.count()
-  if (tabCount === 0) throw new Error('no mode tabs found in #atl-explainer')
+  if (tabCount === 0) throw new Error('no mode tabs found in #thermal-highway')
 
   const svg = section.locator('svg[role="img"]')
 
@@ -116,7 +116,7 @@ async function main() {
     await sleep(120)
 
     const cycleMs = await page.evaluate(() => {
-      const pulse = document.querySelector('#atl-explainer .atl-pulse, #atl-explainer .atl-ground-hot')
+      const pulse = document.querySelector('#thermal-highway .atl-pulse, #thermal-highway .atl-ground-hot')
       if (!pulse) return 6000
       const raw = getComputedStyle(pulse).animationDuration
       const n = parseFloat(raw)

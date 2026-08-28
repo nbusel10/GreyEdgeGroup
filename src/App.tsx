@@ -9,6 +9,7 @@ import PreviewLessons from './pages/PreviewLessons'
 import PreviewServices from './pages/PreviewServices'
 import PreviewAtlIcons from './pages/PreviewAtlIcons'
 import PreviewWordmark from './pages/PreviewWordmark'
+import PreviewHero from './pages/PreviewHero'
 import Approach from './pages/Approach'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
@@ -41,6 +42,8 @@ export default function App() {
           <Route path="/preview-atl-icons" element={<PreviewAtlIcons />} />
           {/* Temporary: word-cycle animation review. Remove with the page. */}
           <Route path="/preview-wordmark" element={<PreviewWordmark />} />
+          {/* Temporary: home hero drafts. Remove with the page. */}
+          <Route path="/preview-hero" element={<PreviewHero />} />
           <Route path="/approach" element={<Approach />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />

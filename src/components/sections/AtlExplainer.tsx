@@ -76,7 +76,7 @@ export default function AtlExplainer() {
   }
 
   return (
-    <Section id="atl-explainer" className="border-t border-ge-light bg-white">
+    <Section id="thermal-highway" className="border-t border-ge-light bg-white">
       <div ref={sectionRef}>
         <Container>
           <Reveal>
