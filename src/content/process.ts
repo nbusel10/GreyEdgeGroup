@@ -1,11 +1,8 @@
 /**
- * "The Process", reworked per the Aug 5 review.
+ * "The Process" — five phases from feasibility through ongoing partnership.
  *
- * The four phases stay — they carry the end-to-end story Matt wants to own. What changed
- * is that the section previously read as a mandatory four-step gate, which is the thing
- * Joe warned about: a prospect holding a feasibility study from another firm concludes
- * they would have to start over, and leaves. Every phase is now labeled as a valid place
- * to start, with a line on what we do with work already completed by others.
+ * Every phase is a valid place to start, with a line on what we do with work
+ * already completed by others so prospects do not assume they must begin over.
  */
 
 export interface Phase {
@@ -23,39 +20,48 @@ export const intro =
 export const phases: Phase[] = [
   {
     num: '01',
-    title: 'Evaluate',
-    subtitle: 'Building and resource value analysis',
+    title: 'Phase 1 Feasibility Study',
+    subtitle: 'Assess',
     description:
-      'We evaluate site conditions, utility interconnection, load requirements, available thermal resources, and financial viability, establishing a clear foundation before a single dollar is committed to design.',
+      'Every project begins with understanding the opportunity. During this phase, we identify thermal resources, evaluate site conditions, perform energy modeling, and establish the technical foundation needed to determine whether a Thermal Energy Network is viable. The focus is on feasibility, resource evaluation, and reducing risk before significant investments are made.',
     entry:
-      'Already have a feasibility study? We will validate it and build from it rather than start over. A second set of eyes on someone else’s analysis is often the cheapest work on a project.',
+      'Already have preliminary studies or site data? We will review and build upon existing information rather than repeat work. Incorporating previous investigations is often the fastest and most cost-effective way to move a project forward.',
   },
   {
     num: '02',
-    title: 'Design',
-    subtitle: 'Lean and scalable engineering',
+    title: 'Phase 2 Feasibility Study',
+    subtitle: 'Define',
     description:
-      'Our engineers develop right-sized systems built for performance today and expansion tomorrow: loop architecture, borefield layout, and hydronic design sized to close, not to impress.',
+      'Once the opportunity is understood, the focus shifts to refinement and validation. This phase includes deeper technical investigation, stakeholder engagement, governance discussions, technology assessment, and additional data collection to verify assumptions and define the most promising path forward.',
     entry:
-      'Design already underway? We review what exists, flag the decisions that will be expensive to reverse, and work alongside your current team rather than replacing it.',
+      "Already have a feasibility study? We will validate it and build from it rather than start over. A second set of eyes on someone else's analysis is often some of the most valuable and cost-effective work performed on a project.",
   },
   {
     num: '03',
-    title: 'Execution',
-    subtitle: 'Promise and delivery',
+    title: 'Retro-Commissioning',
+    subtitle: 'Refine',
     description:
-      'We work alongside contractors to verify that every technical component is present, properly implemented, and functioning as intended, validating that real-world controls and performance match the design intent before final handoff.',
+      'Many projects already have infrastructure, equipment, or thermal assets in place that can create value. This phase focuses on evaluating existing systems, verifying performance, identifying operational improvements, and uncovering opportunities to leverage existing investments within a future Thermal Energy Network strategy.',
     entry:
-      'Mid-construction and something feels wrong? This is the most common point at which we are called in, and it is still early enough to protect the outcome.',
+      'Already operating geothermal equipment or district energy infrastructure? We can assess what is working, identify what can be improved, and determine how existing assets can support future network development.',
   },
   {
     num: '04',
-    title: 'Evolve',
-    subtitle: 'Long-term partnership and expansion',
+    title: 'Design',
+    subtitle: 'Design',
     description:
-      'The relationship does not end at ribbon-cutting. We monitor, optimize, and plan your next expansion, adapting the system as your operations and the energy landscape change.',
+      'By the time a project reaches design, major decisions should already be supported by technical analysis, stakeholder alignment, and validated data. This phase transforms those findings into right-sized system designs that integrate geothermal resources, building systems, controls, and district infrastructure into a coordinated solution.',
     entry:
-      'Inherited a system that underperforms? We diagnose what it is actually doing, then map what it would take to fix or extend it.',
+      'Already have engineers or designers on your team? We regularly collaborate with existing project teams, providing geothermal and Thermal Energy Network expertise where it adds the most value without disrupting project momentum.',
+  },
+  {
+    num: '05',
+    title: 'Ongoing Partnership',
+    subtitle: 'Guide',
+    description:
+      'Thermal Energy Networks are long-term infrastructure investments. After implementation, our role often shifts toward commissioning, performance validation, owner\'s representation, operational support, technology planning, and ongoing optimization to ensure the system continues delivering value over time.',
+    entry:
+      'Already have a functioning network? We can serve as a long-term advisor, helping operators optimize performance, evaluate expansion opportunities, and adapt to changing technologies while protecting the original investment.',
   },
 ]
 

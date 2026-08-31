@@ -109,23 +109,26 @@ body {
     stroke-dashoffset: -82px;
   }
 
-  /* Mode 2's charged earth and warmed housing. Motion is arrival-driven steps
+  /* ATL charged earth / node blooms. Motion is arrival-driven steps
      (soft / medium / dark); the still frame pins a readable mid/dark red so both
      still read as holding heat, and kills the blue overlays. !important beats the
      inline opacity 0 rest state. */
   .atl-ground-glow,
-  .atl-housing-glow {
+  .atl-housing-glow,
+  .atl-node-glow {
     animation: none !important;
   }
 
   .atl-ground-hot,
-  .atl-housing-hot {
+  .atl-housing-hot,
+  .atl-node-hot {
     opacity: 0.72 !important;
     fill: var(--color-atl-heat) !important;
   }
 
   .atl-ground-cool,
-  .atl-housing-cool {
+  .atl-housing-cool,
+  .atl-node-cool {
     opacity: 0 !important;
   }
 
@@ -737,6 +740,7 @@ body {
 .atl-is-paused .atl-pulse,
 .atl-is-paused .atl-ground-glow,
 .atl-is-paused .atl-housing-glow,
+.atl-is-paused .atl-node-glow,
 .atl-is-paused .atl-flow {
   animation-play-state: paused;
 }
@@ -829,7 +833,7 @@ body {
   }
 }
 
-/* Process: 4 stages, 3 connectors. Accent draws L→R on hover. */
+/* Process: 5 stages, 4 connectors. Accent draws L→R on hover. */
 .process-seg {
   transform: scaleX(0);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -844,6 +848,9 @@ body {
 }
 .process-seg-2.is-on {
   transition-delay: 0.2s;
+}
+.process-seg-3.is-on {
+  transition-delay: 0.3s;
 }
 
 /* Card divider: centered in its row; accent draws L→R on hover. */

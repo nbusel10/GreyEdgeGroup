@@ -35,7 +35,10 @@ export default function Services() {
                   <span className="font-body text-[10px] tracking-[0.18em] text-ge-steel">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <h4 className="mt-2 font-display text-lg font-bold uppercase leading-snug tracking-wide text-ge-black xl:text-base">
+                  <span className="mt-2 font-body text-xs font-medium uppercase tracking-[0.14em] text-ge-accent">
+                    {g.short}
+                  </span>
+                  <h4 className="mt-1.5 font-display text-lg font-bold uppercase leading-snug tracking-wide text-ge-black xl:text-base">
                     {g.title}
                   </h4>
                   <ul className="mt-4 flex-1 space-y-2.5">

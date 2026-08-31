@@ -112,44 +112,8 @@ export default function Geothermal101() {
       {/* What is a TEN */}
       <Section id="networks" className="bg-white">
         <Container>
-          <div className="grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
-            <Reveal>
-              <Eyebrow>The Concept</Eyebrow>
-              <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
-                Thermal Energy Networks
-              </h2>
-              <div className="mt-6 border-l-2 border-ge-accent pl-6">
-                <p className="font-body text-lg leading-relaxed text-ge-charcoal">
-                  A Thermal Energy Network connects buildings and thermal resources in a shared water loop, allowing heat to
-                  move where it is needed instead of being generated, rejected, and replaced by each building
-                  independently.
-                </p>
-              </div>
-              <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
-                The power of the system comes from its ability to leverage diversity. Offices, apartments, schools, hospitals, and other
-                building types use heating and cooling on different schedules. By sharing energy across the network,
-                one building&rsquo;s cooling can become another&rsquo;s heat, improving overall system
-                efficiency and reducing wasted energy.
-              </p>
-              <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
-                A Thermal Energy Network is not a geothermal technology. It is a heat pump system that seeks to use
-                the most cost-effective source, sink, and storage option, or a mix of them, to satisfy the heating
-                and cooling needs of its buildings. Geoexchange is a common and extremely valuable resource that TENs
-                tap into, but it is one of many potential{' '}
-                <a href="#thermal-resources" className={proseLinkClass}>
-                  thermal resources
-                </a>{' '}
-                that can be connected to the network.
-              </p>
-              <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
-                As communities work to reduce emissions, manage electrical demand, and plan for future growth, Thermal
-                Energy Networks offer a practical framework for delivering heating and cooling at scale. They require
-                less installed capacity, lower peak demand, improve system resilience, and become more effective as
-                additional buildings are connected. Simply put, the larger and more diverse the network, the stronger
-                the performance and economics become.
-              </p>
-            </Reveal>
-            <Reveal delay={0.08} className="flex flex-col justify-center">
+          <Reveal>
+            <div className="max-lg:grid max-lg:grid-cols-1 max-lg:gap-8 lg:flow-root">
               <button
                 ref={schematicBtnRef}
                 type="button"
@@ -157,7 +121,7 @@ export default function Geothermal101() {
                 aria-haspopup="dialog"
                 aria-expanded={schematicOpen}
                 title="View schematic"
-                className="group relative w-full cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-ge-accent focus-visible:outline-offset-2"
+                className="group relative w-full cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-ge-accent focus-visible:outline-offset-2 max-lg:order-2 lg:float-right lg:mb-6 lg:ml-16 lg:w-[52.5%]"
               >
                 <img src={schematic.src} alt={schematic.alt} className="img-cut w-full" loading="lazy" />
                 <span className="pointer-events-none absolute inset-0 flex items-end justify-end bg-gradient-to-t from-ge-black/25 via-transparent to-transparent p-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 md:p-3">
@@ -169,8 +133,46 @@ export default function Geothermal101() {
                   </span>
                 </span>
               </button>
-            </Reveal>
-          </div>
+              <div className="max-lg:order-1">
+                <Eyebrow>The Concept</Eyebrow>
+                <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
+                  Thermal Energy Networks
+                </h2>
+                <div className="mt-6 border-l-2 border-ge-accent pl-6">
+                  <p className="font-body text-lg leading-relaxed text-ge-charcoal">
+                    A Thermal Energy Network connects buildings and thermal resources in a shared water loop, allowing heat to
+                    move where it is needed instead of being generated, rejected, and replaced by each building
+                    independently.
+                  </p>
+                </div>
+              </div>
+              <div className="max-lg:order-3">
+                <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite lg:mt-5">
+                  The power of the system comes from its ability to leverage diversity. Offices, apartments, schools, hospitals, and other
+                  building types use heating and cooling on different schedules. By sharing energy across the network,
+                  one building&rsquo;s cooling can become another&rsquo;s heat, improving overall system
+                  efficiency and reducing wasted energy.
+                </p>
+                <p className="mt-5 clear-both font-body text-base leading-relaxed text-ge-graphite">
+                  A Thermal Energy Network is not a geothermal technology. It is a heat pump system that seeks to use
+                  the most cost-effective source, sink, and storage option, or a mix of them, to satisfy the heating
+                  and cooling needs of its buildings. Geoexchange is a common and extremely valuable resource that TENs
+                  tap into, but it is one of many potential{' '}
+                  <a href="#thermal-resources" className={proseLinkClass}>
+                    thermal resources
+                  </a>{' '}
+                  that can be connected to the network.
+                </p>
+                <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
+                  As communities work to reduce emissions, manage electrical demand, and plan for future growth, Thermal
+                  Energy Networks offer a practical framework for delivering heating and cooling at scale. They require
+                  less installed capacity, lower peak demand, improve system resilience, and become more effective as
+                  additional buildings are connected. Simply put, the larger and more diverse the network, the stronger
+                  the performance and economics become.
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </Container>
       </Section>
 

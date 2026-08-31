@@ -57,43 +57,28 @@ export type AtlMode = {
 /**
  * Mode 1 — instantaneous load sharing.
  *
- * The simplest true thing about an ambient loop: surplus heat leaving one building is heat
- * arriving at another, right now, with nothing in between. Both sources here are buildings
- * that reject heat whatever the season — a hospital cooling equipment and imaging suites
- * around the clock, a campus dense with people and plant — and both sinks are the ones
- * asking for it. Every journey runs the same direction along the loop, so the drawing says
- * something specific: surplus concentrates at one end of this district and demand sits at
- * the other.
+ * Two exchanges at once: heat leaves civic (starting dark red) for campus, which
+ * takes a medium red glow on entry; cool leaves housing (starting dark blue) for
+ * the hospital, which takes a medium blue glow on entry. Sources clear as soon as
+ * their pulse leaves the building.
  *
- * Durations follow the wide layout's clockwise around-the-track lengths at roughly
- * 200 units per second. Neighbour hops that sit against the loop take the long way
- * (~7.6s); hospital to civic is the shorter clockwise run (~5.4s) because it arrives
- * at the left cap first.
- *
- * Cool is the same three routes a beat later — colour, not a second current — so blue
- * chases red along each path instead of taking a different arc. The 2.0s follow keeps
- * the comets apart; the cycle grows by the same 2.0s so the quiet beat at the end
- * stays about 1.7s after the last cool lands (campus→civic at 10.3s).
+ * Durations at ~200 u/s: both neighbour hops ~1.5s. Quiet beat after landing.
  */
-const LOAD_SHARING_COOL_AT = 2.0
+const LS_NEIGHBOUR = 1.5
+const LOAD_SHARING_CYCLE = Math.round((LS_NEIGHBOUR + 1.5) * 10) / 10
 
 const loadSharing: AtlMode = {
   id: 'load-sharing',
   tab: 'Energy sharing',
   title: 'Instantaneous energy sharing',
   desc:
-    'Heat moves from the hospital and campus along the shared loop to housing and the civic building. Cooling follows on the same paths a moment later. Journeys overlap, so energy is leaving one building while it is arriving at another.',
+    'Heat leaves the civic building for campus while cooling leaves housing for the hospital. Civic starts red and housing starts blue; each destination takes on that colour as the pulse arrives.',
   caption:
-    'Heat moves from the hospital and campus to housing and the civic building. Cooling follows on the same paths.',
-  cycleMs: 12000,
+    'Heat moves from civic to campus while cooling moves from housing to the hospital.',
+  cycleMs: Math.round(LOAD_SHARING_CYCLE * 1000),
   pulses: [
-    { from: 'hospital', to: 'housing', thermal: 'heat', delay: 0, duration: 7.6 },
-    { from: 'campus', to: 'civic', thermal: 'heat', delay: 0.7, duration: 7.6 },
-    // Last heat to leave: the same exchange works end to end, not only between neighbours.
-    { from: 'hospital', to: 'civic', thermal: 'heat', delay: 1.6, duration: 5.4 },
-    { from: 'hospital', to: 'housing', thermal: 'cool', delay: LOAD_SHARING_COOL_AT, duration: 7.6 },
-    { from: 'campus', to: 'civic', thermal: 'cool', delay: 0.7 + LOAD_SHARING_COOL_AT, duration: 7.6 },
-    { from: 'hospital', to: 'civic', thermal: 'cool', delay: 1.6 + LOAD_SHARING_COOL_AT, duration: 5.4 },
+    { from: 'civic', to: 'campus', thermal: 'heat', delay: 0, duration: LS_NEIGHBOUR },
+    { from: 'housing', to: 'hospital', thermal: 'cool', delay: 0, duration: LS_NEIGHBOUR },
   ],
 }
 
@@ -148,15 +133,15 @@ export function groundChargeFor(pulses: Pulse[]): GroundGlow[] {
 }
 
 /**
- * Housing overlay opacities after each dash that arrives there. Same soft → medium
- * → dark ladder as the ground; the first pulse of the other colour clears the last.
+ * Overlay opacities after each dash that arrives at `node`. Same soft → medium →
+ * dark ladder as the ground; the first pulse of the other colour clears the last.
  */
-export function housingChargeFor(pulses: Pulse[]): GroundGlow[] {
+export function nodeChargeFor(pulses: Pulse[], node: NodeId): GroundGlow[] {
   let heat = 0
   let cool = 0
   const steps: GroundGlow[] = []
   for (const p of pulses) {
-    if (p.to !== 'housing') continue
+    if (p.to !== node) continue
     if (p.thermal === 'heat') {
       heat = Math.min(3, heat + 1)
       cool = 0
@@ -167,6 +152,74 @@ export function housingChargeFor(pulses: Pulse[]): GroundGlow[] {
     steps.push(glowFromLevels(heat, cool))
   }
   return steps
+}
+
+/** Housing arrivals — same ladder as any other destination node. */
+export function housingChargeFor(pulses: Pulse[]): GroundGlow[] {
+  return nodeChargeFor(pulses, 'housing')
+}
+
+/**
+ * Energy-sharing start colours: civic holds heat; housing holds cool. Campus and
+ * hospital only glow on arrival. Sources clear when their outbound pulse leaves.
+ */
+export function loadSharingSourceGlow(node: NodeId): { initial: GroundGlow; steps: GroundGlow[] } | null {
+  if (node === 'civic') {
+    return {
+      initial: { heat: GROUND_GLOW.dark, cool: 0 },
+      steps: [{ heat: 0, cool: 0 }],
+    }
+  }
+  if (node === 'housing') {
+    return {
+      initial: { heat: 0, cool: GROUND_GLOW.dark },
+      steps: [{ heat: 0, cool: 0 }],
+    }
+  }
+  return null
+}
+
+function softArrivalGlow(thermal: Thermal): GroundGlow {
+  return thermal === 'heat'
+    ? { heat: GROUND_GLOW.medium, cool: 0 }
+    : { heat: 0, cool: GROUND_GLOW.medium }
+}
+
+/** Destination colour when an energy-sharing pulse enters a building (medium for a single pulse). */
+export function loadSharingArrivalGlow(thermal: Thermal): GroundGlow {
+  return softArrivalGlow(thermal)
+}
+
+/**
+ * Waste-heat mode: the data center starts dark red (holding process heat). Each
+ * outbound pulse steps the glow down, then into cool — heat leaving the plant,
+ * then the empty plant reading as cool.
+ *
+ * Pulse 1 exit → medium red; pulse 2 → off; pulse 3 → soft blue; pulse 4 → medium blue.
+ */
+export const PROCESS_DATACENTER_INITIAL: GroundGlow = {
+  heat: GROUND_GLOW.dark,
+  cool: 0,
+}
+
+export function processDatacenterDischargeGlow(): GroundGlow[] {
+  return [
+    { heat: GROUND_GLOW.medium, cool: 0 },
+    { heat: 0, cool: 0 },
+    { heat: 0, cool: GROUND_GLOW.soft },
+    { heat: 0, cool: GROUND_GLOW.medium },
+  ]
+}
+
+/**
+ * Waste-heat building arrivals: one pulse each would only reach soft (0.28), which
+ * reads too faintly on the filled icons. Keep heat at least medium.
+ */
+export function processBuildingChargeFor(pulses: Pulse[], node: NodeId): GroundGlow[] {
+  return nodeChargeFor(pulses, node).map((step) => ({
+    heat: step.heat > 0 ? Math.max(step.heat, GROUND_GLOW.medium) : 0,
+    cool: step.cool,
+  }))
 }
 
 /**
@@ -180,8 +233,8 @@ export function housingChargeFor(pulses: Pulse[]): GroundGlow[] {
  * housing.
  *
  * AtlDiagram times ground charge from destEntry (entering the borefield), ground
- * discharge from sourceExit (leaving it), and housing glow from destEntry into
- * the housing riser.
+ * discharge from sourceExit (leaving it), and housing glow from destArrival
+ * (pulse head at the housing tap).
  *
  * Campus→borefield at ~200 u/s is ~6.2s; borefield→housing is ~4.0s.
  */
@@ -281,9 +334,10 @@ const multiPulses = (thermal: Thermal, sources: NodeId[], delay: number): Pulse[
  *
  * Four consecutive red pulses leave the data center and travel clockwise around
  * the shared loop, one into each building in turn: hospital, then housing, then
- * campus, then civic. No other source fires, and there is no cool follow — the
- * story is process heat leaving the data center and being taken up by the
- * district.
+ * campus, then civic. The data center starts dark red and steps down (then into
+ * blue) as each pulse leaves; each building takes a soft red arrival glow. No
+ * other source fires, and there is no cool follow — the story is process heat
+ * leaving the data center and being taken up by the district.
  *
  * Stagger matches Mode 2's train gap (0.45s). Durations are the clockwise
  * datacenter→building lengths above. The hospital leg is the longest flight
@@ -322,9 +376,10 @@ const processEnergy: AtlMode = {
  * The same source-to-every-building volley as Mode 3: geoexchange, wastewater
  * and the data center leave together on heat; cool follows from the two thermal
  * resources only. Pulses leave the exchange, they do not go into it, so there
- * is no earth glow. Cool starts at 7s even if the longest heat is still in
- * flight. A short rest after the last cool lands (wastewater→hospital at
- * 7 + 6.2 = 13.2s) keeps the loop from reading as continuous traffic.
+ * is no earth charge ladder — buildings take the soft arrival glow instead.
+ * Cool starts at 7s even if the longest heat is still in flight. A short rest
+ * after the last cool lands (wastewater→hospital at 7 + 6.2 = 13.2s) keeps the
+ * loop from reading as continuous traffic.
  */
 const MULTI_COOL_AT = 7
 

@@ -34,7 +34,7 @@ export const lessons: Lesson[] = [
     lesson: 'Technical viability is not enough if governance is unsettled.',
     detail:
       'Projects risk non-performance, overruns, over-complication, and weak stakeholder and offtaker integration. We gather, refine, and vet the facts to describe technical potential and cut risk. Then we convene the right people around the three pillars—who pays, who owns, who operates—and help choose the fit. Many projects stall after they prove technically viable because those three stay undefined.',
-    capability: 'Phases 01 Evaluate and 02 Design—concept through design, engineering, and procurement',
+    capability: 'Phases 01–02 Feasibility Study—concept through design, engineering, and procurement',
     image: site.blueprints.src,
     imageAlt: site.blueprints.alt,
   },
@@ -87,26 +87,38 @@ export interface ServiceGroup {
 /** Services grouped for the Approach photo-card layout. */
 export const serviceGroups: ServiceGroup[] = [
   {
-    short: 'Planning',
-    title: 'Planning & studies',
+    short: 'Assess',
+    title: 'Phase 1 Feasibility Study',
     image: site['service-planning'].src,
     imageAlt: site['service-planning'].alt,
     items: [
-      'Thermal utility master planning',
-      'Feasibility and resource studies',
-      'Building and portfolio energy modeling',
+      'Overall Program Planning',
+      'Hydrogeologic Assessments',
+      'Energy Modeling',
     ],
   },
   {
-    short: 'Resources',
-    title: 'Ground & resources',
+    short: 'Define',
+    title: 'Phase 2 Feasibility Study',
     image: site['service-ground'].src,
     imageAlt: site['service-ground'].alt,
     items: [
-      'Hydrogeology and subsurface analysis',
-      'Test drilling coordination',
-      'Geoexchange design',
-      'Resource integration',
+      'Governance Structure Facilitations',
+      'Best Technology Assessment',
+      'Identifying and Optimizing Sink / Source / Storage Opportunities',
+      'Risk Reduction Management',
+    ],
+  },
+  {
+    short: 'Refine',
+    title: 'Retro-Commissioning',
+    image: site['service-delivery'].src,
+    imageAlt: site['service-delivery'].alt,
+    items: [
+      'System Commissioning',
+      'System Performance Optimization',
+      'System Control Optimization',
+      'System Emissions Reduction',
     ],
   },
   {
@@ -114,30 +126,18 @@ export const serviceGroups: ServiceGroup[] = [
     title: 'Design',
     image: site['service-network'].src,
     imageAlt: site['service-network'].alt,
-    items: ['Ambient temperature loop design', 'Cross-discipline design coordination'],
-  },
-  {
-    short: 'Delivery',
-    title: 'Delivery & verification',
-    image: site['service-delivery'].src,
-    imageAlt: site['service-delivery'].alt,
     items: [
-      'Construction and constructability coordination',
-      'Commissioning and performance validation',
-      'Retro-commissioning',
+      'Ambient Temperature Loop System Design',
+      'HVAC System Design',
+      'Best Value Design Trade-Offs',
     ],
   },
   {
-    short: 'Advisory',
-    title: 'Advisory & stewardship',
+    short: 'Guide',
+    title: 'Ongoing Partnership',
     image: site['service-advisory'].src,
     imageAlt: site['service-advisory'].alt,
-    items: [
-      'Third-party and peer review',
-      'Owner’s representation',
-      'Subject-matter expertise and expert testimony',
-      'Long-term optimization and expansion planning',
-    ],
+    items: ['Technology Upgrade Planning', 'System Technical Training'],
   },
 ]
 

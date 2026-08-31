@@ -2,6 +2,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { getProject, projects } from '../content/projects'
 import FinalCta from '../components/sections/FinalCta'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
+import { linkGeoTermsInNodes } from '../lib/linkGeoTerms'
 import { linkTeamNames } from '../lib/linkTeamNames'
 import { projectDescriptionParts } from '../lib/projectDescription'
 import { usePageMeta } from '../lib/meta'
@@ -21,6 +22,9 @@ export default function ProjectDetail() {
   })
 
   if (!project) return <Navigate to="/projects" replace />
+
+  // One deep link per G101 concept across the project description.
+  const geoLinked = new Set<string>()
 
   const stats = [
     { label: 'Square feet', value: project.sqFeet ?? 'In progress' },
@@ -116,7 +120,7 @@ export default function ProjectDetail() {
                 <div className="mt-8 space-y-5">
                   {projectDescriptionParts(project.description).map((para) => (
                     <p key={para.slice(0, 48)} className="font-body text-base leading-relaxed text-ge-graphite">
-                      {linkTeamNames(para)}
+                      {linkGeoTermsInNodes(linkTeamNames(para), geoLinked)}
                     </p>
                   ))}
                 </div>

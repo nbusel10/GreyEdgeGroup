@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import type { Project } from '../content/projects'
 
 const statusTone: Record<Project['status'], string> = {
-  Completed: 'border-ge-accent text-ge-accent-bright',
+  Completed: 'border-white/50 text-white',
   Operational: 'border-white/50 text-white',
   'In Progress': 'border-white/50 text-white',
   'In Development': 'border-white/40 text-white/85',

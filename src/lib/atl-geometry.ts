@@ -79,6 +79,8 @@ export type Layout = {
    * Same ellipse-plus-blur treatment as the ground glow.
    */
   housingGlow: { cx: number; cy: number; rx: number; ry: number; blur: number }
+  /** Soft blooms behind every node icon for arrival / discharge glows. */
+  nodeGlow: Record<AtlIconId, { cx: number; cy: number; rx: number; ry: number; blur: number }>
   nodes: PlacedNode[]
   nodeById: Record<AtlIconId, PlacedNode>
 }
@@ -147,13 +149,15 @@ function groundBehind(borefield: PlacedNode): Layout['ground'] {
 }
 
 /**
- * Soft bloom centred on the housing body (roof tip excluded) so Mode 2's recover
- * pulses can warm or cool the building without painting a second filled shape.
+ * Soft bloom centred on a node body so arrival / discharge pulses can warm or
+ * cool the icon without painting a second filled shape. Resources sit a little
+ * higher in the artboard than building roofs, so the patch shifts with kind.
  */
-function housingGlowBehind(housing: PlacedNode): Layout['housingGlow'] {
-  const s = housing.scale
-  const x = housing.x + 4 * s
-  const y = housing.y + 10 * s
+function nodeGlowBehind(node: PlacedNode): Layout['housingGlow'] {
+  const s = node.scale
+  const top = node.kind === 'resource' ? 8 : 10
+  const x = node.x + 4 * s
+  const y = node.y + top * s
   const width = 40 * s
   const height = 34 * s
   return {
@@ -163,6 +167,18 @@ function housingGlowBehind(housing: PlacedNode): Layout['housingGlow'] {
     ry: height * 0.52,
     blur: 0.22 * Math.min(width, height),
   }
+}
+
+/**
+ * Soft bloom centred on the housing body (roof tip excluded) so Mode 2's recover
+ * pulses can warm or cool the building without painting a second filled shape.
+ */
+function housingGlowBehind(housing: PlacedNode): Layout['housingGlow'] {
+  return nodeGlowBehind(housing)
+}
+
+function nodeGlowsFor(nodes: PlacedNode[]): Layout['nodeGlow'] {
+  return Object.fromEntries(nodes.map((n) => [n.id, nodeGlowBehind(n)])) as Layout['nodeGlow']
 }
 
 /** Stadium whose long sides are the two lanes and whose caps sit inside the pill's ends. */
@@ -275,6 +291,7 @@ export function layoutWide(): Layout {
     pulseLength: 52,
     ground: groundBehind(nodes.find((n) => n.id === 'borefield')!),
     housingGlow: housingGlowBehind(nodes.find((n) => n.id === 'housing')!),
+    nodeGlow: nodeGlowsFor(nodes),
     nodes,
     nodeById: byId(nodes),
   }
@@ -355,6 +372,7 @@ export function layoutNarrow(): Layout {
     pulseLength: 34,
     ground: groundBehind(nodes.find((n) => n.id === 'borefield')!),
     housingGlow: housingGlowBehind(nodes.find((n) => n.id === 'housing')!),
+    nodeGlow: nodeGlowsFor(nodes),
     nodes,
     nodeById: byId(nodes),
   }

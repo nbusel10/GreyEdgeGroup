@@ -27,7 +27,7 @@ const navItems: NavItem[] = [
     to: '/approach',
     children: [
       { label: 'Built on Experience', desc: 'What 300+ years in the field taught us', to: '/approach#advantage' },
-      { label: 'Our Process', desc: 'Evaluate, design, execute, evolve', to: '/approach#process' },
+      { label: 'Our Process', desc: 'Assess, define, refine, design, guide', to: '/approach#process' },
       { label: 'Our Services', desc: 'Every role we can play on a project', to: '/approach#services' },
     ],
   },

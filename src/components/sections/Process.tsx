@@ -4,10 +4,9 @@ import { doors } from '../../content/advantage'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../ui'
 
 /**
- * "The Process", reworked per the Aug 5 review.
- *
- * Every phase is labelled as a valid place to start. Light surface so it does not
- * read as the footer; a drawing connector plus staggered cards mark progression.
+ * "The Process" — five phases; every phase is a valid place to start.
+ * Light surface so it does not read as the footer; a drawing connector plus
+ * staggered cards mark progression.
  */
 export default function Process() {
   const [hovered, setHovered] = useState<number | null>(null)
@@ -25,7 +24,7 @@ export default function Process() {
         </Reveal>
 
         <div
-          className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-[auto_auto_auto_minmax(0,1fr)_auto_auto]"
+          className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-5 xl:grid-rows-[auto_auto_auto_minmax(0,1fr)_auto_auto]"
           onMouseLeave={() => setHovered(null)}
         >
             {phases.map((p, i) => (
@@ -48,7 +47,7 @@ export default function Process() {
                 )}
                 <article
                   onMouseEnter={() => setHovered(i)}
-                  className="group flex h-full flex-col border border-ge-light bg-ge-offwhite p-6 transition-colors duration-200 hover:border-ge-accent hover:bg-white xl:row-span-6 xl:grid xl:grid-rows-subgrid"
+                  className="group flex h-full flex-col border border-ge-light bg-ge-offwhite p-6 transition-colors duration-200 hover:border-ge-accent hover:bg-white xl:row-span-6 xl:grid xl:grid-rows-subgrid xl:p-5"
                 >
                   <div className="flex items-baseline gap-3">
                     <span className="font-display text-5xl font-bold leading-none text-ge-light transition-colors duration-200 group-hover:text-ge-accent">
@@ -58,7 +57,7 @@ export default function Process() {
                       //
                     </span>
                   </div>
-                  <h3 className="mt-0.5 font-display text-3xl font-bold uppercase leading-snug tracking-wide text-ge-black">
+                  <h3 className="mt-0.5 font-display text-2xl font-bold uppercase leading-snug tracking-wide text-ge-black xl:text-[1.35rem]">
                     {p.title}
                   </h3>
                   <div className="mt-0.5 font-body text-[11px] uppercase tracking-[0.16em] text-ge-steel">{p.subtitle}</div>

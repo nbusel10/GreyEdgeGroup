@@ -130,14 +130,7 @@ export default function AtlExplainer() {
                   } ${i === 1 ? 'sm:border-r sm:border-ge-light' : ''}`}
                 >
                   <span
-                    className={`block font-body text-[10px] tracking-[0.18em] ${
-                      selected ? 'text-white/80' : 'text-ge-accent'
-                    }`}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span
-                    className={`mt-1 block font-display text-[11px] font-bold uppercase leading-snug tracking-wide sm:text-[13px] ${
+                    className={`block font-display text-[18px] font-bold uppercase leading-snug tracking-wide ${
                       selected ? 'text-white' : 'text-ge-accent/80 group-hover:text-ge-accent'
                     }`}
                   >

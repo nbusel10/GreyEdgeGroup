@@ -1,15 +1,32 @@
 import { useId, type CSSProperties } from 'react'
-import { atlIconById } from './AtlIcons'
+import { atlIconById, type AtlIconId } from './AtlIcons'
 import {
   atlModes,
   defaultAtlMode,
   groundChargeFor,
-  housingChargeFor,
+  loadSharingArrivalGlow,
+  loadSharingSourceGlow,
+  nodeChargeFor,
+  PROCESS_DATACENTER_INITIAL,
+  processBuildingChargeFor,
+  processDatacenterDischargeGlow,
   type AtlMode,
+  type GroundGlow,
   type Pulse,
 } from '../content/atlModes'
 import { layoutFor, routeFor, trackPath, type Layout, type LayoutId } from '../lib/atl-geometry'
 import { useMediaQuery } from '../lib/hooks'
+
+/** Every icon that can take a soft heat/cool bloom behind it. */
+const GLOW_NODES: AtlIconId[] = [
+  'civic',
+  'campus',
+  'housing',
+  'hospital',
+  'borefield',
+  'wastewater',
+  'datacenter',
+]
 
 /**
  * The ATL scene: one shared loop drawn as the schematic's white pill, four buildings tapped
@@ -121,15 +138,15 @@ function Pulses({
 }
 
 /**
- * Mode 2's charged earth and warmed housing: red and blue glows as separate overlays
- * so a pass through neutral is a real gap, not a purple mix of heat into cool.
+ * Soft red/blue blooms behind nodes as pulses arrive (or, for Mode 2's ground
+ * and Waste heat's data center, as charges enter / leave).
  *
- * Ground colour steps come from groundChargeFor — three red climbs into the
- * borefield, three red discharges leaving it, then the same in blue. Housing
- * steps come from housingChargeFor on arrivals there. Timing is pulse geometry,
- * not a colour clock: charge on destEntry into the borefield, discharge on
- * sourceExit leaving it, housing on destEntry into the building. A short ease at
- * each step keeps the change from popping.
+ * Ground colour steps come from groundChargeFor — timed on destEntry so the
+ * earth brightens as a dash leaves the loop into the borefield. Building and
+ * resource arrival blooms wait for destArrival (path end) so the glow does not
+ * fire while the comet is still climbing the riser. Waste heat's data center
+ * starts dark red and steps down / into blue on each sourceExit. A short ease
+ * at each step keeps the change from popping.
  */
 type GlowStop = { at: number; opacity: number; ease?: boolean }
 
@@ -142,16 +159,17 @@ function pulseAtFraction(p: Pulse, layout: Layout, pick: (route: ReturnType<type
   return p.delay + p.duration * ((pick(route) * 100) / (100 + dash))
 }
 
-function pulseBorefieldEntry(p: Pulse, layout: Layout) {
+function pulseDestEntry(p: Pulse, layout: Layout) {
   return pulseAtFraction(p, layout, (r) => r.destEntry)
 }
 
-function pulseBorefieldLeave(p: Pulse, layout: Layout) {
+/** Head of the comet reaches the destination tap — when it enters the building/resource. */
+function pulseDestArrival(p: Pulse, layout: Layout) {
+  return pulseAtFraction(p, layout, () => 1)
+}
+
+function pulseSourceExit(p: Pulse, layout: Layout) {
   return pulseAtFraction(p, layout, (r) => r.sourceExit)
-}
-
-function pulseHousingEntry(p: Pulse, layout: Layout) {
-  return pulseAtFraction(p, layout, (r) => r.destEntry)
 }
 
 function pushHold(stops: GlowStop[], at: number, from: number, to: number) {
@@ -171,21 +189,26 @@ function closeGlowLoop(stops: GlowStop[], opacity: number, cycle: number) {
 
 function glowStopsFromSteps(
   arrivals: number[],
-  charge: { heat: number; cool: number }[],
+  charge: GroundGlow[],
   cycle: number,
+  initial: GroundGlow = { heat: 0, cool: 0 },
 ) {
   if (!arrivals.length) return null
 
-  const heat: GlowStop[] = [{ at: 0, opacity: 0 }]
-  const cool: GlowStop[] = [{ at: 0, opacity: 0 }]
-  let heatOp = 0
-  let coolOp = 0
+  // Apply steps in time order so authored pulse order can differ from arrival order.
+  const paired = arrivals
+    .map((at, i) => ({ at, next: charge[i]! }))
+    .sort((a, b) => a.at - b.at)
 
-  for (let i = 0; i < arrivals.length; i++) {
-    const next = charge[i]!
-    pushHold(heat, arrivals[i]!, heatOp, next.heat)
+  const heat: GlowStop[] = [{ at: 0, opacity: initial.heat }]
+  const cool: GlowStop[] = [{ at: 0, opacity: initial.cool }]
+  let heatOp = initial.heat
+  let coolOp = initial.cool
+
+  for (const { at, next } of paired) {
+    pushHold(heat, at, heatOp, next.heat)
     heatOp = next.heat
-    pushHold(cool, arrivals[i]!, coolOp, next.cool)
+    pushHold(cool, at, coolOp, next.cool)
     coolOp = next.cool
   }
 
@@ -201,24 +224,30 @@ function groundGlowStops(mode: AtlMode, layout: Layout) {
   if (!charge.length) return null
   const stores = mode.pulses.some((p) => p.to === 'borefield')
   const events = mode.pulses.flatMap((p) => {
-    if (p.to === 'borefield') return [pulseBorefieldEntry(p, layout)]
-    if (stores && p.from === 'borefield') return [pulseBorefieldLeave(p, layout)]
+    if (p.to === 'borefield') return [pulseDestEntry(p, layout)]
+    if (stores && p.from === 'borefield') return [pulseSourceExit(p, layout)]
     return []
   })
   if (events.length !== charge.length) return null
   return glowStopsFromSteps(events, charge, cycle)
 }
 
-function housingGlowStops(mode: AtlMode, layout: Layout) {
+function nodeArrivalGlowStops(mode: AtlMode, layout: Layout, node: AtlIconId) {
   const cycle = mode.cycleMs / 1000
-  const arrivals = mode.pulses
-    .filter((p) => p.to === 'housing')
-    .map((p) => pulseHousingEntry(p, layout))
-  if (!arrivals.length) return null
-  // Only Mode 2 authors housing charge steps; other modes that send pulses to
-  // housing (load sharing, waste heat, multi-source) leave the building unlit.
-  const charge = housingChargeFor(mode.pulses)
+  const destined = mode.pulses.filter((p) => p.to === node)
+  if (!destined.length) return null
+  // Charge ladder must follow arrival time, not authored pulse order.
+  const timed = destined
+    .map((p) => ({ p, at: pulseDestArrival(p, layout) }))
+    .sort((a, b) => a.at - b.at || a.p.delay - b.p.delay)
+  const ordered = timed.map((t) => t.p)
+  const charge =
+    mode.id === 'process-energy'
+      ? processBuildingChargeFor(ordered, node)
+      : nodeChargeFor(ordered, node)
   if (!charge.length) return null
+  const arrivals = timed.map((t) => t.at)
+  if (arrivals.length !== charge.length) return null
   return glowStopsFromSteps(arrivals, charge, cycle)
 }
 
@@ -243,11 +272,25 @@ function pairGlowCss(
   return {
     heat,
     cool,
+    initialHeat: stops.heat[0]?.opacity ?? 0,
+    initialCool: stops.cool[0]?.opacity ?? 0,
     css: `${glowKeyframes(heat, stops.heat, cycle)}\n${glowKeyframes(cool, stops.cool, cycle)}`,
   }
 }
 
+type NodeGlowCss = {
+  node: AtlIconId
+  heat: string
+  cool: string
+  initialHeat: number
+  initialCool: number
+  css: string
+}
+
 function groundChargeCss(mode: AtlMode, uid: string, layout: Layout) {
+  // Mode 2 owns the earth store/discharge ladder. Other modes that send into
+  // the borefield use the shared node-arrival bloom instead.
+  if (mode.id !== 'ground-battery') return null
   const g = groundGlowStops(mode, layout)
   if (!g) return null
   const cycle = mode.cycleMs / 1000
@@ -255,14 +298,90 @@ function groundChargeCss(mode: AtlMode, uid: string, layout: Layout) {
   return pairGlowCss(`atlGround-${safe}`, g, cycle)
 }
 
-function housingChargeCss(mode: AtlMode, uid: string, layout: Layout) {
-  // Housing bloom is Mode 2's recover story. Other modes reach housing without it.
-  if (mode.id !== 'ground-battery') return null
-  const g = housingGlowStops(mode, layout)
-  if (!g) return null
+/** Waste heat: data center holds dark red, then steps down / into blue as heat leaves. */
+function processDatacenterGlowStops(mode: AtlMode, layout: Layout) {
+  if (mode.id !== 'process-energy') return null
+  const cycle = mode.cycleMs / 1000
+  const charge = processDatacenterDischargeGlow()
+  const exits = mode.pulses
+    .filter((p) => p.from === 'datacenter')
+    .map((p) => pulseSourceExit(p, layout))
+  if (exits.length !== charge.length) return null
+  return glowStopsFromSteps(exits, charge, cycle, PROCESS_DATACENTER_INITIAL)
+}
+
+/**
+ * Energy sharing: sources start charged and clear as the pulse leaves; destinations
+ * take a medium glow of the arriving colour when the comet enters. A node can be
+ * either, both, or only a destination.
+ */
+function loadSharingNodeGlowStops(mode: AtlMode, layout: Layout, node: AtlIconId) {
+  if (mode.id !== 'load-sharing') return null
+  const cycle = mode.cycleMs / 1000
+  const spec = loadSharingSourceGlow(node)
+  const events: { at: number; next: GroundGlow }[] = []
+
+  for (const p of mode.pulses) {
+    if (p.from === node) {
+      events.push({ at: pulseSourceExit(p, layout), next: { heat: 0, cool: 0 } })
+    }
+    if (p.to === node) {
+      events.push({ at: pulseDestArrival(p, layout), next: loadSharingArrivalGlow(p.thermal) })
+    }
+  }
+
+  if (!events.length) return null
+  events.sort((a, b) => a.at - b.at)
+
+  return glowStopsFromSteps(
+    events.map((e) => e.at),
+    events.map((e) => e.next),
+    cycle,
+    spec?.initial ?? { heat: 0, cool: 0 },
+  )
+}
+
+/**
+ * Arrival blooms for every destination, plus authored source-discharge blooms.
+ * Borefield store/discharge on Mode 2 stays on the earth patch via groundChargeCss.
+ */
+function nodeArrivalGlowCss(mode: AtlMode, uid: string, layout: Layout): NodeGlowCss[] {
   const cycle = mode.cycleMs / 1000
   const safe = `${mode.id}-${uid.replace(/[^a-zA-Z0-9_-]/g, '')}`
-  return pairGlowCss(`atlHousing-${safe}`, g, cycle)
+  const out: NodeGlowCss[] = []
+  const claimed = new Set<AtlIconId>()
+
+  for (const node of GLOW_NODES) {
+    if (node === 'borefield' && mode.id === 'ground-battery') continue
+    // Source-discharge modes drive these nodes from exits, not arrivals.
+    if (node === 'datacenter' && mode.id === 'process-energy') continue
+    // Energy sharing owns the full source + arrival timeline for its buildings.
+    if (mode.id === 'load-sharing') continue
+
+    const g = nodeArrivalGlowStops(mode, layout, node)
+    if (!g) continue
+    const pair = pairGlowCss(`atlNode-${safe}-${node}`, g, cycle)
+    out.push({ node, ...pair })
+    claimed.add(node)
+  }
+
+  const processDc = processDatacenterGlowStops(mode, layout)
+  if (processDc) {
+    const pair = pairGlowCss(`atlNode-${safe}-datacenter`, processDc, cycle)
+    out.push({ node: 'datacenter', ...pair })
+    claimed.add('datacenter')
+  }
+
+  if (mode.id === 'load-sharing') {
+    for (const node of GLOW_NODES) {
+      const g = loadSharingNodeGlowStops(mode, layout, node)
+      if (!g) continue
+      const pair = pairGlowCss(`atlNode-${safe}-${node}`, g, cycle)
+      out.push({ node, ...pair })
+    }
+  }
+
+  return out
 }
 
 function GlowEllipse({
@@ -271,12 +390,15 @@ function GlowEllipse({
   className,
   glow,
   filterId,
+  initialOpacity = 0,
 }: {
   kf: string
   cycleMs: number
   className: string
   glow: { cx: number; cy: number; rx: number; ry: number }
   filterId: string
+  /** First-frame opacity so charged sources show before the keyframe attaches. */
+  initialOpacity?: number
 }) {
   return (
     <ellipse
@@ -287,7 +409,7 @@ function GlowEllipse({
       ry={glow.ry}
       filter={`url(#${filterId})`}
       style={{
-        opacity: 0,
+        opacity: initialOpacity,
         animationName: kf,
         animationDuration: `${cycleMs}ms`,
         animationTimingFunction: 'linear',
@@ -296,6 +418,11 @@ function GlowEllipse({
       }}
     />
   )
+}
+
+function glowGeomFor(layout: Layout, node: AtlIconId) {
+  if (node === 'borefield') return layout.ground.glow
+  return layout.nodeGlow[node]
 }
 
 export default function AtlDiagram({
@@ -315,13 +442,20 @@ export default function AtlDiagram({
   const L = layoutFor(layout ?? (isWide ? 'wide' : 'narrow'))
   const mode = atlModes.find((m) => m.id === modeId) ?? defaultAtlMode
   const charge = groundChargeCss(mode, uid, L)
-  const housing = housingChargeCss(mode, uid, L)
+  const nodeGlows = nodeArrivalGlowCss(mode, uid, L)
   const motion = pulseMotion(mode, uid)
+  const glowFilters = new Map<string, number>()
+  if (charge) glowFilters.set('borefield', L.ground.glow.blur)
+  for (const g of nodeGlows) {
+    if (!glowFilters.has(g.node)) glowFilters.set(g.node, glowGeomFor(L, g.node).blur)
+  }
 
   return (
     <>
       {charge && <style key={`ground-${mode.id}`}>{charge.css}</style>}
-      {housing && <style key={`housing-${mode.id}`}>{housing.css}</style>}
+      {nodeGlows.map((g) => (
+        <style key={`node-${mode.id}-${g.node}`}>{g.css}</style>
+      ))}
       {motion.css && <style key={`pulses-${mode.id}`}>{motion.css}</style>}
       <svg
         viewBox={L.viewBox}
@@ -337,7 +471,7 @@ export default function AtlDiagram({
         {mode.desc}
       </desc>
 
-      {/* Neutral earth, then Mode 2's glows. Both sit behind the U-tubes so the borefield
+      {/* Neutral earth, then charged glows. Both sit behind the U-tubes so the borefield
           still reads as pipe in the ground; the charge is a bloom, not a second fill.
           Red and blue are separate overlays so the pass through tan is a gap, not a mix. */}
       <rect
@@ -348,32 +482,21 @@ export default function AtlDiagram({
         height={L.ground.height}
         rx={L.ground.rx}
       />
-      {(charge || housing) && (
+      {glowFilters.size > 0 && (
         <defs>
-          {charge && (
+          {[...glowFilters.entries()].map(([node, blur]) => (
             <filter
-              id={`${safeUid}-ground-glow`}
+              key={node}
+              id={`${safeUid}-glow-${node}`}
               x="-120%"
               y="-120%"
               width="340%"
               height="340%"
               colorInterpolationFilters="sRGB"
             >
-              <feGaussianBlur stdDeviation={L.ground.glow.blur} />
+              <feGaussianBlur stdDeviation={blur} />
             </filter>
-          )}
-          {housing && (
-            <filter
-              id={`${safeUid}-housing-glow`}
-              x="-120%"
-              y="-120%"
-              width="340%"
-              height="340%"
-              colorInterpolationFilters="sRGB"
-            >
-              <feGaussianBlur stdDeviation={L.housingGlow.blur} />
-            </filter>
-          )}
+          ))}
         </defs>
       )}
       {charge && (
@@ -381,40 +504,51 @@ export default function AtlDiagram({
           <GlowEllipse
             kf={charge.heat}
             cycleMs={mode.cycleMs}
-            className="atl-ground-glow atl-ground-hot fill-atl-heat"
+            className="atl-node-glow atl-ground-glow atl-ground-hot fill-atl-heat"
             glow={L.ground.glow}
-            filterId={`${safeUid}-ground-glow`}
+            filterId={`${safeUid}-glow-borefield`}
+            initialOpacity={charge.initialHeat}
           />
           <GlowEllipse
             kf={charge.cool}
             cycleMs={mode.cycleMs}
-            className="atl-ground-glow atl-ground-cool fill-atl-cool"
+            className="atl-node-glow atl-ground-glow atl-ground-cool fill-atl-cool"
             glow={L.ground.glow}
-            filterId={`${safeUid}-ground-glow`}
+            filterId={`${safeUid}-glow-borefield`}
+            initialOpacity={charge.initialCool}
           />
         </g>
       )}
 
-      {/* Mode 2 housing bloom behind the icon — same soft→medium→dark steps as the
-          ground, read as the building warming or cooling as recover pulses arrive. */}
-      {housing && (
-        <g key={`housing-${mode.id}`}>
-          <GlowEllipse
-            kf={housing.heat}
-            cycleMs={mode.cycleMs}
-            className="atl-housing-glow atl-housing-hot fill-atl-heat"
-            glow={L.housingGlow}
-            filterId={`${safeUid}-housing-glow`}
-          />
-          <GlowEllipse
-            kf={housing.cool}
-            cycleMs={mode.cycleMs}
-            className="atl-housing-glow atl-housing-cool fill-atl-cool"
-            glow={L.housingGlow}
-            filterId={`${safeUid}-housing-glow`}
-          />
-        </g>
-      )}
+      {/* Soft heat/cool blooms behind buildings and resources as pulses arrive
+          (or leave the data center in Waste heat). */}
+      {nodeGlows.map((g) => {
+        const geom = glowGeomFor(L, g.node)
+        const hotClass =
+          g.node === 'housing' ? 'atl-housing-glow atl-housing-hot' : 'atl-node-hot'
+        const coolClass =
+          g.node === 'housing' ? 'atl-housing-glow atl-housing-cool' : 'atl-node-cool'
+        return (
+          <g key={`node-${mode.id}-${g.node}`}>
+            <GlowEllipse
+              kf={g.heat}
+              cycleMs={mode.cycleMs}
+              className={`atl-node-glow ${hotClass} fill-atl-heat`}
+              glow={geom}
+              filterId={`${safeUid}-glow-${g.node}`}
+              initialOpacity={g.initialHeat}
+            />
+            <GlowEllipse
+              kf={g.cool}
+              cycleMs={mode.cycleMs}
+              className={`atl-node-glow ${coolClass} fill-atl-cool`}
+              glow={geom}
+              filterId={`${safeUid}-glow-${g.node}`}
+              initialOpacity={g.initialCool}
+            />
+          </g>
+        )
+      })}
 
       {/* Risers first: the pill is painted over them, which hides every join without needing
           the pipe to stop at an exact tangent. */}

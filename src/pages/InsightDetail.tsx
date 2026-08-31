@@ -2,6 +2,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { getInsight, insights } from '../content/insights'
 import FinalCta from '../components/sections/FinalCta'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
+import { linkGeoTerms } from '../lib/linkGeoTerms'
 import { usePageMeta } from '../lib/meta'
 
 export default function InsightDetail() {
@@ -29,6 +30,9 @@ export default function InsightDetail() {
   const related = insight.relatedLinks?.length
     ? insight.relatedLinks
     : [{ label: 'Geothermal 101', to: '/geothermal-101' }]
+
+  // One deep link per G101 concept across the article (avoids a sea of underlines).
+  const geoLinked = new Set<string>()
 
   return (
     <>
@@ -82,7 +86,7 @@ export default function InsightDetail() {
                         section.heading && pi === 0 ? 'mt-5' : pi > 0 || (i > 0 && !section.heading) ? 'mt-5' : ''
                       }`}
                     >
-                      {p}
+                      {linkGeoTerms(p, geoLinked)}
                     </p>
                   ))}
                 </div>
