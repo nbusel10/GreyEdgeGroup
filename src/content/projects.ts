@@ -449,7 +449,7 @@ export const projects: Project[] = [
     sqFeet: null,
     buildings: null,
     completion: "Study Complete",
-    phase: "phase-1-feasibility-study",
+    phase: "phase-2-feasibility-study",
     status: "Completed",
     summary: "Explore how Fraser evaluated a geothermal heating district for planned Town-owned developments—and what the analysis revealed about local thermal resources and future potential.",
     description: [
