@@ -5,6 +5,9 @@ import PageHero from '../components/PageHero'
 import FinalCta from '../components/sections/FinalCta'
 import { Container, Reveal, Section } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
+import { sortProjectsForListing } from '../lib/sortProjects'
+
+const listedProjects = sortProjectsForListing(projects)
 
 export default function Projects() {
   usePageMeta({
@@ -29,7 +32,7 @@ export default function Projects() {
       <Section className="bg-ge-offwhite">
         <Container>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((p, i) => (
+            {listedProjects.map((p, i) => (
               <Reveal key={p.slug} delay={(i % 3) * 0.07} className="h-full">
                 <ProjectCard project={p} eager={i < 3} />
               </Reveal>
