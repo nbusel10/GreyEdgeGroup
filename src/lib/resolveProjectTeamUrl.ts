@@ -10,7 +10,6 @@ const partnerUrlByName: Record<string, string> = {
     'https://www.steamboatsprings.net/391/Urban-Renewal-Authority',
   'Landmark Consultants': 'https://www.landmark-co.com/',
   'Cairn Global': 'https://cairnglobal.com/',
-  'Mountain Affordable Housing Development': 'https://www.linkedin.com/in/todd-mohr',
   'Steamboat Engineering and Design': 'https://www.seadinc.com/',
 }
 

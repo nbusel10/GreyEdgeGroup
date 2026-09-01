@@ -459,7 +459,6 @@ export const projects: Project[] = [
     team: [
       { name: "The GreyEdge Group", url: "/" },
       { name: "Town of Fraser", url: "https://www.frasercolorado.com/" },
-      { name: "Mountain Affordable Housing Development", url: "https://www.linkedin.com/in/todd-mohr" },
       { name: "Vogel & Associates", url: "https://www.vogelassoc.com/" },
       { name: "ESA", url: "https://www.esapc.com/" },
       { name: "JVA", url: "https://www.jvajva.com/" },
