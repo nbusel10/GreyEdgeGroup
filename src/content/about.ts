@@ -45,12 +45,12 @@ export const story = {
 export const whyUs = {
   eyebrow: 'The Mission',
   heading: 'Why choose us',
-  lead: 'Clients choose The GreyEdge Group because successful thermal infrastructure takes more than good engineering. It takes practical solutions that balance performance, constructability, cost and long-term operational success.',
+  lead: 'Thermal Energy Networks are not one of many things we do. TENs are what we do.',
   body: [
-    'Using a deep understanding of heat pump optimization, we blend geothermal with a diverse array of localized energy sources: solar thermal, wastewater, industrial waste heat, thermal storage and mine water.',
-    'By connecting these multi-source thermal districts across large geographic areas, we deliver predictable performance at higher efficiency, with lower capital and reduced operating costs compared to legacy systems.',
+    'At The GreyEdge Group we bring specialized expertise developed through years of planning, designing, evaluating, and advancing district-scale thermal infrastructure. We understand the technical, financial, and operational realities that influence project success because we\'ve already seen them play out across a wide range of projects.',
   ],
-  closing: 'We bring the full picture: technical depth, creative problem solving, and real-world experience.',
+  closing:
+    'Our clients choose us because experience matters. We help identify risks early, avoid common pitfalls, and create practical pathways from vision to implementation.',
   pillars: ['Industry pioneers', 'Proven results', 'Client-focused approach'],
   image: site['design-session'].src,
   imageAlt: site['design-session'].alt,

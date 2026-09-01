@@ -834,6 +834,30 @@ body {
 }
 
 /* Process: 5 stages, 4 connectors. Accent draws L→R on hover. */
+/* Process: pill-link target — soft green glow after scroll lands. */
+.process-pin-glow {
+  position: relative;
+  z-index: 2;
+  box-shadow:
+    0 0 18px 5px rgb(90 133 116 / 0.45),
+    0 0 42px 14px rgb(90 133 116 / 0.18);
+}
+
+.process-pin-glow-node {
+  box-shadow:
+    0 0 14px 4px rgb(90 133 116 / 0.5),
+    0 0 28px 10px rgb(90 133 116 / 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-pin-glow,
+  .process-pin-glow-node {
+    box-shadow:
+      0 0 18px 5px rgb(90 133 116 / 0.45),
+      0 0 42px 14px rgb(90 133 116 / 0.18);
+  }
+}
+
 .process-seg {
   transform: scaleX(0);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);

@@ -1,5 +1,49 @@
 import { useEffect } from 'react'
 import { useLocation, useNavigate, useNavigationType } from 'react-router-dom'
+import { phases } from '../content/process'
+import { leadershipHashTarget } from '../lib/leadershipHash'
+import { serviceHashTarget } from '../lib/serviceItemId'
+
+/** Top-row process phases scroll to the full timeline so every circle stays in view. */
+const processTimelineScrollIds = new Set(phases.slice(0, 3).map((p) => p.id))
+
+/** Section anchors that scroll with fixed header offset instead of scrollIntoView. */
+const headerOffsetScrollIds = new Set(['process-timeline', 'services-head', 'leadership-head'])
+
+function scrollTargetId(hashId: string) {
+  if (processTimelineScrollIds.has(hashId)) return 'process-timeline'
+  if (hashId === 'services' || serviceHashTarget(`#${hashId}`)) return 'services-head'
+  if (hashId === 'leadership' || leadershipHashTarget(`#${hashId}`)) return 'leadership-head'
+  return hashId
+}
+
+function headerOffsetFor(targetId: string) {
+  if (targetId === 'services-head' || targetId === 'leadership-head') {
+    const header = document.querySelector('header')
+    if (header) return header.getBoundingClientRect().height
+    return window.matchMedia('(min-width: 1024px)').matches ? 72 : 64
+  }
+  return window.matchMedia('(min-width: 1024px)').matches ? 96 : 88
+}
+
+function scrollToHash(hash: string, behavior: ScrollBehavior = 'smooth') {
+  const id = scrollTargetId(hash.slice(1))
+  let frames = 0
+  const tryScroll = () => {
+    const el = document.getElementById(id)
+    if (el) {
+      if (headerOffsetScrollIds.has(id)) {
+        const top = el.getBoundingClientRect().top + window.scrollY - headerOffsetFor(id)
+        window.scrollTo({ top: Math.max(0, top), behavior })
+        return
+      }
+      el.scrollIntoView({ behavior, block: 'start' })
+      return
+    }
+    if (frames++ < 20) requestAnimationFrame(tryScroll)
+  }
+  return requestAnimationFrame(tryScroll)
+}
 
 /**
  * Router-level scroll management. Jumps to the top on a new route, or to the anchored
@@ -65,34 +109,14 @@ export default function ScrollToTop() {
           window.scrollTo({ top: y, left: 0, behavior: 'auto' })
         })
       } else if (hash) {
-        const id = hash.slice(1)
-        let frames = 0
-        const tryScroll = () => {
-          const el = document.getElementById(id)
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-            return
-          }
-          if (frames++ < 20) raf = requestAnimationFrame(tryScroll)
-        }
-        raf = requestAnimationFrame(tryScroll)
+        raf = scrollToHash(hash, 'auto')
       } else {
         window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
       }
     } else if (!hash) {
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     } else {
-      const id = hash.slice(1)
-      let frames = 0
-      const tryScroll = () => {
-        const el = document.getElementById(id)
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          return
-        }
-        if (frames++ < 20) raf = requestAnimationFrame(tryScroll)
-      }
-      raf = requestAnimationFrame(tryScroll)
+      raf = scrollToHash(hash)
     }
 
     return () => cancelAnimationFrame(raf)

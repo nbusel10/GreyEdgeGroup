@@ -1,9 +1,10 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getProject, projects } from '../content/projects'
 import FinalCta from '../components/sections/FinalCta'
-import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
+import { Btn, Container, Eyebrow, Reveal, Section, teamPillClass } from '../components/ui'
 import { linkGeoTermsInNodes } from '../lib/linkGeoTerms'
 import { linkTeamNames } from '../lib/linkTeamNames'
+import { resolveProjectTeamUrl } from '../lib/resolveProjectTeamUrl'
 import { projectDescriptionParts } from '../lib/projectDescription'
 import { usePageMeta } from '../lib/meta'
 
@@ -138,32 +139,33 @@ export default function ProjectDetail() {
                   </h2>
                 </div>
                 {project.team.length > 0 ? (
-                  <ul className="mt-5 space-y-3">
-                    {project.team.map((member) => (
-                      <li key={member.name} className="font-body text-sm leading-snug text-ge-charcoal">
-                        {member.url ? (
-                          member.url.startsWith('/') ? (
-                            <Link
-                              to={member.url}
-                              className="italic text-ge-charcoal underline decoration-ge-light underline-offset-2 transition-colors hover:text-ge-accent hover:decoration-ge-accent"
-                            >
+                  <ul className="mt-5 flex flex-col items-start gap-2">
+                    {project.team.map((member) => {
+                      const url = resolveProjectTeamUrl(member)
+                      if (url?.startsWith('/')) {
+                        return (
+                          <li key={member.name}>
+                            <Link to={url} className={teamPillClass}>
                               {member.name}
                             </Link>
-                          ) : (
-                            <a
-                              href={member.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="italic text-ge-charcoal underline decoration-ge-light underline-offset-2 transition-colors hover:text-ge-accent hover:decoration-ge-accent"
-                            >
+                          </li>
+                        )
+                      }
+                      if (url) {
+                        return (
+                          <li key={member.name}>
+                            <a href={url} target="_blank" rel="noopener noreferrer" className={teamPillClass}>
                               {member.name}
                             </a>
-                          )
-                        ) : (
-                          member.name
-                        )}
-                      </li>
-                    ))}
+                          </li>
+                        )
+                      }
+                      return (
+                        <li key={member.name}>
+                          <span className={`${teamPillClass} cursor-default hover:bg-ge-accent`}>{member.name}</span>
+                        </li>
+                      )
+                    })}
                   </ul>
                 ) : (
                   <>

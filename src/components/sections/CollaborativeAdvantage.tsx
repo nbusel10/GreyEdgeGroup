@@ -1,6 +1,11 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { lessons } from '../../content/advantage'
+import { phases } from '../../content/process'
 import { Container, Eyebrow, Reveal, Section } from '../ui'
+
+const processPillClass =
+  'inline-flex rounded-full bg-ge-accent px-3 py-1.5 font-body text-[10px] font-medium uppercase tracking-[0.1em] text-white transition-colors hover:bg-ge-black'
 
 /**
  * Approach-page depth for "Built on Experience".
@@ -45,49 +50,59 @@ export default function CollaborativeAdvantage() {
               {lessons.map((item, i) => {
                 const selected = active === i
                 return (
-                  <button
-                    key={item.short}
-                    type="button"
-                    aria-pressed={selected}
-                    onClick={() => setActive(i)}
-                    className={`group w-full border-b border-ge-light px-6 py-5 text-left transition-colors last:border-b-0 lg:px-8 ${
-                      selected ? 'bg-white' : 'hover:bg-white/60'
-                    }`}
-                  >
-                    <div className="flex items-baseline gap-4">
-                      <span
-                        className={`font-display text-xl font-bold leading-none ${
-                          selected ? 'text-ge-accent' : 'text-ge-steel'
-                        }`}
-                      >
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <span
-                        className={`font-display text-lg font-bold uppercase leading-snug tracking-wide transition-colors ${
-                          selected ? 'text-ge-black' : 'text-ge-steel group-hover:text-ge-graphite'
-                        }`}
-                      >
-                        {item.short}
-                      </span>
-                    </div>
+                  <div key={item.short} className="border-b border-ge-light last:border-b-0">
+                    <button
+                      type="button"
+                      aria-expanded={selected}
+                      onClick={() => setActive(i)}
+                      className={`group w-full px-6 py-5 text-left transition-colors lg:px-8 ${
+                        selected ? 'bg-white pb-0' : 'hover:bg-white/60'
+                      }`}
+                    >
+                      <div className="flex items-baseline gap-4">
+                        <span
+                          className={`font-display text-xl font-bold leading-none ${
+                            selected ? 'text-ge-accent' : 'text-ge-steel'
+                          }`}
+                        >
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <span
+                          className={`font-display text-lg font-bold uppercase leading-snug tracking-wide transition-colors ${
+                            selected ? 'text-ge-black' : 'text-ge-steel group-hover:text-ge-graphite'
+                          }`}
+                        >
+                          {item.short}
+                        </span>
+                      </div>
+                    </button>
                     {selected && (
-                      <div className="mt-4 pl-11">
-                        <p className="font-display text-xl font-bold uppercase leading-snug tracking-wide text-ge-black">
-                          {item.lesson}
-                        </p>
-                        <p className="mt-3 font-body text-sm leading-relaxed text-ge-graphite">{item.detail}</p>
-                        <div className="mt-4">
-                          <div className="font-body text-[10px] uppercase tracking-[0.22em] text-ge-steel">
-                            Where we come in
-                          </div>
-                          <div className="mt-2 flex items-start gap-2">
-                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-ge-accent" aria-hidden="true" />
-                            <span className="font-body text-sm leading-snug text-ge-charcoal">{item.capability}</span>
+                      <div className="bg-white px-6 pb-5 lg:px-8">
+                        <div className="pl-11">
+                          <p className="font-display text-xl font-bold uppercase leading-snug tracking-wide text-ge-black">
+                            {item.lesson}
+                          </p>
+                          <p className="mt-3 font-body text-sm leading-relaxed text-ge-graphite">{item.detail}</p>
+                          <div className="mt-4">
+                            <div className="font-body text-[10px] uppercase tracking-[0.22em] text-ge-steel">
+                              Where we come in
+                            </div>
+                            <div className="mt-2 flex flex-wrap gap-2">
+                              {item.processPhases.map((phaseId) => {
+                                const phase = phases.find((p) => p.id === phaseId)
+                                if (!phase) return null
+                                return (
+                                  <Link key={phaseId} to={`#${phaseId}`} className={processPillClass}>
+                                    {phase.title}
+                                  </Link>
+                                )
+                              })}
+                            </div>
                           </div>
                         </div>
                       </div>
                     )}
-                  </button>
+                  </div>
                 )
               })}
             </div>

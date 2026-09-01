@@ -167,15 +167,23 @@ export default function About() {
               <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
                 {whyUs.heading}
               </h2>
-              <p className="mt-6 font-body text-base leading-relaxed text-ge-graphite">{whyUs.lead}</p>
+              <blockquote className="mt-6 border-l-2 border-ge-accent pl-7">
+                <p className="font-display text-2xl font-semibold uppercase leading-snug tracking-wide text-ge-black">
+                  <Link
+                    to="/geothermal-101#networks"
+                    className="text-inherit underline decoration-ge-accent underline-offset-2 transition-colors hover:text-ge-accent"
+                  >
+                    Thermal Energy Networks
+                  </Link>
+                  {whyUs.lead.replace('Thermal Energy Networks', '')}
+                </p>
+              </blockquote>
               {whyUs.body.map((p) => (
                 <p key={p.slice(0, 24)} className="mt-5 font-body text-base leading-relaxed text-ge-graphite">
                   {p}
                 </p>
               ))}
-              <p className="mt-8 font-display text-2xl font-bold uppercase leading-snug tracking-wide text-ge-black">
-                {whyUs.closing}
-              </p>
+              <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite">{whyUs.closing}</p>
               <ul className="mt-7 flex flex-wrap gap-x-8 gap-y-3">
                 {whyUs.pillars.map((p) => (
                   <li key={p} className="flex items-center gap-2">

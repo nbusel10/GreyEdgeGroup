@@ -24,6 +24,8 @@ export interface Lesson {
   detail: string
   /** The role GreyEdge plays when this comes up. */
   capability: string
+  /** Process phase anchors for "Where we come in" pill links. */
+  processPhases: string[]
   image: string
   imageAlt: string
 }
@@ -35,6 +37,7 @@ export const lessons: Lesson[] = [
     detail:
       'Projects risk non-performance, overruns, over-complication, and weak stakeholder and offtaker integration. We gather, refine, and vet the facts to describe technical potential and cut risk. Then we convene the right people around the three pillars—who pays, who owns, who operates—and help choose the fit. Many projects stall after they prove technically viable because those three stay undefined.',
     capability: 'Phases 01–02 Feasibility Study—concept through design, engineering, and procurement',
+    processPhases: ['phase-1-feasibility-study', 'phase-2-feasibility-study'],
     image: site.blueprints.src,
     imageAlt: site.blueprints.alt,
   },
@@ -44,15 +47,17 @@ export const lessons: Lesson[] = [
     detail:
       'Cooling towers, boilers, and utility tunnels are often treated as things to remove. Frequently they are the cheapest capacity on the site.',
     capability: 'Third-party review and forensic analysis',
+    processPhases: ['phase-2-feasibility-study', 'retro-commissioning'],
     image: site['approach-existing-assets'].src,
     imageAlt: site['approach-existing-assets'].alt,
   },
   {
     short: 'The seams',
-    lesson: 'Projects rarely fail in engineering. They fail in the gaps between the people doing it.',
+    lesson: 'Thermal Energy Networks involve more than engineering.',
     detail:
-      'A design team, a drilling contractor, and a mechanical contractor can each do competent work and still hand you a system that underperforms. Someone has to own the seams.',
+      'Success depends on connecting the many disciplines, stakeholders, and decisions that shape a project.',
     capability: 'Master planning and owner’s representation',
+    processPhases: ['phase-2-feasibility-study', 'design', 'ongoing-partnership'],
     image: site['approach-planning-session'].src,
     imageAlt: site['approach-planning-session'].alt,
   },
@@ -62,6 +67,7 @@ export const lessons: Lesson[] = [
     detail:
       'Right-sizing is a design-execution risk under real-world budget constraints. We design systems that perform without stacking engineering safety factors until the project can no longer be built or funded. Work within the budget, make it work, and do not over-engineer—if you know the rules that hold the system up, and when safety factors are actually needed.',
     capability: 'Lean design and engineering—Phase 02 Design',
+    processPhases: ['phase-1-feasibility-study', 'phase-2-feasibility-study', 'design'],
     image: site['campus-build'].src,
     imageAlt: site['campus-build'].alt,
   },
@@ -71,12 +77,15 @@ export const lessons: Lesson[] = [
     detail:
       'When the rubber meets the road, verification, commissioning, and performance validation turn design promises into operating results. Without them, a strong design stays an idea. With them, the system delivers what was promised.',
     capability: 'Retro-commissioning and resource integration',
+    processPhases: ['retro-commissioning', 'ongoing-partnership'],
     image: site['thermal-plant-inspection'].src,
     imageAlt: site['thermal-plant-inspection'].alt,
   },
 ]
 
 export interface ServiceGroup {
+  /** Anchor id for links from the Process section. */
+  id: string
   short: string
   title: string
   image: string
@@ -87,6 +96,7 @@ export interface ServiceGroup {
 /** Services grouped for the Approach photo-card layout. */
 export const serviceGroups: ServiceGroup[] = [
   {
+    id: 'service-assess',
     short: 'Assess',
     title: 'Phase 1 Feasibility Study',
     image: site['service-planning'].src,
@@ -98,6 +108,7 @@ export const serviceGroups: ServiceGroup[] = [
     ],
   },
   {
+    id: 'service-define',
     short: 'Define',
     title: 'Phase 2 Feasibility Study',
     image: site['service-ground'].src,
@@ -110,6 +121,7 @@ export const serviceGroups: ServiceGroup[] = [
     ],
   },
   {
+    id: 'service-refine',
     short: 'Refine',
     title: 'Retro-Commissioning',
     image: site['service-delivery'].src,
@@ -122,6 +134,7 @@ export const serviceGroups: ServiceGroup[] = [
     ],
   },
   {
+    id: 'service-design',
     short: 'Design',
     title: 'Design',
     image: site['service-network'].src,
@@ -133,6 +146,7 @@ export const serviceGroups: ServiceGroup[] = [
     ],
   },
   {
+    id: 'service-guide',
     short: 'Guide',
     title: 'Ongoing Partnership',
     image: site['service-advisory'].src,

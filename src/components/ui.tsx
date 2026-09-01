@@ -6,6 +6,10 @@ import { useCountUp, useReveal } from '../lib/hooks'
 export const proseLinkClass =
   'italic text-ge-charcoal underline decoration-ge-light underline-offset-2 transition-colors hover:text-ge-accent hover:decoration-ge-accent'
 
+/** Green pill used for project teams and process phase links. */
+export const teamPillClass =
+  'inline-flex rounded-full bg-ge-accent px-3 py-1.5 font-body text-[10px] font-medium uppercase tracking-[0.1em] text-white transition-colors hover:bg-ge-black'
+
 /** Standard page gutter and max width, shared by every section. */
 export function Container({ className = '', children }: { className?: string; children: ReactNode }) {
   return <div className={`mx-auto w-full max-w-[1280px] px-5 sm:px-8 ${className}`}>{children}</div>
@@ -40,16 +44,19 @@ export function Reveal({
   children,
   delay = 0,
   className = '',
+  id,
 }: {
   children: ReactNode
   /** Seconds. Stagger siblings with 0.06–0.12. */
   delay?: number
   className?: string
+  id?: string
 }) {
   const { ref, visible } = useReveal()
   return (
     <div
       ref={ref}
+      id={id}
       className={`reveal ${visible ? 'is-visible' : ''} ${className}`}
       style={delay ? { transitionDelay: `${delay}s` } : undefined}
     >

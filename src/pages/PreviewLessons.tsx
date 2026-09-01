@@ -331,6 +331,10 @@ export default function PreviewLessons() {
       <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center p-4">
         <p className="pointer-events-auto border border-ge-accent bg-ge-accent px-5 py-3 font-body text-[11px] font-medium uppercase tracking-[0.18em] text-white shadow-lg">
           Preview only · Built on Experience layouts ·{' '}
+          <Link to="/preview-process" className="underline underline-offset-2 hover:text-white/80">
+            Process
+          </Link>
+          {' · '}
           <Link to="/preview-services" className="underline underline-offset-2 hover:text-white/80">
             Services
           </Link>

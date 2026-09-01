@@ -6,6 +6,10 @@
  */
 
 export interface Phase {
+  /** Anchor id for in-page links from Built on Experience. */
+  id: string
+  /** Matching service card in Our Services. */
+  serviceId: string
   num: string
   title: string
   subtitle: string
@@ -19,6 +23,8 @@ export const intro =
 
 export const phases: Phase[] = [
   {
+    id: 'phase-1-feasibility-study',
+    serviceId: 'service-assess',
     num: '01',
     title: 'Phase 1 Feasibility Study',
     subtitle: 'Assess',
@@ -28,6 +34,8 @@ export const phases: Phase[] = [
       'Already have preliminary studies or site data? We will review and build upon existing information rather than repeat work. Incorporating previous investigations is often the fastest and most cost-effective way to move a project forward.',
   },
   {
+    id: 'phase-2-feasibility-study',
+    serviceId: 'service-define',
     num: '02',
     title: 'Phase 2 Feasibility Study',
     subtitle: 'Define',
@@ -37,6 +45,8 @@ export const phases: Phase[] = [
       "Already have a feasibility study? We will validate it and build from it rather than start over. A second set of eyes on someone else's analysis is often some of the most valuable and cost-effective work performed on a project.",
   },
   {
+    id: 'retro-commissioning',
+    serviceId: 'service-refine',
     num: '03',
     title: 'Retro-Commissioning',
     subtitle: 'Refine',
@@ -46,6 +56,8 @@ export const phases: Phase[] = [
       'Already operating geothermal equipment or district energy infrastructure? We can assess what is working, identify what can be improved, and determine how existing assets can support future network development.',
   },
   {
+    id: 'design',
+    serviceId: 'service-design',
     num: '04',
     title: 'Design',
     subtitle: 'Design',
@@ -55,6 +67,8 @@ export const phases: Phase[] = [
       'Already have engineers or designers on your team? We regularly collaborate with existing project teams, providing geothermal and Thermal Energy Network expertise where it adds the most value without disrupting project momentum.',
   },
   {
+    id: 'ongoing-partnership',
+    serviceId: 'service-guide',
     num: '05',
     title: 'Ongoing Partnership',
     subtitle: 'Guide',
