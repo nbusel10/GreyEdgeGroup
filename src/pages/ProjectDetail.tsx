@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getProject, projects } from '../content/projects'
+import { phases } from '../content/process'
 import FinalCta from '../components/sections/FinalCta'
 import { Btn, Container, Eyebrow, Reveal, Section, teamPillClass } from '../components/ui'
 import { linkGeoTermsInNodes } from '../lib/linkGeoTerms'
@@ -27,10 +28,12 @@ export default function ProjectDetail() {
   // One deep link per G101 concept across the project description.
   const geoLinked = new Set<string>()
 
+  const phaseTitle = phases.find((p) => p.id === project.phase)?.title
+
   const stats = [
     { label: 'Square feet', value: project.sqFeet ?? 'In progress' },
     { label: 'Buildings', value: project.buildings ?? 'In progress' },
-    { label: 'Status', value: project.completion },
+    { label: 'Phase', value: phaseTitle },
     { label: 'Location', value: project.location },
   ].filter((s) => s.value)
 

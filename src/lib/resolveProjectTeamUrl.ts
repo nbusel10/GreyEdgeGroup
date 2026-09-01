@@ -9,8 +9,7 @@ const partnerUrlByName: Record<string, string> = {
   'Steamboat Springs Redevelopment Authority (SSRA)':
     'https://www.steamboatsprings.net/391/Urban-Renewal-Authority',
   'Landmark Consultants': 'https://www.landmark-co.com/',
-  'Zeven Element Design Institute': 'https://www.linkedin.com/in/shamstra',
-  'Cairn Global': 'https://www.linkedin.com/company/cairn-global',
+  'Cairn Global': 'https://cairnglobal.com/',
   'Mountain Affordable Housing Development': 'https://www.linkedin.com/in/todd-mohr',
   'Steamboat Engineering and Design': 'https://www.seadinc.com/',
 }

@@ -1,15 +1,10 @@
 import { Link } from 'react-router-dom'
 import type { Project } from '../content/projects'
-
-const statusTone: Record<Project['status'], string> = {
-  Completed: 'border-white/50 text-white',
-  Operational: 'border-white/50 text-white',
-  'In Progress': 'border-white/50 text-white',
-  'In Development': 'border-white/40 text-white/85',
-}
+import { phases } from '../content/process'
 
 export default function ProjectCard({ project, eager = false }: { project: Project; eager?: boolean }) {
-  const { slug, name, location, status, sqFeet, buildings, summary, image, imageAlt } = project
+  const { slug, name, location, phase, sqFeet, buildings, summary, image, imageAlt } = project
+  const phaseLabel = phases.find((p) => p.id === phase)?.title ?? phase
 
   return (
     <Link
@@ -30,10 +25,8 @@ export default function ProjectCard({ project, eager = false }: { project: Proje
           style={{ background: 'linear-gradient(to top, rgba(20,23,26,0.8) 0%, transparent 58%)' }}
         />
         <div className="absolute inset-x-0 bottom-0 p-6">
-          <span
-            className={`inline-block border px-2 py-1 font-body text-[10px] uppercase tracking-[0.16em] ${statusTone[status]}`}
-          >
-            {status}
+          <span className="inline-block border border-white/50 px-2 py-1 font-body text-[10px] uppercase tracking-[0.16em] text-white">
+            {phaseLabel}
           </span>
           <h3 className="mt-2 font-display text-3xl font-bold uppercase leading-tight tracking-wide text-white">
             {name}
