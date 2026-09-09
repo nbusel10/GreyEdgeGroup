@@ -111,9 +111,9 @@ export const projects: Project[] = [
     ],
     articles: [
       {
-        title: "Carbondale Geothermal Project",
-        publisher: "thirdstreetcenter.net",
-        url: "https://thirdstreetcenter.net/carbondale-geothermal-project/"
+        title: "Vail Colorado Explores Geothermal Heating For Snowmelt System",
+        publisher: "thinkgeoenergy.com",
+        url: "https://www.thinkgeoenergy.com/vail-colorado-explores-geothermal-heating-for-snowmelt-system/"
       }
     ],
     image: "/images/projects/vail.webp",
@@ -172,9 +172,9 @@ export const projects: Project[] = [
     ],
     articles: [
       {
-        title: "Vail Colorado Explores Geothermal Heating For Snowmelt System",
-        publisher: "thinkgeoenergy.com",
-        url: "https://www.thinkgeoenergy.com/vail-colorado-explores-geothermal-heating-for-snowmelt-system/"
+        title: "Carbondale Geothermal Project",
+        publisher: "thirdstreetcenter.net",
+        url: "https://thirdstreetcenter.net/carbondale-geothermal-project/"
       }
     ],
     image: "/images/projects/32-zed-zero-energy-district.webp",
@@ -212,7 +212,7 @@ export const projects: Project[] = [
       }
     ],
     image: "/images/projects/breckenridge.jpeg",
-    imageAlt: "A scenic view looking down a mountain town main street lined with historic brick and wooden buildings under a bright sky, leading toward towering alpine peaks and rocky cliffs in the background.",
+    imageAlt: "Aerial autumn view of Breckenridge, Colorado, with the town nestled in a valley among yellow aspens and evergreen forests, lodge-style buildings and a parking lot in the midground, and layered mountain peaks under a bright sky.",
     featured: false
   },
   {

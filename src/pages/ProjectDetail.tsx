@@ -31,7 +31,7 @@ export default function ProjectDetail() {
   const phaseTitle = phases.find((p) => p.id === project.phase)?.title
 
   const stats = [
-    { label: 'Square feet', value: project.sqFeet ?? 'In progress' },
+    { label: 'Buildings Sq Ft', value: project.sqFeet ?? 'In progress' },
     ...(project.snowmeltSqFeet
       ? [{ label: 'Snowmelt sq ft', value: project.snowmeltSqFeet }]
       : []),
