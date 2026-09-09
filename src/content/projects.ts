@@ -45,7 +45,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "aspen",
-    name: "Aspen",
+    name: "Aspen School District",
     location: "Aspen, CO",
     country: "United States",
     sqFeet: "402,000",
@@ -368,7 +368,18 @@ export const projects: Project[] = [
       { name: "Holy Cross Energy", url: "https://www.holycross.com/" },
       { name: "Colorado Energy Office", url: "https://energyoffice.colorado.gov/" },
     ],
-    articles: [],
+    articles: [
+      {
+        title: "Colorado Energy Office Awards $14.4M for Geothermal Heating Projects",
+        publisher: "Daily Energy Insider",
+        url: "https://dailyenergyinsider.com/policy/47849-colorado-energy-office-awards-14-4m-for-geothermal-heating-projects/"
+      },
+      {
+        title: "Aspen Airport Business Center Microgrid",
+        publisher: "Pitkin County",
+        url: "https://pitkincounty.com/1722/Aspen-Airport-Business-Center-Microgrid"
+      }
+    ],
     image: "/images/projects/pitkin-county.jpg",
     imageAlt: "Autumn landscape near Aspen, Colorado, showing earth-toned residential buildings nestled among golden aspen and evergreen trees at the base of a sunlit hillside under a clear blue sky, with a manicured green in the foreground.",
     featured: false
@@ -395,7 +406,18 @@ export const projects: Project[] = [
       { name: "Bighorn Engineering", url: "https://bighorneng.com/" },
       { name: "National Laboratory of the Rockies (NLR)", url: "https://www.nlr.gov/" },
     ],
-    articles: [],
+    articles: [
+      {
+        title: "Colorado Energy Office Awards $14.4M for Geothermal Heating Projects",
+        publisher: "Daily Energy Insider",
+        url: "https://dailyenergyinsider.com/policy/47849-colorado-energy-office-awards-14-4m-for-geothermal-heating-projects/"
+      },
+      {
+        title: "Winter Park Approves First Phase of Resort Redevelopment",
+        publisher: "Sky-Hi News",
+        url: "https://www.skyhinews.com/news/winter-park-approves-first-phase-of-resort-redevelopment/"
+      }
+    ],
     image: "/images/projects/winter-park.jpg",
     imageAlt: "Sunset over Winter Park, Colorado, with snow-dusted evergreen mountains, a winding road leading to lodge and municipal buildings in the valley, and warm orange and pink light across the sky.",
     featured: false
@@ -422,7 +444,13 @@ export const projects: Project[] = [
       { name: "Town of Mountain Village Public Works", url: "https://townofmountainvillage.com/" },
       { name: "Colorado Energy Office", url: "https://energyoffice.colorado.gov/" },
     ],
-    articles: [],
+    articles: [
+      {
+        title: "Colorado Energy Office Awards $14.4M for Geothermal Heating Projects",
+        publisher: "Daily Energy Insider",
+        url: "https://dailyenergyinsider.com/policy/47849-colorado-energy-office-awards-14-4m-for-geothermal-heating-projects/"
+      }
+    ],
     image: "/images/projects/mountain-village.jpg",
     imageAlt: "Aerial autumn view of Mountain Village, Colorado, nestled in a deep alpine valley amid golden aspen and evergreen slopes, with snow-dusted peaks under a clear blue sky.",
     featured: false
@@ -450,7 +478,18 @@ export const projects: Project[] = [
       { name: "HEET", url: "https://www.heet.org/" },
       { name: "Massachusetts Clean Energy Center (MassCEC)", url: "https://www.masscec.com/" },
     ],
-    articles: [],
+    articles: [
+      {
+        title: "Bringing Networked Geothermal to Lexington",
+        publisher: "Town of Lexington",
+        url: "https://www.marlborough-ma.gov/DocumentCenter/View/4144/Lexington-Final-Report-compressed"
+      },
+      {
+        title: "Kickstart Massachusetts Communities Provide Their Thermal Energy Geothermal Potential Studies to HEET",
+        publisher: "HEET",
+        url: "https://www.heet.org/blog-items/kickstart-massachusetts-communities-provide-their-thermal-energy-feasibility-studies-to-heet"
+      }
+    ],
     image: "/images/projects/lexington.jpg",
     imageAlt: "Aerial autumn view of Lexington Battle Green in Lexington, Massachusetts, showing the historic common, white First Parish steeple, surrounding New England homes, and vibrant fall foliage under a clear blue sky.",
     featured: false
