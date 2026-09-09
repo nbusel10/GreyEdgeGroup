@@ -32,9 +32,14 @@ export default function ProjectDetail() {
 
   const stats = [
     { label: 'Square feet', value: project.sqFeet ?? 'In progress' },
+    ...(project.snowmeltSqFeet
+      ? [{ label: 'Snowmelt sq ft', value: project.snowmeltSqFeet }]
+      : []),
     { label: 'Buildings', value: project.buildings ?? 'In progress' },
     { label: 'Phase', value: phaseTitle },
-    { label: 'Location', value: project.location },
+    ...(!project.snowmeltSqFeet
+      ? [{ label: 'Location', value: project.location }]
+      : []),
   ].filter((s) => s.value)
 
   return (

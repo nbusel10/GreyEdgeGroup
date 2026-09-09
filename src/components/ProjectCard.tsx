@@ -3,7 +3,8 @@ import type { Project } from '../content/projects'
 import { phases } from '../content/process'
 
 export default function ProjectCard({ project, eager = false }: { project: Project; eager?: boolean }) {
-  const { slug, name, location, phase, sqFeet, buildings, summary, image, imageAlt } = project
+  const { slug, name, location, phase, sqFeet, snowmeltSqFeet, buildings, summary, image, imageAlt } =
+    project
   const phaseLabel = phases.find((p) => p.id === phase)?.title ?? phase
 
   return (
@@ -44,6 +45,15 @@ export default function ProjectCard({ project, eager = false }: { project: Proje
               <span aria-hidden className="stat-leader" />
               <dd className="shrink-0 font-display text-lg font-bold text-ge-black">{sqFeet ?? 'In progress'}</dd>
             </div>
+            {snowmeltSqFeet && (
+              <div className="flex items-center gap-3">
+                <dt className="shrink-0 font-body text-[10px] uppercase tracking-[0.18em] text-ge-steel">
+                  Snowmelt sq ft
+                </dt>
+                <span aria-hidden className="stat-leader" />
+                <dd className="shrink-0 font-display text-lg font-bold text-ge-black">{snowmeltSqFeet}</dd>
+              </div>
+            )}
             <div className="flex items-center gap-3">
               <dt className="shrink-0 font-body text-[10px] uppercase tracking-[0.18em] text-ge-steel">Buildings</dt>
               <span aria-hidden className="stat-leader stat-leader-delay" />
