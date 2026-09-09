@@ -7,6 +7,12 @@ export interface ProjectArticle {
   url: string
 }
 
+/** On-site / boots-on-the-ground gallery image for a project detail page. */
+export interface ProjectGalleryImage {
+  src: string
+  alt: string
+}
+
 /** Partner / org credited on a project page. Optional url when the source links them. */
 export interface ProjectTeamMember {
   name: string
@@ -37,6 +43,8 @@ export interface Project {
   /** Project partners / collaborating orgs. Empty when not yet collected. */
   team: ProjectTeamMember[]
   articles: ProjectArticle[]
+  /** Optional boots-on-the-ground photos shown on the detail page. */
+  gallery?: ProjectGalleryImage[]
   image: string | null
   imageAlt: string
   featured: boolean
@@ -144,6 +152,24 @@ export const projects: Project[] = [
       { name: "Bertram Drilling", url: "https://www.bertramdrillinginc.com/" },
     ],
     articles: [],
+    gallery: [
+      {
+        src: "/images/projects/steamboat-springs/gallery/plaza-turf.jpg",
+        alt: "Overlook of the Steamboat resort plaza with green turf seating, lodge buildings, and mountain slopes under a clear blue sky.",
+      },
+      {
+        src: "/images/projects/steamboat-springs/gallery/gondola-base.jpg",
+        alt: "View from a terrace toward the Steamboat Gondola terminal, melting snow at the ski run base, and resort buildings on the hillside.",
+      },
+      {
+        src: "/images/projects/steamboat-springs/gallery/gondola-terrace.jpg",
+        alt: "Outdoor terrace overlooking the Steamboat Gondola base station, ski lifts, and snow-patched mountain slopes.",
+      },
+      {
+        src: "/images/projects/steamboat-springs/gallery/plaza-stage.jpg",
+        alt: "Steamboat plaza with green turf seating, an outdoor stage, lodge buildings, and melting snow on the adjacent ski slope.",
+      },
+    ],
     image: "/images/projects/steamboat-springs.webp",
     imageAlt: "A mountain town at the base of snow‑covered ski slopes in Steamboat Springs, Colorado, showing residential and resort buildings surrounded by green hills and peaks.",
     featured: true

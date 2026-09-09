@@ -2,6 +2,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { getProject, projects } from '../content/projects'
 import { phases } from '../content/process'
 import FinalCta from '../components/sections/FinalCta'
+import ProjectGallery from '../components/ProjectGallery'
 import { Btn, Container, Eyebrow, Reveal, Section, teamPillClass } from '../components/ui'
 import { linkGeoTermsInNodes } from '../lib/linkGeoTerms'
 import { linkTeamNames } from '../lib/linkTeamNames'
@@ -218,15 +219,21 @@ export default function ProjectDetail() {
         </Container>
       </Section>
 
+      {project.gallery && project.gallery.length > 0 && <ProjectGallery images={project.gallery} />}
+
       {/* Prev / next */}
-      <Section className="border-t border-ge-light bg-white py-14 md:py-16">
+      <Section className="border-t border-ge-light bg-white !py-10 md:!py-12">
         <Container>
           <div className="grid gap-px bg-ge-light sm:grid-cols-2">
             {[
               { p: prev, dir: 'Previous', align: 'text-left' },
               { p: next, dir: 'Next', align: 'sm:text-right' },
             ].map(({ p, dir, align }) => (
-              <Link key={dir} to={`/projects/${p.slug}`} className="group bg-white p-7 transition-colors hover:bg-ge-offwhite">
+              <Link
+                key={dir}
+                to={`/projects/${p.slug}`}
+                className="group bg-white p-5 transition-colors hover:bg-ge-offwhite md:p-6"
+              >
                 <div className={`font-body text-[10px] uppercase tracking-[0.2em] text-ge-steel ${align}`}>{dir}</div>
                 <div
                   className={`mt-2 font-display text-2xl font-bold uppercase tracking-wide text-ge-black transition-colors group-hover:text-ge-accent ${align}`}
