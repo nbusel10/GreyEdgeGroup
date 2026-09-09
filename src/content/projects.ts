@@ -343,6 +343,16 @@ export const projects: Project[] = [
         url: "https://www.kpcw.org/park-city/2026-08-05/park-city-explores-thermal-technology-as-energy-efficiency-tool"
       }
     ],
+    gallery: [
+      {
+        src: "/images/projects/park-city/gallery/drill-rig-side.jpg",
+        alt: "Drill crew and a red truck-mounted drilling rig at a Park City work site, with green mountain slopes and a clear blue sky behind a roadside fence.",
+      },
+      {
+        src: "/images/projects/park-city/gallery/drill-rig-front.jpg",
+        alt: "Workers in hard hats and high-visibility vests beside a vertical drilling mast on a red truck at a Park City geothermal site under blue sky.",
+      },
+    ],
     image: "/images/projects/park-city.webp",
     imageAlt: "Elevated wide-angle view of historic downtown Park City, Utah, at dusk, showing illuminated buildings, streets, and parking areas nestled in a mountain valley surrounded by lush green slopes and forested hillsides under a twilight sky.",
     featured: false

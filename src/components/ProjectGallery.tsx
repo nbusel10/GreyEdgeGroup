@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import type { ProjectGalleryImage } from '../content/projects'
-import { Container, Eyebrow, Reveal, Section } from './ui'
+import { Container, Eyebrow, Reveal } from './ui'
 
 export default function ProjectGallery({ images }: { images: ProjectGalleryImage[] }) {
   const [active, setActive] = useState<number | null>(null)
@@ -32,7 +32,7 @@ export default function ProjectGallery({ images }: { images: ProjectGalleryImage
 
   return (
     <>
-      <Section className="border-t border-ge-light bg-white !py-10 md:!py-12">
+      <section className="relative scroll-mt-20 border-t border-ge-light bg-white py-10 md:py-12">
         <Container>
           <Reveal>
             <Eyebrow>Project Photos</Eyebrow>
@@ -57,7 +57,7 @@ export default function ProjectGallery({ images }: { images: ProjectGalleryImage
             </ul>
           </Reveal>
         </Container>
-      </Section>
+      </section>
 
       {current && active !== null && (
         <div

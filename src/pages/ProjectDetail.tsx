@@ -222,7 +222,7 @@ export default function ProjectDetail() {
       {project.gallery && project.gallery.length > 0 && <ProjectGallery images={project.gallery} />}
 
       {/* Prev / next */}
-      <Section className="border-t border-ge-light bg-white !py-10 md:!py-12">
+      <section className="relative scroll-mt-20 border-t border-ge-light bg-white py-10 md:py-12">
         <Container>
           <div className="grid gap-px bg-ge-light sm:grid-cols-2">
             {[
@@ -244,7 +244,7 @@ export default function ProjectDetail() {
             ))}
           </div>
         </Container>
-      </Section>
+      </section>
 
       <FinalCta />
     </>
