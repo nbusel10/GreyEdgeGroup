@@ -70,31 +70,31 @@ export const insights: Insight[] = [
         paragraphs: [
           'Colorado Mesa University did not set out to build a district energy system. It started with a campus master plan in 2006, a first geothermal installation at Dominguez Hall in 2008, and one standing rule: every new building would be evaluated for connection to the loop.',
           'An ambient temperature loop, or ATL, delivers heating and cooling through a shared network of underground pipes. Buildings connect to that loop, and the loop connects to whatever energy sources and sinks a site can offer. By 2012 CMU’s loop was carrying campus heating.',
-          'Today roughly 79% of a campus exceeding 1.6 million square feet is connected across five microdistricts, and expansion aims to roughly double the served area by 2030. The results below are worth reading closely because none of them come from a pilot. They come from one of the first and most efficient ATLs in the country, a system that grew alongside the campus and learned to treat load diversity, storage, and peaking plant as one machine.',
+          'Today roughly 79% of a campus exceeding 1.6 million square feet is connected across five micro districts, and expansion aims to roughly double the served area by 2030. The results of CMU’s ATL are not from a pilot. They come from one of the first and most efficient ATLs in the country, a system that grew alongside the campus and learned to treat load diversity, storage, and peaking plant as one machine.',
         ],
       },
       {
         heading: 'Hybrid by design: the 50/90 rule',
         paragraphs: [
           'CMU is not all geothermal and no boilers. It is a hybrid system sized for how a campus actually runs. Roughly 90% of annual hours sit under 50% of peak load, while true peak occupies on the order of hours in a year.',
-          'Sizing for that long middle of the year, instead of stacking every building’s worst hour, gives each asset a defined job. Geo-exchange, irrigation heat exchange, and cooling towers carry the ordinary day; boilers wait for the extremes. The boilers are the tell, because across long stretches of operation they are reportedly needed almost never.',
-          'Against a conventional chiller-and-boiler plant, published evaluations of the community ground-source system show on the order of 650 kW of demand reduction, 1.3 GWh of annual energy savings, about 58,000 Dth of natural gas avoided, and roughly 10 million gallons of cooling-tower water saved each year.',
+          'Sizing the system for 90% of the operational hours, instead of stacking every building’s worst hour, allows renewable and more efficient resources to source around 90% of the energy needs. Geo-exchange, irrigation heat exchange, and cooling towers carry the ordinary day while boilers wait for the extremes. The boilers are the tell, because across long stretches of operation they are reportedly rarely needed.',
+          'Against a conventional chiller-and-boiler plant, published evaluations of the community ground-source system show 650 kW of demand reduction, 1.3 GWh of annual energy savings, about 58,000 Dth of natural gas avoided, and roughly 10 million gallons of cooling-tower water saved each year.',
         ],
       },
       {
         heading: 'Borefield CapEx collapses when the network shares load',
         paragraphs: [
-          'The clearest measure of what a network buys an owner is how much less drilling it needs. A standalone geo-exchange design for the same campus-scale cooling would have required on the order of 217 vertical feet of borehole per installed ton. The ATL configuration lands near 84 feet per ton.',
-          'That is roughly a 62% reduction in field capital intensity, and load diversity is the reason. Diversity means the simultaneous heating and cooling loads across a campus: one building rejecting heat while another calls for it. Multi-source assets then carry work the ground would otherwise do alone.',
+          'The most expensive part of geo-exchange systems is drilling the boreholes. The more linear feet of geo-exchange, the more expensive. A standalone geo-exchange design for the same campus-scale cooling would have required on the order of 217 vertical feet of borehole per installed ton. The ATL configuration lands near 84 feet per ton. That is roughly a 62% reduction in field capital intensity.',
+          'The 50/90 rule allows the geo-exchange systems to be smaller than traditional, but this is not the only reason CMU’s ATL is so effective. Load diversity—simultaneous heating and cooling loads across a system, one building rejecting heat while another calls for it—allows load sharing and peak load reduction. Multi-source assets then carry work the ground would otherwise do alone.',
           'Electric load tells the same story, falling from roughly 784 kW without the district approach to about 185 kW with it. Soft costs move too. Campus square footage roughly tripled while HVAC technician headcount barely grew, because shared infrastructure replaces building-by-building plant sprawl.',
         ],
       },
       {
         heading: 'What the operating ledger shows',
         paragraphs: [
-          'Annual energy savings reached approximately $2 million in 2024, with cumulative savings above $16 million since 2008. Displacing that much natural gas avoids roughly 18,000 metric tons of CO₂e per year.',
+          'Annual energy savings reached approximately $1.5 to $2 million in recent years, with cumulative savings above $16 million since 2008. Displacing that much natural gas avoids roughly 18,000 metric tons of CO₂e per year.',
           'Efficiency also shows up building by building. Energy use intensities for dormitories, classrooms, labs, and food service all sit well below national averages for those property types.',
-          'The lesson for other campuses is not to copy CMU’s pipe diameters. It is that an ambient loop earns its keep when you size for part load, keep peaking plant honest, and let diversity compound as each new building joins the network.',
+          'The lesson for other campuses is not to copy CMU’s pipe diameters. It is that an ambient loop earns its keep when you size for part load, keep peaking resources honest, and let diversity compound as each new building joins the network.',
         ],
       },
     ],
@@ -114,45 +114,44 @@ export const insights: Insight[] = [
     image: site['insight-mountain-town'].src,
     imageAlt: site['insight-mountain-town'].alt,
     to: '/insights/mountain-town-decarbonization',
-    readTime: '7 min read',
+    readTime: '8 min read',
     body: [
       {
         paragraphs: [
-          'Mountain towns face a brutal version of beneficial electrification. Climate goals, often 50% reductions by 2030 and deeper by 2050, collide with snowmelt systems that can dominate municipal natural gas use, guest expectations that forbid unreliable heat, and a distribution grid already absorbing building electrification and EV charging.',
-          'Vail makes the scale plain. Snowmelt accounts for roughly 80% of municipal gas use and on the order of 6,500 metric tons of CO₂ per year, with a gas-equivalent peak in the multi-megawatt range.',
-          'Electric resistance snowmelt systems can do the job, at roughly three times the energy cost of a heat-pump path. The bigger problem is timing. Peak electric resistance snowmelt usage coincides with other peaking events such as storms, cold snaps, and public gatherings, which can dramatically increase utility costs at exactly the hours the feeder is least forgiving.',
+          'Mountain towns face a brutal version of beneficial electrification. Climate goals, often 50% emission reductions by 2030 and deeper by 2050, collide with snowmelt systems that can dominate municipal natural gas use, guest expectations that forbid unreliable heat, and a distribution grid already absorbing building electrification and EV charging.',
+          'Vail makes the scale plain. Snowmelt accounts for roughly 80% of municipal gas use and on the order of 6,500 metric tons of CO₂e per year, with a gas-equivalent peak in the multi-megawatt range.',
+          'Electric resistance snowmelt systems can do the job, at roughly three times the energy cost of a heat-pump path. The bigger problem with the electric resistance route is timing. Peak electric resistance snowmelt usage coincides with other peaking events such as storms, cold snaps, and public gatherings, which can dramatically increase utility costs at exactly the hours the feeder is least forgiving.',
         ],
       },
       {
         heading: 'The Falcon Curve and efficient electrification',
         paragraphs: [
-          'The Falcon Curve describes what happens to a winter grid that electrifies the wrong way. As outdoor temperatures fall, air-source heat pumps lose capacity and hand more of the work to electric resistance backup, so electric demand climbs steeply at the coldest hours. Plotted against temperature, that demand line dives upward like a falcon, and it peaks when the distribution system has the least room to give.',
-          'Water-source heat pumps do not follow that curve. Because they exchange heat with a loop held near ground temperature rather than with outdoor air, their efficiency stays relatively independent of the weather. A cold snap that cripples an air-source fleet barely registers on a water-source one.',
-          'That is what a thermal energy network changes for the built environment. Ambient loops, shared diversity, and thermal storage turn snowmelt plants, hotels, ice arenas, wastewater treatment, and civic buildings into a portfolio of sources, meaning places to absorb energy from, and sinks, meaning places to reject energy to. Isolated electric loads become a system.',
+          'The Falcon Curve describes what happens to a winter grid that electrifies the wrong way. As outdoor temperatures fall, air-source heat pumps lose capacity and hand more of the work to electric resistance backup, so electric demand climbs steeply at the coldest hours. Plotted against temperature, or seasons, that electric demand line dives upward and peaks when the distribution system has the least room to give. When plotted annually this graph resembles the shape of a falcon.',
+          'Water-source heat pumps do not follow that curve. Because they exchange heat with a loop held near ground temperature rather than with outdoor air, their efficiency stays relatively independent of the weather. A cold snap that cripples an air-source fleet barely registers on a water-source system.',
+          'This is where a thermal energy network becomes transformative. Ambient loops, shared diversity, and thermal storage turn snowmelt plants, hotels, ice arenas, wastewater treatment, and civic buildings into a portfolio of sources, meaning places to absorb energy from, and sinks, meaning places to reject energy to.',
         ],
       },
       {
         heading: 'Vail’s path from study to civic district',
         paragraphs: [
-          'Phase one followed a familiar sequence: high-level feasibility, 50/90 hybrid framing, hydrogeology and test boreholes, and a map of thermal assets across town.',
-          'Phase two, funded by the Colorado Energy Office, developed a Civic Area geothermal heating district concept. Wastewater treatment, hotels, the library, the ice arena, Lionshead snowmelt, and geothermal wells all enter one planning frame instead of queueing up as separate projects.',
+          'Vail’s journey to an ATL followed a structured path: high-level feasibility, 50/90 hybrid framing, hydrogeology and test boreholes, and a map of thermal assets across town.',
+          'Phase two, funded by the Colorado Energy Office, developed a Civic Area geothermal heating district concept. The wastewater treatment plant, hotels, the library, the ice arena, Lionshead snowmelt, and geothermal wells all enter one planning frame instead of queueing up as separate projects.',
         ],
       },
       {
-        heading: 'What Lionshead adds: the implementation layer',
+        heading: 'The implementation layer',
         paragraphs: [
-          'The Lionshead Village geo-snowmelt work is where planning meets practice, and it breaks into four distinct pieces worth naming separately.',
-          'Coalition building comes first. A snowmelt district crosses property lines, so the town, lodging owners, and the utility have to agree on scope and benefit before anyone sizes a pump.',
-          'Retro-commissioning comes before new plant. Tuning controls, setpoints, and existing distribution reduces the load the network has to carry. Skipping that step is how districts end up paying for capacity they never needed.',
-          'Hybrid design keeps the rare extreme hours off the electric plant, following the same 50/90 discipline that lets a campus loop stay small.',
-          'Ownership is the fourth piece and the one most often deferred. Utility thermal energy network, or UTEN, models are evolving nationally, and deciding early who owns the loop, who bills for it, and who expands it keeps a project from stalling once the engineering is finished.',
+          'The Vail geo-snowmelt project demonstrates that identifying thermal resources is only part of the challenge. Turning a thermal energy network from a concept into operating infrastructure requires solving technical, organizational, and economic questions at the same time. Four lessons from Vail stand out.',
+          'Efficiency comes before expansion. The cleanest and least expensive energy is the energy that never has to be produced. Before adding new geothermal assets, the project examined opportunities to improve controls, optimize setpoints, and better utilize existing distribution systems. Reducing unnecessary load first lowers the amount of infrastructure the network must ultimately build and finance.',
+          'Hybrid systems outperform all-or-nothing solutions. The project applied the same 50/90 philosophy used throughout thermal energy network planning. Renewable thermal resources are sized for the long middle of the year—roughly 90% of annual hours under 50% of peak—while existing equipment remains available for infrequent peak events. This approach captures most of the carbon and operating-cost benefits while avoiding the expense of building for the coldest few hours of the year.',
+          'Governance matters as much as engineering. One of the most important decisions is often deferred until late in development: who owns and operates the network. Utility Thermal Energy Network (UTEN) models continue to evolve across North America, but the core questions remain the same. Who owns the assets? Who bills customers? Who funds expansion? Establishing those answers early helps prevent promising projects from stalling after the technical work is complete.',
         ],
       },
       {
         heading: 'What other ski towns should take',
         paragraphs: [
-          'A thermal energy network is not only a heating plant. It is a demand-response and power-factor tool for the local grid, and it is usually the highest-efficiency path available when heating and cooling happen at the same time.',
-          'Towns that treat snowmelt as an isolated electrification project will keep buying peaks. Towns that put snowmelt on a shared thermal highway can harvest, move, and reuse the energy their buildings and process loads already create.',
+          'Vail’s experience highlights a broader lesson: snowmelt, hotels, wastewater systems, ice arenas, and civic buildings do not have to be treated as isolated energy loads. When connected through a thermal energy network, they become shared resources that can absorb, move, store, and reuse energy across the community.',
+          'Success depends on more than just the technology. Stakeholder alignment, load reduction, hybrid design, and clear ownership structures are often just as important as the geothermal wells and heat pumps themselves.',
         ],
       },
     ],
@@ -176,31 +175,32 @@ export const insights: Insight[] = [
     body: [
       {
         paragraphs: [
-          'Beneficial electrification is the challenge of the decade, and the fastest way to do it badly is to swap gas plant for air-source heat pumps with electric resistance backup sized for every building’s worst hour.',
-          'Capacity markets already show what unconstrained winter and summer peaks cost. Geothermal heat pumps and networked systems see far smaller electric spikes, because they never lose capacity to defrost cycles the way air-source units do.',
-          'The DOE puts the national stakes clearly: at scale, summer and winter peak reductions measured in gigawatts translate into tens of billions of dollars in avoided grid-system cost. The local version is simpler. A campus or district sharing an ambient loop installs far less coincident electric capacity than the sum of standalone conversions.',
+          'Beneficial electrification is the challenge of the decade, and the fastest way to do it poorly is to swap existing central plants for air-source heat pumps with electric resistance backup sized for every building’s worst hour.',
+          'Capacity markets already show what unconstrained winter and summer peaks cost, and the DOE puts the national stakes clearly: at scale, summer and winter peak reductions measured in gigawatts translate into tens of billions of dollars in avoided grid-system cost.',
+          'An ATL can be the solution, not part of the problem. Geothermal heat pumps and networked systems see far smaller electric spikes, because they never lose capacity to defrost cycles the way air-source units do. A campus or district sharing an ambient loop installs far less coincident electric load than the sum of standalone conversions.',
         ],
       },
       {
-        heading: 'Diversity is a capacity resource',
+        heading: 'Diversity, hybrid design, and storage',
         paragraphs: [
-          'Load diversity means the coincident, or simultaneous, heating and cooling loads within a building or campus. The sum of what buildings need at the same moment is always lower than the sum of their individual peaks, and an ambient temperature loop is what lets an owner capture the difference.',
-          'Offices rejecting heat while residences call for heat are solving each other’s problem on the same pipe. At Colorado Mesa University, a district system in place of isolated plant delivers roughly 650 kW of demand reduction, with electric service needs falling from about 784 kW to roughly 185 kW.',
+          'Load diversity is balanced heating and cooling thermal profiles within a building or campus. This applies to hourly, daily, weekly, or even annual timescales. The sum of what buildings need at the same moment is almost always lower than the sum of their individual peaks, and an ambient temperature loop is what lets an owner capture the difference. Offices rejecting heat while residences call for heat are solving each other’s problem on the same pipe.',
+          'At Colorado Mesa University, a district system in place of isolated plant delivers roughly 650 kW of demand reduction, with electric service needs falling from about 784 kW to roughly 185 kW.',
           'Part-load reality sharpens the point. Most of the year sits well below peak, and pump affinity laws mean running lower flows for thousands of hours cuts friction and power dramatically. Designing for the peak hour alone oversizes pipe, pumps, and interconnection for hours that barely exist.',
+          'Hybrid peaking covers what diversity cannot. Under the 50/90 rule, roughly 90% of annual hours sit under 50% of peak load while true peak occupies on the order of hours in a year, so boilers or towers can handle those rare extremes, and the electric plant never has to be sized for them.',
+          'On a thermal energy network, the borefield’s job shifts from being purely a source and sink toward being storage. Heat rejected into the ground can be recovered later when buildings call for heat. This allows for not only daily or weekly energy storage, but monthly and seasonal storage. Storage opens up the ability to capture diversity on the annual timescale.',
         ],
       },
       {
-        heading: 'Storage, hybrids, and demand response',
+        heading: 'Demand response',
         paragraphs: [
-          'On a thermal energy network, the borefield’s job shifts from being purely a source and sink toward being storage. Heat rejected into the ground can be recovered later.',
-          'Hybrid peaking covers what storage and diversity cannot. Under the 50/90 rule, roughly 90% of annual hours sit under 50% of peak load while true peak occupies on the order of hours in a year, so boilers or towers can handle those rare extremes and the electric plant never has to be sized for them.',
-          'Operationally, networked campuses have shed load campus-wide with a single control action during a peak event. That is demand response without asking every building to invent its own curtailment plan.',
+          'One reason electrification can demand a grid upgrade is increased peak demand itself. Electrifying with air-source heat pumps and electric resistance heaters can dramatically increase electrical demand. An ATL offers not only reduced peak demands compared to alternative electrification strategies, but an ability to respond to utility demand events.',
+          'Operationally, networked campuses can and have shed loads with a single control action during a peak event. That is demand response without asking every building to invent its own curtailment plan.',
         ],
       },
       {
         heading: 'What to ask before you size the service',
         paragraphs: [
-          'Before accepting a utility upgrade as the price of decarbonization, ask three questions. Can these buildings share a thermal backbone? Have diversity and storage been modelled against the true coincident peak rather than the summed peak? And have existing thermal resources, including wastewater, process heat, snowmelt return, and irrigation, been counted at all?',
+          'Before accepting a utility upgrade as the price of decarbonization, ask three questions. Can these buildings share a thermal backbone? Have diversity and storage been modelled against the true coincident peak rather than the summed peak? And have existing thermal resources, including wastewater, process heat, snowmelt return, and irrigation, been considered at all?',
           'Those questions change the interconnection conversation. They are also where most projects either lock in unnecessary capital, or free it.',
         ],
       },
@@ -224,31 +224,30 @@ export const insights: Insight[] = [
     body: [
       {
         paragraphs: [
-          'Weber State University’s climate commitment originally set carbon neutrality for 2050. The retrofit has performed so well, and the resulting system is efficient enough, that the university has since moved that target forward to 2040.',
-          'The practical plan was efficiency first, then renewables, with savings recycled through a revolving green fund. The fund began as an internal loan on the order of $5 million at low interest, repaid against a fixed annual utility budget. That financing spine matters as much as the mechanical story, because every dollar of avoided utility spend becomes the funding for the next retrofit.',
+          'Weber State University’s climate commitment originally set carbon neutrality for 2050. Their TEN retrofit has performed so well, and the resulting system is efficient enough, that the university has since moved the carbon neutral target forward to 2040.',
+          'The practical plan was efficiency first, then renewables, using savings recycled through a revolving green fund. The fund began as an internal loan on the order of $5 million at low interest, repaid using utility savings. That financing spine matters as much as the mechanical story, because every dollar of avoided utility spend becomes the funding for the next retrofit.',
         ],
       },
       {
         heading: 'Why water-source heat pumps won',
         paragraphs: [
-          'The mechanical roadblock was familiar. Efficient VAV reheat still leaned on steam or building boilers, so no amount of tuning let a building leave the fuel behind.',
-          'Air-source heat pumps decoupled buildings from steam but lost efficiency at temperature extremes and shortened equipment life. In a climate with real winters, that is the wrong trade.',
-          'Water-source heat pumps offered a third path. They could reuse the chilled-water loop already buried across campus, provided the university was willing to treat that loop as a thermal energy network instead of a one-way cooling pipe.',
+          'The mechanical roadblock was familiar. Efficient VAV reheat still leans on steam or building boilers, so no amount of tuning let a building leave the fuel behind.',
+          'Air-source heat pumps decoupled buildings from the campus traditional four-pipe system, but lost efficiency at temperature extremes and shortened equipment life. In a climate with real winters, that is the wrong trade.',
+          'Water-source heat pumps offered a third path. They could reuse the chilled-water loop already buried across campus, provided the university was willing to treat that loop as a thermal energy network instead of a one-way cooling pipe. This strategy decreases capital cost and utilizes equipment with a longer life.',
         ],
       },
       {
         heading: 'Turning a chilled-water loop into a source and a sink',
         paragraphs: [
-          'Two terms make the rest of this legible. A source is a place to absorb energy from. A sink is a place to reject energy to.',
-          'A conventional chilled-water loop is only ever a sink, because buildings do nothing but dump heat into it. Retrofitting buildings with water-source heat pumps lets them both reject energy to the loop and absorb energy from it, so the chilled-water loop becomes a source and a sink at once. In summer it still absorbs; in winter it supplies. Buildings begin trading heat with each other through distribution that was already in the ground.',
-          'Doing this slowly and sequentially is what allows steady progress. Retrofits tie into the return, driver buildings are isolated or converted in turn, and the campus never has to take the whole system down to move forward.',
+          'A source is a place to absorb energy from. A sink is a place to reject energy to. A conventional chilled-water loop is only ever a sink, because buildings do nothing but dump heat into it. Retrofitting buildings with water-source heat pumps lets them both reject energy to the loop and absorb energy from it, so the chilled-water loop becomes both a source and a sink. In summer the loop still absorbs; in winter it supplies. Buildings begin trading heat with each other through distribution that was already in the ground.',
+          'Slow and sequential implementation is what allows steady progress. Driver buildings are isolated or converted in turn, and the campus never has to take the whole system down to move forward.',
         ],
       },
       {
         heading: 'Adding ground source over time',
         paragraphs: [
           'Geothermal came later, and it came incrementally. Ground-source fields precondition the loop and eventually dominate its conditioning, so the central plant can recede into a backup role rather than run as the primary source of heat.',
-          'That sequence is why the timeline compressed. Once the thermal backbone is in the ground, adding capacity is cheap and carbon-neutrality dates move left.',
+          'That sequence is why the timeline for carbon neutrality compressed. Once the thermal backbone is in the ground, adding capacity is cheap and carbon-neutrality dates move left.',
         ],
       },
       {
@@ -256,8 +255,13 @@ export const insights: Insight[] = [
         paragraphs: [
           'Since 2010, $30 million has been saved in avoided utility costs, including roughly $3.5 million in a single recent year.',
           'The plant-level numbers are just as stark. January central-plant fuel costs fell from on the order of $12,800 per month before the heat pumps and central loop to about $2,700 after startup.',
-          'Campus-wide, average energy use intensity dropped from roughly 125 kBtu/sf/yr to under 60. Electricity use, natural gas use, and overall energy consumption and cost have each fallen by more than 50%, and the campus achieved that while adding hundreds of thousands of square feet.',
-          'The living-laboratory framing is deliberate. Students watch the technology operate on their own campus before they design the next one.',
+          'Campus-wide, average energy use intensity fell from roughly 125 kBtu/sf/yr to below 60. University data also shows significant reductions in electricity consumption, natural gas use, energy costs, and greenhouse gas emissions, while the campus continued to expand by hundreds of thousands of square feet.',
+        ],
+      },
+      {
+        heading: 'A repeatable process',
+        paragraphs: [
+          'Weber State University offers a path forward to more efficient, resilient, and economically feasible systems. This process is repeatable. Using avoided utility savings to fund projects, repurposing existing infrastructure, and slow and strategic implementation can provide an engine which drives toward a better future.',
         ],
       },
     ],
@@ -282,23 +286,29 @@ export const insights: Insight[] = [
       {
         paragraphs: [
           'Traditional geo-exchange works, and it works well. Compared with air-source heat pumps it delivers higher efficiency, lower electrical demand, and longer equipment life, because it exchanges heat with stable ground temperatures rather than swinging outdoor air.',
-          'Its limits all trace back to a single design choice: relying on the ground alone. Every ton of peak capacity has to be drilled for, which means high upfront cost, large land area, and strong dependence on local ground properties. On a constrained downtown block, those limits end the conversation before it starts.',
-          'District-scale work needs a different frame. On the Thermal Highway©, buildings, sources, and storage trade usable energy across a shared ambient loop instead of each site drilling for its own peak. The ground stays in the picture as a thermal battery, but it becomes one asset among several rather than the whole system.',
-          'That shift is what brings capital cost and land requirements down. Diversity becomes a resource across coincident hours, across days, and across seasons, and the network’s first job is to harvest, move, and reuse the energy a site already produces before it buys new plant.',
+          'However, its limits trace back to a single design choice: capital cost. Traditional geo relies on the ground alone. Every ton of peak capacity has to be drilled for, which means high upfront cost, large land area, and strong dependence on local ground properties. On a constrained downtown block, those limits end the conversation before it starts.',
+          'Ambient Temperature Loops improve upon traditional geo. On the Thermal Highway©, buildings, sources, and thermal storage trade usable energy across a shared ambient loop instead of each site drilling for its own peak. The ground stays in the picture as a thermal battery, but it becomes one asset among several rather than the whole system.',
+          'Two design strategies bring capital cost and land requirements down: diversity and the 50/90 rule.',
+        ],
+      },
+      {
+        heading: 'Diversity is a resource',
+        paragraphs: [
+          'Load diversity, or balanced heating and cooling, becomes a resource across coincidence hours, days, and seasons. The network’s first job is to harvest, move, and reuse the energy a site already produces before it produces more.',
+          'High diversity and favorable ground properties mean the ground can be more effectively utilized as a thermal battery. The ground can store energy on the scale of days, weeks, and seasons.',
         ],
       },
       {
         heading: 'Hybrid systems: hours under 50% are most of the year',
         paragraphs: [
-          'The 50/90 rule is the design discipline behind hybrid thermal energy networks: roughly 90% of annual hours sit under 50% of peak load, while true peak occupies on the order of hours in a year.',
-          'So size geo-exchange and multi-source assets for the long middle of the year, and let boilers, towers, or other peaking plant cover the rare extreme. That is how campuses cut borehole footage per ton without pretending peaks never happen.',
-          'Which sources are available is entirely site-specific. Park City evaluations map downtown, Bonanza Park, and Quinns against wastewater, mine water, geo-exchange, and drinking-water source-protection constraints. Vail and Carbondale show the same pattern: inventory every thermal liability that could become an asset before defaulting to more holes in the ground.',
+          'The 50/90 rule is the design discipline behind hybrid thermal energy networks: roughly 90% of annual hours sit under 50% of peak load, while true peak occupies on the order of hours in a year. So size geo-exchange and multi-source assets for the long middle of the year, and let boilers, towers, or other peaking plant cover the rare extreme. That is how district systems cut borehole footage without pretending peaks never happen.',
+          'Which sources are available is entirely site-specific. Wastewater, mine water, geo-exchange, snowmelt as a solar collector, surface water, and drinking water are all examples of creative sources and sinks of energy.',
         ],
       },
       {
         heading: 'Why multisource beats “more geo” alone',
         paragraphs: [
-          'Multi-building, multi-source networks consistently show higher performance and lower first cost than isolated geo fields sized for every ton. Capital intensity falls when the loop carries diversity and waste heat, and peak electric demand falls when the network, rather than electric resistance, handles the coldest and hottest hours.',
+          'Multi-building, multi-source networks consistently show higher performance and lower first cost than isolated geo fields sized for peak capacity. Capital intensity falls when the loop carries diversity and is sized for the majority of energy use. Additionally, peak electric demand falls when the network, rather than electric resistance, handles the coldest and hottest hours.',
           'The paradigm shift fits in one sentence. Stop asking the ground to do every hour’s work alone.',
         ],
       },
@@ -324,7 +334,7 @@ export const insights: Insight[] = [
         paragraphs: [
           'Capital committees are trained to compare bid prices. Thermal networks are built to outlast the people who approve them. When those two frames collide, the low first-cost plant usually wins the meeting.',
           'Then it spends decades collecting the costs the bid never showed: demand charges, cooling-tower water, boiler replacements, rising maintenance, and eventually the feeder upgrade that electrification without diversity makes inevitable. Comparing capital cost alone does not simply overlook lifecycle cost. It raises it.',
-          'Field economics from operating networks make the gap visible. A campus comparison showing 217 borehole feet per installed ton for standalone geo-exchange versus about 84 feet per ton on an ambient loop is not a curiosity. It is roughly a 62% reduction in field capital intensity for the same connected load class.',
+          'Field economics from operating networks make the gap visible. A campus comparison showing 217 borehole feet per installed ton for standalone geo-exchange versus about 84 feet per ton on an ambient loop is not just a curiosity. It is roughly a 62% reduction in field capital intensity for the same connected load class.',
         ],
       },
       {
@@ -332,22 +342,22 @@ export const insights: Insight[] = [
         paragraphs: [
           'Colorado Mesa University’s cumulative energy savings above $16 million since 2008, and Weber State’s $30 million in avoided utility costs since 2010, are lifecycle arguments written in cash.',
           'Water savings measured in millions of gallons per year and electric demand cuts measured in hundreds of kilowatts show up twice: once as operating cost, and once as infrastructure a utility never had to build.',
-          'Incentives move year-zero math as well. When a project already qualifies for a substantial federal investment tax credit, borehole cost can be partially or fully offset. That sometimes makes the geothermal path the lowest first-cost option in addition to the lowest lifecycle option.',
+          'Incentives move year-zero math as well. When a project already qualifies for a substantial federal investment tax credit, borehole cost can be substantially offset. That can make the geothermal path the lowest first-cost option in addition to the lowest lifecycle option.',
         ],
       },
       {
         heading: 'Cost stacks that fool a spreadsheet',
         paragraphs: [
-          'Network spending breaks into five stacks with unit costs that differ by an order of magnitude: geo-fields, network distribution, network mechanicals, interior heat pumps, and behind-the-meter building retrofits.',
-          'The expensive mistake is funding the wrong stack. Overbuild the fields because diversity was ignored, or underbuild the loop so phase two strands phase one, and the option that looked cheapest on bid day becomes the most expensive asset on the campus.',
-          'The same logic scales down to a single house. In coal-impacted communities, stacked incentives including energy-community bonuses can drop a homeowner’s out-of-pocket cost far below sticker. Incomplete incentives and incomplete peaks are what make conventional plant look cheap.',
+          'Thermal energy networks are not a single investment. Costs are distributed across five major categories: geo-fields, network distribution, network mechanical systems, interior heat pumps, and behind-the-meter building retrofits. Because the cost of each category can vary dramatically, the decisions made early in design often have a greater impact on project economics than the technology itself.',
+          'The most expensive mistake is focusing in the wrong place. Ignoring load diversity can lead to oversized geo-fields and unnecessary drilling costs. Undersizing the distribution network can create bottlenecks that limit future expansion. In either case, the option that appeared least expensive during procurement can become the most expensive asset over its lifecycle.',
+          'The same principle applies at the residential scale. In coal-impacted communities, stacked incentives, including Energy Community bonus credits, can significantly reduce a homeowner’s upfront investment. Evaluating only sticker price, without accounting for incentives or realistic operating conditions, often makes conventional systems appear more economical than they actually are.',
         ],
       },
       {
         heading: 'What a capital committee needs to see',
         paragraphs: [
-          'A business case that survives scrutiny shows four things: coincident peaks rather than summed peaks, operating cost under realistic utility rates, maintenance and replacement across the full asset life, and a clear path to add load or sources later without stranding what gets built now.',
-          'With those in one model, the expensive network usually pencils and the cheap plant stops looking cheap. A properly implemented network can carry a higher capital cost and still save millions of dollars over the life of the system.',
+          'A business case that withstands scrutiny is built on four foundations: coincident rather than summed peak loads, operating costs based on realistic utility rates, lifecycle maintenance and replacement costs, and the ability to expand capacity over time without stranding existing investments.',
+          'With those in one model, the expensive network usually pencils, and the cheap plant may not look like the most logical solution. A properly implemented network can carry a lower capital cost and still save millions of dollars over the life of the system.',
         ],
       },
     ],
@@ -366,31 +376,31 @@ export const insights: Insight[] = [
     image: site['insight-implementing-tens'].src,
     imageAlt: site['insight-implementing-tens'].alt,
     to: '/insights/implementing-tens',
-    readTime: '5 min read',
+    readTime: '7 min read',
     body: [
       {
         heading: 'Start with why, then build the sequence',
         paragraphs: [
-          'Starting with why is not a slogan. Owners who skip the challenge framing, meaning peak electric demand, gas dependency, water use, and the limits of building-by-building electrification, end up buying equipment instead of building a network.',
-          'The concepts are the straightforward part: ambient loops, heat pumps, building-level heat trading, hybrid 50/90 sizing, and load diversity. Implementation is the sequence that makes them real.',
-          'A workable path runs in order. High-level feasibility, then characterization of the existing built environment, then hydrogeology and resource mapping, then design with multi-source assets in mind, then drilling by teams who have done it before, then commissioning that defends design intent through startup.',
+          'Starting with why is not just a slogan. Avoiding the hard conversation about peak loads, gas dependency, water resources, and the shortcomings of one-building-at-a-time electrification often leads to a collection of equipment purchases rather than a resilient energy network.',
+          'Technology is rarely the hardest part. Ambient loops, heat pumps, load diversity, building-to-building heat sharing, and hybrid 50/90 sizing are all well-established technologies and concepts. What separates successful projects from expensive studies is the implementation pathway. Each step informs the next, from understanding existing conditions and available thermal resources to designing, constructing, and commissioning a system that performs as intended. The value of a thermal energy network is realized not through any single piece of equipment, but through the steps that bring the entire system together.',
+          'Successful thermal energy networks are built through a deliberate sequence. The process begins with feasibility and a clear understanding of the existing buildings and infrastructure. From there, retro-commissioning, hydrogeologic investigation, and thermal resource mapping reveal both opportunities and constraints, informing an integrated design that leverages the site’s available assets. Construction must then be carried out by experienced drilling and installation teams, while commissioning ensures the system performs in operation the way it was intended in design.',
         ],
       },
       {
         heading: 'Evaluate the place, not a generic tonnage',
         paragraphs: [
-          'Park City’s evaluation work is a useful pattern. Treat districts separately, in that case downtown, Bonanza Park, and Quinns. Then map building stock and HVAC compatibility. Then rank the available resources: wastewater, mine water, geo-exchange, and the source-protection zones that rule some options out entirely.',
-          'A recommendation only lands once a site’s liabilities and its assets sit on the same map.',
-          'Retro-commissioning belongs early in that sequence. Cleaning up controls, setpoints, and envelope performance reduces the tons the network has to carry. Designing a network around existing waste is how projects oversize fields and underdeliver savings.',
+          'Park City’s evaluation work provides a useful model for how thermal energy networks should be planned. Rather than treating an entire community as a single system, the study evaluated three distinct districts, each with its own building stock, HVAC characteristics, and energy profile. From there, available thermal resources including wastewater, mine water, geo-exchange, and source-protection constraints were evaluated to understand which opportunities were realistic and which were not.',
+          'The resulting recommendation was not based on a single technology, but on a comprehensive understanding of both the site’s assets and its limitations. Effective planning happens when thermal resources, infrastructure constraints, building needs, and regulatory considerations are viewed together rather than in isolation.',
+          'Retro-commissioning plays a critical role early in that process. Improving controls, optimizing setpoints, and addressing building performance issues reduces the load the network ultimately needs to serve. Designing around avoidable energy waste often leads to oversized infrastructure, higher capital costs, and lower-than-expected savings. The most cost-effective thermal energy is frequently the demand that is eliminated before new infrastructure is installed.',
         ],
       },
       {
         heading: 'Design, drill, and commission as one chain',
         paragraphs: [
-          'Design starts with designer experience, thermal response testing, building efficiency first, and explicit consideration of every source and sink a site can offer.',
-          'Drilling demands rig size and technology matched to the geology, and drillers who have completed comparable fields.',
-          'Commissioning closes the chain with design reviews, installation reviews, and system testing, so the sequences and setpoints actually running the buildings match the ones that were modelled.',
-          'Skip any link and the result is a competent drawing set that underperforms in the field. Keep the chain intact and the network can expand building by building without ever restarting the backbone.',
+          'Once the opportunity has been defined, the focus shifts to execution. Design should be grounded in experience, informed by thermal response testing, and guided by an understanding of the site’s buildings, resources, and efficiency opportunities. Every available source and sink should be evaluated to determine how it can contribute to the network.',
+          'Construction is equally dependent on site-specific conditions. Drilling methods, rig selection, and installation strategies must align with the local geology, and success is best supported by teams with experience delivering comparable projects.',
+          'Commissioning then connects design intent to operational reality. Through design reviews, installation verification, and functional testing, controls, sequences, and setpoints are validated to ensure the system performs as modeled.',
+          'The process is only as strong as its weakest link. A well-designed network can still underperform if any stage of implementation falls short. When the entire chain remains aligned, the result is infrastructure that can expand over time without requiring the backbone to be redesigned or rebuilt.',
         ],
       },
     ],
@@ -410,42 +420,47 @@ export const insights: Insight[] = [
     image: site['insight-finance'].src,
     imageAlt: site['insight-finance'].alt,
     to: '/insights/governance-first',
-    readTime: '6 min read',
+    readTime: '8 min read',
     body: [
       {
         paragraphs: [
-          'Every serious thermal network conversation eventually reaches the same three questions: who finances it, who owns it, and who operates it. Public entities, utilities, and third parties can each play those roles, and mixing them without a clear model is how projects stall after the engineering looks finished.',
+          'Every serious thermal network conversation eventually reaches the same three questions: who finances it, who owns it, and who operates it? Public entities, utilities, and third parties can each play those roles, and mixing them without a clear model is often how projects stall after the engineering looks finished.',
           'Utility thermal energy network, or UTEN, discussions are evolving nationally for a reason. A shared ambient loop is infrastructure, not equipment. It needs a durable owner, a rate or cost-recovery path, and an operator accountable for loop temperatures, expansion, and customer participation. A one-off construction contract supplies none of those.',
-          'Three models dominate. Each one trades a different advantage for a different risk.',
+          'For the UTEN platform to grow, someone must own the backbone, recover costs, manage operations, and make decisions as the network evolves.',
+          'The specific answer varies by community, campus, or district, but most projects ultimately align around one of three approaches: public ownership, utility ownership, or third-party ownership. Each can succeed, but each brings different strengths and responsibilities.',
         ],
       },
       {
         heading: 'The public or municipal owner',
         paragraphs: [
-          'A public owner can align the network with goals and assets a community already holds. Snowmelt plants, wastewater treatment, libraries, and recreation centers are precisely the thermal sources and sinks a loop wants, and they are already on the public books.',
-          'The trade is balance-sheet exposure. The municipality answers for capital and for long-term operations and maintenance, usually with no rate base to spread it across. Billing, expansion, and performance decisions land with staff who may never have run a utility before, so operating capability has to be built or contracted deliberately.',
+          'For many communities, public ownership feels like a natural fit because many of the most valuable thermal assets are already publicly owned. Wastewater treatment plants, recreation centers, libraries, snowmelt systems, and municipal buildings often provide the sources and sinks that make a network possible in the first place.',
+          'A municipal model also allows a community to align network development directly with its broader goals. Emissions reductions, economic development, resilience, and long-term energy affordability can all be considered alongside traditional infrastructure planning.',
+          'The challenge is that ownership transfers long-term responsibility to the municipality. Capital costs, operations, maintenance, customer relationships, and future expansion all become public obligations. Unlike traditional utilities, municipalities often lack an established rate structure or operating organization dedicated to thermal energy, requiring new capabilities to be developed internally or contracted from outside providers.',
         ],
       },
       {
-        heading: 'The utility owner',
+        heading: 'Utility ownership',
         paragraphs: [
-          'A utility owner can fold thermal networks into integrated energy planning and rate design, which is why Clean Heat and related proceedings in states like Colorado matter well beyond their borders. Cost recovery through rates is the most durable funding path available, and utilities already run metering, billing, and around-the-clock operations.',
-          'The trade is pace and precedent. Regulated capital moves on regulatory timelines, and a tariff for a thermal service that did not exist five years ago has to be built before the first customer connects. Where that work is already underway, the utility model is usually the fastest route to a network that can keep expanding for decades.',
+          'As thermal energy networks become more integrated into energy planning, utilities are increasingly being asked to evaluate whether these systems belong alongside more traditional infrastructure investments.',
+          'The appeal of utility ownership is straightforward. Utilities already manage customer relationships, billing systems, metering, field operations, and long-term infrastructure planning. They are also accustomed to making investments with operating horizons measured in decades rather than years. Where regulatory frameworks support thermal networks, utilities can provide a clear path for financing, operation, and future expansion.',
+          'The tradeoff is that utilities move at the pace of regulation. New tariffs, cost-recovery mechanisms, and service structures need to be established before the first customer connects. Building that framework takes time, but where it exists, utility ownership can provide the stability needed for a network to grow steadily over multiple phases and generations of equipment.',
         ],
       },
       {
-        heading: 'The third-party owner',
+        heading: 'Third-party ownership',
         paragraphs: [
-          'A third-party owner moves fastest on development and carries performance risk on its own balance sheet. That suits a campus or private district that would rather buy heating and cooling as a service than operate a plant.',
-          'The trade is interface complexity. Billing, interconnection, expansion cost allocation, and end-of-term ownership all have to be contractually explicit, because no regulator is backstopping the relationship when a phase costs more than the model predicted.',
+          'A third approach places ownership in the hands of a dedicated private entity. In this model, building owners purchase heating and cooling as a service while the network owner assumes responsibility for developing, operating, and maintaining the infrastructure.',
+          'This approach can appeal to campuses, private districts, and institutional owners that want the benefits of a thermal network without becoming utility operators themselves. It also allows performance risk and capital investment to be carried by an organization specifically focused on energy infrastructure.',
+          'The advantage is flexibility and speed. The challenge is complexity. Questions surrounding customer agreements, cost allocation, future expansion, and long-term ownership must be clearly resolved through contracts. Unlike regulated utility systems, these arrangements rely heavily on the strength of the commercial framework established at the outset of the project.',
         ],
       },
       {
-        heading: 'Settle the model before the next RFP',
+        heading: 'Settle governance before the design is finished',
         paragraphs: [
-          'Whichever model fits, the answers belong on paper before the next consultant or EPC solicitation. Write down who owns the thermal backbone across every phase, how costs are recovered, who decides when disciplines disagree about loop temperatures or peaking strategy, and who stays through startup to defend the sequences.',
-          'Customer participation rules belong in the same document: who can connect, on what terms, and how the buildings that join first avoid stranding the ones that join last.',
-          'None of that is bureaucracy layered onto engineering. It is the condition that lets a multisource network actually get built, billed, and expanded.',
+          'Too often, ownership discussions begin after the engineering is complete. By then, difficult questions about growth, cost recovery, and operational responsibility can become barriers rather than design inputs.',
+          'Successful projects address these issues early. They define who owns the thermal backbone, how future phases will be financed, how operating decisions will be made, and who remains accountable for system performance after construction is complete. They also establish policies for customer participation, ensuring that early adopters are not disadvantaged as additional buildings join the network over time.',
+          'These decisions may seem administrative compared to borefields, heat pumps, and distribution piping, but they are what determine whether a network remains a collection of assets or becomes lasting infrastructure.',
+          'In the end, thermal energy networks are not just engineering projects. They are systems that must be financed, operated, expanded, and maintained over decades. The communities and organizations that resolve those questions early are often the ones that move from feasibility studies to functioning networks.',
         ],
       },
     ],
@@ -470,7 +485,7 @@ export const insights: Insight[] = [
         paragraphs: [
           'Colorado is the closest thing the United States has to a controlled experiment in geothermal policy. In a few years the state moved from treating geothermal as interesting to writing it into statutes, commission orders, equipment standards, and stacked incentives. The market responded.',
           'The most visible result is that thermal energy networks are no longer only a campus innovation story. Utility thermal energy networks are now something large gas utilities are expected to plan for.',
-          'For legislators, regulators, and staff working elsewhere, that is the useful part. Not the bill numbers, but which levers produced the shift and in what order. Four of them did most of the work.',
+          'For legislators, regulators, and policymakers elsewhere, the real lesson is not the individual statutes or program names. It is understanding which policy levers moved thermal energy networks from isolated demonstration projects to infrastructure that utilities are expected to evaluate and plan for. Four levers, or actions, were particularly influential.',
         ],
       },
       {
@@ -484,31 +499,30 @@ export const insights: Insight[] = [
       {
         heading: 'Lever two: make the replacement cycle a real decision point',
         paragraphs: [
-          'As of January 1, 2026, Colorado enforces ultra-low NOx emission standards under House Bill 23-1161. Compliant gas equipment can cost on the order of 40% to 80% more than what it replaces, with fewer models available.',
+          'As of January 1, 2026, Colorado enforced ultra-low NOx emission standards under House Bill 23-1161. The new requirements increased the cost of many gas-fired replacement options and reduced the number of compliant equipment choices available to building owners, creating a more meaningful comparison between conventional systems and electrified alternatives.',
           'The effect is subtle and powerful. Every boiler and furnace replacement becomes a genuine comparison between gas and a heat pump rather than an automatic like-for-like swap. Air-quality rules and decarbonization goals end up pulling in the same direction without either one mandating a technology.',
-          'Local and municipal authority, technical interoperability, and worker-transition expectations sit alongside those equipment rules. Policy is not only a rebate sheet. It is a constraint set on what a replacement is even allowed to be.',
+          'Local authority, interoperability standards, and workforce transition expectations all sit alongside equipment regulations in shaping the market. Policy is not just a collection of incentives. It establishes the rules, constraints, and opportunities that influence what a replacement project can ultimately become.',
         ],
       },
       {
         heading: 'Lever three: stack incentives so year zero pencils',
         paragraphs: [
-          'The Colorado Energy Office administers grant programs and state heat-pump tax credits worth hundreds to a couple thousand dollars per unit or per ton, with contractor pass-through requirements so the money reaches the customer. Nonresidential ground-source support has included substantial per-project caps and annual program funding measured in tens of millions of dollars.',
-          'Those state dollars layer on top of federal commercial geothermal credits under the ITC and PTC framework, which carry base rates plus bonus adders for prevailing wage, apprenticeship, and energy communities. In coal-impacted communities, the full stack can cut out-of-pocket cost by tens of thousands of dollars on a single residential system.',
-          'Stackability is the design principle worth exporting. A state incentive built to layer cleanly onto federal credits does considerably more per dollar than a larger standalone rebate.',
+          'Colorado’s incentive programs are designed to reduce one of the largest barriers to adoption: upfront cost. Through grants, tax credits, and other funding mechanisms, the Colorado Energy Office provides support for both residential and commercial projects. In the ground-source market, that support has ranged from direct consumer incentives to large-scale funding programs capable of supporting community and nonresidential projects.',
+          'The larger advantage comes from how those programs interact with federal incentives. State support can often be layered with federal geothermal incentives, including the Investment Tax Credit (ITC) and Production Tax Credit (PTC), along with additional provisions related to prevailing wage, apprenticeship, and energy-community eligibility. Together, these programs can materially improve project economics and reduce the cost gap that often prevents geothermal and thermal energy network projects from moving forward.',
+          'The key takeaway is that incentive design matters as much as incentive size. A state program that builds on federal credits can generate more value, more projects, and greater adoption than a larger rebate that stands alone.',
         ],
       },
       {
         heading: 'Lever four: settle ownership alongside the incentives',
         paragraphs: [
           'Colorado’s proceedings treat ownership as a policy question rather than leaving it to each project to improvise. Whether a network is owned by a public entity, a utility, or a third party determines who bills customers, who funds expansion, and who is accountable for performance.',
-          'States that answer that question early avoid a familiar failure mode, where a technically sound network stalls because nobody has authority to own it.',
+          'Answering the question of who owns the network early can help avoid a familiar failure mode, where a technically sound network stalls because nobody has authority to own it.',
         ],
       },
       {
         heading: 'What this adds up to for other states',
         paragraphs: [
           'The lesson is not that Colorado’s specific statutes are right for every state. It is that thermal energy networks scale when statutes, utility regulation, equipment standards, and incentives all point the same direction as the engineering. Any single lever produces pilots. All four together produce infrastructure.',
-          'For practitioners already working in states that are moving, treat policy as part of schematic design. Map utility participation early, price emissions-compliant gas replacements honestly, and model state plus federal incentives before comparing capital costs.',
         ],
       },
     ],
@@ -532,31 +546,30 @@ export const insights: Insight[] = [
       {
         paragraphs: [
           'Geothermal is not one technology. It is a spectrum defined by depth and temperature, and the two ends of it do entirely different jobs.',
-          'At the deep end, conventional hydrothermal resources, enhanced geothermal systems (EGS), and advanced closed-loop concepts reach hot rock to generate electricity. At the shallow end, building geo-exchange and thermal energy networks use the near-surface ground as a source and a sink for heating and cooling buildings. Campus central plants sit between them.',
+          'At the deep end, conventional hydrothermal resources, enhanced geothermal systems (EGS), and advanced closed-loop concepts reach hot rock to generate electricity. At the shallow end, building geo-exchange and thermal energy networks use the near-surface ground as a source and a sink for heating and cooling buildings.',
           'The interesting engineering is at the seam. Blend deep geothermal with shallow geothermal and a single site can produce heating, cooling, and electricity, with each system making the other cheaper.',
         ],
       },
       {
         heading: 'Why the deep end is suddenly relevant',
         paragraphs: [
-          'EGS methods, illustrated by research sites such as Utah FORGE and by commercial developers working fractured or geopressured reservoirs, target hot rock where natural permeability is lacking. Advanced closed-loop concepts chase the same heat with less dependence on reservoir conditions.',
-          'All of them generate electricity, and all of them reject a great deal of heat in the process. That thermal exhaust is the part worth capturing.',
+          'EGS methods, illustrated by research sites such as Utah FORGE and by commercial developers, target hot rock where natural permeability is lacking. Advanced closed-loop concepts chase the same heat with less dependence on reservoir conditions.',
+          'Both technologies generate electricity, and both reject a great deal of heat in the process. That thermal exhaust is an invaluable resource when seen through the lens of a thermal energy network.',
         ],
       },
       {
         heading: 'Why coupling power and thermal works',
         paragraphs: [
           'The two systems want opposite things, which is exactly why they pair well. A geothermal power plant wants stable baseload output. A thermal energy network wants clean, flexible thermal conditioning.',
-          'Waste heat from power production can cover a large share of a district’s heating need, which lowers the network’s first cost and shrinks the borefield it would otherwise require. The benefit runs both directions, because reducing the cooling burden at the power plant improves its electric output.',
-          'Geology and climate decide where the pairing is attractive. Cold districts with heating-dominated loads are the natural candidates, which is why mountain-town studies that already inventory snowmelt, wastewater, and civic loads are where adding a deep resource most changes the optimization.',
+          'Waste heat from power production can cover a large share of a district’s heating need, which lowers the network’s first cost and shrinks the borefield it would otherwise require. But the benefit runs in both directions. For geothermal power generation, heat is a liability, so reducing the cooling burden at the power plant lowers operating cost and improves electric output.',
+          'Geology and climate decide where the pairing is attractive. Communities with strong heating demand and access to usable geothermal resources stand to benefit the most. Mountain towns are often compelling candidates because they already contain large thermal loads, such as snowmelt systems, wastewater infrastructure, hotels, civic buildings, and recreation facilities. In these environments, a deep geothermal resource can become another thermal asset within the network, significantly changing the economics and design of the overall system.',
         ],
       },
       {
         heading: 'Precedents, not science fiction',
         paragraphs: [
-          'Combined power and district heating is decades old. Iceland’s Svartsengi plant paired tens of megawatts electric with hundreds of megawatts thermal for district heat. Austria’s Altheim project paired roughly 1 MW electric with about 9 MW thermal of district heating, with documented CO₂ reductions and strong project economics.',
-          'Newer work points the same direction. Cornell’s low-temperature deep EGS research and Delft’s deep direct-use doublet paired with shallow storage both pursue the same integration.',
-          'The open question for districts in the United States is when geology, electricity offtake, and thermal load together justify shared infrastructure. Where they do, treating power and thermal as separate silos leaves both money and megawatts on the table.',
+          'The idea of pairing geothermal power production with district heating is not new. Projects such as Iceland’s Svartsengi plant and Austria’s Altheim facility demonstrated decades ago that geothermal resources can generate electricity while simultaneously providing useful thermal energy to surrounding communities. The same concept continues to evolve today. Research efforts such as Cornell’s low-temperature deep geothermal work and Delft’s exploration of deep direct-use systems paired with shallow thermal storage are pursuing the same goal: extracting more value from a single geothermal resource by treating heat and power as complementary products rather than separate systems.',
+          'The remaining question is where these systems make sense together. Communities that have both a viable deep geothermal resource and substantial heating demand are the strongest candidates. In those locations, integrating power production with a thermal energy network can unlock value that neither system could capture alone.',
         ],
       },
     ],
