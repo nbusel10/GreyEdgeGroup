@@ -1128,47 +1128,31 @@ body {
 
 .ge-year-wipe {
   clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.85s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .ge-year-wipe-inner {
   display: inline-block;
   transform: translateX(-12%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .ge-year-wipe.is-active {
-  animation: ge-year-wipe-mask 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  clip-path: inset(0 0 0 0);
 }
 
 .ge-year-wipe.is-active .ge-year-wipe-inner {
-  animation: ge-year-wipe-slide 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform: translateX(0);
 }
 
 .ge-year-wipe.is-static {
   clip-path: inset(0 0 0 0);
-  animation: none;
+  transition: none;
 }
 
 .ge-year-wipe.is-static .ge-year-wipe-inner {
   transform: none;
-  animation: none;
-}
-
-@keyframes ge-year-wipe-mask {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes ge-year-wipe-slide {
-  from {
-    transform: translateX(-12%);
-  }
-  to {
-    transform: translateX(0);
-  }
+  transition: none;
 }
 
 .ge-year-breath {
@@ -1288,11 +1272,13 @@ body {
   }
 
   .ge-year-wipe {
-    clip-path: none !important;
+    clip-path: inset(0 0 0 0) !important;
+    transition: none !important;
   }
 
   .ge-year-wipe-inner {
     transform: none !important;
+    transition: none !important;
   }
 
   .ge-year-ghost-echo {

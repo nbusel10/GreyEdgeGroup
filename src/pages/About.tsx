@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import type { ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { story, teamIntro, whoWeAre, whyUs } from '../content/about'
 import { team, type TeamMember } from '../content/team'
 import { projects } from '../content/projects'
@@ -9,7 +9,7 @@ import Leadership from '../components/sections/Leadership'
 import FinalCta from '../components/sections/FinalCta'
 import { Container, Eyebrow, Reveal, Section } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
-import { usePrefersReducedMotion, useReveal } from '../lib/hooks'
+import { usePrefersReducedMotion } from '../lib/hooks'
 
 const proseLinkClass =
   'italic text-ge-charcoal underline decoration-ge-light underline-offset-2 transition-colors hover:text-ge-accent hover:decoration-ge-accent'
@@ -120,7 +120,7 @@ export default function About() {
               </h2>
             </Reveal>
 
-            <div className="flex items-baseline gap-5 lg:col-start-2 lg:row-start-1">
+            <div className="flex items-end gap-5 lg:col-start-2 lg:row-start-1">
               <FoundingYear year={story.year} />
               <Reveal delay={0.08}>
                 <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-ge-black">{story.title}</h3>
@@ -234,16 +234,45 @@ export default function About() {
 }
 
 function FoundingYear({ year }: { year: string }) {
-  const { ref, visible } = useReveal<HTMLSpanElement>(0.35)
+  const ref = useRef<HTMLSpanElement>(null)
+  const [active, setActive] = useState(false)
   const reduced = usePrefersReducedMotion()
-  const state = reduced ? 'is-static' : visible ? 'is-active' : 'is-idle'
+
+  useEffect(() => {
+    if (reduced) {
+      setActive(true)
+      return
+    }
+    const el = ref.current
+    if (!el) return
+
+    // Observe the unclipped host — clip-path on the wipe reports 0% intersection.
+    // threshold 0 + no bottom rootMargin so it fires as soon as any pixel enters view.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        io.disconnect()
+        // Two frames so the idle clip paints before we open — otherwise the
+        // transition can no-op when the observer fires on the first callback.
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => setActive(true))
+        })
+      },
+      { threshold: 0 },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [reduced])
+
+  const state = reduced ? 'is-static' : active ? 'is-active' : 'is-idle'
 
   return (
-    <span
-      ref={ref}
-      className={`ge-year-wipe inline-block overflow-hidden font-display text-6xl font-bold leading-none text-ge-accent ${state}`}
-    >
-      <span className="ge-year-wipe-inner inline-block">{year}</span>
+    <span ref={ref} className="inline-block">
+      <span
+        className={`ge-year-wipe inline-block font-display text-6xl font-bold leading-none text-ge-accent ${state}`}
+      >
+        <span className="ge-year-wipe-inner inline-block">{year}</span>
+      </span>
     </span>
   )
 }

@@ -14,7 +14,7 @@ export const whoWeAre = {
     {
       title: 'Technical innovation',
       body: [
-        'Garen Ewbank developed the industry-standard methods for characterizing ground conductivity and diffusivity, later patenting advanced methodologies to improve them.',
+        'Garen Ewbank pioneered in situ thermal conductivity testing for the ground source heat pump industry in 1994, developed the industry-standard methods for characterizing ground conductivity and diffusivity, and later patented advanced methodologies to improve them.',
         'Cary Smith, Mark Smith and Bill O’Donnell brought the ambient one-pipe temperature loop into the modern era through their work at Colorado Mesa University.',
       ],
     },
@@ -32,7 +32,7 @@ export const story = {
   title: 'The GreyEdge Group founded',
   body: [
     'The GreyEdge Group was founded as something intentionally different: a collective of the Thermal Energy Networks industry’s most accomplished individual practitioners, brought together around a shared conviction that TENs represented the future of district-scale decarbonization.',
-    'Our founding members include the engineer who pioneered in-situ thermal conductivity testing in 1994, the hydronics specialist who brought the one-pipe ambient loop into the modern era, and a team that contributed significantly to every major geothermal standard and created the industry’s certification curricula.',
+    'Our founding members include the engineer who pioneered in situ thermal conductivity testing in 1994, the hydronics specialist who brought the one-pipe ambient loop into the modern era, and a team that contributed significantly to every major geothermal standard and created the industry’s certification curricula.',
     'What began as a network of collaborating specialists has been forged into a focused, aligned team, one whose collective experience designing, building and operating real ambient loop systems is unmatched anywhere in North America.',
   ],
   /** The longer form of the line Matt likes, from the current About page. */
