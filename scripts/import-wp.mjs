@@ -30,7 +30,7 @@ const CONTENT_DIR = 'src/content'
 // title — they still need Matt's confirmation before launch.
 const ROLE_OVERRIDES = {
   'bill-odonnell': 'Engineering',
-  'megan-lim': 'Marketing and Business Development',
+  'megan-lim': 'Education and Business Development',
   'garen-ewbank': 'Ground Loop and Drilling Specialist',
   'stephen-hamstra': 'Thermal Energy Systems Specialist',
   'john-mclennan': 'Subsurface and Geoscience Advisor',
