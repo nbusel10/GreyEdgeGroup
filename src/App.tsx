@@ -20,6 +20,7 @@ import TeamMemberPage from './pages/TeamMember'
 import Insights from './pages/Insights'
 import InsightDetail from './pages/InsightDetail'
 import Contact from './pages/Contact'
+import Privacy from './pages/Privacy'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -55,6 +56,7 @@ export default function App() {
           <Route path="/insights" element={<Insights />} />
           <Route path="/insights/:slug" element={<InsightDetail />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

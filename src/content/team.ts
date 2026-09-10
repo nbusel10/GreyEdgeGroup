@@ -51,7 +51,7 @@ export const team: TeamMember[] = [
     email: "mgarlick@greyedgegroup.com",
     phone: null,
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/matt-garlick-ccp-cem-bemp-585a2833/",
     bio: [
       "Matt Garlick is a man who loves what he does! Leading The GreyEdge Group as CEO gives him a chance to use his superpower- communicating technical information to people who don’t currently speak “geothermal”. Bridging the gap between GreyEdge’s incredible experience in Thermal Energy Networks and town, campus, and utility customers, Matt pushes forward the concept of TENs as the most efficient and lowest carbon alternative to standard heating and cooling systems.",
       "Matt holds a Master of Architecture degree from the University of Utah and is a Building Energy Modeling Professional (BEMP, ASHRAE), a Certified Energy Manager (CEM, AEE) and a Certified Commissioning Professional (CCP, BCxA). Matt is an advocate for high performance design and regularly speaks to professional organizations across the nation on the benefits and potential for TENs. In an industry filled with engineers, Matt’s combination of a broad understanding and technical expertise allows him to reduce complicated ideas into simpler forms. This helps bridge the worlds of owners, architects, engineers and contractors and encourages efficient systems that deliver in the real world.",
@@ -123,7 +123,7 @@ export const team: TeamMember[] = [
     email: "csmith@greyedgegroup.com",
     phone: "801-244-8800",
     website: "https://www.soundgt.com/",
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/cary-smith-cem-cea-cgd-cgi-aee-fellow-37b6a010/",
     bio: [
       "Mr. Smith President/CEO of Sound Geothermal Corporation (SGT). Mr. Smith is also CFO and a Director of The GreyEdge Group, an international consulting firm specializing in district energy applications.",
       "The GreyEdge Group (TGEG) specializes in engineering, master-planning, and design of complex thermal energy network systems using the Thermal Highway©. These are also known as an Ambient Temperature Loop (ATL) or Thermal Energy Network (TEN). Successful systems are operating around the world delivering clean and comfortable heating and cooling on projects ranging from single-family homes to large district geothermal systems including university campuses and a 123-story skyscraper.",
@@ -150,7 +150,7 @@ export const team: TeamMember[] = [
     email: "bodonnell@greyedgegroup.com",
     phone: "801-244-8800",
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/bill-o-donnell-64042a22/",
     bio: [
       "William “Bill” O’Donnell PE: Bill O’Donnell has over 42 years of Mechanical Engineering expertise and has developed a diverse combination of skills. Bill brings a history of combining fresh ideas, excellent technical skills, team building capabilities and carefully planned, often innovative solutions to meet short and long term goals.",
       "Mr. O’Donnell and QGE have performed building HVAC & R (Heating, Ventilating, Air Conditioning and Refrigeration) and Plumbing/Piping design and implementation utilizing computer programs for all design aspects including energy loss and analysis. These designs have included geothermal heat pumps, boilers, chillers, forced air gas and roof-top systems. QGE has produced compatible drawings utilizing AutoCAD to fit into the overall project scheme and support the design team. Bill is proficient with engineering and energy analysis programs and has designed hydronic heating and cooling systems utilizing the latest state of the art control systems, piping materials and high efficiency equipment. Systems have included radiant floor heating and cooling, four pipe, four pipe/two pipe hybrids, and two-pipe, and geothermal heat pump systems and ground source loops and wells. Bill has performed troubleshooting of other plumbing and heating and cooling systems to provide maximum system performance.",
@@ -181,7 +181,7 @@ export const team: TeamMember[] = [
     email: "gewbank@greyedgegroup.com",
     phone: "405-826-8156",
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/garen-ewbank-436a0b11/",
     bio: [
       "Garen grew up in the water well and oil and gas drilling industries. Garen’s motto is “keep turning to the right”. Garen has worked in the GSHP industry since 1979 and has been involved in the design and implementation of well over 100,000 MW (millions of feet) of installed heat pump equivalent capacity in North America. Garen was a contributor to several training courses to include the Certified GeoExchange Designer Course and Syllabus that has been adopted by the International Ground Source Heat Pump Association (IGSHPA) and the Association of Energy Engineers. Garen is a member of the Technical Committee to develop the Bi-National CSA/ANSI C448 Standard for the Design and Installation of Ground Source Heat Pumps for Commercial and Residential Buildings. Garen is a founding member of the GreyEdge Group."
     ],
@@ -231,7 +231,7 @@ export const team: TeamMember[] = [
     email: "shamstra@greyedgegroup.com",
     phone: "616-566-6185",
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/shamstra/",
     bio: [
       "Steve grew up in a family HVAC business, his father was an early-adopter of ground-source heat pump (GSHP) systems in the 1970’s. Steve has always had a passion for sustainability and renewable energy, building concentrating solar collectors while in high school and studying various high-performance building design approaches. He served for nearly 4 decades as a principal in an architecture & engineering firm, piloting the design of many energy efficient and innovative projects that included ground-source heat pumps, energy recovery, thermal energy storage, solar PV, etc.",
       "Steve is the Vice-Chair (soon to be Chair) of ASHRAE TC 6.8 Ground-Source Heat Pumps and Energy Recovery, and has designed many, many ground-source systems in his career. He developed and patented a web based GSHP design software, which would automatically export a self-learning control algorithm for large GSHP systems. This control approach has been installed on several military bases, universities and other applications.",
@@ -281,7 +281,7 @@ export const team: TeamMember[] = [
     email: "pbony@greyedgegroup.com",
     phone: "970-209-0999",
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/paul-bony-5b363243/",
     bio: [
       "Accomplished professional with deep experience in the conditioned space, energy efficiency, utility, and clean energy industries. Results oriented nationally recognized expert with proven success establishing and developing high value relationships, programs, services and profit streams benefiting all stakeholders. A passionate leader in the product delivery, financing, utility and contractor development arenas. President of the Solar Energy International Board of Directors and a member of the International Ground Source Heat Pump Association Board of Directors."
     ],
@@ -351,7 +351,7 @@ export const team: TeamMember[] = [
     email: "dmarriott@greyedgegroup.com",
     phone: null,
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/delaini-moss-marriott-1a1094370/",
     bio: [
       "DeLaini Moss Marriott has a marketing-focused role at The Grey Edge Group, where she develops visually compelling proposals, graphics, presentations, and media assets. She is currently pursuing a bachelor’s degree in Business Management with an emphasis in Interior Design and Digital Marketing at Ensign College in Salt Lake City, Utah."
     ],
@@ -384,7 +384,7 @@ export const team: TeamMember[] = [
     email: "gsexton@greyedgegroup.com",
     phone: "870-373-0801",
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/garry-sexton-6a06b478/",
     bio: [
       "Thirty eight years of direct involvement in multiple aspects of engineering, design and consulting within renewable and alternative energy industries. Active work experience includes application engineering, sales and technical training, renewable energy designer, application/sales engineer, senior project management, product development, project creative concept design & development and founder/CEO of Innergie Technologies, Inc."
     ],
@@ -481,7 +481,7 @@ export const team: TeamMember[] = [
     email: "italbot@greyedgegroup.com",
     phone: "385-348-0281",
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/ian-talbot-a5b340254/",
     bio: [
       "Ian grew up working on his family’s cherry orchard, where he developed a strong work ethic and a practical, hands-on approach to problem solving that continues to influence his engineering work.",
       "Ian earned his degree in Energy Engineering (BS) from Weber State University and is a certified Engineer in Training (EIT), having passed the Fundamentals of Engineering (FE) exam. As part of his senior project, he developed a solar gain calculator used to estimate solar heat gain on buildings, reflecting his interest in applied energy analysis.",
@@ -501,7 +501,7 @@ export const team: TeamMember[] = [
     email: "jmarriott@greyedgegroup.com",
     phone: null,
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/jaiden-marriott-8b1858379/",
     bio: [
       "A native of Ogden, Utah, Jaiden Marriott is an Energy Engineering graduate of Weber State University and an Engineer in Training at The GreyEdge Group. He focuses on the engineering and design of complex thermal energy systems, energy modeling, and district energy feasibility studies that support the transition to low-carbon, resilient infrastructure.",
       "Jaiden’s senior research at Weber State analyzed the geothermal bore field at the Engineering Building, where he developed a detailed energy model to estimate ground temperature behavior, evaluated system performance, and implemented optimized control strategies to improve system operation. Those experiences helped shape his systems-focused approach to geothermal and electrified thermal networks.",
@@ -521,7 +521,7 @@ export const team: TeamMember[] = [
     email: "jmclennan@greyedgegroup.com",
     phone: "801-634-4412",
     website: "https://faculty.utah.edu/u0607793-JOHN_DAVID_MCLENNAN/teaching/index.hml",
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/john-mclennan-893383a/",
     bio: [
       "Since October 2009, Professor John McLennan has been a faculty member in the Department of Chemical Engineering at the University of Utah. He has been a Senior Research Scientist at the Energy & Geoscience Institute and an Adjunct Professor in the Department of Civil Engineering at the University of Utah since January 2008. He has a Ph.D. in Civil Engineering from the University of Toronto, awarded in 1980. He has more than thirty-five years of experience with petroleum service and technology companies. He worked for Dowell and Dowell Schlumberger in Denver, Tulsa, and Houston, with TerraTek in Salt Lake City, Advantek International in Houston, and ASRC Energy Services in Anchorage. He has worked on projects concerned with subsurface energy recovery and storage (hydrocarbon, geothermal) in a variety of reservoir environments throughout the world. He is a co-principal investigator on the DOE FORGE project (Frontier Observatory for Research in Geothermal Energy) and an American Rock Mechanics Association (ARMA) Fellow."
     ],
@@ -555,7 +555,7 @@ export const team: TeamMember[] = [
     email: null,
     phone: "801-942-6100",
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/mark-smith-a50442179/",
     bio: [
       "Mark grew up in the in the energy industry, first working in oil and gas before spending 2 years with Sound Geothermal as a GSHP design & installation technician as well as a drillers assistant. After serving ~4 years in the US Navy as a Hospital Corpsman Mark returned to Sound Geothermal. For the past 19 years Mark has been in charge of special projects for Sound Geothermal and is currently Vice President. Mark has worked in the GSHP industry since 2000 and has been involved in the design and implementation of over 45,000 tons of installed capacity in North America. Mark has been involved in a range of projects from HUD housing to mega homes, industrial facilities and University campuses to NASCAR facilities. Sound Geothermal is a design engineering firm, manufacturer’s representative, and distributor for ground source heat pump equipment and accessories. The company is active throughout the western United States and has projects in a total of 31 states. Mark has extensive training in system load evaluation, ground loop heat exchanger design, solar thermal systems, system hydraulics, heat pump operations, heat pump equipment selection and system troubleshooting. Mark is an AEE Certified GeoExchange Designer, IGSHPA Certified Geothermal inspector and IGSHPA Accredited Installer. Mark also holds a Utah General Contractor’s License, HVAC License & Boiler License."
     ],
@@ -601,7 +601,7 @@ export const team: TeamMember[] = [
     email: "mlim@greyedgegroup.com",
     phone: null,
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/lim-megan/",
     bio: [
       "At GreyEdge, Megan is an Education and Business Development Consultant. She works on communicating thermal energy networks (how they work, their tradeoffs, case studies, etc.) to various stakeholders. She contributes to business development in the Northeast and youth engagement with the TENs industry.",
       "Megan graduated from MIT in 2024 with a bachelor’s degree from the Sloan School of Management. She is exploring how educational systems, industry, governments, and communities-at-large can work together on community challenges, and engage youth while doing so. She is passionate about workforce development, especially through creating more real-world opportunities for students. Starting her senior year in college, she began contributing to a student-alumni proposal to decarbonize MIT’s campus by 2035 through thermal energy networks (MITTEN). While interviewing the top experts in geothermal, she met GreyEdge members and joined the team in May 2025. Before joining GreyEdge, she worked with MIT Office of Sustainability on student engagement, MIT Environmental Solutions Initiative on climate education (including a K-12 geothermal systems curriculum), and MIT D-Lab on supporting student projects for the first TENs college introductory course modeled after the Certified GeoExchange Designer Course (led by Susan Murcott). Megan currently leads Stakeholder Relations for the Geo@MIT student team, supports TENs and youth engagement resource development for Run on Climate, sits on the Cambridge Climate Committee, and co-leads the MA (Student) Cross Campus Climate Coalition.",
@@ -643,7 +643,7 @@ export const team: TeamMember[] = [
     email: "rrevankar@greyedgegroup.com",
     phone: "405-564-4991",
     website: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/roshannrevankar/",
     bio: [
       "Roshan Revankar is on a mission to make ground source energy affordable. He has expertise in geothermal design and energy modeling and is also involved in writing standards and codes for various organizations.",
       "Roshan holds a master’s degree in Mechanical Engineering from Oklahoma State University and is a certified building simulation analyst by Association of Energy Engineers and certified geothermal designer and inspector by IGSHPA. He is the current Vice Chair of ASHRAE’s technical committee for geothermal and he serves on various technical committees at IAPMO to develop standards and codes for ground source technology.",

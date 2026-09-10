@@ -29,6 +29,7 @@ const columns: { title: string; links: { label: string; to: string }[] }[] = [
       { label: 'Industry Leadership', to: '/about#leadership' },
       { label: 'Projects', to: '/projects' },
       { label: 'Contact', to: '/contact' },
+      { label: 'Privacy Policy', to: '/privacy' },
     ],
   },
 ]
@@ -124,10 +125,16 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 border-t border-ge-charcoal pt-8">
+        <div className="mt-16 flex flex-col gap-3 border-t border-ge-charcoal pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-body text-xs text-ge-steel">
             © {new Date().getFullYear()} {org.name}. All rights reserved.
           </p>
+          <Link
+            to="/privacy"
+            className="font-body text-xs text-ge-steel underline decoration-ge-charcoal underline-offset-4 transition-colors hover:text-ge-accent-bright hover:decoration-ge-accent"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </Container>
     </footer>
