@@ -1,14 +1,11 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { useState, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { firmLinks } from '../content/firms'
-import { getMember, team, type BioSection } from '../content/team'
+import { getMember, team } from '../content/team'
 import { projects } from '../content/projects'
 import FinalCta from '../components/sections/FinalCta'
 import { Container, Eyebrow, Reveal, Section, proseLinkClass } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
-
-/** Items longer than this read as prose, not bullets (common in Areas of Expertise). */
-const PROSE_ITEM_MIN = 160
 
 const contactLinkClass =
   'font-body text-sm text-ge-light underline decoration-ge-accent decoration-2 underline-offset-4 transition-colors hover:text-ge-accent-bright'
@@ -19,6 +16,8 @@ type ProseLink = { label: string; href: string; external?: boolean }
 const namedLinks: ProseLink[] = [
   ...firmLinks.map((f) => ({ label: f.label, href: f.href, external: true })),
   ...projects.map((p) => ({ label: p.name, href: `/projects/${p.slug}`, external: false })),
+  // 32 ZED is listed as “Carbondale” on resumes; the project name does not include the city.
+  { label: 'Carbondale', href: '/projects/32-zed-zero-energy-district', external: false },
 ].sort((a, b) => b.label.length - a.label.length)
 
 const namedLinkPattern = new RegExp(
@@ -84,82 +83,17 @@ function linkBioProse(text: string): ReactNode[] {
   return out
 }
 
-function SectionItems({ items }: { items: string[] }) {
-  type Block = { kind: 'prose'; text: string } | { kind: 'list'; items: string[] }
-  const blocks: Block[] = []
-
-  for (const item of items) {
-    if (item.length >= PROSE_ITEM_MIN) {
-      blocks.push({ kind: 'prose', text: item })
-    } else {
-      const last = blocks[blocks.length - 1]
-      if (last?.kind === 'list') last.items.push(item)
-      else blocks.push({ kind: 'list', items: [item] })
-    }
-  }
-
+function BioBlock({
+  heading,
+  children,
+}: {
+  heading: string
+  children: ReactNode
+}) {
   return (
-    <div className="space-y-3">
-      {blocks.map((block, i) =>
-        block.kind === 'prose' ? (
-          <p key={i} className="font-body text-sm leading-relaxed text-ge-graphite">
-            {linkBioProse(block.text)}
-          </p>
-        ) : (
-          <ul key={i} className="space-y-1.5">
-            {block.items.map((item, j) => (
-              <li key={j} className="font-body text-sm leading-relaxed text-ge-graphite">
-                {linkBioProse(item)}
-              </li>
-            ))}
-          </ul>
-        ),
-      )}
-    </div>
-  )
-}
-
-/** Single-panel accordion: one bio section open at a time. */
-function BioSectionsAccordion({ sections }: { sections: BioSection[] }) {
-  const [openHeading, setOpenHeading] = useState<string | null>(sections[0]?.heading ?? null)
-
-  return (
-    <div className="border border-ge-light bg-white">
-      {sections.map((s) => {
-        const open = openHeading === s.heading
-        return (
-          <div key={s.heading} className="border-b border-ge-light last:border-b-0">
-            <button
-              type="button"
-              onClick={() => setOpenHeading(open ? null : s.heading)}
-              aria-expanded={open}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-ge-offwhite/60 md:px-6"
-            >
-              <span className="flex min-w-0 items-center gap-2">
-                <span className="shrink-0 text-ge-accent" aria-hidden="true">
-                  //
-                </span>
-                <h2 className="font-display text-base font-bold uppercase tracking-wide text-ge-black">
-                  {s.heading}
-                </h2>
-              </span>
-              <svg
-                className={`h-4 w-4 shrink-0 text-ge-steel transition-transform ${open ? 'rotate-180' : ''}`}
-                viewBox="0 0 16 16"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
-            {open && (
-              <div className="fade-slide-up px-5 pb-5 md:px-6 md:pb-6">
-                <SectionItems items={s.items} />
-              </div>
-            )}
-          </div>
-        )
-      })}
+    <div>
+      <Eyebrow>{heading}</Eyebrow>
+      <div className="mt-6">{children}</div>
     </div>
   )
 }
@@ -179,6 +113,7 @@ export default function TeamMemberPage() {
   const idx = team.findIndex((m) => m.slug === member.slug)
   const prev = idx > 0 ? team[idx - 1] : team[team.length - 1]
   const next = idx < team.length - 1 ? team[idx + 1] : team[0]
+  const hasAchievements = member.achievements.length > 0
 
   return (
     <>
@@ -272,32 +207,57 @@ export default function TeamMemberPage() {
 
       <Section className="bg-ge-offwhite">
         <Container>
-          <div className="grid gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
-            <Reveal>
+          <div
+            className={
+              hasAchievements
+                ? 'grid items-start gap-12 lg:grid-cols-[minmax(0,1.75fr)_minmax(16rem,0.68fr)] lg:items-stretch lg:gap-16'
+                : ''
+            }
+          >
+            <Reveal className="flex min-w-0 flex-col gap-14">
               {member.bio.length > 0 && (
-                <>
-                  <Eyebrow>Background</Eyebrow>
-                  <div className="mt-6 space-y-5">
+                <BioBlock heading="Background">
+                  <div className="space-y-5">
                     {member.bio.map((p, i) => (
-                      <p
-                        key={i}
-                        className={
-                          i === 0
-                            ? 'font-body text-lg leading-relaxed text-ge-charcoal'
-                            : 'font-body text-base leading-relaxed text-ge-graphite'
-                        }
-                      >
+                      <p key={i} className="font-body text-base leading-relaxed text-ge-graphite">
                         {linkBioProse(p)}
                       </p>
                     ))}
                   </div>
-                </>
+                </BioBlock>
+              )}
+
+              {member.expertise.length > 0 && (
+                <BioBlock heading="Areas of Expertise">
+                  <div className="space-y-5">
+                    {member.expertise.map((p, i) => (
+                      <p key={i} className="font-body text-base leading-relaxed text-ge-graphite">
+                        {linkBioProse(p)}
+                      </p>
+                    ))}
+                  </div>
+                </BioBlock>
               )}
             </Reveal>
 
-            {member.sections.length > 0 && (
-              <Reveal delay={0.08}>
-                <BioSectionsAccordion key={member.slug} sections={member.sections} />
+            {hasAchievements && (
+              <Reveal delay={0.08} className="min-w-0 lg:h-full">
+                <aside className="h-full border border-ge-light bg-white px-5 py-6 md:px-6 md:py-8">
+                  <Eyebrow>
+                    Notable Projects
+                    <span className="mt-1 block">& Achievements</span>
+                  </Eyebrow>
+                  <ul className="mt-6 space-y-3.5">
+                    {member.achievements.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 bg-ge-accent" aria-hidden="true" />
+                        <span className="font-body text-sm leading-relaxed text-ge-graphite">
+                          {linkBioProse(item)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </aside>
               </Reveal>
             )}
           </div>

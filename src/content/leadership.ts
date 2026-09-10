@@ -100,7 +100,7 @@ export const credits: Credit[] = [
     title: 'Applied geothermal research',
     org: 'University partnerships',
     detail:
-      'Ongoing thermal conductivity and diffusivity testing innovation, in partnership with university research programs.',
+      'Ongoing thermal conductivity and diffusivity testing innovation, in partnership with university research programs, including MIT as a current partner.',
   },
 ]
 

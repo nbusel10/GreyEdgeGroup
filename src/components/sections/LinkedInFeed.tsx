@@ -7,10 +7,19 @@ function cardsIn(el: HTMLDivElement) {
   return [...el.querySelectorAll<HTMLElement>('[data-card]')]
 }
 
+/** Movement below this still counts as a click; above it is a drag. */
+const DRAG_THRESHOLD_PX = 8
+
 export default function LinkedInFeed() {
   const posts = getLatestLinkedInPosts()
   const trackRef = useRef<HTMLDivElement>(null)
-  const dragRef = useRef({ active: false, startX: 0, startScroll: 0, moved: false })
+  const dragRef = useRef({
+    active: false,
+    startX: 0,
+    startScroll: 0,
+    moved: false,
+    suppressClick: false,
+  })
   const [index, setIndex] = useState(0)
   const [atStart, setAtStart] = useState(true)
   const [atEnd, setAtEnd] = useState(false)
@@ -66,31 +75,58 @@ export default function LinkedInFeed() {
 
   const scrollByCard = (dir: -1 | 1) => scrollToCard(index + dir)
 
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      const drag = dragRef.current
+      const el = trackRef.current
+      if (!drag.active || !el) return
+      const dx = e.clientX - drag.startX
+      if (!drag.moved) {
+        if (Math.abs(dx) < DRAG_THRESHOLD_PX) return
+        drag.moved = true
+        drag.suppressClick = true
+        setDragging(true)
+        try {
+          el.setPointerCapture(e.pointerId)
+        } catch {
+          // Pointer was already released.
+        }
+      }
+      el.scrollLeft = drag.startScroll - dx
+    }
+
+    const onUp = (e: PointerEvent) => {
+      const el = trackRef.current
+      if (el?.hasPointerCapture(e.pointerId)) {
+        el.releasePointerCapture(e.pointerId)
+      }
+      if (!dragRef.current.active) return
+      dragRef.current.active = false
+      setDragging(false)
+    }
+
+    window.addEventListener('pointermove', onMove)
+    window.addEventListener('pointerup', onUp)
+    window.addEventListener('pointercancel', onUp)
+    return () => {
+      window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerup', onUp)
+      window.removeEventListener('pointercancel', onUp)
+    }
+  }, [])
+
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType === 'touch') return
+    if (e.button !== 0) return
     const el = trackRef.current
     if (!el) return
-    dragRef.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft, moved: false }
-    el.setPointerCapture(e.pointerId)
-    setDragging(true)
-  }
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current
-    const el = trackRef.current
-    if (!drag.active || !el) return
-    const dx = e.clientX - drag.startX
-    if (Math.abs(dx) > 5) drag.moved = true
-    el.scrollLeft = drag.startScroll - dx
-  }
-
-  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = trackRef.current
-    if (dragRef.current.active && el.hasPointerCapture(e.pointerId)) {
-      el.releasePointerCapture(e.pointerId)
+    dragRef.current = {
+      active: true,
+      startX: e.clientX,
+      startScroll: el.scrollLeft,
+      moved: false,
+      suppressClick: false,
     }
-    dragRef.current.active = false
-    setDragging(false)
   }
 
   const arrowClass =
@@ -150,9 +186,6 @@ export default function LinkedInFeed() {
               ref={trackRef}
               tabIndex={0}
               onPointerDown={onPointerDown}
-              onPointerMove={onPointerMove}
-              onPointerUp={endDrag}
-              onPointerCancel={endDrag}
               onKeyDown={(e) => {
                 if (e.key === 'ArrowLeft') {
                   e.preventDefault()
@@ -178,9 +211,10 @@ export default function LinkedInFeed() {
                   rel="noopener noreferrer"
                   draggable={false}
                   onClick={(e) => {
-                    if (dragRef.current.moved) {
+                    // Keyboard activation (Enter) has detail 0 and should always navigate.
+                    if (e.detail === 0) return
+                    if (dragRef.current.moved || dragRef.current.suppressClick) {
                       e.preventDefault()
-                      dragRef.current.moved = false
                     }
                   }}
                   onDragStart={(e) => e.preventDefault()}
