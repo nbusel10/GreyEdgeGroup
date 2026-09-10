@@ -23,17 +23,43 @@ export const industryIds = {
   heet: 'industry-heet',
   igshpa: 'industry-igshpa',
   ashrae: 'industry-ashrae',
+  iapmo: 'industry-iapmo',
   certification: 'industry-certification',
   atl: 'industry-atl',
   research: 'industry-research',
 } as const
 
+/** Official org / program / standard pages linked from Industry Leadership. */
+export const industryUrls = {
+  nyserda: 'https://www.nyserda.ny.gov/All-Programs/Empire-Building-Challenge',
+  heet: 'https://www.heet.org/Kickstart-Massachusetts',
+  igshpa: 'https://igshpa.org/',
+  ashrae: 'https://www.ashrae.org/',
+  iapmo: 'https://iapmo.org/',
+  c448: 'https://igshpa.org/standards/',
+  cgd: 'https://igshpa.org/training-certification/',
+  tc68: 'https://tpc.ashrae.org/?cmtKey=8ddd125e-e64e-4cf0-b9ca-80b6cabbfe96',
+  ushgc:
+    'https://iapmo.org/codes-standards-development/code-development/uniform-solar-hydronics-and-geothermal-code',
+  mit: 'https://www.mit.edu/',
+} as const
+
+/** Named phrases in credit body copy — not the org label, which is linked separately. */
+export const detailLinks = [
+  { label: 'Uniform Solar, Hydronics and Geothermal Code', href: industryUrls.ushgc },
+  { label: 'Technical Committee 6.8', href: industryUrls.tc68 },
+  { label: 'Certified Geo Designer', href: industryUrls.cgd },
+  { label: 'CSA/ANSI C448', href: industryUrls.c448 },
+  { label: 'MIT', href: industryUrls.mit },
+] as const
+
 /** Short org labels for the Home teaser proof strip (from real credits). */
 export const teaserProof = [
   { id: industryIds.ashrae, label: 'ASHRAE' },
+  { id: industryIds.iapmo, label: 'IAPMO' },
   { id: industryIds.igshpa, label: 'IGSHPA' },
   { id: industryIds.nyserda, label: 'NYSERDA' },
-  { id: industryIds.heet, label: 'Heet' },
+  { id: industryIds.heet, label: 'HEET' },
 ]
 
 /** About full section — restates leadership without repeating the Home line. */
@@ -44,12 +70,17 @@ export const aboutHeadline = {
 
 export const intro =
   "We don't just work in thermal energy, we've helped shape the industry. Our team has contributed to the development of modern geothermal standards, authored training programs behind leading certifications, and continues to educate the next generation of professionals. When communities, utilities, and policymakers need trusted expertise, they turn to the people who helped build the foundation."
+
 export interface Credit {
   id: string
   title: string
   detail: string
   /** Who or what the work was for. */
   org: string
+  /** Official org or program page. */
+  orgHref?: string
+  /** In-site destination when the org is GreyEdge IP, not an outside body. */
+  orgTo?: string
 }
 
 export const credits: Credit[] = [
@@ -57,13 +88,15 @@ export const credits: Credit[] = [
     id: industryIds.nyserda,
     title: 'Resource-efficient decarbonization framework',
     org: 'NYSERDA, New York',
+    orgHref: industryUrls.nyserda,
     detail:
       'Our members shaped the framework New York uses to evaluate resource-efficient decarbonization at scale.',
   },
   {
     id: industryIds.heet,
-    title: 'Heet',
-    org: 'Massachusetts',
+    title: 'Thermal energy network kickstart',
+    org: 'HEET, Massachusetts',
+    orgHref: industryUrls.heet,
     detail:
       'Selected as one of twelve firms supporting the Commonwealth’s thermal energy network kickstart program.',
   },
@@ -71,6 +104,7 @@ export const credits: Credit[] = [
     id: industryIds.igshpa,
     title: 'Geothermal design standard',
     org: 'IGSHPA',
+    orgHref: industryUrls.igshpa,
     detail:
       'Our members contributed to the geothermal design standard and certification programs IGSHPA maintains for the industry, including work on CSA/ANSI C448 and the training behind Certified Geo Designer and related credentials.',
   },
@@ -78,8 +112,17 @@ export const credits: Credit[] = [
     id: industryIds.ashrae,
     title: 'Geothermal heat pump standards leadership',
     org: 'ASHRAE',
+    orgHref: industryUrls.ashrae,
     detail:
       'Cary Smith and Stephen Hamstra have served as chairs of ASHRAE Technical Committee 6.8, Geothermal Heat Pumps and Energy Recovery Applications, the committee that guides geothermal heat pump and energy recovery standards practice.',
+  },
+  {
+    id: industryIds.iapmo,
+    title: 'Ambient temperature loop standard',
+    org: 'IAPMO',
+    orgHref: industryUrls.iapmo,
+    detail:
+      'Cary Smith has chaired IAPMO’s Uniform Solar, Hydronics and Geothermal Code committee and currently chairs TSC Z1381, the Ambient Temperature Loop Standards Committee.',
   },
   {
     id: industryIds.certification,
@@ -92,6 +135,7 @@ export const credits: Credit[] = [
     id: industryIds.atl,
     title: 'Ambient temperature loop practice',
     org: 'Thermal Highway©',
+    orgTo: '/geothermal-101#thermal-highway',
     detail:
       'Developed and proved the one-pipe ambient loop approach, with more than fifteen years of operating data behind it.',
   },

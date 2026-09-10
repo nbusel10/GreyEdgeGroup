@@ -11,6 +11,7 @@ import PreviewServices from './pages/PreviewServices'
 import PreviewAtlIcons from './pages/PreviewAtlIcons'
 import PreviewWordmark from './pages/PreviewWordmark'
 import PreviewHero from './pages/PreviewHero'
+import PreviewYear from './pages/PreviewYear'
 import Approach from './pages/Approach'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
@@ -47,6 +48,8 @@ export default function App() {
           <Route path="/preview-wordmark" element={<PreviewWordmark />} />
           {/* Temporary: home hero drafts. Remove with the page. */}
           <Route path="/preview-hero" element={<PreviewHero />} />
+          {/* Temporary: About founding-year title. Remove with the page. */}
+          <Route path="/preview-year" element={<PreviewYear />} />
           <Route path="/approach" element={<Approach />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />

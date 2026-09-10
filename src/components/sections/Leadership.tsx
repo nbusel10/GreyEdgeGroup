@@ -1,9 +1,18 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { aboutHeadline, credits, intro, teaserHeadline, teaserProof } from '../../content/leadership'
+import {
+  aboutHeadline,
+  credits,
+  detailLinks,
+  intro,
+  teaserHeadline,
+  teaserProof,
+  type Credit,
+} from '../../content/leadership'
+import { linkExternalPhrases } from '../../lib/linkExternalPhrases'
 import { linkTeamNames } from '../../lib/linkTeamNames'
 import { leadershipHashTarget } from '../../lib/leadershipHash'
-import { Btn, Container, Eyebrow, Reveal, Section } from '../ui'
+import { Btn, Container, Eyebrow, Reveal, Section, proseLinkClass } from '../ui'
 
 type LeadershipVariant = 'full' | 'teaser'
 
@@ -13,6 +22,38 @@ type LeadershipVariant = 'full' | 'teaser'
  */
 /** Wait for ScrollToTop smooth scroll before listening for unlock input. */
 const PIN_UNLOCK_DEFER_MS = 700
+
+const pinnedDetailLinkClass =
+  'italic text-white underline decoration-white/50 underline-offset-2 transition-colors hover:decoration-white'
+
+function OrgLabel({ credit, rowLit }: { credit: Credit; rowLit: boolean }) {
+  const className = [
+    'font-body text-[10px] uppercase tracking-[0.16em]',
+    rowLit ? 'text-white/85' : 'text-ge-accent',
+    (credit.orgHref || credit.orgTo) &&
+      'underline decoration-current underline-offset-4 transition-opacity hover:opacity-80',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  if (credit.orgHref) {
+    return (
+      <a href={credit.orgHref} target="_blank" rel="noopener noreferrer" className={className}>
+        {credit.org}
+      </a>
+    )
+  }
+
+  if (credit.orgTo) {
+    return (
+      <Link to={credit.orgTo} className={className}>
+        {credit.org}
+      </Link>
+    )
+  }
+
+  return <span className={className}>{credit.org}</span>
+}
 
 export default function Leadership({ variant = 'full' }: { variant?: LeadershipVariant }) {
   const { hash } = useLocation()
@@ -132,20 +173,18 @@ export default function Leadership({ variant = 'full' }: { variant?: LeadershipV
                     >
                       {c.title}
                     </h3>
-                    <span
-                      className={`font-body text-[10px] uppercase tracking-[0.16em] ${
-                        rowLit ? 'text-white/85' : 'text-ge-accent'
-                      }`}
-                    >
-                      {c.org}
-                    </span>
+                    <OrgLabel credit={c} rowLit={rowLit} />
                   </div>
                   <p
                     className={`mt-2 font-body text-sm leading-relaxed ${
                       rowLit ? 'text-white/90' : 'text-ge-graphite'
                     }`}
                   >
-                    {linkTeamNames(c.detail)}
+                    {linkExternalPhrases(
+                      linkTeamNames(c.detail, rowLit ? pinnedDetailLinkClass : proseLinkClass),
+                      [...detailLinks],
+                      rowLit ? pinnedDetailLinkClass : proseLinkClass,
+                    )}
                   </p>
                 </li>
               )

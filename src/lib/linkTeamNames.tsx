@@ -20,13 +20,13 @@ const teamNamePattern = new RegExp(
 const teamByName = new Map(teamLinks.map((l) => [l.label, l]))
 
 /** Turn team member names in prose into /team/:slug links. */
-export function linkTeamNames(text: string): ReactNode[] {
+export function linkTeamNames(text: string, className = proseLinkClass): ReactNode[] {
   const parts = text.split(teamNamePattern)
   return parts.map((part, i) => {
     const hit = teamByName.get(part)
     if (!hit) return part
     return (
-      <Link key={`${hit.to}-${i}`} to={hit.to} className={proseLinkClass}>
+      <Link key={`${hit.to}-${i}`} to={hit.to} className={className}>
         {part}
       </Link>
     )

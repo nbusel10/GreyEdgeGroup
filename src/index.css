@@ -1012,3 +1012,297 @@ body {
   mask-repeat: no-repeat;
   mask-composite: subtract;
 }
+
+/* ── About founding year (clip wipe) + /preview-year drafts ────────────────
+   Production uses .ge-year-wipe on About. Other .ge-year-* skins are preview-only. */
+
+.ge-year-stagger > span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.55em);
+}
+
+.ge-year-stagger.is-active > span {
+  animation: ge-year-digit-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+.ge-year-stagger.is-static > span {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+@keyframes ge-year-digit-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.55em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ge-year-underline {
+  opacity: 0;
+}
+
+.ge-year-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.08em;
+  height: 2px;
+  width: 100%;
+  background: var(--color-ge-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.ge-year-underline.is-active {
+  animation: ge-year-fade-in 0.5s ease both;
+}
+
+.ge-year-underline.is-active::after {
+  animation: ge-year-draw 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.ge-year-underline.is-static {
+  opacity: 1;
+  animation: none;
+}
+
+.ge-year-underline.is-static::after {
+  transform: scaleX(1);
+  animation: none;
+}
+
+@keyframes ge-year-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ge-year-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.ge-year-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-ge-accent);
+}
+
+.ge-year-stroke.is-active {
+  animation: ge-year-fill 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ge-year-stroke.is-static {
+  color: var(--color-ge-accent);
+  -webkit-text-stroke: 0;
+  animation: none;
+}
+
+@keyframes ge-year-fill {
+  0% {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-ge-accent);
+  }
+  55% {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-ge-accent);
+  }
+  100% {
+    color: var(--color-ge-accent);
+    -webkit-text-stroke: 0 transparent;
+  }
+}
+
+.ge-year-wipe {
+  clip-path: inset(0 100% 0 0);
+}
+
+.ge-year-wipe-inner {
+  display: inline-block;
+  transform: translateX(-12%);
+}
+
+.ge-year-wipe.is-active {
+  animation: ge-year-wipe-mask 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ge-year-wipe.is-active .ge-year-wipe-inner {
+  animation: ge-year-wipe-slide 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ge-year-wipe.is-static {
+  clip-path: inset(0 0 0 0);
+  animation: none;
+}
+
+.ge-year-wipe.is-static .ge-year-wipe-inner {
+  transform: none;
+  animation: none;
+}
+
+@keyframes ge-year-wipe-mask {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes ge-year-wipe-slide {
+  from {
+    transform: translateX(-12%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.ge-year-breath {
+  transform-origin: left center;
+}
+
+.ge-year-breath.is-active {
+  animation: ge-year-breathe 3.6s ease-in-out infinite;
+}
+
+.ge-year-breath.is-static {
+  animation: none;
+}
+
+@keyframes ge-year-breathe {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.82;
+    transform: scale(1.035);
+  }
+}
+
+.ge-year-ghost {
+  isolation: isolate;
+}
+
+.ge-year-ghost-echo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-ge-accent-bright);
+  opacity: 0;
+  z-index: -1;
+}
+
+.ge-year-ghost.is-active .ge-year-ghost-echo {
+  animation: ge-year-ghost-drift 2.8s ease-out both;
+}
+
+.ge-year-ghost.is-static .ge-year-ghost-echo {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes ge-year-ghost-drift {
+  0% {
+    opacity: 0.45;
+    transform: translate(0.12em, -0.08em);
+  }
+  40% {
+    opacity: 0.28;
+    transform: translate(0.22em, -0.14em);
+  }
+  100% {
+    opacity: 0.12;
+    transform: translate(0.28em, -0.1em);
+  }
+}
+
+/* Stroke draw: Barlow Condensed outlines sketch on, then fill. Timing from JS. */
+.ge-year-hand-svg {
+  display: block;
+  overflow: visible;
+  flex-shrink: 0;
+  /* Match text-6xl / leading-none baseline sit of the other year options */
+  height: 3.75rem;
+  width: auto;
+}
+
+.ge-year-hand-svg text {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 700;
+  fill: transparent;
+  stroke: var(--color-ge-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ge-year-hand-svg.is-static text {
+  fill: var(--color-ge-accent);
+  stroke: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ge-year-stagger > span,
+  .ge-year-underline,
+  .ge-year-underline::after,
+  .ge-year-stroke,
+  .ge-year-wipe,
+  .ge-year-wipe-inner,
+  .ge-year-breath,
+  .ge-year-ghost-echo,
+  .ge-year-hand-svg text {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ge-year-stagger > span,
+  .ge-year-underline {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .ge-year-underline::after {
+    transform: scaleX(1) !important;
+  }
+
+  .ge-year-stroke {
+    color: var(--color-ge-accent) !important;
+    -webkit-text-stroke: 0 !important;
+  }
+
+  .ge-year-wipe {
+    clip-path: none !important;
+  }
+
+  .ge-year-wipe-inner {
+    transform: none !important;
+  }
+
+  .ge-year-ghost-echo {
+    opacity: 0 !important;
+  }
+
+  .ge-year-hand-svg text {
+    fill: var(--color-ge-accent) !important;
+    stroke: none !important;
+    stroke-dashoffset: 0 !important;
+    stroke-opacity: 1 !important;
+  }
+}

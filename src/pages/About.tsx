@@ -9,6 +9,7 @@ import Leadership from '../components/sections/Leadership'
 import FinalCta from '../components/sections/FinalCta'
 import { Container, Eyebrow, Reveal, Section } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
+import { usePrefersReducedMotion, useReveal } from '../lib/hooks'
 
 const proseLinkClass =
   'italic text-ge-charcoal underline decoration-ge-light underline-offset-2 transition-colors hover:text-ge-accent hover:decoration-ge-accent'
@@ -119,12 +120,12 @@ export default function About() {
               </h2>
             </Reveal>
 
-            <Reveal delay={0.08} className="lg:col-start-2 lg:row-start-1">
-              <div className="flex items-baseline gap-5">
-                <span className="font-display text-6xl font-bold leading-none text-ge-accent">{story.year}</span>
+            <div className="flex items-baseline gap-5 lg:col-start-2 lg:row-start-1">
+              <FoundingYear year={story.year} />
+              <Reveal delay={0.08}>
                 <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-ge-black">{story.title}</h3>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
 
             <Reveal delay={0.06} className="h-full lg:col-start-1 lg:row-span-2 lg:row-start-2">
               <div className="img-cut h-full min-h-64 overflow-hidden sm:min-h-72 lg:min-h-0">
@@ -229,6 +230,21 @@ export default function About() {
       <Leadership variant="full" />
       <FinalCta />
     </>
+  )
+}
+
+function FoundingYear({ year }: { year: string }) {
+  const { ref, visible } = useReveal<HTMLSpanElement>(0.35)
+  const reduced = usePrefersReducedMotion()
+  const state = reduced ? 'is-static' : visible ? 'is-active' : 'is-idle'
+
+  return (
+    <span
+      ref={ref}
+      className={`ge-year-wipe inline-block overflow-hidden font-display text-6xl font-bold leading-none text-ge-accent ${state}`}
+    >
+      <span className="ge-year-wipe-inner inline-block">{year}</span>
+    </span>
   )
 }
 

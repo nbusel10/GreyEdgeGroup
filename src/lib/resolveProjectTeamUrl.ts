@@ -1,5 +1,6 @@
 import type { ProjectTeamMember } from '../content/projects'
 import { firmLinks } from '../content/firms'
+import { escapeRegExp, isShortAcronym } from './phrasePattern'
 
 /**
  * Fallback URLs for project partners when the import did not capture a link.
@@ -17,6 +18,13 @@ const firmByLabel = [...firmLinks]
   .sort((a, b) => b.label.length - a.label.length)
   .map((f) => [f.label.toLowerCase(), f.href] as const)
 
+function nameMatchesFirm(nameLower: string, label: string): boolean {
+  if (isShortAcronym(label)) {
+    return new RegExp(`\\b${escapeRegExp(label)}\\b`).test(nameLower)
+  }
+  return nameLower.includes(label)
+}
+
 export function resolveProjectTeamUrl(member: ProjectTeamMember): string | undefined {
   if (member.url) return member.url
 
@@ -25,7 +33,7 @@ export function resolveProjectTeamUrl(member: ProjectTeamMember): string | undef
 
   const lower = member.name.toLowerCase()
   for (const [label, href] of firmByLabel) {
-    if (lower.includes(label)) return href
+    if (nameMatchesFirm(lower, label)) return href
   }
 
   return undefined

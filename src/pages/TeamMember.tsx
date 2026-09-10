@@ -6,6 +6,7 @@ import { projects } from '../content/projects'
 import FinalCta from '../components/sections/FinalCta'
 import { Container, Eyebrow, Reveal, Section, proseLinkClass } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
+import { phrasesPattern } from '../lib/phrasePattern'
 
 const contactLinkClass =
   'font-body text-sm text-ge-light underline decoration-ge-accent decoration-2 underline-offset-4 transition-colors hover:text-ge-accent-bright'
@@ -20,10 +21,7 @@ const namedLinks: ProseLink[] = [
   { label: 'Carbondale', href: '/projects/32-zed-zero-energy-district', external: false },
 ].sort((a, b) => b.label.length - a.label.length)
 
-const namedLinkPattern = new RegExp(
-  `(${namedLinks.map(({ label }) => label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`,
-  'g',
-)
+const namedLinkPattern = phrasesPattern(namedLinks.map(({ label }) => label))
 
 const namedLinkByLabel = new Map(namedLinks.map((l) => [l.label, l]))
 
