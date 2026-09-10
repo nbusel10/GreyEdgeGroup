@@ -20,7 +20,7 @@ const targets = [
   ['/', 'process', '#process'],
   ['/', 'featured-projects', 'section:has(h2:text-is("Featured Projects"))'],
   ['/', 'leadership', '#leadership'],
-  ['/', 'linkedin', 'section:has(h2:text-is("What we’re working on now"))'],
+  ['/', 'linkedin', 'section:has(h2:text-is("Latest on LinkedIn"))'],
   ['/', 'final-cta', 'footer'],
   ['/projects', 'grid', 'section:last-of-type'],
   ['/geothermal-101', 'thermal-highway', '#thermal-highway'],

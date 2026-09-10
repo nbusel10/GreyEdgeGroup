@@ -8,6 +8,7 @@ import PartnerBrief from '../components/sections/PartnerBrief'
 import Leadership from '../components/sections/Leadership'
 import FinalCta from '../components/sections/FinalCta'
 import GreyEdgeBand from '../components/sections/GreyEdgeBand'
+import LinkedInFeed from '../components/sections/LinkedInFeed'
 import ProjectCard from '../components/ProjectCard'
 import HeroScrollCue from '../components/HeroScrollCue'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
@@ -182,23 +183,7 @@ export default function Home() {
 
       <GreyEdgeBand />
 
-      <Section className="!py-10 border-t border-ge-light bg-ge-offwhite md:!py-12">
-        <Container>
-          <Reveal>
-            <div className="flex flex-col items-start justify-between gap-4 border border-ge-light bg-white px-5 py-5 md:flex-row md:items-center md:px-6 md:py-5">
-              <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-ge-black md:text-3xl">
-                More on LinkedIn
-              </h2>
-              <Btn
-                href={org.social.linkedin}
-                className="shrink-0 !bg-ge-accent px-6 py-3 hover:!bg-ge-accent-deep"
-              >
-                Follow GreyEdge
-              </Btn>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
+      <LinkedInFeed />
 
       <FinalCta />
     </>
