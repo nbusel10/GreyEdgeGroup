@@ -340,14 +340,14 @@ export const team: TeamMember[] = [
   {
     slug: 'megan-lim',
     name: 'Megan Lim',
-    role: 'Marketing and Business Development',
+    role: 'Education and Business Development',
     credentials: null,
     email: 'mlim@greyedgegroup.com',
     phone: null,
     website: null,
     linkedin: 'https://www.linkedin.com/in/lim-megan/',
     bio: [
-      'At GreyEdge, Megan is a Marketing and Business Development Consultant. She works on communicating thermal energy networks — how they work, their tradeoffs, case studies, etc — to various stakeholders. She contributes to business development in the Northeast and youth engagement with the TENs industry.',
+      'At GreyEdge, Megan is an Education and Business Development Consultant. She works on communicating thermal energy networks — how they work, their tradeoffs, case studies, etc — to various stakeholders. She contributes to business development in the Northeast and youth engagement with the TENs industry.',
       'Megan graduated from MIT in 2024 with a bachelor’s degree from the Sloan School of Management. She is exploring how educational systems, industry, governments, and communities-at-large can work together on community challenges – and engage youth while doing so. She is passionate about workforce development, especially through creating more real-world opportunities for students. Starting her senior year in college, she began contributing to a student-alumni proposal to decarbonize MIT’s campus by 2035 through thermal energy networks (MITTEN). While interviewing the top experts in geothermal, she met GreyEdge members and joined the team in May 2025. Before joining GreyEdge, she worked with MIT Office of Sustainability on student engagement, MIT Environmental Solutions Initiative on climate education (including a K-12 geothermal systems curriculum), and MIT D-Lab on supporting student projects for the first TENs college introductory course modeled after the Certified GeoExchange Designer Course (led by Susan Murcott). Megan currently leads Stakeholder Relations for the Geo@MIT student team, supports TENs and youth engagement resource development for Run on Climate, sits on the Cambridge Climate Committee, and co-leads the MA (Student) Cross Campus Climate Coalition.',
     ],
     expertise: [],
@@ -363,7 +363,7 @@ export const team: TeamMember[] = [
     ],
     image: '/images/team/megan-lim.webp',
     imageAlt:
-      'A Head Shot of Megan Lim who is a Marketing and Business Development Consultant and works on communicating thermal energy networks for The Grey Edge Group.',
+      'A Head Shot of Megan Lim who is an Education and Business Development Consultant and works on communicating thermal energy networks for The Grey Edge Group.',
     leadership: false,
   },
   {
