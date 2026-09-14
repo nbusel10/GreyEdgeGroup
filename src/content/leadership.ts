@@ -53,6 +53,11 @@ export const detailLinks = [
   { label: 'MIT', href: industryUrls.mit },
 ] as const
 
+/** In-site phrase links in credit body copy (distinct from outbound detailLinks). */
+export const detailInternalLinks = [
+  { label: 'CMU', to: '/insights/colorado-mesa-university' },
+] as const
+
 /** Short org labels for the Home teaser proof strip (from real credits). */
 export const teaserProof = [
   { id: industryIds.ashrae, label: 'ASHRAE' },
@@ -137,7 +142,7 @@ export const credits: Credit[] = [
     org: 'Thermal Highway©',
     orgTo: '/geothermal-101#thermal-highway',
     detail:
-      'Developed and proved the one-pipe ambient loop approach, with more than fifteen years of operating data behind it.',
+      'We brought the one-pipe ambient temperature loop approach into the modern era with more than 20 years of operating data behind it. Our case studies like CMU have influenced every major Thermal Energy Network installed in the nation.',
   },
   {
     id: industryIds.research,

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import {
   aboutHeadline,
   credits,
+  detailInternalLinks,
   detailLinks,
   intro,
   teaserHeadline,
@@ -10,6 +11,8 @@ import {
   type Credit,
 } from '../../content/leadership'
 import { linkExternalPhrases } from '../../lib/linkExternalPhrases'
+import { linkGeoTermsInNodes } from '../../lib/linkGeoTerms'
+import { linkInternalPhrases } from '../../lib/linkInternalPhrases'
 import { linkTeamNames } from '../../lib/linkTeamNames'
 import { leadershipHashTarget } from '../../lib/leadershipHash'
 import { Btn, Container, Eyebrow, Reveal, Section, proseLinkClass } from '../ui'
@@ -181,7 +184,15 @@ export default function Leadership({ variant = 'full' }: { variant?: LeadershipV
                     }`}
                   >
                     {linkExternalPhrases(
-                      linkTeamNames(c.detail, rowLit ? pinnedDetailLinkClass : proseLinkClass),
+                      linkGeoTermsInNodes(
+                        linkInternalPhrases(
+                          linkTeamNames(c.detail, rowLit ? pinnedDetailLinkClass : proseLinkClass),
+                          [...detailInternalLinks],
+                          rowLit ? pinnedDetailLinkClass : proseLinkClass,
+                        ),
+                        undefined,
+                        rowLit ? pinnedDetailLinkClass : proseLinkClass,
+                      ),
                       [...detailLinks],
                       rowLit ? pinnedDetailLinkClass : proseLinkClass,
                     )}

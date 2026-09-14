@@ -14,6 +14,7 @@ type GeoTerm = {
  * "ambient temperature loop" wins over "ambient loop", etc.
  */
 const geoTerms: GeoTerm[] = [
+  { label: 'one-pipe ambient temperature loop', to: '/geothermal-101#ambient-loops', id: 'atl' },
   { label: 'Ambient Temperature Loops', to: '/geothermal-101#ambient-loops', id: 'atl' },
   { label: 'ambient temperature loops', to: '/geothermal-101#ambient-loops', id: 'atl' },
   { label: 'Ambient Temperature Loop', to: '/geothermal-101#ambient-loops', id: 'atl' },
@@ -61,7 +62,11 @@ const termByLabel = new Map(geoTerms.map((t) => [t.label, t]))
  * Turn Geothermal 101 glossary terms in prose into deep links.
  * Pass a shared `seen` Set across paragraphs to link each concept once per page.
  */
-export function linkGeoTerms(text: string, seen?: Set<string>): ReactNode[] {
+export function linkGeoTerms(
+  text: string,
+  seen?: Set<string>,
+  className = proseLinkClass,
+): ReactNode[] {
   const parts = text.split(geoTermPattern)
   return parts.map((part, i) => {
     const hit = termByLabel.get(part)
@@ -71,7 +76,7 @@ export function linkGeoTerms(text: string, seen?: Set<string>): ReactNode[] {
       seen.add(hit.id)
     }
     return (
-      <Link key={`${hit.id}-${i}`} to={hit.to} className={proseLinkClass}>
+      <Link key={`${hit.id}-${i}`} to={hit.to} className={className}>
         {part}
       </Link>
     )
@@ -79,6 +84,12 @@ export function linkGeoTerms(text: string, seen?: Set<string>): ReactNode[] {
 }
 
 /** Apply geo-term linking to string fragments left by another prose linker (e.g. team names). */
-export function linkGeoTermsInNodes(nodes: ReactNode[], seen?: Set<string>): ReactNode[] {
-  return nodes.flatMap((node) => (typeof node === 'string' ? linkGeoTerms(node, seen) : node))
+export function linkGeoTermsInNodes(
+  nodes: ReactNode[],
+  seen?: Set<string>,
+  className = proseLinkClass,
+): ReactNode[] {
+  return nodes.flatMap((node) =>
+    typeof node === 'string' ? linkGeoTerms(node, seen, className) : node,
+  )
 }
