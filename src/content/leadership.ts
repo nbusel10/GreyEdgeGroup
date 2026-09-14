@@ -119,7 +119,7 @@ export const credits: Credit[] = [
     org: 'ASHRAE',
     orgHref: industryUrls.ashrae,
     detail:
-      'Cary Smith and Stephen Hamstra have served as chairs of ASHRAE Technical Committee 6.8, Geothermal Heat Pumps and Energy Recovery Applications, the committee that guides geothermal heat pump and energy recovery standards practice.',
+      'Cary Smith, Stephen Hamstra, and Roshan Revankar have served as chairs of ASHRAE Technical Committee 6.8, Geothermal Heat Pumps and Energy Recovery Applications, the committee that guides geothermal heat pump and energy recovery standards practice.',
   },
   {
     id: industryIds.iapmo,

@@ -37,7 +37,7 @@ export interface Project {
   snowmeltSqFeet: string | null
   completion: string | null
   phase: ProjectPhase
-  status: 'In Progress' | 'In Development' | 'Operational' | 'Completed'
+  status: 'In Progress' | 'In Development' | 'Design' | 'Operational' | 'Completed'
   summary: string
   description: string | string[]
   /** Project partners / collaborating orgs. Empty when not yet collected. */
@@ -60,10 +60,10 @@ export const projects: Project[] = [
     buildings: "3",
     snowmeltSqFeet: "12,173",
     completion: "In Progress / 2029",
-    phase: "phase-2-feasibility-study",
+    phase: "design",
     status: "In Progress",
     summary: "See how the Aspen School District is evaluating next-generation energy infrastructure that supports students, facilities, and long-term sustainability goals.",
-    description: "The Aspen School District project demonstrates how educational facilities can use shared thermal infrastructure to support sustainability, comfort, and long-term operational performance in Aspen, Colorado. The proposed Ambient Temperature Loop connects Aspen Elementary School, Aspen Middle School, and Aspen High School into a unified Thermal Energy Network. The campus includes approximately 414,173 square feet of facilities, including conditioned space and snowmelt infrastructure. By linking multiple educational facilities into one system, the district can take advantage of load diversity and shared resources. The project supports district goals for decarbonization, resiliency, and future cooling capability. The GreyEdge Group identified a pathway for modernizing campus infrastructure while maintaining reliable operations. The GreyEdge Group evaluated thermal assets including geoexchange borefields, co-generation, Genesys CLAD technology, solar thermal, wastewater energy recovery, and snowmelt heat recovery. These resources support approximately 709 tons of peak heating and 234 tons of peak cooling capacity. The proposed network is expected to reduce heating-related greenhouse gas emissions by approximately 75 percent, or about 654 metric tons of CO2 annually. The Ambient Temperature Loop provides a flexible platform for future campus expansion and infrastructure upgrades. The project highlights how K-12 campuses can become leaders in sustainable community infrastructure.",
+    description: "The Aspen School District project demonstrates how educational facilities can use shared thermal infrastructure to support sustainability, comfort, and long-term operational performance in Aspen, Colorado. The proposed Ambient Temperature Loop (ATL) connects Aspen Elementary School, Aspen Middle School, and Aspen High School into a unified Thermal Energy Network. The campus includes approximately 414,173 square feet of facilities, including conditioned space and snowmelt infrastructure. By linking multiple educational facilities into one system, the district can take advantage of load diversity and shared resources. The project supports district goals for decarbonization, resiliency, and future cooling capability. The GreyEdge Group identified a pathway for modernizing campus infrastructure while maintaining reliable operations. The GreyEdge Group evaluated thermal assets including geoexchange borefields, co-generation, Genesys CLAD technology, solar thermal, wastewater energy recovery, and snowmelt heat recovery. These resources support approximately 709 tons of peak heating and 234 tons of peak cooling capacity. The proposed network is expected to reduce heating-related greenhouse gas emissions by approximately 75 percent, or about 654 metric tons of CO2 annually. The Ambient Temperature Loop provides a flexible platform for future campus expansion and infrastructure upgrades. The project highlights how K-12 campuses can become leaders in sustainable community infrastructure.",
     team: [
       { name: "The GreyEdge Group", url: "/" },
       { name: "Aspen School District", url: "https://www.aspenk12.net/" },
@@ -92,6 +92,16 @@ export const projects: Project[] = [
         url: "https://coloradosun.com/2026/08/11/aspen-schools-geothermal-deep-bore-hold-1000-feet/"
       }
     ],
+    gallery: [
+      {
+        src: "/images/projects/aspen/gallery/sonic-drill-rig.jpg",
+        alt: "Crew operating a lime-green TerraSonic drill rig beside the Aspen Middle School track, with storm clouds over forested mountain slopes.",
+      },
+      {
+        src: "/images/projects/aspen/gallery/geological-cross-section.jpg",
+        alt: "Hand-drawn geological cross-section near Aspen Middle School showing Maroon Creek, formation layers, and a 20-degree dip.",
+      },
+    ],
     image: "/images/projects/aspen.webp",
     imageAlt: "Vibrant summer landscape of the Maroon Bells mountains near Aspen, Colorado, featuring snow-capped peaks, a clear turquoise alpine lake, a lush green meadow filled with yellow wildflowers, and a bright blue sky with fluffy white clouds.",
     featured: true
@@ -106,7 +116,7 @@ export const projects: Project[] = [
     snowmeltSqFeet: "106,605",
     completion: "In Progress",
     phase: "design",
-    status: "In Progress",
+    status: "Design",
     summary: "Discover how Vail is reimagining one of the nation’s largest snowmelt systems through innovative district energy planning that reduces emissions, improves resilience, and creates a roadmap for future growth.",
     description: "The Vail project focuses on transforming one of the community’s largest energy users into a more sustainable thermal infrastructure asset in Vail, Colorado. The study area includes approximately 593,000 square feet of municipal and privately connected snowmelt systems serving Vail Village, Lionshead, and the Civic Hub. These systems are critical to winter mobility, safety, and visitor experience. GreyEdge evaluated how an Ambient Temperature Loop could reduce dependence on conventional heating fuels while preserving reliability. The project establishes a framework for long-term decarbonization of high-demand snowmelt infrastructure. It also creates opportunities for future connections to additional public and private facilities. Thermal assets evaluated include wastewater and reclaimed-water resources, geoexchange opportunities, groundwater sources, ice-rink heat recovery, and snowmaking-related infrastructure. Project findings suggest emissions could be reduced by a factor of five or more relative to existing conditions. The project demonstrates how mountain communities can leverage multiple thermal resources through a district-energy approach.",
     team: [
@@ -119,10 +129,33 @@ export const projects: Project[] = [
     ],
     articles: [
       {
-        title: "Vail Colorado Explores Geothermal Heating For Snowmelt System",
-        publisher: "thinkgeoenergy.com",
+        title: "Vail, Colorado Explores Geothermal Heating For Snowmelt System",
+        publisher: "ThinkGeoEnergy",
         url: "https://www.thinkgeoenergy.com/vail-colorado-explores-geothermal-heating-for-snowmelt-system/"
+      },
+      {
+        title: "Leading by Example: How the Town of Vail Is Driving Climate Action Through Innovation",
+        publisher: "McKinstry",
+        url: "https://www.mckinstry.com/projects/leading-by-example-how-the-town-of-vail-is-driving-climate-action-through-innovation/"
       }
+    ],
+    gallery: [
+      {
+        src: "/images/projects/vail/gallery/thermal-snowmelt-plaza.jpg",
+        alt: "FLIR thermal infrared image of a brick-paved Vail plaza showing the heat signature of an active snowmelt system, with a surface temperature reading of 93.1°F.",
+      },
+      {
+        src: "/images/projects/vail/gallery/mechanical-room-inspection.jpg",
+        alt: "Two people inspecting insulated piping and industrial equipment in a mechanical room during a Vail site visit.",
+      },
+      {
+        src: "/images/projects/vail/gallery/project-workshop.jpg",
+        alt: "Project workshop with about twenty people seated at U-shaped tables in a conference room, reviewing a presentation on a large screen.",
+      },
+      {
+        src: "/images/projects/vail/gallery/wastewater-outlet.jpg",
+        alt: "Workers in hard hats beside a concrete wastewater outlet discharging into a rocky stream in Vail, with evergreen hills in the background.",
+      },
     ],
     image: "/images/projects/vail.webp",
     imageAlt: "Aerial view of Vail, Colorado, showing alpine‑style buildings, pedestrian areas, and surrounding forested mountains in a green summer landscape.",
@@ -137,7 +170,7 @@ export const projects: Project[] = [
     buildings: "20",
     snowmeltSqFeet: "145,218",
     completion: "In Progress",
-    phase: "phase-2-feasibility-study",
+    phase: "design",
     status: "In Progress",
     summary: "Explore how renewable energy resources and innovative district planning could help power the future of one of Colorado’s premier mountain destinations.",
     description: "The Steamboat Springs project evaluates a Thermal Energy Network centered around the Gondola Transit Center and surrounding development areas in Steamboat Springs, Colorado. The study includes public facilities, resort infrastructure, future development, and snowmelt systems. GreyEdge assessed how a shared thermal network could meet significant heating demands in a challenging mountain climate. The project is designed to support growth while reducing long-term emissions and energy costs. A phased Ambient Temperature Loop approach allows multiple resources to work together within a unified system. This strategy creates a scalable foundation for future expansion. Thermal assets include geoexchange borefields, Yampa River heat exchange, snowmelt solar collection, wastewater energy recovery, solar thermal resources, and existing boilers for peak demand service. Project analysis identified the potential for approximately 85 percent reductions in heating-related carbon emissions. Prior evaluations estimated annual reductions of roughly 7,191 metric tons of CO2 under a fully renewable scenario. The project focuses on reducing borefield requirements while maximizing renewable resource opportunities. Steamboat Springs illustrates how mountain resort communities can integrate diverse thermal assets into a cohesive energy strategy.",
@@ -168,6 +201,14 @@ export const projects: Project[] = [
       {
         src: "/images/projects/steamboat-springs/gallery/plaza-stage.jpg",
         alt: "Steamboat plaza with green turf seating, an outdoor stage, lodge buildings, and melting snow on the adjacent ski slope.",
+      },
+      {
+        src: "/images/projects/steamboat-springs/gallery/drill-rig-gondola.jpg",
+        alt: "White truck-mounted drilling rig on a dry grassy Steamboat ski slope under clear blue sky, with gondola cabins overhead and a worker on a green ladder.",
+      },
+      {
+        src: "/images/projects/steamboat-springs/gallery/drill-rig-stormy-sky.jpg",
+        alt: "Blackhawk Drilling white truck with a tall lattice mast at Steamboat ski resort under a stormy sky, with ski lift cables and red and green hoses in the foreground.",
       },
     ],
     image: "/images/projects/steamboat-springs.webp",
@@ -202,6 +243,12 @@ export const projects: Project[] = [
         publisher: "thirdstreetcenter.net",
         url: "https://thirdstreetcenter.net/carbondale-geothermal-project/"
       }
+    ],
+    gallery: [
+      {
+        src: "/images/projects/32-zed-zero-energy-district/gallery/drill-rig-crew.jpg",
+        alt: "Crew in hard hats and safety gear beside a white truck-mounted drilling rig and HDPE pipe coil at a residential Carbondale project site under overcast sky.",
+      },
     ],
     image: "/images/projects/32-zed-zero-energy-district.webp",
     imageAlt: "32 ZED Project Site Picture",
@@ -376,6 +423,16 @@ export const projects: Project[] = [
       { name: "Colorado Energy Office (CEO)", url: "https://energyoffice.colorado.gov/" },
     ],
     articles: [],
+    gallery: [
+      {
+        src: "/images/projects/telluride/gallery/pvc-pipe-install-snow.jpg",
+        alt: "Worker in tan clothes adjusting a tall white PVC pipe on a wooden base at a snowy Telluride work site, with evergreen and aspen trees, storage tanks, and a tool table nearby.",
+      },
+      {
+        src: "/images/projects/telluride/gallery/pvc-fittings-assembly.jpg",
+        alt: "Worker crouching in the snow assembling white PVC pipe fittings with blue primer emerging from a hole in the ground, with a pickup truck and storage tank in the background.",
+      },
+    ],
     image: "/images/projects/telluride.webp",
     imageAlt: "Looking down historic Colorado Avenue in downtown Telluride, Colorado, lined with historic brick and wooden buildings flying Colorado and US flags, leading the eye toward a massive mountain box canyon with green slopes, rocky cliffs, and a waterfall under a bright sky.",
     featured: false
@@ -415,6 +472,16 @@ export const projects: Project[] = [
         publisher: "Pitkin County",
         url: "https://pitkincounty.com/1722/Aspen-Airport-Business-Center-Microgrid"
       }
+    ],
+    gallery: [
+      {
+        src: "/images/projects/pitkin-county/gallery/drill-rig-stormy-field.jpg",
+        alt: "White S&S Drilling truck-mounted rig on a sagebrush field under a dark stormy sky, with yellow hydraulic jacks extended and a Lincoln Electric welder on the flatbed.",
+      },
+      {
+        src: "/images/projects/pitkin-county/gallery/drill-rig-mountain-lot.jpg",
+        alt: "White truck-mounted drilling rig with an angled boom and yellow hydraulic drill head in a paved lot, with snow-capped peaks, black corrugated piping, and a cable spool in the foreground.",
+      },
     ],
     image: "/images/projects/pitkin-county.jpg",
     imageAlt: "Autumn landscape near Aspen, Colorado, showing earth-toned residential buildings nestled among golden aspen and evergreen trees at the base of a sunlit hillside under a clear blue sky, with a manicured green in the foreground.",
@@ -487,6 +554,16 @@ export const projects: Project[] = [
         url: "https://dailyenergyinsider.com/policy/47849-colorado-energy-office-awards-14-4m-for-geothermal-heating-projects/"
       }
     ],
+    gallery: [
+      {
+        src: "/images/projects/mountain-village/gallery/drill-rig-winter-village.jpg",
+        alt: "White truck-mounted drilling rig with a tall vertical derrick in a snowy Mountain Village lot, with a green hose in the foreground, a yellow hose reel beside the truck, evergreen trees, and a brown building with a snow-laden roof under overcast sky.",
+      },
+      {
+        src: "/images/projects/mountain-village/gallery/team-ice-waterfall-cliff.jpg",
+        alt: "Two smiling men posing below a steep rocky cliff with a thin cascading waterfall and large white ice formations, a wooden railing visible atop the ridge under bright overcast sky.",
+      },
+    ],
     image: "/images/projects/mountain-village.jpg",
     imageAlt: "Aerial autumn view of Mountain Village, Colorado, nestled in a deep alpine valley amid golden aspen and evergreen slopes, with snow-dusted peaks under a clear blue sky.",
     featured: false
@@ -554,6 +631,16 @@ export const projects: Project[] = [
       { name: "JVA", url: "https://www.jvajva.com/" },
     ],
     articles: [],
+    gallery: [
+      {
+        src: "/images/projects/fraser/gallery/excavator-trench.jpg",
+        alt: "Yellow Volvo excavator digging a trench beside a blue dewatering pump and hose in a grassy Fraser field, with a mountain town and peaks under a clear blue sky.",
+      },
+      {
+        src: "/images/projects/fraser/gallery/test-pit-groundwater.jpg",
+        alt: "Deep excavated test pit with murky groundwater and a white measuring pole, observed by two workers in an orange shirt and hi-vis vest in a green Fraser field.",
+      },
+    ],
     image: "/images/projects/fraser.jpg",
     imageAlt: "Main street in Fraser, Colorado, looking toward snow-capped mountains, with wooden storefronts, parked vehicles, and patches of snow under a clear blue sky.",
     featured: false
@@ -621,6 +708,24 @@ export const projects: Project[] = [
         title: "Geothermal Wells Deepen Weber State's Sustainability Efforts",
         publisher: "Standard-Examiner",
         url: "https://www.standard.net/news/environment/2016/may/29/geothermal-wells-deepen-weber-states-sustainability-efforts/",
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/projects/weber-state-university/gallery/mountain-drilling-derrick.jpg",
+        alt: "Tall vertical drilling derrick at a Weber State mountain construction site, with a red flatbed truck, a worker in a hi-vis vest, and a clear blue sky.",
+      },
+      {
+        src: "/images/projects/weber-state-university/gallery/mechanical-room-insulated-pipes.jpg",
+        alt: "Mechanical room at Weber State with white insulated pipes, red pumps, blue industrial equipment, and a man in a green shirt for scale.",
+      },
+      {
+        src: "/images/projects/weber-state-university/gallery/aerial-campus-trenching.jpg",
+        alt: "Aerial view of parallel trenches and excavated earth on the Weber State campus, with parking lots, academic buildings, and mountains beyond.",
+      },
+      {
+        src: "/images/projects/weber-state-university/gallery/truck-drilling-rig-hdpe.jpg",
+        alt: "Workers operating a truck-mounted drilling rig at Weber State University, with a large coil of black HDPE pipe in the foreground and campus buildings in the distance.",
       },
     ],
     image: "/images/projects/weber-state-university.webp",

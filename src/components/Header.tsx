@@ -46,7 +46,7 @@ const navItems: NavItem[] = [
     to: '/about',
     children: [
       { label: 'Our Story', desc: 'Founded 2016, built by practitioners', to: '/about#story' },
-      { label: 'Our Team', desc: '15 thermal energy specialists', to: '/about#team' },
+      { label: 'Our Team', desc: 'Thermal energy specialists', to: '/about#team' },
       { label: 'Industry Leadership', desc: 'Standards, research and training', to: '/about#leadership' },
     ],
   },

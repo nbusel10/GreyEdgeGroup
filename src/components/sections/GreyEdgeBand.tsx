@@ -1,30 +1,21 @@
-import GreyEdgeCycle from '../GreyEdgeCycle'
-import { Container } from '../ui'
-
 /**
- * Full-bleed fly-up GreyEdge lockup (preview option 6).
- * Animation starts when the band scrolls into view, plays three times with a
- * 2s pause between passes, then holds on GreyEdge with the filled adjective
- * row and brand-accent underline.
+ * Full-bleed GreyEdge lockup GIF. The asset has ~43% empty top and ~30%
+ * empty bottom; we crop to the ink band (~57% down) so the mark and scrolling
+ * word row fill the section without wasted whitespace or clipping.
  */
-export default function GreyEdgeBand({
-  forceReducedMotion = false,
-}: {
-  forceReducedMotion?: boolean
-}) {
+export default function GreyEdgeBand() {
   return (
-    <section className="ge-word-band border-t border-ge-charcoal bg-ge-black py-10 md:py-12" aria-label="GreyEdge">
-      <Container>
-        <div className="flex justify-center">
-          <GreyEdgeCycle
-            variant="fly-up-row"
-            loops={3}
-            pauseBetweenMs={2000}
-            forceReducedMotion={forceReducedMotion}
-            className="text-[clamp(2rem,4.8vw,4.5rem)]"
-          />
-        </div>
-      </Container>
+    <section className="overflow-hidden border-t border-ge-light bg-white py-6 md:py-8" aria-label="GreyEdge">
+      {/* Aspect matches the ink band (~1400×300) with a little breathing room. */}
+      <div className="relative mx-auto w-full max-w-[1176px] aspect-[1400/310] overflow-hidden">
+        <img
+          src="/videos/greyedge-lockup.gif?v=3"
+          alt="GreyEdge"
+          className="pointer-events-none absolute left-0 w-full max-w-none"
+          style={{ top: '50%', transform: 'translateY(-56.7%)' }}
+          loading="lazy"
+        />
+      </div>
     </section>
   )
 }

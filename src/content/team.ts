@@ -103,7 +103,7 @@ export const team: TeamMember[] = [
   {
     slug: 'cary-smith',
     name: 'Cary Smith',
-    role: 'ATL Specialist',
+    role: 'CFO',
     credentials: 'CGD, CEM, CEA, CGI, AEE Fellow',
     email: 'csmith@greyedgegroup.com',
     phone: '801-244-8800',
@@ -124,7 +124,7 @@ export const team: TeamMember[] = [
       'Association of Energy Engineers Fellow',
     ],
     image: '/images/team/cary-smith.webp',
-    imageAlt: 'A Head Shot of Cary Smith who is an ATL Specialist at The Grey Edge Group',
+    imageAlt: 'A Head Shot of Cary Smith who is CFO at The Grey Edge Group',
     leadership: true,
   },
   {

@@ -45,7 +45,7 @@ export const story = {
 export const whyUs = {
   eyebrow: 'The Mission',
   heading: 'Why choose us',
-  lead: 'Thermal Energy Networks are not one of many things we do. TENs are what we do.',
+  lead: 'Thermal Energy Networks are not something we dabble in, they are our sole focus',
   body: [
     'At The GreyEdge Group we bring specialized expertise developed through years of planning, designing, evaluating, and advancing district-scale thermal infrastructure. We understand the technical, financial, and operational realities that influence project success because we\'ve already seen them play out across a wide range of projects.',
   ],

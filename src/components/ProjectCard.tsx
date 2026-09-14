@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import type { Project } from '../content/projects'
-import { phases } from '../content/process'
+import { getProjectPhaseLabel } from '../lib/projectPhaseLabel'
 
 export default function ProjectCard({ project, eager = false }: { project: Project; eager?: boolean }) {
   const { slug, name, location, phase, sqFeet, snowmeltSqFeet, buildings, summary, image, imageAlt } =
     project
-  const phaseLabel = phases.find((p) => p.id === phase)?.title ?? phase
+  const phaseLabel = getProjectPhaseLabel(phase)
 
   return (
     <Link

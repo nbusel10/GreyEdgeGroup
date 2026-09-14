@@ -1,6 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getProject, projects } from '../content/projects'
-import { phases } from '../content/process'
 import FinalCta from '../components/sections/FinalCta'
 import ProjectGallery from '../components/ProjectGallery'
 import { Btn, Container, Eyebrow, Reveal, Section, teamPillClass } from '../components/ui'
@@ -8,6 +7,7 @@ import { linkGeoTermsInNodes } from '../lib/linkGeoTerms'
 import { linkTeamNames } from '../lib/linkTeamNames'
 import { resolveProjectTeamUrl } from '../lib/resolveProjectTeamUrl'
 import { projectDescriptionParts } from '../lib/projectDescription'
+import { getProjectPhaseLabel } from '../lib/projectPhaseLabel'
 import { usePageMeta } from '../lib/meta'
 
 export default function ProjectDetail() {
@@ -29,7 +29,7 @@ export default function ProjectDetail() {
   // One deep link per G101 concept across the project description.
   const geoLinked = new Set<string>()
 
-  const phaseTitle = phases.find((p) => p.id === project.phase)?.title
+  const phaseLabel = getProjectPhaseLabel(project.phase)
 
   const stats = [
     { label: 'Buildings Sq Ft', value: project.sqFeet ?? 'In progress' },
@@ -37,7 +37,7 @@ export default function ProjectDetail() {
       ? [{ label: 'Snowmelt sq ft', value: project.snowmeltSqFeet }]
       : []),
     { label: 'Buildings', value: project.buildings ?? 'In progress' },
-    { label: 'Phase', value: phaseTitle },
+    { label: 'Phase', value: phaseLabel },
     ...(!project.snowmeltSqFeet
       ? [{ label: 'Location', value: project.location }]
       : []),
@@ -77,7 +77,7 @@ export default function ProjectDetail() {
           </Link>
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <span className="border border-white/50 px-2.5 py-1 font-body text-[10px] uppercase tracking-[0.18em] text-white">
-              {project.status}
+              {phaseLabel}
             </span>
             <span className="font-body text-xs uppercase tracking-[0.16em] text-white/70">{project.location}</span>
           </div>
