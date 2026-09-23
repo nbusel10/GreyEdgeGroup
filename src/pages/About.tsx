@@ -351,7 +351,7 @@ function TeamCard({ member }: { member: TeamMember }) {
         </Link>
 
         {contacts.length > 0 && (
-          <div className="pointer-events-none absolute inset-0 flex items-end justify-center bg-ge-black/55 px-3 pb-4 opacity-0 transition-opacity duration-300 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+          <div className="pointer-events-none absolute inset-0 z-10 flex items-end justify-center bg-ge-black/55 px-3 pb-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
             <ul className="flex items-center gap-3">
               {contacts.map((c) => (
                 <li key={c.label}>
@@ -359,7 +359,7 @@ function TeamCard({ member }: { member: TeamMember }) {
                     href={c.href}
                     {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     aria-label={`${member.name} ${c.label}`}
-                    className="inline-flex h-9 w-9 items-center justify-center text-white transition-colors hover:text-ge-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    className="pointer-events-auto inline-flex h-9 w-9 items-center justify-center text-white transition-colors hover:text-ge-accent-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
                     {c.icon}
                   </a>
