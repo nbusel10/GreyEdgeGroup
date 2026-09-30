@@ -8,13 +8,12 @@ import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 
 /**
- * Host-agnostic contact form.
+ * Contact form.
  *
- * With no configuration it posts back to the site root as URL-encoded data, which is
- * exactly what Netlify Forms expects — the hidden form-name field and the `data-netlify`
- * attribute below are what Netlify's build step looks for. Set VITE_FORM_ENDPOINT to
- * post JSON somewhere else instead (a CRM intake, a serverless function, Formspree),
- * which is the one-line change needed once the CRM decision is made.
+ * With no configuration it posts to /contact.php, which cPanel runs and emails
+ * info@greyedgegroup.com. Thank-you is shown only when that script returns { ok: true }.
+ * Set VITE_FORM_ENDPOINT to post JSON somewhere else instead (a CRM intake, a serverless
+ * function, Formspree).
  */
 const ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT
 const FORM_NAME = 'greyedge-contact'
@@ -60,13 +59,19 @@ export default function Contact() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(Object.fromEntries(data)),
           })
-        : await fetch('/', {
+        : await fetch('/contact.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
           })
 
-      if (!res.ok) throw new Error(`Server responded ${res.status}`)
+      if (!res.ok) throw new Error('Please try again, or email us directly.')
+
+      if (!ENDPOINT) {
+        const payload: { ok?: boolean } = await res.json().catch(() => ({}))
+        if (payload.ok !== true) throw new Error('Please try again, or email us directly.')
+      }
+
       setStatus('sent')
     } catch (err) {
       setStatus('error')
@@ -106,13 +111,10 @@ export default function Contact() {
                 <form
                   name={FORM_NAME}
                   method="POST"
-                  data-netlify="true"
-                  data-netlify-honeypot="company-website"
+                  action="/contact.php"
                   onSubmit={handleSubmit}
                   className="space-y-6"
                 >
-                  {/* Netlify needs the form name in the payload. */}
-                  <input type="hidden" name="form-name" value={FORM_NAME} />
                   <p className="hidden">
                     <label>
                       Leave this field empty

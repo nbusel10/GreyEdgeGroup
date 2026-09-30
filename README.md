@@ -63,9 +63,10 @@ need the equivalent SPA fallback configured.
 
 ## Contact form
 
-The form posts to `VITE_FORM_ENDPOINT` if set (see `.env.example`), and otherwise uses
-Netlify Forms markup, which works with no configuration on Netlify. Pointing it at a
-CRM later means setting one environment variable.
+The form posts to `/contact.php` on this site. cPanel runs that script and emails
+`info@greyedgegroup.com`. Set `VITE_FORM_ENDPOINT` (see `.env.example`) to post JSON
+somewhere else instead. The dev server does not run PHP, so a local submit shows the
+error state.
 
 ## Checks
 
