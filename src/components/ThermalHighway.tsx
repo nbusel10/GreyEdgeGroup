@@ -44,7 +44,7 @@ export default function ThermalHighway() {
         role="img"
         aria-labelledby="thermal-highway-title thermal-highway-desc"
       >
-        <title id="thermal-highway-title">Thermal Highway© network diagram</title>
+        <title id="thermal-highway-title">Thermal Highway® network diagram</title>
         <desc id="thermal-highway-desc">
           Ten buildings and thermal resources (including a university, data center, wastewater plant, solar thermal
           array and a borefield) all connected to a single shared ambient temperature loop running horizontally

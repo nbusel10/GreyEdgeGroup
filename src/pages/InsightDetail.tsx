@@ -29,7 +29,7 @@ export default function InsightDetail() {
 
   const related = insight.relatedLinks?.length
     ? insight.relatedLinks
-    : [{ label: 'Geothermal 101', to: '/geothermal-101' }]
+    : [{ label: 'Thermal Energy Networks 101', to: '/geothermal-101' }]
 
   // One deep link per G101 concept across the article (avoids a sea of underlines).
   const geoLinked = new Set<string>()

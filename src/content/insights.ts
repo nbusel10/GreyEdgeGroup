@@ -99,7 +99,7 @@ export const insights: Insight[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Geothermal 101', to: '/geothermal-101' },
+      { label: 'Thermal Energy Networks 101', to: '/geothermal-101' },
       { label: 'The 50/90 rule', to: '/insights/multisource-networks' },
       { label: 'CMU project page', to: '/projects/colorado-mesa' },
     ],
@@ -156,7 +156,7 @@ export const insights: Insight[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Geothermal 101', to: '/geothermal-101' },
+      { label: 'Thermal Energy Networks 101', to: '/geothermal-101' },
       { label: 'Avoiding the grid upgrade', to: '/insights/peak-demand' },
       { label: 'Vail project page', to: '/projects/vail' },
     ],
@@ -206,7 +206,7 @@ export const insights: Insight[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Geothermal 101', to: '/geothermal-101' },
+      { label: 'Thermal Energy Networks 101', to: '/geothermal-101' },
       { label: 'Multisource networks', to: '/insights/multisource-networks' },
     ],
   },
@@ -277,7 +277,7 @@ export const insights: Insight[] = [
     level: 'Applied',
     title: 'Multisource networks and the 50/90 rule',
     summary:
-      'Traditional geo-exchange is efficient, expensive, and land-hungry. The Thermal Highway© cuts both cost and footprint by letting wastewater, mine water, diversity, and hybrid peaking share the work.',
+      'Traditional geo-exchange is efficient, expensive, and land-hungry. The Thermal Highway® cuts both cost and footprint by letting wastewater, mine water, diversity, and hybrid peaking share the work.',
     image: site['insight-50-90'].src,
     imageAlt: site['insight-50-90'].alt,
     to: '/insights/multisource-networks',
@@ -287,7 +287,7 @@ export const insights: Insight[] = [
         paragraphs: [
           'Traditional geo-exchange works, and it works well. Compared with air-source heat pumps it delivers higher efficiency, lower electrical demand, and longer equipment life, because it exchanges heat with stable ground temperatures rather than swinging outdoor air.',
           'However, its limits trace back to a single design choice: capital cost. Traditional geo relies on the ground alone. Every ton of peak capacity has to be drilled for, which means high upfront cost, large land area, and strong dependence on local ground properties. On a constrained downtown block, those limits end the conversation before it starts.',
-          'Ambient Temperature Loops improve upon traditional geo. On the Thermal Highway©, buildings, sources, and thermal storage trade usable energy across a shared ambient loop instead of each site drilling for its own peak. The ground stays in the picture as a thermal battery, but it becomes one asset among several rather than the whole system.',
+          'Ambient Temperature Loops improve upon traditional geo. On the Thermal Highway®, buildings, sources, and thermal storage trade usable energy across a shared ambient loop instead of each site drilling for its own peak. The ground stays in the picture as a thermal battery, but it becomes one asset among several rather than the whole system.',
           'Two design strategies bring capital cost and land requirements down: diversity and the 50/90 rule.',
         ],
       },
@@ -314,7 +314,7 @@ export const insights: Insight[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Geothermal 101', to: '/geothermal-101' },
+      { label: 'Thermal Energy Networks 101', to: '/geothermal-101' },
       { label: 'Implementing TENs', to: '/insights/implementing-tens' },
     ],
   },
@@ -405,7 +405,7 @@ export const insights: Insight[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Geothermal 101', to: '/geothermal-101' },
+      { label: 'Thermal Energy Networks 101', to: '/geothermal-101' },
       { label: 'Multisource networks', to: '/insights/multisource-networks' },
       { label: 'Who owns the network', to: '/insights/governance-first' },
     ],
@@ -574,7 +574,7 @@ export const insights: Insight[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Geothermal 101', to: '/geothermal-101' },
+      { label: 'Thermal Energy Networks 101', to: '/geothermal-101' },
       { label: 'Multisource networks', to: '/insights/multisource-networks' },
     ],
   },
@@ -582,7 +582,7 @@ export const insights: Insight[] = [
     slug: 'thermal-highway',
     category: 'Technical Education',
     level: 'Foundational',
-    title: 'Understanding the Thermal Highway©',
+    title: 'Understanding the Thermal Highway®',
     summary:
       'Where the magic happens in a TEN: how a district-scale network moves usable energy between buildings, sources, and storage.',
     image: site['network-diagram'].src,

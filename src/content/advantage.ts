@@ -187,7 +187,7 @@ export const doors = {
   education: {
     label: 'Learn how these systems work',
     detail: 'Start with the fundamentals. No meeting required.',
-    cta: 'Read Geothermal 101',
+    cta: 'Read Thermal Energy Networks 101',
     to: '/geothermal-101',
   },
   consultation: {

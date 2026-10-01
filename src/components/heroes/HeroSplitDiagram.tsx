@@ -20,7 +20,7 @@ import {
  */
 
 const diagram = {
-  caption: 'The Thermal Highway©',
+  caption: 'The Thermal Highway®',
   linkLabel: 'See how it works',
   to: '/geothermal-101#thermal-highway',
 }

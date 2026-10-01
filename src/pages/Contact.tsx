@@ -104,7 +104,7 @@ export default function Contact() {
                     business day.
                   </p>
                   <Btn to="/geothermal-101" variant="outline" className="mt-8">
-                    Read Geothermal 101 in the meantime
+                    Read Thermal Energy Networks 101 in the meantime
                   </Btn>
                 </div>
               ) : (

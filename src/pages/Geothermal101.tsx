@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { site } from '../content/images'
 import { doors } from '../content/advantage'
+import GeoTypeArt from '../components/GeoTypeArt'
 import PageHero from '../components/PageHero'
 import AtlExplainer from '../components/sections/AtlExplainer'
 import FinalCta from '../components/sections/FinalCta'
@@ -12,6 +13,29 @@ const schematic = {
   alt: 'Schematic of an ambient temperature loop connecting buildings and thermal resources, including geoexchange, surface water, solar thermal and storage.',
 }
 
+const geoTypes = [
+  {
+    id: 'power',
+    t: 'Geo power',
+    b: 'Electricity from deep wells, about 250°F and up. High temperature. Only in a few places.',
+  },
+  {
+    id: 'district',
+    t: 'Geo district',
+    b: 'Direct-use heating from deep wells, about 80°F to 200°F. High temperature.',
+  },
+  {
+    id: 'building',
+    t: 'Geo building',
+    b: 'Heating and cooling for one building from a shallow loop, about 45°F to 60°F. Low temperature.',
+  },
+  {
+    id: 'network',
+    t: 'Thermal energy network',
+    b: 'Heating and cooling shared across buildings. The shallow ground beside it is about 45°F to 65°F. Low temperature.',
+  },
+] as const
+
 const sources = [
   { name: 'The ground', detail: 'A stable thermal reservoir available year-round in virtually every climate.' },
   { name: 'Wastewater', detail: 'Municipal sewer mains carry a remarkably consistent thermal load.' },
@@ -19,10 +43,6 @@ const sources = [
   { name: 'Solar thermal', detail: 'Solar energy captured as heat and stored in the ground for later use.' },
   { name: 'Mine water', detail: 'Flooded workings hold enormous stable thermal mass near former mining towns.' },
   { name: 'Surface water', detail: 'Lakes, rivers and reservoirs, where permitting allows.' },
-  {
-    name: 'A unique mix',
-    detail: 'Sources, sinks, and storage are unique to each site and network—not a generic template.',
-  },
 ]
 
 const faqs = [
@@ -74,7 +94,7 @@ const faqs = [
 
 export default function Geothermal101() {
   usePageMeta({
-    title: 'Geothermal 101 — The GreyEdge Group',
+    title: 'Thermal Energy Networks 101 — The GreyEdge Group',
     description:
       'How Thermal Energy Networks, ambient temperature loops and district-scale geothermal actually work, explained without the jargon.',
     image: site['network-diagram'].src,
@@ -105,9 +125,50 @@ export default function Geothermal101() {
     <>
       <PageHero
         eyebrow="How it works"
-        title="Geothermal 101"
+        title="Thermal Energy Networks 101"
         lead="Built from decades of industry experience, this guide explains what thermal energy networks are, why they work, and how they help solve the energy, cost, and infrastructure challenges facing communities today."
       />
+
+      <Section id="geo-types" className="border-b border-ge-light bg-ge-offwhite">
+        <Container>
+          <Reveal>
+            <Eyebrow>The types</Eyebrow>
+            <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
+              Geothermal Energy
+            </h2>
+            <p className="mt-6 font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
+              Geothermal covers several very different things, and they get lumped under one name. Some of it is deep
+              and hot: wells hot enough to make electricity, or hot water brought straight up for heat. Those resources
+              are uncommon, and they depend on unusually hot geology. Most of what matters for buildings is shallow
+              heating and cooling. In the shallow ground, the temperature stays mild all year in almost any climate. One
+              building can use that steady temperature on its own, and a group of buildings can share it.
+            </p>
+          </Reveal>
+
+          <div className="mt-12 grid gap-px bg-ge-light sm:grid-cols-2 xl:grid-cols-4">
+            {geoTypes.map((c, i) => (
+              <Reveal key={c.t} delay={i * 0.06} className="bg-white">
+                <div className="group flex h-full flex-col">
+                  <GeoTypeArt variant={c.id} />
+                  <div className="flex flex-1 flex-col p-6 sm:p-8">
+                    <span className="rule-grow mb-5" />
+                    <h3 className="font-display text-xl font-bold uppercase leading-tight tracking-wide text-ge-black">
+                      {c.t}
+                    </h3>
+                    <p className="mt-4 flex-1 font-body text-sm leading-relaxed text-ge-graphite">{c.b}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <p className="mt-8 font-body text-base leading-relaxed text-ge-graphite">
+            The shallow ground is a useful resource, and a network can use it. The GreyEdge Group brings buildings
+            onto one shared heating and cooling system, a{' '}
+            <a href="#networks" className={proseLinkClass}>Thermal Energy Network</a>.
+          </p>
+        </Container>
+      </Section>
 
       {/* What is a TEN */}
       <Section id="networks" className="bg-white">
@@ -141,8 +202,8 @@ export default function Geothermal101() {
                 <div className="mt-6 border-l-2 border-ge-accent pl-6">
                   <p className="font-body text-lg leading-relaxed text-ge-charcoal">
                     A Thermal Energy Network connects buildings and thermal resources in a shared water loop, allowing heat to
-                    move where it is needed instead of being generated, rejected, and replaced by each building
-                    independently.
+                    move where it is needed in a system instead of being generated, rejected, and replaced by each
+                    building independently.
                   </p>
                 </div>
               </div>
@@ -187,12 +248,12 @@ export default function Geothermal101() {
             <p className="mt-6 font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
               An Ambient Temperature Loop is the backbone of a modern Thermal Energy Network. Rather than
               distributing high-temperature and chilled water throughout a district, the loop operates near the natural
-              temperature of the surrounding ground, creating a shared thermal highway that all connected
-              buildings can access.
+              temperature (about 45°F to 65°F) of the surrounding ground, creating a shared thermal highway that all
+              connected buildings can access.
             </p>
             <p className="mt-5 font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
               Each building uses heat pumps to provide the precise heating or cooling it needs, while the network
-              continuously moves thermal energy where it creates the most value. Because the loop is maintained
+              continuously moves thermal energy and prioritizes the most cost effective energy path. Because the loop is maintained
               close to ambient ground temperatures, distribution losses are significantly reduced, efficiency is
               improved, and buildings can exchange energy across the network with far less infrastructure than
               traditional district energy systems.
@@ -203,7 +264,7 @@ export default function Geothermal101() {
             {[
               {
                 t: 'Expandable by Design',
-                b: 'New buildings can connect to the loop over time, allowing the network to grow as community needs evolve.',
+                b: 'New buildings and retrofitted buildings can connect to the loop over time, allowing the network to grow as community needs evolve.',
               },
               {
                 t: 'Energy Sharing Network',
@@ -228,7 +289,7 @@ export default function Geothermal101() {
         </Container>
       </Section>
 
-      <AtlExplainer />
+      <AtlExplainer panelNoun="concept" />
 
       {/* Sources */}
       <Section id="thermal-resources" className="border-t border-ge-light bg-ge-offwhite">
@@ -242,8 +303,9 @@ export default function Geothermal101() {
               <p className="mt-6 font-body text-base leading-relaxed text-ge-graphite">
                 Thermal resources are the places a network can draw heat from, store heat, or reject excess heat. Many
                 communities already have valuable thermal assets hidden in plain sight, including geoexchange,
-                wastewater systems, data centers, and industrial processes. Together, these resources help balance the
-                network, improve efficiency, and reduce the need for new energy inputs year-round.
+                wastewater systems, data centers, and industrial processes. Sources, sinks, and storage are unique to
+                each site and network — not a generic template. Together, these resources help balance the network,
+                improve efficiency, and reduce the need for new energy inputs year-round.
               </p>
               <blockquote className="my-8 border-l-2 border-ge-accent pl-7">
                 <p className="font-display text-2xl font-semibold uppercase leading-snug tracking-wide text-ge-black">

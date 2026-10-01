@@ -49,7 +49,7 @@ export const finalCta = {
 export const nav = [
   { label: 'Approach', to: '/approach' },
   { label: 'Projects', to: '/projects' },
-  { label: 'Geothermal 101', to: '/geothermal-101' },
+  { label: 'Thermal Energy Networks 101', to: '/geothermal-101' },
   { label: 'About', to: '/about' },
   { label: 'Insights', to: '/insights' },
 ]

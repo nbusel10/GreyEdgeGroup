@@ -15,9 +15,9 @@ const columns: { title: string; links: { label: string; to: string }[] }[] = [
   {
     title: 'Learn',
     links: [
-      { label: 'Geothermal 101', to: '/geothermal-101' },
+      { label: 'Thermal Energy Networks 101', to: '/geothermal-101' },
       { label: 'Thermal Energy Networks', to: '/geothermal-101#networks' },
-      { label: 'The Thermal Highway©', to: '/geothermal-101#thermal-highway' },
+      { label: 'The Thermal Highway®', to: '/geothermal-101#thermal-highway' },
       { label: 'Insights', to: '/insights' },
     ],
   },

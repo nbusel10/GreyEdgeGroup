@@ -1,7 +1,8 @@
-import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
+import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
 import AtlDiagram from '../AtlDiagram'
 import { atlModes } from '../../content/atlModes'
 import { usePrefersReducedMotion } from '../../lib/hooks'
+import MoreInfo from '../MoreInfo'
 import { Container, Reveal, Section, SectionHeading, proseLinkClass } from '../ui'
 
 /**
@@ -9,7 +10,21 @@ import { Container, Reveal, Section, SectionHeading, proseLinkClass } from '../u
  * auto-advancing until a tab is clicked, pausing when the section leaves the viewport
  * or the document is hidden.
  */
-export default function AtlExplainer() {
+export default function AtlExplainer({
+  intro,
+  captions,
+  more,
+  panelNoun = 'mode',
+}: {
+  /** Replaces the intro paragraph. The live page leaves this unset. */
+  intro?: ReactNode
+  /** Caption overrides keyed by mode id. The live page leaves this unset. */
+  captions?: Partial<Record<string, string>>
+  /** Longer notes under each concept. The live page leaves this unset. */
+  more?: Partial<Record<string, ReactNode>>
+  /** Name used for the four panels in labels and the screen reader. */
+  panelNoun?: 'mode' | 'concept'
+} = {}) {
   const uid = useId()
   const tablistId = `${uid}-modes`
   const panelId = `${uid}-panel`
@@ -25,6 +40,9 @@ export default function AtlExplainer() {
 
   const mode = atlModes[index]
   const paused = !inView || hidden
+  const panelLabel = panelNoun === 'concept' ? 'Concept' : 'Mode'
+  const caption = captions?.[mode.id] ?? mode.caption
+  const extra = more?.[mode.id]
 
   const select = (next: number, fromUser: boolean) => {
     const wrapped = (next + atlModes.length) % atlModes.length
@@ -88,23 +106,29 @@ export default function AtlExplainer() {
                 </>
               }
             />
-            <p className="mt-6 font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
-              The Thermal Highway® is our approach to connecting buildings and{' '}
-              <a href="#thermal-resources" className={proseLinkClass}>
-                thermal resources
-              </a>{' '}
-              across a district through a single ambient temperature loop. As energy moves through the network, it
-              can be exchanged between buildings, stored for later use, recovered from sources like wastewater or
-              data centers, or supplied by multiple thermal resources working together. The four modes below
-              illustrate how the same loop continuously balances, moves, and delivers energy wherever it creates
-              the most value.
-            </p>
+            <div className="mt-6 space-y-5 font-body text-base leading-relaxed text-ge-graphite sm:text-lg">
+              {intro ?? (
+                <p>
+                  The Thermal Highway® is GreyEdge’s approach to connecting buildings and{' '}
+                  <a href="#thermal-resources" className={proseLinkClass}>
+                    thermal resources
+                  </a>{' '}
+                  across a network through a single ambient temperature loop. Heat pumps are the devices that move
+                  thermal energy between the loop and each building. They can draw heat from the loop for heating or
+                  remove heat from a building and return it to the loop for cooling. As energy moves through the
+                  network, it can be exchanged between buildings, stored for later use, recovered from sources like
+                  wastewater or data centers, or supplied by multiple thermal resources working together. The four graphics
+                  below show different concepts of how the same loop continuously balances, moves, and delivers energy
+                  and prioritizes the most cost effective energy path.
+                </p>
+              )}
+            </div>
           </Reveal>
 
         <Reveal delay={0.1} className="mt-14">
           <div
             role="tablist"
-            aria-label="Thermal modes"
+            aria-label={panelNoun === 'concept' ? 'Thermal concepts' : 'Thermal modes'}
             id={tablistId}
             className="grid grid-cols-2 border border-ge-light sm:grid-cols-4"
           >
@@ -152,11 +176,12 @@ export default function AtlExplainer() {
             className={`border border-t-0 border-ge-light bg-white px-3 py-6 sm:px-8 sm:py-8 ${paused ? 'atl-is-paused' : ''}`}
           >
             <p id={liveId} className="sr-only" aria-live="polite">
-              Mode {index + 1} of {atlModes.length}, {mode.title.toLowerCase()}
+              {panelLabel} {index + 1} of {atlModes.length}, {mode.title.toLowerCase()}
             </p>
 
             <figcaption>
-              <p className="font-body text-sm leading-relaxed text-ge-graphite">{mode.caption}</p>
+              <p className="font-body text-sm leading-relaxed text-ge-graphite">{caption}</p>
+              {extra ? <MoreInfo key={mode.id}>{extra}</MoreInfo> : null}
             </figcaption>
 
             <AtlDiagram modeId={mode.id} className="mx-auto mt-8 max-w-[360px] md:max-w-none" />

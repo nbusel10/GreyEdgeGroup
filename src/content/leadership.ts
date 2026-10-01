@@ -139,7 +139,7 @@ export const credits: Credit[] = [
   {
     id: industryIds.atl,
     title: 'Ambient temperature loop practice',
-    org: 'Thermal Highway©',
+    org: 'Thermal Highway®',
     orgTo: '/geothermal-101#thermal-highway',
     detail:
       'We brought the one-pipe ambient temperature loop approach into the modern era with more than 20 years of operating data behind it. Our case studies like CMU have influenced every major Thermal Energy Network installed in the nation.',

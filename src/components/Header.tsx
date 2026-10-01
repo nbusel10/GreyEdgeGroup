@@ -33,12 +33,12 @@ const navItems: NavItem[] = [
   },
   { label: 'Projects', to: '/projects' },
   {
-    label: 'Geothermal 101',
+    label: 'Thermal Energy Networks 101',
     to: '/geothermal-101',
     children: [
       { label: 'Thermal Energy Networks', desc: 'District-scale shared infrastructure', to: '/geothermal-101#networks' },
       { label: 'Ambient Temperature Loops', desc: 'The circulatory system of a network', to: '/geothermal-101#ambient-loops' },
-      { label: 'The Thermal Highway©', desc: 'How energy moves across a district', to: '/geothermal-101#thermal-highway' },
+      { label: 'The Thermal Highway®', desc: 'How energy moves across a district', to: '/geothermal-101#thermal-highway' },
     ],
   },
   {

@@ -12,6 +12,9 @@ import PreviewAtlIcons from './pages/PreviewAtlIcons'
 import PreviewWordmark from './pages/PreviewWordmark'
 import PreviewHero from './pages/PreviewHero'
 import PreviewYear from './pages/PreviewYear'
+import PreviewTens101 from './pages/PreviewTens101'
+import PreviewTens101Short from './pages/PreviewTens101Short'
+import PreviewLoopConcepts from './pages/PreviewLoopConcepts'
 import Approach from './pages/Approach'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
@@ -50,6 +53,12 @@ export default function App() {
           <Route path="/preview-hero" element={<PreviewHero />} />
           {/* Temporary: About founding-year title. Remove with the page. */}
           <Route path="/preview-year" element={<PreviewYear />} />
+          {/* Temporary: Megan's Thermal Energy Networks 101 review. Remove with the page. */}
+          <Route path="/preview-tens-101" element={<PreviewTens101 />} />
+          {/* Temporary: shorter TEN 101 draft. Remove with the page. */}
+          <Route path="/preview-tens-101-short" element={<PreviewTens101Short />} />
+          {/* Temporary: Megan's notes on the four loop concepts. Remove with the page. */}
+          <Route path="/preview-loop-concepts" element={<PreviewLoopConcepts />} />
           <Route path="/approach" element={<Approach />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />
