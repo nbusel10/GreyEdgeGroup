@@ -13,7 +13,7 @@ export default function Logo({
   /** Height multiplier relative to parent font size. */
   scale?: number
 }) {
-  const src = tone === 'light' ? '/images/brand/logo-white.webp' : '/images/brand/logo-dark.webp'
+  const src = tone === 'light' ? '/images/brand/logo-white-v2.webp' : '/images/brand/logo-dark-v2.webp'
   const resolvedScale = scale ?? 1.95
   const maxWidthEm = 8 * resolvedScale
 

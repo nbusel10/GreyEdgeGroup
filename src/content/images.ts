@@ -197,11 +197,11 @@ export const site = {
 /** Logo and brand marks. */
 export const brand = {
   "logo-white": {
-    src: "/images/brand/logo-white.webp",
+    src: "/images/brand/logo-white-v2.webp",
     alt: "The GreyEdge Group logo in white on a transparent background"
   },
   "logo-dark": {
-    src: "/images/brand/logo-dark.webp",
+    src: "/images/brand/logo-dark-v2.webp",
     alt: "The GreyEdge Group logo in dark grey on a transparent background"
   },
   "edge-only-white": {

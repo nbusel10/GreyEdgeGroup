@@ -74,7 +74,7 @@ async function ogImage() {
     </svg>`,
   )
 
-  const logo = await sharp('public/images/brand/logo-white.webp').resize({ width: 520 }).toBuffer()
+  const logo = await sharp('public/images/brand/logo-white-v2.webp').resize({ width: 520 }).toBuffer()
   const logoHeight = (await sharp(logo).metadata()).height ?? 180
   const logoTop = Math.max(48, accentY - 36 - logoHeight)
 

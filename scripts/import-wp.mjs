@@ -118,6 +118,12 @@ const ALT_OVERRIDES = {
     'About ten GreyEdge Group team members standing together indoors in business casual attire for a group portrait.',
 }
 
+/** Output filenames that differ from the content key, so a logo update gets a new URL. */
+const FILE_NAMES = {
+  'logo-white': 'logo-white-v2',
+  'logo-dark': 'logo-dark-v2',
+}
+
 const BRAND_IMAGES = {
   'logo-white': '2025/12/greyEdge-Logo-White.webp',
   'logo-dark': '2026/05/greyedge-group-logo-darkGrey-transparent.webp',
@@ -610,7 +616,7 @@ async function importImageSet(media, set, dir) {
       warn(`${dir} image not found in media library: ${tail}`)
       continue
     }
-    const local = await download(fullSize(m.source_url), dir, name)
+    const local = await download(fullSize(m.source_url), dir, FILE_NAMES[name] || name)
     if (!local) continue
 
     const alt = ALT_OVERRIDES[name] || decode(m.alt_text) || ALT_FALLBACKS[name]
