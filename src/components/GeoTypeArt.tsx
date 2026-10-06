@@ -230,7 +230,7 @@ function DistrictArt() {
 function ULoop({ x, heatY, coolY, bottom, span }: { x: number; heatY: number; coolY: number; bottom: number; span: number }) {
   const mid = x + span / 2
   return (
-    <g fill="none" {...pipe}>
+    <g {...pipe}>
       <path d={`M ${x} ${heatY} V ${bottom - 12} Q ${x} ${bottom} ${mid} ${bottom}`} stroke={heat} />
       <path d={`M ${mid} ${bottom} Q ${x + span} ${bottom} ${x + span} ${bottom - 12} V ${coolY}`} stroke={cool} />
     </g>
@@ -251,7 +251,7 @@ function BuildingArt() {
   return (
     <Frame label="A house with a shallow red and blue ground loop beside it">
       <Cottage x={22} w={108} wall={44} detailed />
-      <g fill="none" {...pipe}>
+      <g {...pipe}>
         <path d={`M ${startX} 96 V ${runY} H ${x} V ${bottom - r} Q ${x} ${bottom} ${x + r} ${bottom}`} stroke={cool} />
         <path
           d={`M ${x + r} ${bottom} Q ${x + gap} ${bottom} ${x + gap} ${bottom - r} V ${top + r} Q ${x + gap} ${top} ${x + gap + r} ${top}`}
