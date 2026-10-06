@@ -3,7 +3,10 @@ import { Btn, Container, Eyebrow } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 
 export default function NotFound() {
-  usePageMeta({ title: 'Page not found — The GreyEdge Group' })
+  usePageMeta({
+    title: 'Page not found — The GreyEdge Group',
+    description: 'That page is not on The GreyEdge Group site. Head back to the homepage or browse projects and insights.',
+  })
 
   return (
     <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-ge-black py-28">

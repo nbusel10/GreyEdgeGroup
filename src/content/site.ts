@@ -4,6 +4,8 @@ export const org = {
   name: 'The GreyEdge Group',
   shortName: 'GreyEdge',
   tagline: 'Thermal Utility Master Planners',
+  description:
+    'The GreyEdge Group plans, designs, and delivers Thermal Energy Networks for developers, campuses, and communities. 300+ years of combined experience, one accountable partner from evaluation through expansion.',
   region: 'North America',
   email: 'info@greyedgegroup.com',
   social: {

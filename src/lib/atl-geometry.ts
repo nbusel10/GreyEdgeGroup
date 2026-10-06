@@ -91,7 +91,7 @@ const LABELS: Record<AtlIconId, string[]> = {
   housing: ['HOUSING'],
   hospital: ['HOSPITAL'],
   borefield: ['GEOEXCHANGE', 'BOREFIELD'],
-  wastewater: ['WASTEWATER', 'EXCHANGER'],
+  wastewater: ['WASTEWATER', 'HEAT EXCHANGER'],
   datacenter: ['DATA CENTER'],
 }
 

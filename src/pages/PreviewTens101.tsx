@@ -74,11 +74,11 @@ const faqs = [
   },
   {
     q: 'Does it work in cold climates?',
-    a: 'Particularly well. Below about six metres, ground temperature stays near the local annual average all year, so a system in Steamboat Springs is drawing from roughly 45°F ground while the air outside is below zero. The colder the air, the bigger the advantage over an air-source system.',
+    a: 'Absolutely. Below about six meters, ground temperature stays near the local annual average all year, so a system in Steamboat Springs is drawing from roughly 45°F ground while the air outside is below zero. The colder the air, the bigger the advantage over an air-source system.',
   },
   {
     q: 'Can an existing building connect to a Thermal Energy Network?',
-    a: 'Often, yes. The building connects through a heat pump, or through hydronics that can already run at ambient temperatures. Some buildings need that internal hydronic or heat-pump work before they can connect. The building still makes the final temperature change locally. It no longer has to produce or reject every unit of heat on its own.',
+    a: 'Yes, often with minimal interventions necessary. Depending on the type of system the existing building has, a heat pump system can replace boilers and chillers directly and serve as the connection between the building system and the central loop. In this case few or minimal changes are necessary out in the building itself and the connection becomes a mechanical room retrofit.',
   },
   {
     q: 'What is possible if the development is still growing?',
@@ -90,11 +90,25 @@ const faqs = [
   },
   {
     q: 'How long do these systems last?',
-    a: 'The ground loop is the long-lived part. The polyethylene piping is typically warranted for 50 years and expected to last longer. Heat pumps are replaced on a normal mechanical cycle of roughly 20 to 25 years, and a standard HVAC technician can maintain them. We keep an operating relationship with the systems we work on, including systems that have run continuously for 15 to 18 years.',
+    a: 'The ground loop is the long-lived part. The polyethylene piping is typically warranted for 50 years and expected to last longer. Heat pumps are replaced on a normal mechanical cycle of roughly 20 to 25 years, and a standard HVAC technician can maintain them.',
   },
   {
     q: 'What does a Thermal Energy Network cost, and when does it make financial sense?',
-    a: 'People often assume the first cost will be high. With diversity and incentives, it can be competitive. Operating cost is usually where networks win. Sharing a loop across different load profiles means less coincident plant, less electrical peak, and often less field than sizing every building independently. Compare lifecycle cost and avoided capacity, not bid-day HVAC alone.',
+    a: (
+      <>
+        The answer to this question is nuanced and needs to be developed for each application. Financial viability
+        often pivots on three questions: How large a load can you connect within a small geographic circle? What{' '}
+        <a href="#thermal-resources" className={proseLinkClass}>
+          thermal resources
+        </a>{' '}
+        are nearby? And what existing building systems are currently operating in the buildings being considered? State
+        and federal tax credits and incentives can go a long way toward making a{' '}
+        <a href="#networks" className={proseLinkClass}>
+          Thermal Energy Network
+        </a>{' '}
+        financially viable.
+      </>
+    ),
   },
   {
     q: 'Who owns and operates the network, and what happens if the development changes?',

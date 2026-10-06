@@ -16,6 +16,7 @@ export default function AtlExplainer({
   more,
   moreFullWidth = false,
   panelNoun = 'mode',
+  borderTop = true,
 }: {
   /** Replaces the intro paragraph. The live page leaves this unset. */
   intro?: ReactNode
@@ -27,6 +28,8 @@ export default function AtlExplainer({
   moreFullWidth?: boolean
   /** Name used for the four panels in labels and the screen reader. */
   panelNoun?: 'mode' | 'concept'
+  /** Draw the top rule. Off when this section sits directly under the page hero. */
+  borderTop?: boolean
 } = {}) {
   const uid = useId()
   const tablistId = `${uid}-modes`
@@ -97,7 +100,7 @@ export default function AtlExplainer({
   }
 
   return (
-    <Section id="thermal-highway" className="border-t border-ge-light bg-white">
+    <Section id="thermal-highway" className={`${borderTop ? 'border-t border-ge-light ' : ''}bg-white`}>
       <div ref={sectionRef}>
         <Container>
           <Reveal>

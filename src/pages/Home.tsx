@@ -27,8 +27,7 @@ export default function Home() {
 
   usePageMeta({
     title: `${org.name} — ${org.tagline}`,
-    description:
-      'We plan, design and deliver Thermal Energy Networks for developers, campuses and communities. 300+ years of combined experience, one accountable partner from evaluation through expansion.',
+    description: org.description,
   })
 
   return (

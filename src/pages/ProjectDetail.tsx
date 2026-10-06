@@ -19,7 +19,7 @@ export default function ProjectDetail() {
   const next = idx < projects.length - 1 ? projects[idx + 1] : projects[0]
 
   usePageMeta({
-    title: project ? `${project.name} — GreyEdge Projects` : 'Project — The GreyEdge Group',
+    title: project ? `${project.name} — The GreyEdge Group` : 'Project — The GreyEdge Group',
     description: project?.summary,
     image: project?.image ?? undefined,
   })

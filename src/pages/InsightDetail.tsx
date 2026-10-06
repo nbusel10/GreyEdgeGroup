@@ -10,7 +10,7 @@ export default function InsightDetail() {
   const insight = slug ? getInsight(slug) : undefined
 
   usePageMeta({
-    title: insight ? `${insight.title} — GreyEdge Insights` : 'Insight — The GreyEdge Group',
+    title: insight ? `${insight.title} — The GreyEdge Group` : 'Insight — The GreyEdge Group',
     description: insight?.summary,
     image: insight?.image ?? undefined,
   })

@@ -71,8 +71,8 @@ export default function Footer() {
       <Container className="py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-4">
           <div>
-            <Link to="/" className="text-2xl">
-              <Logo tone="light" />
+            <Link to="/" className="text-2xl" aria-label="The GreyEdge Group — home">
+              <Logo tone="light" scale={2.6} />
             </Link>
             <p className="mt-5 font-body text-xs leading-relaxed text-ge-light">
               {org.tagline}.

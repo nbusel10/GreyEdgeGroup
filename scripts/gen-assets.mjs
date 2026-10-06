@@ -54,6 +54,7 @@ ${routes
 async function ogImage() {
   const W = 1200
   const H = 630
+  const accentY = 470
 
   const photo = await sharp('public/images/site/hero-district.webp')
     .resize(W, H, { fit: 'cover', position: 'centre' })
@@ -62,8 +63,6 @@ async function ogImage() {
   const scrim = Buffer.from(
     `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <!-- The wordmark's "EDGE" half is sliced open, so the photo shows through it.
-             The scrim has to stay dark enough behind the mark for it to read. -->
         <linearGradient id="g" x1="0" y1="0" x2="0.55" y2="1">
           <stop offset="0%" stop-color="#14171A" stop-opacity="0.97"/>
           <stop offset="60%" stop-color="#14171A" stop-opacity="0.92"/>
@@ -71,16 +70,18 @@ async function ogImage() {
         </linearGradient>
       </defs>
       <rect width="${W}" height="${H}" fill="url(#g)"/>
-      <rect x="80" y="470" width="120" height="5" fill="#426255"/>
+      <rect x="80" y="${accentY}" width="120" height="5" fill="#426255"/>
     </svg>`,
   )
 
-  const logo = await sharp('public/images/brand/logo-white.webp').resize({ width: 480 }).toBuffer()
+  const logo = await sharp('public/images/brand/logo-white.webp').resize({ width: 520 }).toBuffer()
+  const logoHeight = (await sharp(logo).metadata()).height ?? 180
+  const logoTop = Math.max(48, accentY - 36 - logoHeight)
 
   await sharp(photo)
     .composite([
       { input: scrim, top: 0, left: 0 },
-      { input: logo, top: 240, left: 80 },
+      { input: logo, top: logoTop, left: 80 },
     ])
     .webp({ quality: 88 })
     .toFile('public/images/og-greyedge.webp')

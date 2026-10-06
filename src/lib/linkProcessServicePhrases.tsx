@@ -27,7 +27,7 @@ const servicePhrases: ServicePhrase[] = [
   },
   {
     phrase: 'energy modeling',
-    itemId: serviceItemId('service-assess', 'Energy Modeling'),
+    itemId: serviceItemId('service-define', 'Energy Modeling'),
   },
 ]
 

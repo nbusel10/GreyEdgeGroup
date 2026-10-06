@@ -169,7 +169,7 @@ export const atlIcons = [
   { id: 'housing', label: 'Housing', group: 'Buildings', Icon: HousingIcon, top: 6, base: 44 },
   { id: 'hospital', label: 'Hospital', group: 'Buildings', Icon: HospitalIcon, top: 7, base: 44 },
   { id: 'borefield', label: 'Geoexchange borefield', group: 'Resources', Icon: BorefieldIcon, top: 8, base: 44 },
-  { id: 'wastewater', label: 'Wastewater exchanger', group: 'Resources', Icon: WastewaterIcon, top: 13.5, base: 44 },
+  { id: 'wastewater', label: 'Wastewater heat exchanger', group: 'Resources', Icon: WastewaterIcon, top: 13.5, base: 44 },
   { id: 'datacenter', label: 'Data center', group: 'Resources', Icon: DataCenterIcon, top: 8, base: 44 },
 ] as const
 

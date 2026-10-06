@@ -1,6 +1,6 @@
 /**
- * The official GREYEDGE wordmark — including the diagonal slashes through EDGE.
- * Swaps between the light and dark brand assets depending on the surface.
+ * The GreyEdge Group lockup ("the" / GreyEdge / "group").
+ * Light tone is the white mark for dark surfaces; dark tone is the grey mark for light surfaces.
  */
 export default function Logo({
   className = '',
@@ -10,13 +10,12 @@ export default function Logo({
   className?: string
   /** 'light' for use on dark backgrounds. */
   tone?: 'light' | 'dark'
-  /** Height multiplier relative to parent font size. Defaults by tone. */
+  /** Height multiplier relative to parent font size. */
   scale?: number
 }) {
   const src = tone === 'light' ? '/images/brand/logo-white.webp' : '/images/brand/logo-dark.webp'
-  // White asset carries more transparent padding — scale up to match dark wordmark visually.
-  const resolvedScale = scale ?? (tone === 'light' ? 2.5 : 1.05)
-  const maxWidthEm = 11 * resolvedScale
+  const resolvedScale = scale ?? 1.95
+  const maxWidthEm = 8 * resolvedScale
 
   return (
     <span className={`inline-flex items-center ${className}`}>

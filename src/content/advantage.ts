@@ -111,7 +111,7 @@ export const serviceGroups: ServiceGroup[] = [
     items: [
       'Overall Program Planning',
       'Hydrogeologic Assessments',
-      'Energy Modeling',
+      'Identifying and Ranking Sink / Source / Storage Opportunities',
     ],
   },
   {
@@ -122,7 +122,7 @@ export const serviceGroups: ServiceGroup[] = [
     imageAlt: site['service-ground'].alt,
     items: [
       'Governance Structure Facilitations',
-      'Identifying and Ranking Sink / Source / Storage Opportunities',
+      'Energy Modeling',
       'Risk Reduction Management',
     ],
   },
@@ -159,7 +159,6 @@ export const serviceGroups: ServiceGroup[] = [
     items: [
       'Newly Constructed Geosystem Commissioning',
       'Certified Geo Inspector Review',
-      'Peak-Efficiency Startup',
     ],
   },
   {

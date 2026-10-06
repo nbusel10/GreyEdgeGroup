@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { site } from '../content/images'
 import { loopConceptMore } from '../content/loopConceptNotes'
 import { doors } from '../content/advantage'
@@ -46,26 +46,49 @@ const sources = [
   { name: 'Surface water', detail: 'Lakes, rivers and reservoirs, where permitting allows.' },
 ]
 
-const faqs = [
+const FAQ_LEAD = 4
+
+type FaqItem = { q: string; a: ReactNode; find?: string }
+
+const faqs: FaqItem[] = [
+  {
+    q: 'What does a Thermal Energy Network cost, and when does it make financial sense?',
+    find: 'The answer to this question is nuanced and needs to be developed for each application. Financial viability often pivots on three questions: How large a load can you connect within a small geographic circle? What thermal resources are nearby? And what existing building systems are currently operating in the buildings being considered? State and federal tax credits and incentives can go a long way toward making a Thermal Energy Network financially viable.',
+    a: (
+      <>
+        The answer to this question is nuanced and needs to be developed for each application. Financial viability
+        often pivots on three questions: How large a load can you connect within a small geographic circle? What{' '}
+        <a href="#thermal-resources" className={proseLinkClass}>
+          thermal resources
+        </a>{' '}
+        are nearby? And what existing building systems are currently operating in the buildings being considered? State
+        and federal tax credits and incentives can go a long way toward making a{' '}
+        <a href="#networks" className={proseLinkClass}>
+          Thermal Energy Network
+        </a>{' '}
+        financially viable.
+      </>
+    ),
+  },
   {
     q: 'Is this the same as geothermal power?',
     a: 'No. Geothermal power generation taps very high temperature resources to spin a turbine, and only works in a few places on earth. What we do is ground-source heat exchange: we use the stable moderate temperature of the shallow ground as a place to put heat in summer and take heat from in winter. It works essentially anywhere.',
   },
   {
     q: 'How is a Thermal Energy Network different from conventional district heating and cooling?',
-    a: 'Conventional district systems push hot or chilled water from a central plant to every building. A Thermal Energy Network is an ambient temperature loop: buildings and thermal resources trade usable heat on a shared pipe, and each building’s heat pumps make the final temperature lift. Central plant can be smaller, hybrid, or eventually backup, because diversity does work the plant used to do alone.',
+    a: 'Conventional district systems push hot or chilled water from a central plant to every building. A Thermal Energy Network is an ambient temperature loop: buildings and thermal resources trade usable heat within a shared pipe, and each building’s heat pumps make the final temperature lift. Thermal resources are distributed around the loop, which increases the system’s resiliency and efficiency.',
   },
   {
     q: 'Does every Thermal Energy Network need a geothermal borefield?',
-    a: 'No. Geoexchange is one common source, sink, and storage option, not a requirement for every network. Wastewater, process heat, surface water, mine water, and building-to-building diversity can share the load, which often shrinks how much field you need. When you do drill, bores go down rather than out and commonly sit under parking, fields, or the building footprint.',
+    a: 'No. Geoexchange is one common source, sink, and storage option, not a requirement for every network. Wastewater, process heat, surface water, mine water, and building-to-building diversity can share the load, which often shrinks how much field you need. When you do drill, bores commonly sit under parking, fields, or the building footprint.',
   },
   {
     q: 'Does it work in cold climates?',
-    a: 'Particularly well. Below about six metres, ground temperature stays near the local annual average all year, so a system in Steamboat Springs is drawing from roughly 45°F ground while the air outside is below zero. The colder the air, the bigger the advantage over an air-source system.',
+    a: 'Absolutely. Below about six meters, ground temperature stays near the local annual average all year, so a system in Steamboat Springs is drawing from roughly 45°F ground while the air outside is below zero. The colder the air, the bigger the advantage over an air-source system.',
   },
   {
     q: 'Can an existing building connect to a Thermal Energy Network?',
-    a: 'Often, yes. The building ties into the shared loop through a heat pump, or hydronics already able to work at those temperatures, so it can take heat from the network and give heat back. That is a connection, not a promise that the existing plant plugs in unchanged. Buildings still do the final lift locally; they no longer have to source or reject every unit of heat on their own.',
+    a: 'Yes, often with minimal interventions necessary. Depending on the type of system the existing building has, a heat pump system can replace boilers and chillers directly and serve as the connection between the building system and the central loop. In this case few or minimal changes are necessary out in the building itself and the connection becomes a mechanical room retrofit.',
   },
   {
     q: 'Can the network be built in phases as a development grows?',
@@ -77,11 +100,7 @@ const faqs = [
   },
   {
     q: 'How long do these systems last?',
-    a: 'The ground loop is the long-lived part. The polyethylene piping is typically warranted for 50 years and expected to last longer. Heat pumps are replaced on a normal mechanical cycle of roughly 20 to 25 years. We maintain operating relationships with systems that have run continuously for 15 to 18 years.',
-  },
-  {
-    q: 'What does a Thermal Energy Network cost, and when does it make financial sense?',
-    a: 'Compare lifecycle cost and avoided capacity, not bid-day HVAC alone. First cost can be higher or, with diversity and incentives, competitive; operating cost is usually where networks win. Sharing a loop across different load profiles means less coincident plant, less electrical peak, and often less field than sizing every building independently.',
+    a: 'The ground loop is the long-lived part. The polyethylene piping is typically warranted for 50 years and expected to last longer. Heat pumps are replaced on a normal mechanical cycle of roughly 20 to 25 years.',
   },
   {
     q: 'Who owns and operates the network, and what happens if the development changes?',
@@ -93,6 +112,59 @@ const faqs = [
   },
 ]
 
+function faqSearchText(f: FaqItem) {
+  const body = f.find ?? (typeof f.a === 'string' ? f.a : '')
+  return `${f.q} ${body}`.toLowerCase()
+}
+
+function FaqPlus({ open, className = 'mt-1.5' }: { open: boolean; className?: string }) {
+  return (
+    <svg
+      className={`h-4 w-4 shrink-0 text-ge-accent transition-transform ${open ? 'rotate-45' : ''} ${className}`}
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  )
+}
+
+function FaqList({
+  items,
+  open,
+  onToggle,
+}: {
+  items: FaqItem[]
+  open: number | null
+  onToggle: (i: number) => void
+}) {
+  return (
+    <dl className="border-t border-ge-light">
+      {items.map((f, i) => (
+        <div key={f.q} className="border-b border-ge-light">
+          <dt>
+            <button
+              type="button"
+              onClick={() => onToggle(i)}
+              aria-expanded={open === i}
+              className="flex w-full items-start justify-between gap-6 py-6 text-left"
+            >
+              <span className="font-display text-xl font-bold uppercase leading-snug tracking-wide text-ge-black sm:text-2xl">
+                {f.q}
+              </span>
+              <FaqPlus open={open === i} />
+            </button>
+          </dt>
+          {open === i && (
+            <dd className="fade-slide-up max-w-3xl pb-7 font-body text-base leading-relaxed text-ge-graphite">{f.a}</dd>
+          )}
+        </div>
+      ))}
+    </dl>
+  )
+}
+
 export default function Geothermal101() {
   usePageMeta({
     title: 'Thermal Energy Networks 101 — The GreyEdge Group',
@@ -102,6 +174,11 @@ export default function Geothermal101() {
   })
 
   const [openFaq, setOpenFaq] = useState<number | null>(0)
+  const [openMoreFaq, setOpenMoreFaq] = useState<number | null>(null)
+  const [moreFaqs, setMoreFaqs] = useState(false)
+  const [faqQuery, setFaqQuery] = useState('')
+  const faqQueryText = faqQuery.trim().toLowerCase()
+  const faqMatches = faqQueryText ? faqs.filter((f) => faqSearchText(f).includes(faqQueryText)) : []
   const [schematicOpen, setSchematicOpen] = useState(false)
   const schematicBtnRef = useRef<HTMLButtonElement>(null)
   const schematicCloseRef = useRef<HTMLButtonElement>(null)
@@ -130,7 +207,9 @@ export default function Geothermal101() {
         lead="Built from decades of industry experience, this guide explains what thermal energy networks are, why they work, and how they help solve the energy, cost, and infrastructure challenges facing communities today."
       />
 
-      <Section id="geo-types" className="border-b border-ge-light bg-ge-offwhite">
+      <AtlExplainer panelNoun="concept" more={loopConceptMore()} moreFullWidth borderTop={false} />
+
+      <Section id="geo-types" className="border-y border-ge-light bg-ge-offwhite">
         <Container>
           <Reveal>
             <Eyebrow>The types</Eyebrow>
@@ -290,8 +369,6 @@ export default function Geothermal101() {
         </Container>
       </Section>
 
-      <AtlExplainer panelNoun="concept" more={loopConceptMore()} moreFullWidth />
-
       {/* Sources */}
       <Section id="thermal-resources" className="border-t border-ge-light bg-ge-offwhite">
         <Container>
@@ -349,36 +426,64 @@ export default function Geothermal101() {
             </h2>
           </Reveal>
 
-          <dl className="mt-12 border-t border-ge-light">
-            {faqs.map((f, i) => (
-              <div key={f.q} className="border-b border-ge-light">
-                <dt>
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    aria-expanded={openFaq === i}
-                    className="flex w-full items-start justify-between gap-6 py-6 text-left"
-                  >
-                    <span className="font-display text-xl font-bold uppercase leading-snug tracking-wide text-ge-black sm:text-2xl">
-                      {f.q}
-                    </span>
-                    <svg
-                      className={`mt-1.5 h-4 w-4 shrink-0 text-ge-accent transition-transform ${openFaq === i ? 'rotate-45' : ''}`}
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" />
-                    </svg>
-                  </button>
-                </dt>
-                {openFaq === i && (
-                  <dd className="fade-slide-up max-w-3xl pb-7 font-body text-base leading-relaxed text-ge-graphite">
-                    {f.a}
-                  </dd>
+          <label className="mt-10 block max-w-xl">
+            <span className="font-body text-[11px] font-medium uppercase tracking-[0.18em] text-ge-steel">
+              Search questions
+            </span>
+            <input
+              value={faqQuery}
+              onChange={(e) => {
+                setFaqQuery(e.target.value)
+                setOpenFaq(null)
+                setOpenMoreFaq(null)
+              }}
+              placeholder="Cold climates, ownership, financial…"
+              className="mt-2 w-full border border-ge-light bg-white px-4 py-3 font-body text-sm text-ge-black placeholder:text-ge-steel focus:border-ge-accent focus:outline-none"
+            />
+          </label>
+
+          <div className="mt-8">
+            {faqQuery.trim() ? (
+              faqMatches.length > 0 ? (
+                <FaqList
+                  items={faqMatches}
+                  open={openFaq}
+                  onToggle={(i) => setOpenFaq(openFaq === i ? null : i)}
+                />
+              ) : (
+                <p className="border-y border-ge-light py-6 font-body text-base text-ge-graphite">No questions match.</p>
+              )
+            ) : (
+              <>
+                <FaqList
+                  items={faqs.slice(0, FAQ_LEAD)}
+                  open={openFaq}
+                  onToggle={(i) => setOpenFaq(openFaq === i ? null : i)}
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMoreFaqs((open) => !open)
+                    if (moreFaqs) setOpenMoreFaq(null)
+                  }}
+                  aria-expanded={moreFaqs}
+                  className="flex w-full items-center justify-between gap-6 border-b border-ge-light py-6 text-left"
+                >
+                  <span className="font-display text-xl font-bold uppercase leading-snug tracking-wide text-ge-black sm:text-2xl">
+                    More questions
+                  </span>
+                  <FaqPlus open={moreFaqs} className="" />
+                </button>
+                {moreFaqs && (
+                  <FaqList
+                    items={faqs.slice(FAQ_LEAD)}
+                    open={openMoreFaq}
+                    onToggle={(i) => setOpenMoreFaq(openMoreFaq === i ? null : i)}
+                  />
                 )}
-              </div>
-            ))}
-          </dl>
+              </>
+            )}
+          </div>
 
           <Reveal className="mt-14">
             <div className="flex flex-col items-start justify-between gap-6 border border-ge-light bg-ge-offwhite p-8 md:flex-row md:items-center md:p-10">
