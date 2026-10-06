@@ -4,7 +4,7 @@ import { org } from '../content/site'
 import { site } from '../content/images'
 import { doors } from '../content/advantage'
 import PageHero from '../components/PageHero'
-import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
+import { Btn, Container, Eyebrow } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 
 /**
@@ -87,15 +87,16 @@ export default function Contact() {
   return (
     <>
       <PageHero
+        className="pb-8 md:pb-10"
         eyebrow="Start Planning"
         title="Let's plan what's next"
         lead="Whether you're planning a new community, evaluating district-scale infrastructure, or working through grid constraints, bring us your vision, your data, or your questions. We'll help you uncover the opportunities and chart the path forward."
       />
 
-      <Section className="bg-ge-offwhite">
+      <section className="relative bg-ge-offwhite pb-20 pt-8 md:pb-24 md:pt-10">
         <Container>
           <div className="grid gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
-            <Reveal>
+            <div>
               {status === 'sent' ? (
                 <div role="status" className="border border-ge-accent bg-white p-10 text-center">
                   <span className="text-ge-accent" aria-hidden="true">
@@ -185,9 +186,9 @@ export default function Contact() {
                   </div>
                 </form>
               )}
-            </Reveal>
+            </div>
 
-            <Reveal delay={0.08}>
+            <div>
               <div className="border border-ge-light bg-white p-8">
                 <Eyebrow>Direct</Eyebrow>
                 <h2 className="mt-4 font-display text-2xl font-bold uppercase tracking-wide text-ge-black">
@@ -225,10 +226,10 @@ export default function Contact() {
                   {doors.education.cta}
                 </Btn>
               </div>
-            </Reveal>
+            </div>
           </div>
         </Container>
-      </Section>
+      </section>
     </>
   )
 }

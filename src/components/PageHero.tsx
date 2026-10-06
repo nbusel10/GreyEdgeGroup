@@ -10,14 +10,19 @@ export default function PageHero({
   title,
   lead,
   children,
+  className = '',
 }: {
   eyebrow: string
   title: ReactNode
   lead?: ReactNode
   children?: ReactNode
+  /** Replaces the default bottom padding when a page needs the next section closer. */
+  className?: string
 }) {
   return (
-    <section className="relative overflow-hidden bg-ge-black pb-16 pt-32 md:pb-20 md:pt-40">
+    <section
+      className={`relative overflow-hidden bg-ge-black pt-32 md:pt-40 ${className || 'pb-16 md:pb-20'}`}
+    >
       <div
         className="pointer-events-none absolute inset-0"
         aria-hidden="true"
