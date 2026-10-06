@@ -131,10 +131,7 @@ export default function TeamMemberPage() {
               )}
             </div>
             <div>
-              <h1
-                className="font-display font-bold uppercase leading-none tracking-tight text-white"
-                style={{ fontSize: '65px' }}
-              >
+              <h1 className="page-title font-display font-bold uppercase leading-none tracking-tight text-white">
                 {member.name}
               </h1>
               {member.role && (
@@ -275,7 +272,7 @@ export default function TeamMemberPage() {
                 to={`/team/${m.slug}`}
                 className="group bg-white p-5 transition-colors hover:bg-ge-offwhite md:p-6"
               >
-                <div className={`font-body text-[10px] uppercase tracking-[0.2em] text-ge-steel ${align}`}>{dir}</div>
+                <div className={`font-body text-[10px] uppercase tracking-[0.2em] text-ge-graphite ${align}`}>{dir}</div>
                 <div
                   className={`mt-2 font-display text-2xl font-bold uppercase tracking-wide text-ge-black transition-colors group-hover:text-ge-accent ${align}`}
                 >

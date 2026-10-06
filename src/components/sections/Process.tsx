@@ -13,7 +13,7 @@ function phaseIndexFromHash(hash: string): number | null {
 }
 
 /**
- * "The Process" — five phases on a centered timeline with detail cards.
+ * "The Process" — six phases on a centered timeline with detail cards.
  * Hover syncs timeline nodes and fills each card green; hash links pin a card until the user moves the mouse.
  */
 export default function Process() {
@@ -82,14 +82,14 @@ export default function Process() {
         <div className="flex items-baseline gap-2">
           <span
             className={`font-display text-3xl font-bold leading-none transition-colors duration-200 ${
-              lit ? 'text-white/90' : 'text-ge-light'
+              lit ? 'text-white/90' : 'text-ge-graphite'
             }`}
           >
             {phase.num}
           </span>
           <span
             className={`font-body text-[10px] uppercase tracking-[0.18em] transition-colors duration-200 ${
-              lit ? 'text-white/80' : 'text-ge-steel'
+              lit ? 'text-white/80' : 'text-ge-graphite'
             }`}
           >
             {phase.subtitle}
@@ -137,7 +137,7 @@ export default function Process() {
             The <span className="text-ge-accent">Process</span>
           </h2>
           <p className="mt-7 max-w-none font-body text-base leading-relaxed text-ge-graphite sm:text-lg">{intro}</p>
-          <p className="mt-4 max-w-none font-body text-sm italic leading-relaxed text-ge-steel">{anyPhaseNote}</p>
+          <p className="mt-4 max-w-none font-body text-sm italic leading-relaxed text-ge-graphite">{anyPhaseNote}</p>
         </Reveal>
 
         <Reveal delay={0.08}>
@@ -184,14 +184,14 @@ export default function Process() {
                       className={`relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 font-display text-lg font-bold leading-none transition-colors duration-200 ${
                         lit
                           ? 'border-ge-accent bg-ge-accent text-white'
-                          : 'border-ge-light bg-white text-ge-steel group-hover:border-ge-accent group-hover:bg-ge-accent group-hover:text-white'
+                          : 'border-ge-graphite bg-white text-ge-graphite group-hover:border-ge-accent group-hover:bg-ge-accent group-hover:text-white'
                       } ${pulsing ? 'process-pin-glow process-pin-glow-node' : ''}`}
                     >
                       {p.num}
                     </span>
                     <span
                       className={`mt-2 font-body text-[10px] uppercase leading-tight tracking-[0.14em] transition-colors duration-200 ${
-                        lit ? 'text-ge-accent' : 'text-ge-steel group-hover:text-ge-accent'
+                        lit ? 'text-ge-accent' : 'text-ge-graphite group-hover:text-ge-accent'
                       }`}
                     >
                       {p.subtitle}
@@ -208,7 +208,7 @@ export default function Process() {
                 <Card key={p.num} phase={p} index={i} />
               ))}
             </div>
-            <div className="mt-5 grid gap-5 lg:grid-cols-2">
+            <div className="mt-5 grid gap-5 lg:grid-cols-3">
               {bottom.map((p, i) => (
                 <Card key={p.num} phase={p} index={i + 3} />
               ))}

@@ -41,13 +41,13 @@ export default function ProjectCard({ project, eager = false }: { project: Proje
         <div className="mt-auto pt-5">
           <dl className="flex flex-col gap-3">
             <div className="flex items-center gap-3">
-              <dt className="shrink-0 font-body text-[10px] uppercase tracking-[0.18em] text-ge-steel">Buildings Sq Ft</dt>
+              <dt className="shrink-0 font-body text-[10px] uppercase tracking-[0.18em] text-ge-graphite">Buildings Sq Ft</dt>
               <span aria-hidden className="stat-leader" />
               <dd className="shrink-0 font-display text-lg font-bold text-ge-black">{sqFeet ?? 'In progress'}</dd>
             </div>
             {snowmeltSqFeet && (
               <div className="flex items-center gap-3">
-                <dt className="shrink-0 font-body text-[10px] uppercase tracking-[0.18em] text-ge-steel">
+                <dt className="shrink-0 font-body text-[10px] uppercase tracking-[0.18em] text-ge-graphite">
                   Snowmelt sq ft
                 </dt>
                 <span aria-hidden className="stat-leader" />
@@ -55,7 +55,7 @@ export default function ProjectCard({ project, eager = false }: { project: Proje
               </div>
             )}
             <div className="flex items-center gap-3">
-              <dt className="shrink-0 font-body text-[10px] uppercase tracking-[0.18em] text-ge-steel">Buildings</dt>
+              <dt className="shrink-0 font-body text-[10px] uppercase tracking-[0.18em] text-ge-graphite">Buildings</dt>
               <span aria-hidden className="stat-leader stat-leader-delay" />
               <dd className="shrink-0 font-display text-lg font-bold text-ge-black">{buildings ?? 'In progress'}</dd>
             </div>

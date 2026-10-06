@@ -2,9 +2,17 @@ import { useEffect, useId, useRef, useState } from 'react'
 import type { ProjectGalleryImage } from '../content/projects'
 import { Container, Eyebrow, Reveal } from './ui'
 
+function focusableIn(root: HTMLElement) {
+  return [...root.querySelectorAll<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter(
+    (el) => !el.hasAttribute('disabled') && el.tabIndex !== -1,
+  )
+}
+
 export default function ProjectGallery({ images }: { images: ProjectGalleryImage[] }) {
   const [active, setActive] = useState<number | null>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement | null>(null)
   const titleId = useId()
   const open = active !== null
   const current = open ? images[active] : null
@@ -13,6 +21,7 @@ export default function ProjectGallery({ images }: { images: ProjectGalleryImage
     if (!open) return
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
+    const returnTo = triggerRef.current
     closeRef.current?.focus()
 
     const onKey = (e: KeyboardEvent) => {
@@ -20,11 +29,26 @@ export default function ProjectGallery({ images }: { images: ProjectGalleryImage
       if (e.key === 'ArrowRight') setActive((i) => (i === null ? i : (i + 1) % images.length))
       if (e.key === 'ArrowLeft')
         setActive((i) => (i === null ? i : (i - 1 + images.length) % images.length))
+      if (e.key !== 'Tab') return
+      const dialog = dialogRef.current
+      if (!dialog) return
+      const items = focusableIn(dialog)
+      if (items.length === 0) return
+      const first = items[0]
+      const last = items[items.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => {
       document.body.style.overflow = prevOverflow
       window.removeEventListener('keydown', onKey)
+      returnTo?.focus()
     }
   }, [open, images.length])
 
@@ -41,7 +65,10 @@ export default function ProjectGallery({ images }: { images: ProjectGalleryImage
                 <li key={img.src}>
                   <button
                     type="button"
-                    onClick={() => setActive(i)}
+                    onClick={(e) => {
+                      triggerRef.current = e.currentTarget
+                      setActive(i)
+                    }}
                     aria-label={`View larger: ${img.alt}`}
                     className="img-cut group relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden bg-ge-offwhite text-left"
                   >
@@ -65,6 +92,7 @@ export default function ProjectGallery({ images }: { images: ProjectGalleryImage
           onClick={() => setActive(null)}
         >
           <div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}

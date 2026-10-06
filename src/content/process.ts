@@ -1,5 +1,5 @@
 /**
- * "The Process" — five phases from feasibility through ongoing partnership.
+ * "The Process" — six phases from feasibility through ongoing partnership.
  *
  * Every phase is a valid place to start, with a line on what we do with work
  * already completed by others so prospects do not assume they must begin over.
@@ -67,13 +67,24 @@ export const phases: Phase[] = [
       'Already have engineers or designers on your team? We regularly collaborate with existing project teams, providing geothermal and Thermal Energy Network expertise where it adds the most value without disrupting project momentum.',
   },
   {
+    id: 'geosystem-commissioning',
+    serviceId: 'service-commission',
+    num: '05',
+    title: 'Geosystem Commissioning',
+    subtitle: 'Commission',
+    description:
+      'This phase commissions a newly constructed geosystem. We bring our expertise and certifications, including Certified Geo Inspector, to confirm the system is ready to operate at peak efficiency after construction.',
+    entry:
+      'Already finished construction? We can commission a newly built geosystem, using Certified Geo Inspector expertise to confirm it is ready to operate at peak efficiency.',
+  },
+  {
     id: 'ongoing-partnership',
     serviceId: 'service-guide',
-    num: '05',
+    num: '06',
     title: 'Ongoing Partnership',
     subtitle: 'Guide',
     description:
-      'Thermal Energy Networks are long-term infrastructure investments. After implementation, our role often shifts toward commissioning, performance validation, owner\'s representation, operational support, technology planning, and ongoing optimization to ensure the system continues delivering value over time.',
+      'Thermal Energy Networks are long-term infrastructure investments. After implementation, our role often shifts toward performance validation, operational support, technology planning, and ongoing optimization to ensure the system continues delivering value over time.',
     entry:
       'Already have a functioning network? We can serve as a long-term advisor, helping operators optimize performance, evaluate expansion opportunities, and adapt to changing technologies while protecting the original investment.',
   },

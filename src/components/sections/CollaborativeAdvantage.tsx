@@ -62,14 +62,14 @@ export default function CollaborativeAdvantage() {
                       <div className="flex items-baseline gap-4">
                         <span
                           className={`font-display text-xl font-bold leading-none ${
-                            selected ? 'text-ge-accent' : 'text-ge-steel'
+                            selected ? 'text-ge-accent' : 'text-ge-graphite'
                           }`}
                         >
                           {String(i + 1).padStart(2, '0')}
                         </span>
                         <span
                           className={`font-display text-lg font-bold uppercase leading-snug tracking-wide transition-colors ${
-                            selected ? 'text-ge-black' : 'text-ge-steel group-hover:text-ge-graphite'
+                            selected ? 'text-ge-black' : 'text-ge-graphite group-hover:text-ge-black'
                           }`}
                         >
                           {item.short}
@@ -84,7 +84,7 @@ export default function CollaborativeAdvantage() {
                           </p>
                           <p className="mt-3 font-body text-sm leading-relaxed text-ge-graphite">{item.detail}</p>
                           <div className="mt-4">
-                            <div className="font-body text-[10px] uppercase tracking-[0.22em] text-ge-steel">
+                            <div className="font-body text-[10px] uppercase tracking-[0.22em] text-ge-graphite">
                               Where we come in
                             </div>
                             <div className="mt-2 flex flex-wrap gap-2">

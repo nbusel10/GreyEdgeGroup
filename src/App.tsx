@@ -25,6 +25,7 @@ import Insights from './pages/Insights'
 import InsightDetail from './pages/InsightDetail'
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
+import Accessibility from './pages/Accessibility'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -69,6 +70,7 @@ export default function App() {
           <Route path="/insights/:slug" element={<InsightDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/accessibility" element={<Accessibility />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

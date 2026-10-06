@@ -166,7 +166,7 @@ export default function Home() {
                       <span className="font-body text-[10px] uppercase tracking-[0.18em] text-ge-accent">
                         {item.category}
                       </span>
-                      <span className="font-body text-[10px] text-ge-steel">{item.readTime}</span>
+                      <span className="font-body text-[10px] text-ge-graphite">{item.readTime}</span>
                     </div>
                     <h3 className="mt-4 font-display text-xl font-bold uppercase leading-tight tracking-wide text-ge-black">
                       {item.title}

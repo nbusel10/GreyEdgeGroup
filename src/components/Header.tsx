@@ -53,6 +53,10 @@ const navItems: NavItem[] = [
   { label: 'Insights', to: '/insights' },
 ]
 
+function navPanelId(label: string) {
+  return `nav-panel-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+}
+
 export default function Header() {
   const scrolled = useScrolled(32)
   const { pathname } = useLocation()
@@ -60,6 +64,12 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileSection, setMobileSection] = useState<string | null>(null)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const drawerRef = useRef<HTMLDivElement>(null)
+  const mobileOpenRef = useRef(false)
+  const returnFocusOnClose = useRef(false)
+
+  mobileOpenRef.current = mobileOpen
 
   const onHome = pathname === '/' || pathname === '/preview-home'
   // Transparent over the home hero only, and only before scrolling.
@@ -80,14 +90,39 @@ export default function Header() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setOpenMenu(null)
-        setMobileOpen(false)
-      }
+      if (e.key !== 'Escape') return
+      setOpenMenu(null)
+      if (!mobileOpenRef.current) return
+      returnFocusOnClose.current = true
+      setMobileOpen(false)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [])
+
+  useEffect(() => {
+    if (!openMenu) return
+    const onFocusIn = (e: globalThis.FocusEvent) => {
+      const target = e.target
+      if (!(target instanceof Node)) return
+      const trigger = document.querySelector(`[aria-controls="${navPanelId(openMenu)}"]`)
+      const wrap = trigger?.parentElement
+      if (wrap?.contains(target)) return
+      setOpenMenu((current) => (current === openMenu ? null : current))
+    }
+    document.addEventListener('focusin', onFocusIn)
+    return () => document.removeEventListener('focusin', onFocusIn)
+  }, [openMenu])
+
+  useEffect(() => {
+    if (mobileOpen) {
+      drawerRef.current?.querySelector<HTMLElement>('a, button')?.focus()
+      return
+    }
+    if (!returnFocusOnClose.current) return
+    returnFocusOnClose.current = false
+    menuButtonRef.current?.focus()
+  }, [mobileOpen])
 
   const open = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
@@ -100,8 +135,6 @@ export default function Header() {
   const keepOpen = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
   }
-
-  const active = navItems.find((i) => i.label === openMenu)
 
   return (
     <header
@@ -121,9 +154,26 @@ export default function Header() {
           {/* Desktop navigation */}
           <nav className="hidden items-center lg:flex lg:gap-5 xl:gap-8" aria-label="Main">
             {navItems.map((item) => (
-              <div key={item.label} onMouseEnter={() => (item.children ? open(item.label) : setOpenMenu(null))}>
+              <div
+                key={item.label}
+                data-nav-item={item.label}
+                onMouseEnter={() => (item.children ? open(item.label) : setOpenMenu(null))}
+              >
                 <NavLink
                   to={item.to}
+                  onFocus={() => {
+                    if (item.children) open(item.label)
+                  }}
+                  onBlur={
+                    item.children
+                      ? (e) => {
+                          const next = e.relatedTarget
+                          const wrap = e.currentTarget.parentElement
+                          if (next instanceof Node && wrap?.contains(next)) return
+                          setOpenMenu((current) => (current === item.label ? null : current))
+                        }
+                      : undefined
+                  }
                   className={({ isActive }) =>
                     `group relative flex items-center gap-1 py-2 font-body text-[10px] font-medium uppercase tracking-[0.16em] transition-colors xl:text-[11px] ${
                       overHero
@@ -134,6 +184,7 @@ export default function Header() {
                     }`
                   }
                   aria-expanded={item.children ? openMenu === item.label : undefined}
+                  aria-controls={item.children ? navPanelId(item.label) : undefined}
                 >
                   {({ isActive }) => (
                     <>
@@ -151,6 +202,39 @@ export default function Header() {
                     </>
                   )}
                 </NavLink>
+                {item.children && openMenu === item.label && (
+                  <div
+                    id={navPanelId(item.label)}
+                    className="absolute inset-x-0 top-full hidden border-y border-ge-light bg-white shadow-[0_18px_40px_-24px_rgba(20,23,26,0.35)] lg:block"
+                    onMouseEnter={keepOpen}
+                    onMouseLeave={scheduleClose}
+                  >
+                    <Container>
+                      <div className="grid grid-cols-3 gap-8 py-9">
+                        {item.children.map((sub) => (
+                          <Link
+                            key={sub.label}
+                            to={sub.to}
+                            className="group"
+                            onClick={() => setOpenMenu(null)}
+                            onBlur={(e) => {
+                              const next = e.relatedTarget
+                              const wrap = e.currentTarget.closest('[data-nav-item]')
+                              if (next instanceof Node && wrap?.contains(next)) return
+                              setOpenMenu((current) => (current === item.label ? null : current))
+                            }}
+                          >
+                            <div className="font-display text-lg font-bold uppercase tracking-wide text-ge-black transition-colors group-hover:text-ge-accent">
+                              {sub.label}
+                            </div>
+                            <div className="mt-1 font-body text-xs text-ge-graphite">{sub.desc}</div>
+                            <span className="rule-grow mt-3" />
+                          </Link>
+                        ))}
+                      </div>
+                    </Container>
+                  </div>
+                )}
               </div>
             ))}
           </nav>
@@ -163,9 +247,19 @@ export default function Header() {
 
           <div className="flex items-center gap-3 lg:hidden">
             <button
-              onClick={() => setMobileOpen((v) => !v)}
+              ref={menuButtonRef}
+              type="button"
+              onClick={() => {
+                if (mobileOpen) {
+                  returnFocusOnClose.current = true
+                  setMobileOpen(false)
+                } else {
+                  setMobileOpen(true)
+                }
+              }}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
+              aria-controls="mobile-nav"
               className={overHero ? 'text-white' : 'text-ge-charcoal'}
             >
               <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
@@ -180,32 +274,13 @@ export default function Header() {
         </div>
       </Container>
 
-      {/* Full-width dropdown panel */}
-      {active?.children && (
-        <div
-          className="absolute inset-x-0 top-full hidden border-y border-ge-light bg-white shadow-[0_18px_40px_-24px_rgba(20,23,26,0.35)] lg:block"
-          onMouseEnter={keepOpen}
-          onMouseLeave={scheduleClose}
-        >
-          <Container>
-            <div className="grid grid-cols-3 gap-8 py-9">
-              {active.children.map((sub) => (
-                <Link key={sub.label} to={sub.to} className="group" onClick={() => setOpenMenu(null)}>
-                  <div className="font-display text-lg font-bold uppercase tracking-wide text-ge-black transition-colors group-hover:text-ge-accent">
-                    {sub.label}
-                  </div>
-                  <div className="mt-1 font-body text-xs text-ge-steel">{sub.desc}</div>
-                  <span className="rule-grow mt-3" />
-                </Link>
-              ))}
-            </div>
-          </Container>
-        </div>
-      )}
-
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="absolute inset-x-0 top-full max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-ge-light bg-white lg:hidden">
+        <div
+          ref={drawerRef}
+          id="mobile-nav"
+          className="absolute inset-x-0 top-full max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-ge-light bg-white lg:hidden"
+        >
           <Container className="py-6">
             <ul className="flex flex-col">
               {navItems.map((item) => (
@@ -219,10 +294,12 @@ export default function Header() {
                     </Link>
                     {item.children && (
                       <button
+                        type="button"
                         onClick={() => setMobileSection(mobileSection === item.label ? null : item.label)}
                         aria-label={`${mobileSection === item.label ? 'Collapse' : 'Expand'} ${item.label}`}
                         aria-expanded={mobileSection === item.label}
-                        className="p-3 text-ge-steel"
+                        aria-controls={`mobile-sub-${navPanelId(item.label)}`}
+                        className="p-3 text-ge-graphite"
                       >
                         <svg
                           className={`h-4 w-4 transition-transform ${mobileSection === item.label ? 'rotate-180' : ''}`}
@@ -235,7 +312,7 @@ export default function Header() {
                     )}
                   </div>
                   {item.children && mobileSection === item.label && (
-                    <ul className="pb-4 pl-1">
+                    <ul id={`mobile-sub-${navPanelId(item.label)}`} className="pb-4 pl-1">
                       {item.children.map((sub) => (
                         <li key={sub.label}>
                           <Link to={sub.to} className="block py-2.5 font-body text-sm text-ge-graphite">

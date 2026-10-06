@@ -27,6 +27,8 @@ const geoTerms: GeoTerm[] = [
   { label: 'Thermal Highway©', to: '/geothermal-101#thermal-highway', id: 'thermal-highway' },
   { label: 'Thermal Highway', to: '/geothermal-101#thermal-highway', id: 'thermal-highway' },
   { label: 'thermal highway', to: '/geothermal-101#thermal-highway', id: 'thermal-highway' },
+  { label: 'geothermal resources', to: '/geothermal-101#thermal-resources', id: 'thermal-resources' },
+  { label: 'Geothermal resources', to: '/geothermal-101#thermal-resources', id: 'thermal-resources' },
   { label: 'thermal resources', to: '/geothermal-101#thermal-resources', id: 'thermal-resources' },
   { label: 'Thermal Assets', to: '/geothermal-101#thermal-resources', id: 'thermal-resources' },
   { label: 'Thermal assets', to: '/geothermal-101#thermal-resources', id: 'thermal-resources' },

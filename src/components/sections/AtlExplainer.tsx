@@ -14,6 +14,7 @@ export default function AtlExplainer({
   intro,
   captions,
   more,
+  moreFullWidth = false,
   panelNoun = 'mode',
 }: {
   /** Replaces the intro paragraph. The live page leaves this unset. */
@@ -22,6 +23,8 @@ export default function AtlExplainer({
   captions?: Partial<Record<string, string>>
   /** Longer notes under each concept. The live page leaves this unset. */
   more?: Partial<Record<string, ReactNode>>
+  /** Let those notes use the full panel width. */
+  moreFullWidth?: boolean
   /** Name used for the four panels in labels and the screen reader. */
   panelNoun?: 'mode' | 'concept'
 } = {}) {
@@ -148,14 +151,14 @@ export default function AtlExplainer({
                   onClick={() => select(i, true)}
                   onKeyDown={(e) => onTabKey(e, i)}
                   className={`group relative px-1.5 py-3 text-center transition-colors sm:px-3 sm:py-4 ${
-                    selected ? 'bg-ge-accent-bright' : 'bg-ge-offwhite hover:bg-white/70'
+                    selected ? 'bg-ge-accent' : 'bg-ge-offwhite hover:bg-white/70'
                   } ${i % 2 === 0 ? 'border-r border-ge-light' : ''} ${
                     i < 2 ? 'border-b border-ge-light sm:border-b-0' : ''
                   } ${i === 1 ? 'sm:border-r sm:border-ge-light' : ''}`}
                 >
                   <span
                     className={`block font-display text-[18px] font-bold uppercase leading-snug tracking-wide ${
-                      selected ? 'text-white' : 'text-ge-accent/80 group-hover:text-ge-accent'
+                      selected ? 'text-white' : 'text-ge-accent group-hover:text-ge-accent-deep'
                     }`}
                   >
                     {m.tab}
@@ -181,7 +184,11 @@ export default function AtlExplainer({
 
             <figcaption>
               <p className="font-body text-sm leading-relaxed text-ge-graphite">{caption}</p>
-              {extra ? <MoreInfo key={mode.id}>{extra}</MoreInfo> : null}
+              {extra ? (
+                <MoreInfo key={mode.id} fullWidth={moreFullWidth}>
+                  {extra}
+                </MoreInfo>
+              ) : null}
             </figcaption>
 
             <AtlDiagram modeId={mode.id} className="mx-auto mt-8 max-w-[360px] md:max-w-none" />

@@ -55,11 +55,24 @@ was written for this build. The importer never touches these.
 
 ## Deploying
 
-`pnpm build` produces a static `dist/`. Point any static host at it.
+A push to `dev` builds the site, publishes that build to `main`, then tells cPanel to
+pull `main` into <https://thegreyedge.buselmeier.com>.
 
-The app uses real client-side routes, so the host has to serve `index.html` for unknown
-paths. `public/_redirects` handles this on Netlify and Cloudflare Pages; other hosts
-need the equivalent SPA fallback configured.
+The cPanel clone has to live in that subdomain’s document root and track `main`.
+Copy its deployment URL once:
+
+1. cPanel → **Git Version Control** → **Manage** on that repository → **Pull or Deploy**.
+2. Copy the deployment URL.
+3. GitHub → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**.
+   Name it `CPANEL_DEPLOY_URL` and paste the URL.
+
+Until that secret exists, the action updates `main` and then stops, which leaves the
+subdomain unchanged. `greyedgegroup.com` is a different host and is not updated by
+this deploy.
+
+`pnpm build` still writes a static `dist/` if you need a manual upload. Client-side
+routes need `index.html` for unknown paths. `public/.htaccess` covers Apache;
+`public/_redirects` covers Netlify and Cloudflare Pages.
 
 ## Contact form
 

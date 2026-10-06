@@ -72,7 +72,7 @@ const btnBase =
 
 const btnVariants: Record<BtnVariant, string> = {
   solid: 'bg-ge-black text-white hover:bg-ge-accent',
-  outline: 'border border-ge-light text-ge-graphite hover:border-ge-accent hover:text-ge-accent',
+  outline: 'border border-ge-graphite text-ge-graphite hover:border-ge-accent hover:text-ge-accent',
   light: 'bg-white text-ge-black hover:bg-ge-accent hover:text-white',
   ghost: 'border border-white/40 text-white hover:border-ge-accent hover:text-ge-accent-bright',
 }
@@ -137,7 +137,7 @@ export function StatBlock({
       </div>
       <div
         className={`mt-3 font-body text-[11px] uppercase tracking-[0.16em] ${
-          tone === 'light' ? 'text-ge-silver' : 'text-ge-steel'
+          tone === 'light' ? 'text-ge-silver' : 'text-ge-graphite'
         }`}
       >
         {label}

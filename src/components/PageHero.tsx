@@ -39,10 +39,7 @@ export default function PageHero({
           />
           <div className="min-w-0">
             <Eyebrow tone="light">{eyebrow}</Eyebrow>
-            <h1
-              className="mt-5 font-display font-bold uppercase leading-[0.96] tracking-tight text-white"
-              style={{ fontSize: '65px' }}
-            >
+            <h1 className="page-title mt-5 font-display font-bold uppercase leading-[0.96] tracking-tight text-white">
               {title}
             </h1>
             {lead && (

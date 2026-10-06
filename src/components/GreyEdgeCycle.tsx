@@ -32,6 +32,18 @@ function wordTone(word: string) {
   return LOCK_WORD.startsWith(word) || word.startsWith(LOCK_WORD) ? 'text-ge-graphite' : 'text-white'
 }
 
+/**
+ * EDGE with the brand diagonal slash cutouts (~35°, same motif as the lockup
+ * GIF / wordmark). Keeps the live Lato glyph so it matches GREY beside it.
+ */
+function EdgeSlashMark({ className = '' }: { className?: string }) {
+  return (
+    <span className={`ge-word-edge-slash ${className}`} aria-hidden="true">
+      {ANCHOR_WORD}
+    </span>
+  )
+}
+
 function Slot({ children, clip = true }: { children: ReactNode; clip?: boolean }) {
   return (
     <span className="ge-word-slot relative inline-grid justify-items-end">
@@ -316,7 +328,7 @@ function FlyUpPack({ state }: { state: FlyUpState }) {
           >
             {slotWord}
           </span>
-          <span className="text-white">{ANCHOR_WORD}</span>
+          <EdgeSlashMark className="text-white" />
         </span>
       </span>
       <span className={`ge-word-fly-row ge-word-fly-row--below ${phase === 'reset' ? 'is-reset' : ''}`}>
@@ -438,7 +450,7 @@ function BlockRotatePack({ state }: { state: BlockRotateState }) {
               {slotWord}
             </span>
           </span>
-          <span className="text-white">{ANCHOR_WORD}</span>
+          <EdgeSlashMark className="text-white" />
         </span>
       </span>
       <span className={`ge-word-fly-row ge-word-fly-row--below ${phase === 'reset' ? 'is-reset' : ''}`}>
@@ -564,9 +576,7 @@ export default function GreyEdgeCycle({
             <span className="text-ge-graphite" aria-hidden="true">
               {LOCK_WORD}
             </span>
-            <span className="text-white" aria-hidden="true">
-              {ANCHOR_WORD}
-            </span>
+            <EdgeSlashMark className="text-white" />
           </>
         )}
         <span className="ge-word-gold-line" aria-hidden="true" />
@@ -613,9 +623,7 @@ export default function GreyEdgeCycle({
           <Slot clip={variant === 'slot-reel'}>
             <AdjectiveSlot variant={variant} cycle={cycle} typed={typed.text} />
           </Slot>
-          <span className="text-white" aria-hidden="true">
-            {ANCHOR_WORD}
-          </span>
+          <EdgeSlashMark className="text-white" />
         </>
       )}
       <span className="ge-word-gold-line" aria-hidden="true" />

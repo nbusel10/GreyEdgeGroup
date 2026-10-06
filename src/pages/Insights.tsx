@@ -29,17 +29,17 @@ export default function Insights() {
 
       <Section className="bg-ge-offwhite">
         <Container>
-          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter insights by category">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter insights by category">
             {insightCategories.map((c) => (
               <button
                 key={c}
-                role="tab"
-                aria-selected={filter === c}
+                type="button"
+                aria-pressed={filter === c}
                 onClick={() => setFilter(c)}
                 className={`border px-5 py-2.5 font-body text-[11px] uppercase tracking-[0.16em] transition-colors ${
                   filter === c
                     ? 'border-ge-black bg-ge-black text-white'
-                    : 'border-ge-light bg-white text-ge-graphite hover:border-ge-accent hover:text-ge-accent'
+                    : 'border-ge-graphite bg-white text-ge-graphite hover:border-ge-accent hover:text-ge-accent'
                 }`}
               >
                 {c}
@@ -89,7 +89,7 @@ export default function Insights() {
                         <span className="font-body text-[10px] uppercase tracking-[0.18em] text-ge-accent">
                           {item.category}
                         </span>
-                        <span className="font-body text-[10px] uppercase tracking-[0.12em] text-ge-steel">
+                        <span className="font-body text-[10px] uppercase tracking-[0.12em] text-ge-graphite">
                           {item.level}
                         </span>
                       </div>
@@ -99,7 +99,7 @@ export default function Insights() {
                       <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-ge-graphite">{item.summary}</p>
                       <div className="mt-5 flex items-center justify-between">
                         <span className="rule-grow" />
-                        <span className="font-body text-[10px] text-ge-steel">{item.readTime}</span>
+                        <span className="font-body text-[10px] text-ge-graphite">{item.readTime}</span>
                       </div>
                     </div>
                   </Link>

@@ -128,7 +128,7 @@ export default function InsightDetail() {
                   to={`/insights/${p.slug}`}
                   className="group bg-white p-7 transition-colors hover:bg-ge-offwhite"
                 >
-                  <div className={`font-body text-[10px] uppercase tracking-[0.2em] text-ge-steel ${align}`}>{dir}</div>
+                  <div className={`font-body text-[10px] uppercase tracking-[0.2em] text-ge-graphite ${align}`}>{dir}</div>
                   <div
                     className={`mt-2 font-display text-xl font-bold uppercase tracking-wide text-ge-black transition-colors group-hover:text-ge-accent sm:text-2xl ${align}`}
                   >

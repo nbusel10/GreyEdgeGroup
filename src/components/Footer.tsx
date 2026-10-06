@@ -30,6 +30,7 @@ const columns: { title: string; links: { label: string; to: string }[] }[] = [
       { label: 'Projects', to: '/projects' },
       { label: 'Contact', to: '/contact' },
       { label: 'Privacy Policy', to: '/privacy' },
+      { label: 'Accessibility', to: '/accessibility' },
     ],
   },
 ]
@@ -129,12 +130,20 @@ export default function Footer() {
           <p className="font-body text-xs text-ge-steel">
             © {new Date().getFullYear()} {org.name}. All rights reserved.
           </p>
-          <Link
-            to="/privacy"
-            className="font-body text-xs text-ge-steel underline decoration-ge-charcoal underline-offset-4 transition-colors hover:text-ge-accent-bright hover:decoration-ge-accent"
-          >
-            Privacy Policy
-          </Link>
+          <div className="flex gap-6">
+            <Link
+              to="/privacy"
+              className="font-body text-xs text-ge-steel underline decoration-ge-charcoal underline-offset-4 transition-colors hover:text-ge-accent-bright hover:decoration-ge-accent"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/accessibility"
+              className="font-body text-xs text-ge-steel underline decoration-ge-charcoal underline-offset-4 transition-colors hover:text-ge-accent-bright hover:decoration-ge-accent"
+            >
+              Accessibility
+            </Link>
+          </div>
         </div>
       </Container>
     </footer>

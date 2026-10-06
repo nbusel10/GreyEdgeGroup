@@ -37,7 +37,7 @@ export const lessons: Lesson[] = [
     detail:
       'Projects risk non-performance, overruns, over-complication, and weak stakeholder and offtaker integration. We gather, refine, and vet the facts to describe technical potential and cut risk. Then we convene the right people around the three pillars—who pays, who owns, who operates—and help choose the fit. Many projects stall after they prove technically viable because those three stay undefined.',
     capability: 'Phases 01–02 Feasibility Study—concept through design, engineering, and procurement',
-    processPhases: ['phase-1-feasibility-study', 'phase-2-feasibility-study'],
+    processPhases: ['phase-1-feasibility-study', 'phase-2-feasibility-study', 'geosystem-commissioning'],
     image: site.blueprints.src,
     imageAlt: site.blueprints.alt,
   },
@@ -52,12 +52,19 @@ export const lessons: Lesson[] = [
     imageAlt: site['approach-existing-assets'].alt,
   },
   {
-    short: 'The seams',
+    short: 'Making the Connection',
     lesson: 'Thermal Energy Networks involve more than engineering.',
     detail:
       'Success depends on connecting the many disciplines, stakeholders, and decisions that shape a project.',
     capability: 'Master planning and owner’s representation',
-    processPhases: ['phase-2-feasibility-study', 'design', 'ongoing-partnership'],
+    processPhases: [
+      'phase-1-feasibility-study',
+      'phase-2-feasibility-study',
+      'retro-commissioning',
+      'design',
+      'geosystem-commissioning',
+      'ongoing-partnership',
+    ],
     image: site['approach-planning-session'].src,
     imageAlt: site['approach-planning-session'].alt,
   },
@@ -65,9 +72,9 @@ export const lessons: Lesson[] = [
     short: 'Right-sizing',
     lesson: 'Over-engineered safety factors make systems too expensive—and impractical to build.',
     detail:
-      'Right-sizing is a design-execution risk under real-world budget constraints. We design systems that perform without stacking engineering safety factors until the project can no longer be built or funded. Work within the budget, make it work, and do not over-engineer—if you know the rules that hold the system up, and when safety factors are actually needed.',
+      'Right-sizing requires balancing engineering performance with real-world budget constraints. Our deep understanding of system design allows us to apply safety factors where they matter, without unnecessary overengineering that can make projects too costly or impractical to build.',
     capability: 'Lean design and engineering—Phase 02 Design',
-    processPhases: ['phase-1-feasibility-study', 'phase-2-feasibility-study', 'design'],
+    processPhases: ['phase-2-feasibility-study', 'design'],
     image: site['campus-build'].src,
     imageAlt: site['campus-build'].alt,
   },
@@ -77,7 +84,7 @@ export const lessons: Lesson[] = [
     detail:
       'When the rubber meets the road, verification, commissioning, and performance validation turn design promises into operating results. Without them, a strong design stays an idea. With them, the system delivers what was promised.',
     capability: 'Retro-commissioning and resource integration',
-    processPhases: ['retro-commissioning', 'ongoing-partnership'],
+    processPhases: ['retro-commissioning', 'geosystem-commissioning', 'ongoing-partnership'],
     image: site['thermal-plant-inspection'].src,
     imageAlt: site['thermal-plant-inspection'].alt,
   },
@@ -115,8 +122,7 @@ export const serviceGroups: ServiceGroup[] = [
     imageAlt: site['service-ground'].alt,
     items: [
       'Governance Structure Facilitations',
-      'Best Technology Assessment',
-      'Identifying and Optimizing Sink / Source / Storage Opportunities',
+      'Identifying and Ranking Sink / Source / Storage Opportunities',
       'Risk Reduction Management',
     ],
   },
@@ -141,8 +147,19 @@ export const serviceGroups: ServiceGroup[] = [
     imageAlt: site['service-network'].alt,
     items: [
       'Ambient Temperature Loop System Design',
-      'HVAC System Design',
       'Best Value Design Trade-Offs',
+    ],
+  },
+  {
+    id: 'service-commission',
+    short: 'Commission',
+    title: 'Geosystem Commissioning',
+    image: site['mechanical-room'].src,
+    imageAlt: site['mechanical-room'].alt,
+    items: [
+      'Newly Constructed Geosystem Commissioning',
+      'Certified Geo Inspector Review',
+      'Peak-Efficiency Startup',
     ],
   },
   {
@@ -151,7 +168,7 @@ export const serviceGroups: ServiceGroup[] = [
     title: 'Ongoing Partnership',
     image: site['service-advisory'].src,
     imageAlt: site['service-advisory'].alt,
-    items: ['Technology Upgrade Planning', 'System Technical Training'],
+    items: ['Technology Upgrade Planning', 'System Technical Training', 'Performance Monitoring and Evaluation'],
   },
 ]
 

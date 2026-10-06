@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { org } from '../content/site'
 import { site } from '../content/images'
@@ -39,6 +39,11 @@ export default function Contact() {
 
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState<string | null>(null)
+  const thanksRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    if (status === 'sent') thanksRef.current?.focus()
+  }, [status])
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -92,11 +97,15 @@ export default function Contact() {
           <div className="grid gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
             <Reveal>
               {status === 'sent' ? (
-                <div className="border border-ge-accent bg-white p-10 text-center">
+                <div role="status" className="border border-ge-accent bg-white p-10 text-center">
                   <span className="text-ge-accent" aria-hidden="true">
                     //
                   </span>
-                  <h2 className="mt-6 font-display text-3xl font-bold uppercase tracking-wide text-ge-black">
+                  <h2
+                    ref={thanksRef}
+                    tabIndex={-1}
+                    className="mt-6 font-display text-3xl font-bold uppercase tracking-wide text-ge-black focus-target"
+                  >
                     Thank you
                   </h2>
                   <p className="mx-auto mt-4 max-w-md font-body text-base leading-relaxed text-ge-graphite">
@@ -137,7 +146,7 @@ export default function Contact() {
                       id="help"
                       name="help"
                       defaultValue={helpOptions[0]}
-                      className="mt-2 w-full border border-ge-light bg-white px-4 py-3 font-body text-sm text-ge-black transition-colors focus:border-ge-accent focus:outline-none"
+                      className="mt-2 w-full border border-ge-graphite bg-white px-4 py-3 font-body text-sm text-ge-black transition-colors placeholder:text-ge-graphite focus:border-ge-accent"
                     >
                       {helpOptions.map((o) => (
                         <option key={o} value={o}>
@@ -155,7 +164,7 @@ export default function Contact() {
                       rows={6}
                       required
                       placeholder="Site, timeline, what you've already looked at, and what's making the decision hard."
-                      className="mt-2 w-full border border-ge-light bg-white px-4 py-3 font-body text-sm text-ge-black transition-colors placeholder:text-ge-steel focus:border-ge-accent focus:outline-none"
+                      className="mt-2 w-full border border-ge-graphite bg-white px-4 py-3 font-body text-sm text-ge-black transition-colors placeholder:text-ge-graphite focus:border-ge-accent"
                     />
                   </div>
 
@@ -253,7 +262,7 @@ function Field({
     <div>
       <Label htmlFor={name}>
         {label}
-        {optional && <span className="ml-2 normal-case tracking-normal text-ge-steel">(optional)</span>}
+        {optional && <span className="ml-2 normal-case tracking-normal text-ge-graphite">(optional)</span>}
       </Label>
       <input
         id={name}
@@ -262,7 +271,7 @@ function Field({
         required={required}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        className="mt-2 w-full border border-ge-light bg-white px-4 py-3 font-body text-sm text-ge-black transition-colors placeholder:text-ge-steel focus:border-ge-accent focus:outline-none"
+        className="mt-2 w-full border border-ge-graphite bg-white px-4 py-3 font-body text-sm text-ge-black transition-colors placeholder:text-ge-graphite focus:border-ge-accent"
       />
     </div>
   )

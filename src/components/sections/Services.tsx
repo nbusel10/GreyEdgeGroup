@@ -4,7 +4,7 @@ import { capabilityNote, serviceGroups } from '../../content/advantage'
 import { serviceHashTarget, serviceItemId } from '../../lib/serviceItemId'
 import { Container, Eyebrow, Reveal, Section } from '../ui'
 
-/** Our Services — five category photo cards, height follows content. */
+/** Our Services — six category photo cards, height follows content. */
 export default function Services() {
   const { hash } = useLocation()
   const initial = serviceHashTarget(hash)
@@ -60,7 +60,7 @@ export default function Services() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-12 grid items-start gap-5 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-12 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {serviceGroups.map((g, i) => {
               const num = String(i + 1).padStart(2, '0')
               const cardLit = hoverLocked && pinnedCard === i
@@ -87,7 +87,7 @@ export default function Services() {
                   >
                     <span
                       className={`block font-body text-[10px] tracking-[0.18em] ${
-                        cardLit ? 'text-white/70' : 'text-ge-steel'
+                        cardLit ? 'text-white/70' : 'text-ge-graphite'
                       }`}
                     >
                       {num}

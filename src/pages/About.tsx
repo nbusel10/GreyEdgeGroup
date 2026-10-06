@@ -375,7 +375,7 @@ function TeamCard({ member }: { member: TeamMember }) {
           {member.name}
         </div>
         {member.role && (
-          <div className="mt-1.5 font-body text-xs leading-snug text-ge-steel">{member.role}</div>
+          <div className="mt-1.5 font-body text-xs leading-snug text-ge-graphite">{member.role}</div>
         )}
       </Link>
     </article>

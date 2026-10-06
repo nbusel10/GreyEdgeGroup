@@ -81,10 +81,7 @@ export default function ProjectDetail() {
             </span>
             <span className="font-body text-xs uppercase tracking-[0.16em] text-white/70">{project.location}</span>
           </div>
-          <h1
-            className="mt-4 font-display font-bold uppercase leading-[0.95] tracking-tight text-white"
-            style={{ fontSize: '65px' }}
-          >
+          <h1 className="page-title mt-4 font-display font-bold uppercase leading-[0.95] tracking-tight text-white">
             {project.name}
           </h1>
         </Container>
@@ -107,7 +104,7 @@ export default function ProjectDetail() {
             >
               {stats.map((s) => (
                 <div key={s.label} className="flex flex-col items-center">
-                  <dt className="font-body text-[10px] uppercase tracking-[0.2em] text-ge-steel">{s.label}</dt>
+                  <dt className="font-body text-[10px] uppercase tracking-[0.2em] text-ge-graphite">{s.label}</dt>
                   <dd className="mt-2 font-display text-2xl font-bold uppercase tracking-wide text-ge-black md:text-3xl">
                     {s.value}
                   </dd>
@@ -234,7 +231,7 @@ export default function ProjectDetail() {
                 to={`/projects/${p.slug}`}
                 className="group bg-white p-5 transition-colors hover:bg-ge-offwhite md:p-6"
               >
-                <div className={`font-body text-[10px] uppercase tracking-[0.2em] text-ge-steel ${align}`}>{dir}</div>
+                <div className={`font-body text-[10px] uppercase tracking-[0.2em] text-ge-graphite ${align}`}>{dir}</div>
                 <div
                   className={`mt-2 font-display text-2xl font-bold uppercase tracking-wide text-ge-black transition-colors group-hover:text-ge-accent ${align}`}
                 >

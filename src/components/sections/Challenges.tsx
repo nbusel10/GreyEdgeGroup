@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useRef, useState, type KeyboardEvent } from 'react'
 import { challenges } from '../../content/challenges'
 import { barriers } from '../../content/site'
 import { Container, Eyebrow, Reveal, Section } from '../ui'
@@ -10,7 +10,33 @@ import { Container, Eyebrow, Reveal, Section } from '../ui'
 export default function Challenges() {
   const [activeIdx, setActiveIdx] = useState(0)
   const [openIdx, setOpenIdx] = useState<number | null>(0)
+  const tablistId = useId()
+  const panelId = `${tablistId}-panel`
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   const active = challenges[activeIdx]
+
+  const selectTab = (next: number, fromKeyboard: boolean) => {
+    const wrapped = (next + challenges.length) % challenges.length
+    setActiveIdx(wrapped)
+    if (fromKeyboard) tabRefs.current[wrapped]?.focus()
+  }
+
+  const onTabKey = (e: KeyboardEvent<HTMLButtonElement>, i: number) => {
+    const last = challenges.length - 1
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault()
+      selectTab(i + 1, true)
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault()
+      selectTab(i - 1, true)
+    } else if (e.key === 'Home') {
+      e.preventDefault()
+      selectTab(0, true)
+    } else if (e.key === 'End') {
+      e.preventDefault()
+      selectTab(last, true)
+    }
+  }
 
   return (
     <Section className="border-t border-ge-light bg-ge-offwhite">
@@ -47,23 +73,30 @@ export default function Challenges() {
                 return (
                   <button
                     key={c.label}
+                    ref={(el) => {
+                      tabRefs.current[i] = el
+                    }}
+                    id={`${tablistId}-tab-${i}`}
                     role="tab"
                     aria-selected={selected}
-                    onClick={() => setActiveIdx(i)}
+                    aria-controls={panelId}
+                    tabIndex={selected ? 0 : -1}
+                    onClick={() => selectTab(i, false)}
+                    onKeyDown={(e) => onTabKey(e, i)}
                     className={`group relative flex flex-col items-start gap-2 border-r border-ge-light px-3 py-5 text-left transition-colors last:border-r-0 lg:px-5 lg:py-6 ${
                       selected ? 'bg-white' : 'hover:bg-white/60'
                     }`}
                   >
                     <span
                       className={`font-body text-[10px] tracking-[0.18em] ${
-                        selected ? 'text-ge-accent' : 'text-ge-steel'
+                        selected ? 'text-ge-accent' : 'text-ge-graphite'
                       }`}
                     >
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span
                       className={`font-display text-[13px] font-bold uppercase leading-snug tracking-wide transition-colors lg:text-base ${
-                        selected ? 'text-ge-black' : 'text-ge-steel group-hover:text-ge-graphite'
+                        selected ? 'text-ge-black' : 'text-ge-graphite group-hover:text-ge-black'
                       }`}
                     >
                       <span className="lg:hidden">{c.short}</span>
@@ -80,7 +113,14 @@ export default function Challenges() {
               })}
             </div>
 
-            <div key={activeIdx} className="fade-slide-up grid bg-white lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
+            <div
+              key={activeIdx}
+              role="tabpanel"
+              id={panelId}
+              aria-labelledby={`${tablistId}-tab-${activeIdx}`}
+              tabIndex={0}
+              className="fade-slide-up grid bg-white focus-target lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]"
+            >
               <div className="img-cut relative min-h-56 overflow-hidden bg-ge-light lg:min-h-full">
                 <img
                   src={active.image}
@@ -95,7 +135,7 @@ export default function Challenges() {
               </div>
               <div className="space-y-7 p-8 lg:space-y-8 lg:p-10">
                 <div>
-                  <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-steel">The challenge</div>
+                  <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-graphite">The challenge</div>
                   <p className="mt-3 font-body text-[15px] leading-relaxed text-ge-graphite">{active.problem}</p>
                 </div>
                 <div>
@@ -105,7 +145,7 @@ export default function Challenges() {
                   <p className="mt-3 font-body text-[15px] leading-relaxed text-ge-graphite">{active.approach}</p>
                 </div>
                 <div className="border-l-2 border-ge-accent py-1 pl-6">
-                  <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-steel">Outcome</div>
+                  <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-graphite">Outcome</div>
                   <p className="mt-2 font-display text-xl font-bold uppercase leading-snug tracking-wide text-ge-black">
                     {active.outcome}
                   </p>
@@ -133,7 +173,7 @@ export default function Challenges() {
                   </span>
                 </span>
                 <svg
-                  className={`mt-1 h-4 w-4 shrink-0 text-ge-steel transition-transform ${openIdx === i ? 'rotate-180' : ''}`}
+                  className={`mt-1 h-4 w-4 shrink-0 text-ge-graphite transition-transform ${openIdx === i ? 'rotate-180' : ''}`}
                   viewBox="0 0 16 16"
                   fill="none"
                   aria-hidden="true"
@@ -145,7 +185,7 @@ export default function Challenges() {
                 <div className="fade-slide-up space-y-5 px-5 pb-6">
                   <img src={c.image} alt={c.imageAlt} className="img-cut h-36 w-full object-cover" loading="lazy" />
                   <div>
-                    <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-steel">The challenge</div>
+                    <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-graphite">The challenge</div>
                     <p className="mt-2 font-body text-sm leading-relaxed text-ge-graphite">{c.problem}</p>
                   </div>
                   <div>
@@ -155,7 +195,7 @@ export default function Challenges() {
                     <p className="mt-2 font-body text-sm leading-relaxed text-ge-graphite">{c.approach}</p>
                   </div>
                   <div className="border-l-2 border-ge-accent pl-4">
-                    <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-steel">Outcome</div>
+                    <div className="font-body text-[10px] uppercase tracking-[0.24em] text-ge-graphite">Outcome</div>
                     <p className="mt-2 font-display text-base font-bold uppercase tracking-wide text-ge-black">
                       {c.outcome}
                     </p>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { site } from '../content/images'
+import { loopConceptMore } from '../content/loopConceptNotes'
 import { doors } from '../content/advantage'
 import GeoTypeArt from '../components/GeoTypeArt'
 import PageHero from '../components/PageHero'
@@ -289,7 +290,7 @@ export default function Geothermal101() {
         </Container>
       </Section>
 
-      <AtlExplainer panelNoun="concept" />
+      <AtlExplainer panelNoun="concept" more={loopConceptMore()} moreFullWidth />
 
       {/* Sources */}
       <Section id="thermal-resources" className="border-t border-ge-light bg-ge-offwhite">

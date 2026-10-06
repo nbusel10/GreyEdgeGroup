@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 /** Closed by default. Opening one does not close the others. */
-export default function MoreInfo({ children }: { children: ReactNode }) {
+export default function MoreInfo({ children, fullWidth = false }: { children: ReactNode; fullWidth?: boolean }) {
   return (
     <details className="group mt-4">
       <summary className="flex w-fit cursor-pointer list-none items-center gap-2 font-display text-sm font-bold uppercase tracking-wide text-ge-black [&::-webkit-details-marker]:hidden">
@@ -15,7 +15,11 @@ export default function MoreInfo({ children }: { children: ReactNode }) {
         </svg>
         More info
       </summary>
-      <div className="mt-3 max-w-3xl space-y-3 font-body text-sm leading-relaxed text-ge-graphite">{children}</div>
+      <div
+        className={`mt-3 space-y-3 font-body text-sm leading-relaxed text-ge-graphite ${fullWidth ? 'max-w-none' : 'max-w-3xl'}`}
+      >
+        {children}
+      </div>
     </details>
   )
 }

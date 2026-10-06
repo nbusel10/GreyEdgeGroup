@@ -42,6 +42,7 @@ export const industryUrls = {
   ushgc:
     'https://iapmo.org/codes-standards-development/code-development/uniform-solar-hydronics-and-geothermal-code',
   mit: 'https://www.mit.edu/',
+  forge: 'https://utahforge.com/',
 } as const
 
 /** Named phrases in credit body copy — not the org label, which is linked separately. */
@@ -51,6 +52,7 @@ export const detailLinks = [
   { label: 'Certified Geo Designer', href: industryUrls.cgd },
   { label: 'CSA/ANSI C448', href: industryUrls.c448 },
   { label: 'MIT', href: industryUrls.mit },
+  { label: 'FORGE', href: industryUrls.forge },
 ] as const
 
 /** In-site phrase links in credit body copy (distinct from outbound detailLinks). */
@@ -149,7 +151,7 @@ export const credits: Credit[] = [
     title: 'Applied geothermal research',
     org: 'University partnerships',
     detail:
-      'Ongoing thermal conductivity and diffusivity testing innovation, in partnership with university research programs, including MIT as a current partner.',
+      'John McLennan serves as a technical leader at FORGE, the U.S. Department of Energy’s enhanced geothermal research laboratory. Garen Ewbank continues to pioneer thermal conductivity and diffusivity testing methods in collaboration with university research programs. Our team’s expertise is also recognized through invitations to lecture at MIT, connecting cutting-edge research with real-world applications.',
   },
 ]
 

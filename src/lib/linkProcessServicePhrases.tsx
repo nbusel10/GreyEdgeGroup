@@ -22,16 +22,8 @@ const servicePhrases: ServicePhrase[] = [
     itemId: serviceItemId('service-define', 'Governance Structure Facilitations'),
   },
   {
-    phrase: 'technology assessment',
-    itemId: serviceItemId('service-define', 'Best Technology Assessment'),
-  },
-  {
     phrase: 'technology planning',
     itemId: serviceItemId('service-guide', 'Technology Upgrade Planning'),
-  },
-  {
-    phrase: 'building systems',
-    itemId: serviceItemId('service-design', 'HVAC System Design'),
   },
   {
     phrase: 'energy modeling',

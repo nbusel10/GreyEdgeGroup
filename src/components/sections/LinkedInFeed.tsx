@@ -196,7 +196,7 @@ export default function LinkedInFeed() {
                   scrollByCard(1)
                 }
               }}
-              className={`flex gap-5 overflow-x-auto overscroll-x-contain pb-1 outline-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+              className={`flex gap-5 overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
                 dragging
                   ? 'cursor-grabbing snap-none select-none'
                   : 'cursor-grab snap-x snap-mandatory'
@@ -236,7 +236,7 @@ export default function LinkedInFeed() {
                       </span>
                       <time
                         dateTime={post.publishedAt}
-                        className="font-body text-[10px] text-ge-steel"
+                        className="font-body text-[10px] text-ge-graphite"
                       >
                         {formatLinkedInDate(post.publishedAt)}
                       </time>
@@ -254,7 +254,7 @@ export default function LinkedInFeed() {
             </div>
 
             {posts.length > 1 && (
-              <div className="mt-5 flex justify-center gap-2" aria-label="Carousel position">
+              <div className="mt-5 flex justify-center gap-2" role="group" aria-label="Carousel position">
                 {posts.map((post, i) => (
                   <button
                     key={post.id}
@@ -262,10 +262,12 @@ export default function LinkedInFeed() {
                     aria-label={`Show post ${i + 1} of ${posts.length}`}
                     aria-current={i === index ? 'true' : undefined}
                     onClick={() => scrollToCard(i)}
-                    className={`h-1.5 transition-colors ${
-                      i === index ? 'w-6 bg-ge-accent' : 'w-1.5 bg-ge-light hover:bg-ge-steel'
-                    }`}
-                  />
+                    className="inline-flex h-6 w-6 items-center justify-center"
+                  >
+                    <span
+                      className={`block h-1.5 ${i === index ? 'w-6 bg-ge-accent' : 'w-1.5 bg-ge-graphite'}`}
+                    />
+                  </button>
                 ))}
               </div>
             )}
