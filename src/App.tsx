@@ -15,6 +15,7 @@ import PreviewYear from './pages/PreviewYear'
 import PreviewTens101 from './pages/PreviewTens101'
 import PreviewTens101Short from './pages/PreviewTens101Short'
 import PreviewLoopConcepts from './pages/PreviewLoopConcepts'
+import PreviewHomeLoop from './pages/PreviewHomeLoop'
 import PreviewFaq from './pages/PreviewFaq'
 import Approach from './pages/Approach'
 import Projects from './pages/Projects'
@@ -61,6 +62,8 @@ export default function App() {
           <Route path="/preview-tens-101-short" element={<PreviewTens101Short />} />
           {/* Temporary: Megan's notes on the four loop concepts. Remove with the page. */}
           <Route path="/preview-loop-concepts" element={<PreviewLoopConcepts />} />
+          {/* Temporary: homepage placements for the loop animation. Remove with the page. */}
+          <Route path="/preview-home-loop" element={<PreviewHomeLoop />} />
           {/* Temporary: FAQ reveal comparison. Remove with the page. */}
           <Route path="/preview-faq" element={<PreviewFaq />} />
           <Route path="/approach" element={<Approach />} />

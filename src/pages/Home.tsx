@@ -79,8 +79,8 @@ export default function Home() {
               <Btn to="/contact" variant="light">
                 Start planning
               </Btn>
-              <Btn to="/projects" variant="ghost">
-                See our work
+              <Btn to="/geothermal-101#thermal-highway" variant="ghost">
+                See how it works
               </Btn>
             </div>
           </div>
