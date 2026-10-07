@@ -20,6 +20,8 @@ yarn-error.log*
 pnpm-debug.log*
 logs
 *.log
+greyedge-private/
+public/.faq-logs/*.log
 
 # Vite / TS caches
 .vite

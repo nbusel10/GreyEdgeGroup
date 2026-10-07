@@ -179,6 +179,26 @@ export default function Geothermal101() {
   const [faqQuery, setFaqQuery] = useState('')
   const faqQueryText = faqQuery.trim().toLowerCase()
   const faqMatches = faqQueryText ? faqs.filter((f) => faqSearchText(f).includes(faqQueryText)) : []
+  const lastLoggedFaq = useRef('')
+
+  useEffect(() => {
+    const q = faqQuery.trim().replace(/\s+/g, ' ')
+    if (q.length < 2) return
+    const matches = faqMatches.length
+    const id = window.setTimeout(() => {
+      const key = `${q}\t${matches}`
+      if (lastLoggedFaq.current === key) return
+      lastLoggedFaq.current = key
+      const body = new URLSearchParams({ q, matches: String(matches) })
+      fetch('/faq-search.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+        keepalive: true,
+      }).catch(() => {})
+    }, 900)
+    return () => window.clearTimeout(id)
+  }, [faqQuery, faqMatches.length])
   const [schematicOpen, setSchematicOpen] = useState(false)
   const schematicBtnRef = useRef<HTMLButtonElement>(null)
   const schematicCloseRef = useRef<HTMLButtonElement>(null)

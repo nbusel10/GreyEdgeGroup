@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero'
 import { Container, Reveal, Section, proseLinkClass } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 
-const LAST_UPDATED = 'September 9, 2026'
+const LAST_UPDATED = 'October 6, 2026'
 
 const sections: { id: string; title: string; body: ReactNode }[] = [
   {
@@ -34,6 +34,11 @@ const sections: { id: string; title: string; body: ReactNode }[] = [
           <li>Project location and details you share through our contact form or email</li>
           <li>Any other information you choose to send us</li>
         </ul>
+        <p className="mt-4">
+          When you search the questions on our Thermal Energy Networks page, we store the phrase you
+          typed and how many questions matched. We use that to improve those answers. We do not attach
+          the phrase to your name, email, or IP address.
+        </p>
         <p className="mt-4">
           When you visit our website, our hosting provider and related infrastructure may automatically
           collect technical data such as IP address, browser type, device information, pages visited, and

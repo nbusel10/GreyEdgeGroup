@@ -74,6 +74,23 @@ this deploy.
 routes need `index.html` for unknown paths. `public/.htaccess` covers Apache;
 `public/_redirects` covers Netlify and Cloudflare Pages.
 
+## FAQ search log
+
+On Thermal Energy Networks 101, a search is written to a file after the visitor pauses
+typing. Each line is the UTC time, how many questions matched, and the phrase. No name
+or IP address is stored.
+
+The file sits one level above the site folder, so a deploy does not replace it and it
+is not on the web:
+
+`greyedge-private/faq-search.log`
+
+In cPanel File Manager, open the document root, go up one directory, then open
+`greyedge-private`. If the host will not allow that folder, the script uses
+`.faq-logs/faq-search.log` inside the site instead. Apache refuses requests for that
+folder. The dev server does not run PHP, so a local search is not stored. Once the log
+reaches about 2 MB, new lines stop until the file is renamed or deleted.
+
 ## Contact form
 
 The form posts to `/contact.php` on this site. cPanel runs that script and emails
