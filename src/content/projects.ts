@@ -359,6 +359,16 @@ export const projects: Project[] = [
       { name: "Town of Crested Butte", url: "https://www.crestedbutte-co.gov/" },
     ],
     articles: [],
+    gallery: [
+      {
+        src: "/images/projects/crested-butte/gallery/geothermal-drill-rig-crew.jpg",
+        alt: "Workers in hard hats and high-visibility vests beside a raised geothermal drilling mast on a white truck in Crested Butte, Colorado, with snow-dusted mountains under an overcast sky.",
+      },
+      {
+        src: "/images/projects/crested-butte/gallery/geothermal-drill-rig-front.jpg",
+        alt: "White Kenworth truck-mounted geothermal drilling rig with its mast raised on a muddy Crested Butte, Colorado work site, snow piles and a forested mountain peak behind the cab.",
+      },
+    ],
     image: "/images/projects/crested-butte.jpeg",
     imageAlt: "Vibrant yellow and orange calendula flowers bloom in sharp focus in the foreground, with the historic colorful storefronts of downtown Crested Butte, Colorado, and the massive, snow-dusted peak of Crested Butte mountain blurred beautifully in the background under a clear blue sky.",
     featured: false
