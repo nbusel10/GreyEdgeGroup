@@ -88,8 +88,17 @@ is not on the web:
 In cPanel File Manager, open the document root, go up one directory, then open
 `greyedge-private`. If the host will not allow that folder, the script uses
 `.faq-logs/faq-search.log` inside the site instead. Apache refuses requests for that
-folder. The dev server does not run PHP, so a local search is not stored. Once the log
-reaches about 2 MB, new lines stop until the file is renamed or deleted.
+folder. The dev server does not run PHP, so a local search is not stored.
+
+The monthly report reads this file on the 1st. On the 2nd (US Pacific), lines from
+before that morning are removed, including by the next search if nobody has run the
+purge yet. Searches from the 2nd onward stay. In cPanel → Cron Jobs, run this at
+3:15am Pacific on day 2 of every month, with the path to the deployed
+`faq-search.php`:
+
+```bash
+php /home/USER/path-to-site/faq-search.php --purge
+```
 
 ## Contact form
 
