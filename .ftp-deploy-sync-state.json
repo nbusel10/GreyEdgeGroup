@@ -1,7 +1,7 @@
 {
     "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
     "version": "1.0.0",
-    "generatedTime": 1791583753830,
+    "generatedTime": 1791588188885,
     "data": [
         {
             "type": "file",
@@ -60,8 +60,8 @@
         {
             "type": "file",
             "name": "index.html",
-            "size": 3098,
-            "hash": "1c2fdd70ec02e8a1d5c9dfb46ac3b803eeebe4bd72a800e73c60ed7729ced696"
+            "size": 3456,
+            "hash": "4074d1d211951ac213c2d8533c31f19ae4b0b1f4e7af498d43ac1f704d62db63"
         },
         {
             "type": "file",
@@ -87,15 +87,15 @@
         },
         {
             "type": "file",
-            "name": "assets/index-B2RT-zzd.js",
-            "size": 810901,
-            "hash": "2c8cd1fb69b5702ca3cca6c393ed21149922d5313ea5242b8dacb2fc2f624403"
-        },
-        {
-            "type": "file",
             "name": "assets/index-Cwe-UKBd.css",
             "size": 87851,
             "hash": "5fda72c3c4f3943ccfaee6746b458e0ce45dbd3d7a3e01dd6ad7bfeb2f47616c"
+        },
+        {
+            "type": "file",
+            "name": "assets/index-BXFeSzgQ.js",
+            "size": 811581,
+            "hash": "5c7eb61b68f9dac72fcedb70660c185ba8a57542d63098e7b3496a6af8ff8eba"
         },
         {
             "type": "folder",
@@ -121,15 +121,15 @@
         },
         {
             "type": "file",
-            "name": "videos/hero-main.mp4",
-            "size": 16832932,
-            "hash": "534d9ed65d99963d5faa308308ac5cb5e47e700f94fe2ae6249e1ac67133908b"
-        },
-        {
-            "type": "file",
             "name": "videos/greyedge-lockup.gif",
             "size": 809734,
             "hash": "e50102c287787fec124d71591c8c50a396876ccafd288d620c42f8ac148a68e9"
+        },
+        {
+            "type": "file",
+            "name": "videos/hero-main.mp4",
+            "size": 16832932,
+            "hash": "534d9ed65d99963d5faa308308ac5cb5e47e700f94fe2ae6249e1ac67133908b"
         },
         {
             "type": "file",
@@ -232,6 +232,12 @@
             "hash": "f685ec6a6595b2c92f42c21dd705b8cb7f9674b7f66b6ccb61feba0fda316479"
         },
         {
+            "type": "file",
+            "name": "images/projects/lexington.jpg",
+            "size": 340687,
+            "hash": "aebf431215fc55d4d59828fd491056d4da9431d6bdcfbea4591d937708421c42"
+        },
+        {
             "type": "folder",
             "name": "images/projects/mountain-village"
         },
@@ -257,12 +263,6 @@
         },
         {
             "type": "file",
-            "name": "images/projects/lexington.jpg",
-            "size": 340687,
-            "hash": "aebf431215fc55d4d59828fd491056d4da9431d6bdcfbea4591d937708421c42"
-        },
-        {
-            "type": "file",
             "name": "images/projects/pitkin-county.jpg",
             "size": 291930,
             "hash": "676bbb335b94ccb3b93be5372ce84d57e6240ceeed7f62023cb52671aea7d6cb"
@@ -278,6 +278,10 @@
             "hash": "b132314bace3c1b5986eb130c421531a03b4a4a98932b171df524a171c42c6d5"
         },
         {
+            "type": "folder",
+            "name": "images/projects/telluride"
+        },
+        {
             "type": "file",
             "name": "images/projects/telluride.webp",
             "size": 284556,
@@ -286,10 +290,6 @@
         {
             "type": "folder",
             "name": "images/projects/vail"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/telluride"
         },
         {
             "type": "file",
@@ -405,15 +405,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/growth-flexibility.webp",
-            "size": 274802,
-            "hash": "769956d188d3816d96086ce40192f4142b5ca4ced904780e35334eac5508bbe0"
-        },
-        {
-            "type": "file",
             "name": "images/site/hero-cityscape.webp",
             "size": 252290,
             "hash": "d6e846d1029f2f88662358ce23ae071b1eb052466e318efa9a6d17c3105dadc8"
+        },
+        {
+            "type": "file",
+            "name": "images/site/growth-flexibility.webp",
+            "size": 274802,
+            "hash": "769956d188d3816d96086ce40192f4142b5ca4ced904780e35334eac5508bbe0"
         },
         {
             "type": "file",
@@ -471,12 +471,6 @@
         },
         {
             "type": "file",
-            "name": "images/site/insight-mountain-town.webp",
-            "size": 226748,
-            "hash": "ee45e96987b1b26e2b2a4512f7b2ba4210cf7169546251c84db20603e9417006"
-        },
-        {
-            "type": "file",
             "name": "images/site/insight-implementing-tens.webp",
             "size": 202894,
             "hash": "a5ac5960574712683634665486525b3d87f5a88dc27d427ac8f02c4a6789178e"
@@ -489,15 +483,21 @@
         },
         {
             "type": "file",
-            "name": "images/site/lifecycle-cost.webp",
-            "size": 259918,
-            "hash": "ec87dae68921b4597a73dcd2cf737bc1af7b423a7dd2509c6b3b47b955890b36"
+            "name": "images/site/insight-mountain-town.webp",
+            "size": 226748,
+            "hash": "ee45e96987b1b26e2b2a4512f7b2ba4210cf7169546251c84db20603e9417006"
         },
         {
             "type": "file",
             "name": "images/site/insight-weber-state.webp",
             "size": 132004,
             "hash": "78beded47be6d665427fe444084e3ca4549c9321e4a17faf94893277a0665917"
+        },
+        {
+            "type": "file",
+            "name": "images/site/lifecycle-cost.webp",
+            "size": 259918,
+            "hash": "ec87dae68921b4597a73dcd2cf737bc1af7b423a7dd2509c6b3b47b955890b36"
         },
         {
             "type": "file",
@@ -549,6 +549,12 @@
         },
         {
             "type": "file",
+            "name": "images/site/service-ground.webp",
+            "size": 89612,
+            "hash": "173a6663452348fcd5a1fcc8e35a4afc460a425977b2aee3b071d4a4e93f5a2d"
+        },
+        {
+            "type": "file",
             "name": "images/site/service-network.webp",
             "size": 85666,
             "hash": "241dfe42caa3409e561e0c1f2b0f8f21db3715bdf78bc18c39c7790a2d93d057"
@@ -561,27 +567,21 @@
         },
         {
             "type": "file",
-            "name": "images/site/service-ground.webp",
-            "size": 89612,
-            "hash": "173a6663452348fcd5a1fcc8e35a4afc460a425977b2aee3b071d4a4e93f5a2d"
-        },
-        {
-            "type": "file",
             "name": "images/site/shaping-the-future.webp",
             "size": 70444,
             "hash": "e0b18e1641953c812d973f6fefb26fdfb91a6f477315879062c510aa25158362"
         },
         {
             "type": "file",
-            "name": "images/site/team-group.webp",
-            "size": 102760,
-            "hash": "fdd0967e1b5dac9c9135b113b80214a68f3f85562afbdbd4d4c44fc03e819994"
-        },
-        {
-            "type": "file",
             "name": "images/site/team-photo.webp",
             "size": 133744,
             "hash": "fd358eab521a8909ab1bf2f6039432f7eb2c4a693abcc0e1006cdef9d1fa2e94"
+        },
+        {
+            "type": "file",
+            "name": "images/site/team-group.webp",
+            "size": 102760,
+            "hash": "fdd0967e1b5dac9c9135b113b80214a68f3f85562afbdbd4d4c44fc03e819994"
         },
         {
             "type": "file",
@@ -603,15 +603,15 @@
         },
         {
             "type": "file",
-            "name": "images/team/delaini-moss-marriott.webp",
-            "size": 107344,
-            "hash": "aa3e7e6fac76bf0368d0707ea0b2aa5b0245ef4da0f704664838f90d4a1135e0"
+            "name": "images/team/cary-smith.webp",
+            "size": 77776,
+            "hash": "7edc6dfa3156190c55ece9da1672cdfa494539eed2feebcd465745536852a844"
         },
         {
             "type": "file",
-            "name": "images/team/garry-sexton.webp",
-            "size": 44178,
-            "hash": "104b3f731f2239244c0ea6ea7b843bc97b64b57ef14ec5a21e0ff0a3b04fbc64"
+            "name": "images/team/delaini-moss-marriott.webp",
+            "size": 107344,
+            "hash": "aa3e7e6fac76bf0368d0707ea0b2aa5b0245ef4da0f704664838f90d4a1135e0"
         },
         {
             "type": "file",
@@ -621,15 +621,15 @@
         },
         {
             "type": "file",
-            "name": "images/team/ian-talbot.webp",
-            "size": 68526,
-            "hash": "f93559a722c84c9d00bfb93d37fe580f82e094fa76a54d13eb37fa12d9ee262e"
+            "name": "images/team/garry-sexton.webp",
+            "size": 44178,
+            "hash": "104b3f731f2239244c0ea6ea7b843bc97b64b57ef14ec5a21e0ff0a3b04fbc64"
         },
         {
             "type": "file",
-            "name": "images/team/cary-smith.webp",
-            "size": 77776,
-            "hash": "7edc6dfa3156190c55ece9da1672cdfa494539eed2feebcd465745536852a844"
+            "name": "images/team/ian-talbot.webp",
+            "size": 68526,
+            "hash": "f93559a722c84c9d00bfb93d37fe580f82e094fa76a54d13eb37fa12d9ee262e"
         },
         {
             "type": "file",
@@ -651,15 +651,15 @@
         },
         {
             "type": "file",
-            "name": "images/team/megan-lim.webp",
-            "size": 48150,
-            "hash": "6e918ef37cb4e416bac82a60aa39cb70c4a9364bd44d0bdcc07d0a5c92e4d381"
-        },
-        {
-            "type": "file",
             "name": "images/team/matthew-garlick.webp",
             "size": 52650,
             "hash": "7b1ce2a54df22b570029b4186c2d185d5ec42841906dd05eba789bb70a722efc"
+        },
+        {
+            "type": "file",
+            "name": "images/team/megan-lim.webp",
+            "size": 48150,
+            "hash": "6e918ef37cb4e416bac82a60aa39cb70c4a9364bd44d0bdcc07d0a5c92e4d381"
         },
         {
             "type": "file",
@@ -719,11 +719,11 @@
         },
         {
             "type": "folder",
-            "name": "images/projects/vail/gallery"
+            "name": "images/projects/telluride/gallery"
         },
         {
             "type": "folder",
-            "name": "images/projects/telluride/gallery"
+            "name": "images/projects/vail/gallery"
         },
         {
             "type": "folder",
@@ -815,15 +815,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/steamboat-springs/gallery/drill-rig-stormy-sky.jpg",
-            "size": 228856,
-            "hash": "8d1e84000e61b998832de978e4cbc646b7f8f38246093977fabfd1c723cdf452"
-        },
-        {
-            "type": "file",
             "name": "images/projects/steamboat-springs/gallery/gondola-base.jpg",
             "size": 235524,
             "hash": "90ef1e36aefc73b9d59acf3c75a0c06e6f8d951555ad4b409c910e14274dbc0d"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs/gallery/drill-rig-stormy-sky.jpg",
+            "size": 228856,
+            "hash": "8d1e84000e61b998832de978e4cbc646b7f8f38246093977fabfd1c723cdf452"
         },
         {
             "type": "file",
@@ -842,6 +842,18 @@
             "name": "images/projects/steamboat-springs/gallery/plaza-turf.jpg",
             "size": 164204,
             "hash": "0f910c095379103aa43522c575b3f9f1c0eff083ea9ab29ae47e0b62e706c7f9"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/telluride/gallery/pvc-fittings-assembly.jpg",
+            "size": 311464,
+            "hash": "4cca2d4d43e765156d0a3d79cb123fcc7fa1461a280b06ce3c71af2e94316ef2"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/telluride/gallery/pvc-pipe-install-snow.jpg",
+            "size": 384114,
+            "hash": "1f5dd87f14e4c1cc90b1a435a2888bee8317b590f012daaaad3b637361c53b4d"
         },
         {
             "type": "file",
@@ -866,18 +878,6 @@
             "name": "images/projects/vail/gallery/wastewater-outlet.jpg",
             "size": 252742,
             "hash": "90cec9b6a342a83ae11169a8833d99b211af8e574e3457aab3cec11dd1b8781f"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/telluride/gallery/pvc-fittings-assembly.jpg",
-            "size": 311464,
-            "hash": "4cca2d4d43e765156d0a3d79cb123fcc7fa1461a280b06ce3c71af2e94316ef2"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/telluride/gallery/pvc-pipe-install-snow.jpg",
-            "size": 384114,
-            "hash": "1f5dd87f14e4c1cc90b1a435a2888bee8317b590f012daaaad3b637361c53b4d"
         },
         {
             "type": "file",
