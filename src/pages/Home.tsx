@@ -76,10 +76,10 @@ export default function Home() {
               {hero.body}
             </p>
             <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start">
-              <Btn to="/contact" variant="light">
+              <Btn to="/contact" track="home_hero_start_planning" variant="light">
                 Start planning
               </Btn>
-              <Btn to="/geothermal-101#thermal-highway" variant="ghost">
+              <Btn to="/geothermal-101#thermal-highway" track="home_hero_see_how_it_works" variant="ghost">
                 See how it works
               </Btn>
             </div>
@@ -103,7 +103,7 @@ export default function Home() {
                     Featured Projects
                   </h2>
                 </div>
-                <Btn to="/projects" variant="outline" className="shrink-0 self-start">
+                <Btn to="/projects" track="home_projects_view_all" variant="outline" className="shrink-0 self-start">
                   View all projects
                 </Btn>
               </div>
@@ -139,7 +139,7 @@ export default function Home() {
                   From education to execution.
                 </h2>
               </div>
-              <Btn to="/insights" variant="outline" className="shrink-0 self-start">
+              <Btn to="/insights" track="home_insights_view_all" variant="outline" className="shrink-0 self-start">
                 All insights
               </Btn>
             </div>

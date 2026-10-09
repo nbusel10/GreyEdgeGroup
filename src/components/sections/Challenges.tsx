@@ -1,6 +1,7 @@
 import { useId, useRef, useState, type KeyboardEvent } from 'react'
 import { challenges } from '../../content/challenges'
 import { barriers } from '../../content/site'
+import { gaLabel } from '../../lib/gaLabel'
 import { Container, Eyebrow, Reveal, Section } from '../ui'
 
 /**
@@ -73,6 +74,7 @@ export default function Challenges() {
                 return (
                   <button
                     key={c.label}
+                    data-ga-label={gaLabel('challenges_tab', c.short)}
                     ref={(el) => {
                       tabRefs.current[i] = el
                     }}
@@ -160,6 +162,7 @@ export default function Challenges() {
           {challenges.map((c, i) => (
             <div key={c.label} className="border-b border-ge-light last:border-b-0">
               <button
+                data-ga-label={gaLabel('challenges_accordion', c.short)}
                 onClick={() => setOpenIdx(openIdx === i ? null : i)}
                 aria-expanded={openIdx === i}
                 className="flex w-full items-start justify-between gap-4 px-5 py-4 text-left"

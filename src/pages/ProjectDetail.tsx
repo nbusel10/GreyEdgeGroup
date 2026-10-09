@@ -178,7 +178,7 @@ export default function ProjectDetail() {
                     <p className="mt-4 font-body text-sm leading-relaxed text-ge-graphite">
                       Project team details are being compiled. In the meantime, meet the specialists behind our work.
                     </p>
-                    <Btn to="/about#team" variant="outline" className="mt-6 w-full">
+                    <Btn to="/about#team" track="project_meet_the_team" variant="outline" className="mt-6 w-full">
                       Meet the team
                     </Btn>
                   </>

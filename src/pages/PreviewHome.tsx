@@ -86,10 +86,10 @@ export default function PreviewHome() {
               {hero.body}
             </p>
             <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start">
-              <Btn to="/contact" variant="light">
+              <Btn to="/contact" track="preview_home_start_planning" variant="light">
                 Start planning
               </Btn>
-              <Btn to="/projects" variant="ghost">
+              <Btn to="/projects" track="preview_home_see_our_work" variant="ghost">
                 See our work
               </Btn>
             </div>
@@ -114,7 +114,7 @@ export default function PreviewHome() {
                     Featured Projects
                   </h2>
                 </div>
-                <Btn to="/projects" variant="outline" className="shrink-0 self-start">
+                <Btn to="/projects" track="preview_home_view_all_projects" variant="outline" className="shrink-0 self-start">
                   View all projects
                 </Btn>
               </div>

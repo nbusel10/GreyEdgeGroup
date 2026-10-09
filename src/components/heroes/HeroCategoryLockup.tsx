@@ -60,10 +60,10 @@ export default function HeroCategoryLockup({
           </p>
 
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start">
-            <Btn to="/contact" variant="light">
+            <Btn to="/contact" track="hero_category_lockup_start_planning" variant="light">
               Start planning
             </Btn>
-            <Btn to="/geothermal-101" variant="ghost">
+            <Btn to="/geothermal-101" track="hero_category_lockup_how_tens_work" variant="ghost">
               How TENs work
             </Btn>
           </div>

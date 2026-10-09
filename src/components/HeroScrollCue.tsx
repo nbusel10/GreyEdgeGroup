@@ -6,6 +6,7 @@ export default function HeroScrollCue({ className = '' }: { className?: string }
   return (
     <button
       type="button"
+      data-ga-label="hero_scroll"
       onClick={() =>
         window.scrollBy({
           top: Math.round(window.innerHeight * 0.85),

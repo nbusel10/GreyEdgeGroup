@@ -5,6 +5,7 @@ import PageHero from '../components/PageHero'
 import MoreInfo from '../components/MoreInfo'
 import AtlExplainer from '../components/sections/AtlExplainer'
 import FinalCta from '../components/sections/FinalCta'
+import { gaLabel } from '../lib/gaLabel'
 import { Btn, Container, Eyebrow, Reveal, Section, proseLinkClass } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 import { EfficiencyChart, GeoTypesFigure } from './PreviewTens101'
@@ -270,7 +271,7 @@ export default function PreviewTens101Short() {
                   The energy your network needs may already be flowing through your community.
                 </p>
               </blockquote>
-              <Btn to="/contact" variant="outline" className="mt-8">
+              <Btn to="/contact" track="preview_tens_short_evaluate_resources" variant="outline" className="mt-8">
                 Evaluate your resources
               </Btn>
             </Reveal>
@@ -305,6 +306,7 @@ export default function PreviewTens101Short() {
               <div key={f.q} className="border-b border-ge-light">
                 <dt>
                   <button
+                    data-ga-label={gaLabel('preview_tens_short_faq', f.q)}
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     aria-expanded={openFaq === i}
                     className="flex w-full items-start justify-between gap-6 py-6 text-left"
@@ -341,7 +343,7 @@ export default function PreviewTens101Short() {
                   see.
                 </p>
               </div>
-              <Btn to={doors.consultation.to} className="shrink-0">
+              <Btn to={doors.consultation.to} track="preview_tens_short_talk_through_project" className="shrink-0">
                 Talk through your project
               </Btn>
             </div>

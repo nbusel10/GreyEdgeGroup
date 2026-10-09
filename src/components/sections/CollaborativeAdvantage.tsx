@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { lessons } from '../../content/advantage'
 import { phases } from '../../content/process'
+import { gaLabel } from '../../lib/gaLabel'
 import { Container, Eyebrow, Reveal, Section } from '../ui'
 
 const processPillClass =
@@ -53,6 +54,7 @@ export default function CollaborativeAdvantage() {
                   <div key={item.short} className="border-b border-ge-light last:border-b-0">
                     <button
                       type="button"
+                      data-ga-label={gaLabel('advantage_lesson', item.short)}
                       aria-expanded={selected}
                       onClick={() => setActive(i)}
                       className={`group w-full px-6 py-5 text-left transition-colors lg:px-8 ${

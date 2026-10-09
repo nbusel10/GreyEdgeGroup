@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { anyPhaseNote, intro, phases, type Phase } from '../content/process'
 import { org } from '../content/site'
 import { Container, Eyebrow, Section } from '../components/ui'
+import { gaLabel } from '../lib/gaLabel'
 import { usePageMeta } from '../lib/meta'
 
 /**
@@ -186,6 +187,7 @@ function OptionC() {
                   <button
                     key={`node-${p.num}`}
                     type="button"
+                    data-ga-label={gaLabel('preview_process_c_node', p.num)}
                     onMouseEnter={() => setHovered(i)}
                     onClick={() => setActive(i)}
                     className="group flex min-w-0 flex-1 flex-col items-center border-0 bg-transparent p-0 text-center"
@@ -223,6 +225,7 @@ function OptionC() {
                 <button
                   key={p.num}
                   type="button"
+                  data-ga-label={gaLabel('preview_process_c_card', p.num)}
                   onClick={() => setActive(i)}
                   onMouseEnter={() => setHovered(i)}
                   className={`flex flex-col border p-4 text-left transition-colors duration-200 sm:p-5 ${
@@ -313,6 +316,7 @@ function OptionD() {
                 <div className="mt-5 border-t border-ge-light pt-4">
                   <button
                     type="button"
+                    data-ga-label={gaLabel('preview_process_d_entry', p.num)}
                     onClick={() => setOpen(expanded ? null : i)}
                     className="font-body text-[11px] font-medium uppercase tracking-[0.16em] text-ge-accent underline-offset-4 hover:underline"
                     aria-expanded={expanded}
@@ -416,6 +420,7 @@ function OptionE() {
                 <button
                   key={p.num}
                   type="button"
+                  data-ga-label={gaLabel('preview_process_e_node', p.num)}
                   onMouseEnter={() => setHovered(i)}
                   className="group flex min-w-0 flex-1 flex-col items-center border-0 bg-transparent p-0 text-center"
                   aria-label={`${p.subtitle}: ${p.title}`}
@@ -554,6 +559,7 @@ function OptionF() {
                 <button
                   key={p.num}
                   type="button"
+                  data-ga-label={gaLabel('preview_process_f_node', p.num)}
                   onMouseEnter={() => setHovered(i)}
                   className="group flex min-w-0 flex-1 flex-col items-center border-0 bg-transparent p-0 text-center"
                   aria-label={`${p.subtitle}: ${p.title}`}

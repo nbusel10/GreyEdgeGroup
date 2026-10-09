@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getInsight, insights } from '../content/insights'
 import FinalCta from '../components/sections/FinalCta'
+import { gaLabel } from '../lib/gaLabel'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
 import { linkGeoTerms } from '../lib/linkGeoTerms'
 import { usePageMeta } from '../lib/meta'
@@ -101,11 +102,11 @@ export default function InsightDetail() {
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   {related.map((link) => (
-                    <Btn key={link.to} to={link.to} variant="outline">
+                    <Btn key={link.to} to={link.to} track={gaLabel('insight_related', link.to)} variant="outline">
                       {link.label}
                     </Btn>
                   ))}
-                  <Btn to="/contact" variant="outline">
+                  <Btn to="/contact" track="insight_get_in_touch" variant="outline">
                     Get in touch
                   </Btn>
                 </div>

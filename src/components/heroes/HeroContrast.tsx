@@ -64,10 +64,10 @@ export default function HeroContrast({ headingLevel = 1, forceReducedMotion = fa
           </p>
 
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start">
-            <Btn to="/contact" variant="light">
+            <Btn to="/contact" track="hero_contrast_start_planning" variant="light">
               Start planning
             </Btn>
-            <Btn to="/geothermal-101" variant="ghost">
+            <Btn to="/geothermal-101" track="hero_contrast_how_tens_work" variant="ghost">
               How TENs work
             </Btn>
           </div>

@@ -144,6 +144,7 @@ export default function PreviewHero() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <button
               type="button"
+              data-ga-label="preview_hero_reduced_motion"
               aria-pressed={forceReducedMotion}
               onClick={() => setForceReducedMotion((v) => !v)}
               className="inline-flex items-center justify-center border border-ge-light px-6 py-3 font-body text-[11px] font-medium uppercase tracking-[0.22em] text-ge-graphite transition-colors hover:border-ge-accent hover:text-ge-accent"

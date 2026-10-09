@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import type { ProjectGalleryImage } from '../content/projects'
+import { gaLabel } from '../lib/gaLabel'
 import { Container, Eyebrow, Reveal } from './ui'
 
 function focusableIn(root: HTMLElement) {
@@ -65,6 +66,7 @@ export default function ProjectGallery({ images }: { images: ProjectGalleryImage
                 <li key={img.src}>
                   <button
                     type="button"
+                    data-ga-label={gaLabel('project_gallery_open', i + 1, img.alt)}
                     onClick={(e) => {
                       triggerRef.current = e.currentTarget
                       setActive(i)
@@ -105,6 +107,7 @@ export default function ProjectGallery({ images }: { images: ProjectGalleryImage
             <button
               ref={closeRef}
               type="button"
+              data-ga-label="project_gallery_close"
               onClick={() => setActive(null)}
               aria-label="Close gallery"
               className="absolute -right-1 -top-1 z-10 flex h-10 w-10 items-center justify-center bg-ge-black text-white transition-colors hover:text-ge-accent-bright md:-right-2 md:-top-2"
@@ -118,6 +121,7 @@ export default function ProjectGallery({ images }: { images: ProjectGalleryImage
               <>
                 <button
                   type="button"
+                  data-ga-label="project_gallery_previous"
                   onClick={() => setActive((active - 1 + images.length) % images.length)}
                   aria-label="Previous photo"
                   className="absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-ge-black/80 text-white transition-colors hover:text-ge-accent-bright md:-left-12"
@@ -126,6 +130,7 @@ export default function ProjectGallery({ images }: { images: ProjectGalleryImage
                 </button>
                 <button
                   type="button"
+                  data-ga-label="project_gallery_next"
                   onClick={() => setActive((active + 1) % images.length)}
                   aria-label="Next photo"
                   className="absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-ge-black/80 text-white transition-colors hover:text-ge-accent-bright md:-right-12"

@@ -113,7 +113,7 @@ export default function Contact() {
                     Your message is with us. Someone from the team will be in touch shortly, usually within one
                     business day.
                   </p>
-                  <Btn to="/geothermal-101" variant="outline" className="mt-8">
+                  <Btn to="/geothermal-101" track="contact_thanks_read_101" variant="outline" className="mt-8">
                     Read Thermal Energy Networks 101 in the meantime
                   </Btn>
                 </div>
@@ -180,7 +180,7 @@ export default function Contact() {
                   )}
 
                   <div className="flex flex-wrap items-center gap-6 pt-2">
-                    <Btn type="submit" disabled={status === 'sending'} className="disabled:opacity-60">
+                    <Btn type="submit" track="contact_send_message" disabled={status === 'sending'} className="disabled:opacity-60">
                       {status === 'sending' ? 'Sending…' : 'Send message'}
                     </Btn>
                   </div>
@@ -222,7 +222,7 @@ export default function Contact() {
                   Learn how thermal energy networks work, what resources are available, and where the opportunities
                   may exist within your community.
                 </p>
-                <Btn to={doors.education.to} variant="ghost" className="mt-6">
+                <Btn to={doors.education.to} track="contact_still_exploring" variant="ghost" className="mt-6">
                   {doors.education.cta}
                 </Btn>
               </div>

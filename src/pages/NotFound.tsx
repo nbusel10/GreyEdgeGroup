@@ -20,13 +20,13 @@ export default function NotFound() {
           The page you were looking for doesn&rsquo;t exist. Here are a few places that do.
         </p>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <Btn to="/" variant="light">
+          <Btn to="/" track="not_found_home" variant="light">
             Home
           </Btn>
-          <Btn to="/projects" variant="ghost">
+          <Btn to="/projects" track="not_found_projects" variant="ghost">
             Projects
           </Btn>
-          <Btn to="/contact" variant="ghost">
+          <Btn to="/contact" track="not_found_contact" variant="ghost">
             Contact
           </Btn>
         </div>

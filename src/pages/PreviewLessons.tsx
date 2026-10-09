@@ -4,6 +4,7 @@ import { lessons } from '../content/advantage'
 import { site } from '../content/images'
 import { org } from '../content/site'
 import { Container, Eyebrow, Section } from '../components/ui'
+import { gaLabel } from '../lib/gaLabel'
 import { usePageMeta } from '../lib/meta'
 
 /**
@@ -128,6 +129,7 @@ function OptionB() {
                 <button
                   key={label}
                   type="button"
+                  data-ga-label={gaLabel('preview_lessons_b_tab', label)}
                   role="tab"
                   aria-selected={selected}
                   onClick={() => setActive(i)}
@@ -196,6 +198,7 @@ function OptionC() {
                 <button
                   key={item.lesson}
                   type="button"
+                  data-ga-label={gaLabel('preview_lessons_c', item.short)}
                   onClick={() => setActive(i)}
                   className={`w-full border-b border-ge-light px-6 py-5 text-left last:border-b-0 lg:px-8 ${
                     selected ? 'bg-ge-offwhite' : 'bg-white hover:bg-ge-offwhite/60'

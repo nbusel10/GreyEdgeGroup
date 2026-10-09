@@ -35,10 +35,10 @@ export default function HeroSplitPanel({ headingLevel = 1 }: HeroVariantProps) {
         </p>
 
         <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start">
-          <Btn to="/contact" variant="light">
+          <Btn to="/contact" track="hero_split_panel_start_planning" variant="light">
             Start planning
           </Btn>
-          <Btn to="/projects" variant="ghost">
+          <Btn to="/projects" track="hero_split_panel_see_our_work" variant="ghost">
             See our work
           </Btn>
         </div>

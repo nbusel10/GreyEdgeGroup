@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { gaAttrs } from '../lib/gaLabel'
 import { useCountUp, useReveal } from '../lib/hooks'
 
 /** Italic underline used for in-prose jumps (About names, glossary terms). */
@@ -80,6 +81,7 @@ const btnVariants: Record<BtnVariant, string> = {
 export function Btn({
   to,
   href,
+  track,
   variant = 'solid',
   className = '',
   children,
@@ -87,27 +89,30 @@ export function Btn({
 }: {
   to?: string
   href?: string
+  /** Unique GA4 click label. Same control can repeat across pages; page path disambiguates. */
+  track: string
   variant?: BtnVariant
   className?: string
   children: ReactNode
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const cls = `${btnBase} ${btnVariants[variant]} ${className}`
+  const label = gaAttrs(track)
   if (to) {
     return (
-      <Link to={to} className={cls}>
+      <Link to={to} className={cls} {...label}>
         {children}
       </Link>
     )
   }
   if (href) {
     return (
-      <a href={href} className={cls} target="_blank" rel="noopener noreferrer">
+      <a href={href} className={cls} target="_blank" rel="noopener noreferrer" {...label}>
         {children}
       </a>
     )
   }
   return (
-    <button className={cls} {...rest}>
+    <button className={cls} {...rest} {...label}>
       {children}
     </button>
   )

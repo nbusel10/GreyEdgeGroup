@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { org } from '../../content/site'
 import { formatLinkedInDate, getLatestLinkedInPosts } from '../../content/linkedin'
+import { gaLabel } from '../../lib/gaLabel'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../ui'
 
 function cardsIn(el: HTMLDivElement) {
@@ -151,6 +152,7 @@ export default function LinkedInFeed() {
                 <div className="flex gap-2">
                   <button
                     type="button"
+                    data-ga-label="linkedin_previous"
                     aria-label="Previous posts"
                     disabled={atStart}
                     onClick={() => scrollByCard(-1)}
@@ -160,6 +162,7 @@ export default function LinkedInFeed() {
                   </button>
                   <button
                     type="button"
+                    data-ga-label="linkedin_next"
                     aria-label="Next posts"
                     disabled={atEnd}
                     onClick={() => scrollByCard(1)}
@@ -169,7 +172,7 @@ export default function LinkedInFeed() {
                   </button>
                 </div>
               )}
-              <Btn href={org.social.linkedin} variant="outline">
+              <Btn href={org.social.linkedin} track="linkedin_follow" variant="outline">
                 Follow GreyEdge
               </Btn>
             </div>
@@ -259,6 +262,7 @@ export default function LinkedInFeed() {
                   <button
                     key={post.id}
                     type="button"
+                    data-ga-label={gaLabel('linkedin_dot', post.id)}
                     aria-label={`Show post ${i + 1} of ${posts.length}`}
                     aria-current={i === index ? 'true' : undefined}
                     onClick={() => scrollToCard(i)}

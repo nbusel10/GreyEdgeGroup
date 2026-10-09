@@ -18,7 +18,7 @@ export default function TwoDoors() {
                 risks, and clarify the path forward.
               </p>
             </div>
-            <Btn to={doors.consultation.to} className="shrink-0">
+            <Btn to={doors.consultation.to} track="two_doors_get_in_touch" className="shrink-0">
               Get in touch
             </Btn>
           </div>

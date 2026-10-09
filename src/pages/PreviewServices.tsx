@@ -4,6 +4,7 @@ import { capabilities, capabilityNote, serviceGroups as groups } from '../conten
 import { site } from '../content/images'
 import { org } from '../content/site'
 import { Container, Eyebrow, Section } from '../components/ui'
+import { gaLabel } from '../lib/gaLabel'
 import { usePageMeta } from '../lib/meta'
 
 /**
@@ -112,6 +113,7 @@ function OptionB() {
                 <button
                   key={item.short}
                   type="button"
+                  data-ga-label={gaLabel('preview_services_b_tab', item.short)}
                   role="tab"
                   aria-selected={selected}
                   onClick={() => setActive(i)}
@@ -179,6 +181,7 @@ function OptionC() {
                 <button
                   key={item.title}
                   type="button"
+                  data-ga-label={gaLabel('preview_services_c', item.short)}
                   onClick={() => setActive(i)}
                   className={`w-full border-b border-ge-light px-6 py-5 text-left last:border-b-0 lg:px-8 ${
                     selected ? 'bg-ge-offwhite' : 'bg-white hover:bg-ge-offwhite/60'

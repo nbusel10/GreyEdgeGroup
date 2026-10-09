@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import Logo from './Logo'
+import { gaLabel } from '../lib/gaLabel'
 import { useScrolled } from '../lib/hooks'
 import { Btn, Container } from './ui'
 
@@ -240,7 +241,7 @@ export default function Header() {
           </nav>
 
           <div className="hidden shrink-0 lg:block">
-            <Btn to="/contact" variant={overHero ? 'light' : 'solid'} className="px-6 py-3">
+            <Btn to="/contact" track="header_desktop_start_planning" variant={overHero ? 'light' : 'solid'} className="px-6 py-3">
               Start Planning
             </Btn>
           </div>
@@ -249,6 +250,7 @@ export default function Header() {
             <button
               ref={menuButtonRef}
               type="button"
+              data-ga-label="header_menu_toggle"
               onClick={() => {
                 if (mobileOpen) {
                   returnFocusOnClose.current = true
@@ -295,6 +297,7 @@ export default function Header() {
                     {item.children && (
                       <button
                         type="button"
+                        data-ga-label={gaLabel('header_mobile_section', item.label)}
                         onClick={() => setMobileSection(mobileSection === item.label ? null : item.label)}
                         aria-label={`${mobileSection === item.label ? 'Collapse' : 'Expand'} ${item.label}`}
                         aria-expanded={mobileSection === item.label}
@@ -328,7 +331,7 @@ export default function Header() {
                 </li>
               ))}
             </ul>
-            <Btn to="/contact" className="mt-6 w-full">
+            <Btn to="/contact" track="header_mobile_start_planning" className="mt-6 w-full">
               Start Planning
             </Btn>
           </Container>

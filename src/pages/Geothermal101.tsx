@@ -6,6 +6,7 @@ import GeoTypeArt from '../components/GeoTypeArt'
 import PageHero from '../components/PageHero'
 import AtlExplainer from '../components/sections/AtlExplainer'
 import FinalCta from '../components/sections/FinalCta'
+import { gaLabel } from '../lib/gaLabel'
 import { Btn, Container, Eyebrow, Reveal, Section, proseLinkClass } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 
@@ -146,6 +147,7 @@ function FaqList({
           <dt>
             <button
               type="button"
+              data-ga-label={gaLabel('geo101_faq', f.q)}
               onClick={() => onToggle(i)}
               aria-expanded={open === i}
               className="flex w-full items-start justify-between gap-6 py-6 text-left"
@@ -278,6 +280,7 @@ export default function Geothermal101() {
               <button
                 ref={schematicBtnRef}
                 type="button"
+                data-ga-label="geo101_schematic_open"
                 onClick={() => setSchematicOpen(true)}
                 aria-haspopup="dialog"
                 aria-expanded={schematicOpen}
@@ -413,7 +416,7 @@ export default function Geothermal101() {
               <p className="font-body text-base leading-relaxed text-ge-graphite">
                 Part of our evaluation work is finding it.
               </p>
-              <Btn to="/contact" variant="outline" className="mt-8">
+              <Btn to="/contact" track="geo101_evaluate_resources" variant="outline" className="mt-8">
                 Evaluate your resources
               </Btn>
             </Reveal>
@@ -482,6 +485,7 @@ export default function Geothermal101() {
                 />
                 <button
                   type="button"
+                  data-ga-label="geo101_faq_more"
                   onClick={() => {
                     setMoreFaqs((open) => !open)
                     if (moreFaqs) setOpenMoreFaq(null)
@@ -516,7 +520,7 @@ export default function Geothermal101() {
                   see.
                 </p>
               </div>
-              <Btn to={doors.consultation.to} className="shrink-0">
+              <Btn to={doors.consultation.to} track="geo101_talk_through_project" className="shrink-0">
                 Talk through your project
               </Btn>
             </div>
@@ -544,6 +548,7 @@ export default function Geothermal101() {
             <button
               ref={schematicCloseRef}
               type="button"
+              data-ga-label="geo101_schematic_close"
               onClick={() => setSchematicOpen(false)}
               aria-label="Close schematic"
               className="absolute -right-1 -top-1 z-10 flex h-10 w-10 items-center justify-center bg-ge-black text-white transition-colors hover:text-ge-accent-bright"

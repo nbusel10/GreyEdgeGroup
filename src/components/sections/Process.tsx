@@ -218,10 +218,10 @@ export default function Process() {
 
         <Reveal delay={0.12}>
           <div className="mt-14 flex flex-col items-center gap-3 border-t border-ge-light pt-10 sm:flex-row sm:justify-center">
-            <Btn to={doors.education.to} variant="outline">
+            <Btn to={doors.education.to} track="process_how_systems_work" variant="outline">
               How these systems work
             </Btn>
-            <Btn to={doors.consultation.to} variant="solid">
+            <Btn to={doors.consultation.to} track="process_evaluate_project" variant="solid">
               Evaluate your project
             </Btn>
           </div>

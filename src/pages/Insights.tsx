@@ -5,6 +5,7 @@ import { org } from '../content/site'
 import { site } from '../content/images'
 import PageHero from '../components/PageHero'
 import FinalCta from '../components/sections/FinalCta'
+import { gaLabel } from '../lib/gaLabel'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 
@@ -34,6 +35,7 @@ export default function Insights() {
               <button
                 key={c}
                 type="button"
+                data-ga-label={gaLabel('insights_filter', c)}
                 aria-pressed={filter === c}
                 onClick={() => setFilter(c)}
                 className={`border px-5 py-2.5 font-body text-[11px] uppercase tracking-[0.16em] transition-colors ${
@@ -62,7 +64,7 @@ export default function Insights() {
                     : 'Nothing in this category yet.'}
                 </p>
                 {filter === 'Case Studies' && (
-                  <Btn to="/projects" variant="outline" className="mt-8">
+                  <Btn to="/projects" track="insights_empty_view_projects" variant="outline" className="mt-8">
                     View projects
                   </Btn>
                 )}
@@ -119,7 +121,7 @@ export default function Insights() {
                   Project milestones and shorter commentary get posted there first.
                 </p>
               </div>
-              <Btn href={org.social.linkedin} className="shrink-0">
+              <Btn href={org.social.linkedin} track="insights_follow" className="shrink-0">
                 Follow GreyEdge
               </Btn>
             </div>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { doors } from '../../content/advantage'
 import { insights } from '../../content/insights'
+import { gaLabel } from '../../lib/gaLabel'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../ui'
 
 /**
@@ -23,7 +24,7 @@ export default function Educate() {
                 projects.
               </p>
             </div>
-            <Btn to="/insights" variant="outline" className="shrink-0 self-start">
+            <Btn to="/insights" track="educate_all_insights" variant="outline" className="shrink-0 self-start">
               All insights
             </Btn>
           </div>
@@ -76,7 +77,7 @@ export default function Educate() {
                     </div>
                     <p className="mt-2 font-body text-sm leading-relaxed text-ge-graphite">{d.detail}</p>
                   </div>
-                  <Btn to={d.to} variant="outline" className="mt-7 self-start">
+                  <Btn to={d.to} track={gaLabel('educate', d.label)} variant="outline" className="mt-7 self-start">
                     {d.cta}
                   </Btn>
                 </div>

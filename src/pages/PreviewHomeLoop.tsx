@@ -117,6 +117,7 @@ export default function PreviewHomeLoop() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <button
               type="button"
+              data-ga-label="preview_loop_reduced_motion"
               aria-pressed={forceReducedMotion}
               onClick={() => setForceReducedMotion((v) => !v)}
               className="inline-flex items-center justify-center border border-ge-light px-6 py-3 font-body text-[11px] font-medium uppercase tracking-[0.22em] text-ge-graphite transition-colors hover:border-ge-accent hover:text-ge-accent"
@@ -232,7 +233,7 @@ function SolvedCloseButton() {
             </p>
             <p className="mt-4 max-w-none font-body text-base leading-relaxed text-ge-graphite">{barriers.closingBody}</p>
           </div>
-          <Btn to={LOOP_HREF} variant="outline" className="shrink-0 self-start">
+          <Btn to={LOOP_HREF} track="preview_loop_solved_how_one_loop" variant="outline" className="shrink-0 self-start">
             How one loop does it all
           </Btn>
         </div>
@@ -271,7 +272,7 @@ function LoopBridge({ forcePaused }: { forcePaused: boolean }) {
             Buildings and thermal resources trade heat on a single ambient temperature loop.
           </p>
           <div className="mt-8">
-            <Btn to={LOOP_HREF} variant="outline">
+            <Btn to={LOOP_HREF} track="preview_loop_bridge_see_how_it_works" variant="outline">
               See how it works
             </Btn>
           </div>
@@ -307,10 +308,10 @@ function PartnershipInset({ forcePaused }: { forcePaused: boolean }) {
                 {partnerBriefBody}
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <Btn to="/approach" variant="light">
+                <Btn to="/approach" track="preview_loop_partnership_approach" variant="light">
                   Our approach
                 </Btn>
-                <Btn to="/contact" variant="ghost">
+                <Btn to="/contact" track="preview_loop_partnership_start_planning" variant="ghost">
                   Start planning
                 </Btn>
               </div>
@@ -375,7 +376,7 @@ function ProjectsBeside({ forcePaused }: { forcePaused: boolean }) {
               value.
             </p>
             <div className="mt-8">
-              <Btn to="/projects" variant="outline">
+              <Btn to="/projects" track="preview_loop_projects_view_all" variant="outline">
                 View all projects
               </Btn>
             </div>
@@ -462,10 +463,10 @@ function TextLinkHero({ forceReducedMotion }: { forceReducedMotion: boolean }) {
             </Link>
           </p>
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start">
-            <Btn to="/contact" variant="light">
+            <Btn to="/contact" track="preview_loop_text_hero_start_planning" variant="light">
               Start planning
             </Btn>
-            <Btn to="/projects" variant="ghost">
+            <Btn to="/projects" track="preview_loop_text_hero_see_our_work" variant="ghost">
               See our work
             </Btn>
           </div>

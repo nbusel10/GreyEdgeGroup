@@ -14,10 +14,10 @@ export default function FinalCta() {
             </h2>
             <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-ge-light sm:text-lg">{finalCta.body}</p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Btn to={doors.consultation.to} variant="light">
+              <Btn to={doors.consultation.to} track="final_cta_start_planning" variant="light">
                 Start planning
               </Btn>
-              <Btn to={doors.education.to} variant="ghost">
+              <Btn to={doors.education.to} track="final_cta_learn_more" variant="ghost">
                 Learn More
               </Btn>
             </div>

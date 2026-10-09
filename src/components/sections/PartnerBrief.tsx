@@ -30,10 +30,10 @@ export default function PartnerBrief() {
                 {partnerBriefBody}
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <Btn to="/approach" variant="light">
+                <Btn to="/approach" track="partner_brief_approach" variant="light">
                   Our approach
                 </Btn>
-                <Btn to="/contact" variant="ghost">
+                <Btn to="/contact" track="partner_brief_start_planning" variant="ghost">
                   Start planning
                 </Btn>
               </div>

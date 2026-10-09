@@ -130,7 +130,7 @@ export default function Leadership({ variant = 'full' }: { variant?: LeadershipV
                 </li>
               ))}
             </ul>
-            <Btn to="/about#leadership" variant="light" className="mt-8">
+            <Btn to="/about#leadership" track="leadership_see_industry_leadership" variant="light" className="mt-8">
               See industry leadership
             </Btn>
           </Reveal>

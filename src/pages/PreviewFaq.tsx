@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { gaLabel } from '../lib/gaLabel'
 import { Container, Eyebrow, Section, proseLinkClass } from '../components/ui'
 import { usePageMeta } from '../lib/meta'
 
@@ -102,10 +103,12 @@ function Accordion({
   items,
   open,
   onToggle,
+  track,
 }: {
   items: Faq[]
   open: number | null
   onToggle: (i: number) => void
+  track: string
 }) {
   return (
     <dl className="border-t border-ge-light">
@@ -114,6 +117,7 @@ function Accordion({
           <dt>
             <button
               type="button"
+              data-ga-label={gaLabel(track, f.q)}
               onClick={() => onToggle(i)}
               aria-expanded={open === i}
               className="flex w-full items-start justify-between gap-6 py-6 text-left"
@@ -136,15 +140,18 @@ function Accordion({
 function RevealRow({
   open,
   onClick,
+  track,
   children,
 }: {
   open: boolean
   onClick: () => void
+  track: string
   children: ReactNode
 }) {
   return (
     <button
       type="button"
+      data-ga-label={track}
       onClick={onClick}
       aria-expanded={open}
       className="flex w-full items-center justify-between gap-6 border-b border-ge-light py-6 text-left"
@@ -181,10 +188,12 @@ function OptionMore() {
       <Accordion
         items={shown}
         open={open}
+        track="preview_faq_more"
         onToggle={(i) => setOpen(open === i ? null : i)}
       />
       <RevealRow
         open={more}
+        track="preview_faq_more_toggle"
         onClick={() => {
           setMore((v) => !v)
           if (more && open !== null && open >= VISIBLE) setOpen(null)
@@ -202,9 +211,15 @@ function OptionGroup() {
   const [more, setMore] = useState(false)
   return (
     <>
-      <Accordion items={lead} open={openLead} onToggle={(i) => setOpenLead(openLead === i ? null : i)} />
+      <Accordion
+        items={lead}
+        open={openLead}
+        track="preview_faq_group_lead"
+        onToggle={(i) => setOpenLead(openLead === i ? null : i)}
+      />
       <RevealRow
         open={more}
+        track="preview_faq_group_more"
         onClick={() => {
           setMore((v) => !v)
           if (more) setOpenRest(null)
@@ -213,7 +228,12 @@ function OptionGroup() {
         More questions
       </RevealRow>
       {more && (
-        <Accordion items={rest} open={openRest} onToggle={(i) => setOpenRest(openRest === i ? null : i)} />
+        <Accordion
+          items={rest}
+          open={openRest}
+          track="preview_faq_group_rest"
+          onToggle={(i) => setOpenRest(openRest === i ? null : i)}
+        />
       )}
     </>
   )
@@ -227,9 +247,18 @@ function OptionBatches() {
   const next = Math.min(VISIBLE, left)
   return (
     <>
-      <Accordion items={shown} open={open} onToggle={(i) => setOpen(open === i ? null : i)} />
+      <Accordion
+        items={shown}
+        open={open}
+        track="preview_faq_batches"
+        onToggle={(i) => setOpen(open === i ? null : i)}
+      />
       {left > 0 && (
-        <RevealRow open={false} onClick={() => setCount((n) => Math.min(faqs.length, n + VISIBLE))}>
+        <RevealRow
+          open={false}
+          track="preview_faq_batches_more"
+          onClick={() => setCount((n) => Math.min(faqs.length, n + VISIBLE))}
+        >
           Show {next} more
         </RevealRow>
       )}
@@ -267,18 +296,33 @@ function OptionSearch() {
       </label>
       {q ? (
         matches.length > 0 ? (
-          <Accordion items={matches} open={openMatch} onToggle={(i) => setOpenMatch(openMatch === i ? null : i)} />
+          <Accordion
+            items={matches}
+            open={openMatch}
+            track="preview_faq_search_match"
+            onToggle={(i) => setOpenMatch(openMatch === i ? null : i)}
+          />
         ) : (
           <p className="border-b border-ge-light py-6 font-body text-base text-ge-graphite">No questions match.</p>
         )
       ) : (
         <>
-          <Accordion items={lead} open={openLead} onToggle={(i) => setOpenLead(openLead === i ? null : i)} />
-          <RevealRow open={more} onClick={() => setMore((v) => !v)}>
+          <Accordion
+            items={lead}
+            open={openLead}
+            track="preview_faq_search_lead"
+            onToggle={(i) => setOpenLead(openLead === i ? null : i)}
+          />
+          <RevealRow open={more} track="preview_faq_search_more" onClick={() => setMore((v) => !v)}>
             More questions
           </RevealRow>
           {more && (
-            <Accordion items={rest} open={openMatch} onToggle={(i) => setOpenMatch(openMatch === i ? null : i)} />
+            <Accordion
+              items={rest}
+              open={openMatch}
+              track="preview_faq_search_rest"
+              onToggle={(i) => setOpenMatch(openMatch === i ? null : i)}
+            />
           )}
         </>
       )}
@@ -291,12 +335,18 @@ function OptionLinks() {
   const [quiet, setQuiet] = useState<number | null>(null)
   return (
     <>
-      <Accordion items={lead} open={openLead} onToggle={(i) => setOpenLead(openLead === i ? null : i)} />
+      <Accordion
+        items={lead}
+        open={openLead}
+        track="preview_faq_links_lead"
+        onToggle={(i) => setOpenLead(openLead === i ? null : i)}
+      />
       <ul className="border-b border-ge-light">
         {rest.map((f, i) => (
           <li key={f.q} className="border-t border-ge-light">
             <button
               type="button"
+              data-ga-label={gaLabel('preview_faq_links', f.q)}
               onClick={() => setQuiet(quiet === i ? null : i)}
               aria-expanded={quiet === i}
               className="flex w-full items-start justify-between gap-6 py-4 text-left"

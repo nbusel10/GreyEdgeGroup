@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { story } from '../content/about'
 import { org } from '../content/site'
 import { Container, Eyebrow, Section } from '../components/ui'
+import { gaLabel } from '../lib/gaLabel'
 import { usePageMeta } from '../lib/meta'
 import { usePrefersReducedMotion, useReveal } from '../lib/hooks'
 
@@ -404,6 +405,7 @@ function OptionBlock({
             </div>
             <button
               type="button"
+              data-ga-label={gaLabel('preview_year_replay', option.id)}
               onClick={replay}
               className="inline-flex items-center justify-center border border-ge-light bg-white px-5 py-2.5 font-body text-[10px] font-medium uppercase tracking-[0.2em] text-ge-graphite transition-colors hover:border-ge-accent hover:text-ge-accent"
             >
@@ -460,6 +462,7 @@ export default function PreviewYear() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <button
               type="button"
+              data-ga-label="preview_year_reduced_motion"
               aria-pressed={forceReducedMotion}
               onClick={() => setForceReducedMotion((v) => !v)}
               className="inline-flex items-center justify-center border border-ge-light px-6 py-3 font-body text-[11px] font-medium uppercase tracking-[0.22em] text-ge-graphite transition-colors hover:border-ge-accent hover:text-ge-accent"

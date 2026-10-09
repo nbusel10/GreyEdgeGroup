@@ -48,10 +48,10 @@ export default function HeroTenRibbon({ headingLevel = 1, forceReducedMotion = f
             {hero.body}
           </p>
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-start">
-            <Btn to="/contact" variant="light">
+            <Btn to="/contact" track="hero_ten_ribbon_start_planning" variant="light">
               Start planning
             </Btn>
-            <Btn to="/projects" variant="ghost">
+            <Btn to="/projects" track="hero_ten_ribbon_see_our_work" variant="ghost">
               See our work
             </Btn>
           </div>

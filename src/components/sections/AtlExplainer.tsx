@@ -3,6 +3,7 @@ import AtlDiagram from '../AtlDiagram'
 import { atlModes } from '../../content/atlModes'
 import { usePrefersReducedMotion } from '../../lib/hooks'
 import MoreInfo from '../MoreInfo'
+import { gaLabel } from '../../lib/gaLabel'
 import { Container, Reveal, Section, SectionHeading, proseLinkClass } from '../ui'
 
 /**
@@ -143,6 +144,7 @@ export default function AtlExplainer({
               return (
                 <button
                   key={m.id}
+                  data-ga-label={gaLabel('atl_mode', m.id)}
                   ref={(el) => {
                     tabRefs.current[i] = el
                   }}

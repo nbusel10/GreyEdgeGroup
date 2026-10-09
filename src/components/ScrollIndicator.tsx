@@ -27,6 +27,7 @@ export default function ScrollIndicator() {
 
   return (
     <button
+      data-ga-label="back_to_top"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="Back to top"
       title="Back to top"
