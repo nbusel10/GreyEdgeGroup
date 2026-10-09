@@ -58,11 +58,8 @@ jobs:
           SITE_ENVIRONMENT: ${{ inputs.environment }}
         run: pnpm build
 
-      # Fast-forward only. cPanel cannot update unless this branch stays a
-      # descendant of the checkout it already has.
-      - name: Publish dist to ${{ inputs.dist_branch }}
-        run: bash .github/scripts/publish-dist-branch.sh ${{ inputs.dist_branch }}
-
+      # Upload while dist/ still exists. Publishing checks out the dist branch
+      # and removes this worktree, including dist/.
       - name: Upload to ${{ inputs.server_dir }}
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -72,3 +69,8 @@ jobs:
           local-dir: ./dist/
           server-dir: ${{ inputs.server_dir }}
           dangerous-clean-slate: false
+
+      # Fast-forward only. cPanel cannot update unless this branch stays a
+      # descendant of the checkout it already has.
+      - name: Publish dist to ${{ inputs.dist_branch }}
+        run: bash .github/scripts/publish-dist-branch.sh ${{ inputs.dist_branch }}
