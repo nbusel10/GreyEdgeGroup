@@ -1,7 +1,7 @@
 {
     "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
     "version": "1.0.0",
-    "generatedTime": 1791583277692,
+    "generatedTime": 1791583700335,
     "data": [
         {
             "type": "file",
@@ -81,6 +81,12 @@
         },
         {
             "type": "file",
+            "name": ".faq-logs/.htaccess",
+            "size": 19,
+            "hash": "fa28d421a28ed9b6f4b997d5119c2b8adbacff6e2dd119a179b71230f9664934"
+        },
+        {
+            "type": "file",
             "name": "assets/index-B2RT-zzd.js",
             "size": 810901,
             "hash": "2c8cd1fb69b5702ca3cca6c393ed21149922d5313ea5242b8dacb2fc2f624403"
@@ -121,12 +127,6 @@
         },
         {
             "type": "file",
-            "name": ".faq-logs/.htaccess",
-            "size": 19,
-            "hash": "fa28d421a28ed9b6f4b997d5119c2b8adbacff6e2dd119a179b71230f9664934"
-        },
-        {
-            "type": "file",
             "name": "videos/hero-main.mp4",
             "size": 16832932,
             "hash": "534d9ed65d99963d5faa308308ac5cb5e47e700f94fe2ae6249e1ac67133908b"
@@ -142,6 +142,12 @@
             "name": "images/brand/edge-only-white.webp",
             "size": 2182,
             "hash": "1b59f0cfb664bb59228484e4eb81ee9ad0a92593341a1ea8db5110f30e6fe7ad"
+        },
+        {
+            "type": "file",
+            "name": "images/brand/favicon.png",
+            "size": 24882,
+            "hash": "eb08b2003beb24396d160b29a0c15f12b6ccc5ea30f6bc96dab70619cf19a8bb"
         },
         {
             "type": "file",
@@ -166,12 +172,6 @@
             "name": "images/brand/logo-white-v2.webp",
             "size": 39876,
             "hash": "ab91f4d74ab0019982159fd9eb61aad19a743aeea2b0d1c32366b53a26effac6"
-        },
-        {
-            "type": "file",
-            "name": "images/brand/favicon.png",
-            "size": 24882,
-            "hash": "eb08b2003beb24396d160b29a0c15f12b6ccc5ea30f6bc96dab70619cf19a8bb"
         },
         {
             "type": "folder",
@@ -200,12 +200,6 @@
             "hash": "9e8b2b5145a4f7f99e5437be5c9e625e84ff472c872a5c8f906fb0460cfd5056"
         },
         {
-            "type": "file",
-            "name": "images/projects/colorado-mesa.webp",
-            "size": 71060,
-            "hash": "e7c1216dbf7833058d4eddf1a3af3441b294eef9f0ddf871632876c7e548c1b2"
-        },
-        {
             "type": "folder",
             "name": "images/projects/crested-butte"
         },
@@ -214,6 +208,12 @@
             "name": "images/projects/crested-butte.jpeg",
             "size": 418023,
             "hash": "cdc291c0fc58fc3effe608fe37b32a8c0a065e1fe9e7628bfca9daa426768878"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/colorado-mesa.webp",
+            "size": 71060,
+            "hash": "e7c1216dbf7833058d4eddf1a3af3441b294eef9f0ddf871632876c7e548c1b2"
         },
         {
             "type": "folder",
@@ -252,14 +252,14 @@
             "name": "images/projects/park-city"
         },
         {
+            "type": "folder",
+            "name": "images/projects/pitkin-county"
+        },
+        {
             "type": "file",
             "name": "images/projects/park-city.webp",
             "size": 323984,
             "hash": "7de539db2629ce2e1608358a90df4f141bee200013584042d04a8566558d64c1"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/pitkin-county"
         },
         {
             "type": "file",
@@ -298,6 +298,10 @@
             "hash": "a8e1db9b907a2beebbbe084c5013253a268ac5e448f26ca77010c80fbf102bdd"
         },
         {
+            "type": "folder",
+            "name": "images/projects/weber-state-university"
+        },
+        {
             "type": "file",
             "name": "images/projects/weber-state-university.webp",
             "size": 36060,
@@ -329,15 +333,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/blueprints.webp",
-            "size": 105000,
-            "hash": "fea60da3f48816fb29616b68d7057abc78766c548642b2edb13c6caf766a4e2b"
-        },
-        {
-            "type": "file",
             "name": "images/site/atl-schematic-nextemp.png",
             "size": 79630,
             "hash": "f1e0ff80e13d2fb9ac8ee593ff28d2ee8a86aef56e00375f9e958eb3b0220b0d"
+        },
+        {
+            "type": "file",
+            "name": "images/site/blueprints.webp",
+            "size": 105000,
+            "hash": "fea60da3f48816fb29616b68d7057abc78766c548642b2edb13c6caf766a4e2b"
         },
         {
             "type": "file",
@@ -350,10 +354,6 @@
             "name": "images/site/conference.webp",
             "size": 75588,
             "hash": "cf6763f5a478c7aec0723c5dd6a66c6ff71541fb65e13548abfa9dd223d86aca"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/weber-state-university"
         },
         {
             "type": "file",
@@ -384,6 +384,12 @@
             "name": "images/site/design-session.webp",
             "size": 122640,
             "hash": "d148480c20b5c32a3e9987e26dc854179e8331f6354036dcfeacd221fbe6a267"
+        },
+        {
+            "type": "file",
+            "name": "images/site/district-scale-thermal-systems-site-planning.webp",
+            "size": 154678,
+            "hash": "a9f5afeda9806b3c0fa553792adae88552744290914dbc463dfc01cca26a80c7"
         },
         {
             "type": "file",
@@ -435,15 +441,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/insight-50-90.webp",
-            "size": 178286,
-            "hash": "cc118afc142e4d133ea07f13418772acf23af75b4011ae1ea48aa6474aa02f72"
-        },
-        {
-            "type": "file",
             "name": "images/site/insight-cmu.webp",
             "size": 138664,
             "hash": "cf6e68a7a6ac0b12b1cb5def675d0dbe9e5545d49226dd1d844a1c329d6efbc0"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-50-90.webp",
+            "size": 178286,
+            "hash": "cc118afc142e4d133ea07f13418772acf23af75b4011ae1ea48aa6474aa02f72"
         },
         {
             "type": "file",
@@ -462,12 +468,6 @@
             "name": "images/site/insight-first-cost.webp",
             "size": 69650,
             "hash": "c0693854e7da63389e48e0652696df94641771d5fa3965e83894e17a464fb8c0"
-        },
-        {
-            "type": "file",
-            "name": "images/site/district-scale-thermal-systems-site-planning.webp",
-            "size": 154678,
-            "hash": "a9f5afeda9806b3c0fa553792adae88552744290914dbc463dfc01cca26a80c7"
         },
         {
             "type": "file",
@@ -561,15 +561,21 @@
         },
         {
             "type": "file",
-            "name": "images/site/shaping-the-future.webp",
-            "size": 70444,
-            "hash": "e0b18e1641953c812d973f6fefb26fdfb91a6f477315879062c510aa25158362"
+            "name": "images/site/service-planning.webp",
+            "size": 36388,
+            "hash": "62c1d3431dea6f90b63c08ad5c8a12351705610320e6009b2fab658a87e89698"
         },
         {
             "type": "file",
             "name": "images/site/team-group.webp",
             "size": 102760,
             "hash": "fdd0967e1b5dac9c9135b113b80214a68f3f85562afbdbd4d4c44fc03e819994"
+        },
+        {
+            "type": "file",
+            "name": "images/site/shaping-the-future.webp",
+            "size": 70444,
+            "hash": "e0b18e1641953c812d973f6fefb26fdfb91a6f477315879062c510aa25158362"
         },
         {
             "type": "file",
@@ -591,9 +597,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/service-planning.webp",
-            "size": 36388,
-            "hash": "62c1d3431dea6f90b63c08ad5c8a12351705610320e6009b2fab658a87e89698"
+            "name": "images/team/bill-odonnell.webp",
+            "size": 80182,
+            "hash": "94d03934e74b04b31629dfe176f1a383f2b5cb26559dd2ca299f8b96d13d3eff"
+        },
+        {
+            "type": "file",
+            "name": "images/team/cary-smith.webp",
+            "size": 77776,
+            "hash": "7edc6dfa3156190c55ece9da1672cdfa494539eed2feebcd465745536852a844"
         },
         {
             "type": "file",
@@ -612,18 +624,6 @@
             "name": "images/team/garry-sexton.webp",
             "size": 44178,
             "hash": "104b3f731f2239244c0ea6ea7b843bc97b64b57ef14ec5a21e0ff0a3b04fbc64"
-        },
-        {
-            "type": "file",
-            "name": "images/team/bill-odonnell.webp",
-            "size": 80182,
-            "hash": "94d03934e74b04b31629dfe176f1a383f2b5cb26559dd2ca299f8b96d13d3eff"
-        },
-        {
-            "type": "file",
-            "name": "images/team/cary-smith.webp",
-            "size": 77776,
-            "hash": "7edc6dfa3156190c55ece9da1672cdfa494539eed2feebcd465745536852a844"
         },
         {
             "type": "file",
@@ -707,11 +707,11 @@
         },
         {
             "type": "folder",
-            "name": "images/projects/park-city/gallery"
+            "name": "images/projects/pitkin-county/gallery"
         },
         {
             "type": "folder",
-            "name": "images/projects/pitkin-county/gallery"
+            "name": "images/projects/park-city/gallery"
         },
         {
             "type": "folder",
@@ -743,15 +743,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/crested-butte/gallery/geothermal-drill-rig-crew.jpg",
-            "size": 105258,
-            "hash": "76ea4e997fe31de7bbe3ff20f29b45373f9ca312ac2705b0001aae0d25698c36"
-        },
-        {
-            "type": "file",
             "name": "images/projects/aspen/gallery/sonic-drill-rig.jpg",
             "size": 252692,
             "hash": "8f470c3e8a673e02a0607221035b5c8b37e4a9d01cbab81bc78fc108beb83d9c"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/crested-butte/gallery/geothermal-drill-rig-crew.jpg",
+            "size": 105258,
+            "hash": "76ea4e997fe31de7bbe3ff20f29b45373f9ca312ac2705b0001aae0d25698c36"
         },
         {
             "type": "file",
@@ -785,18 +785,6 @@
         },
         {
             "type": "file",
-            "name": "images/projects/park-city/gallery/drill-rig-front.jpg",
-            "size": 143157,
-            "hash": "9ee4cd8b907173f41c320a074687f308402756d2269523b8fff7ae519b86c724"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/park-city/gallery/drill-rig-side.jpg",
-            "size": 139438,
-            "hash": "112d3984d7f5b6f6a140f782edf2a3fd1747ec17c843ea0cba37e1bde5451b60"
-        },
-        {
-            "type": "file",
             "name": "images/projects/pitkin-county/gallery/drill-rig-mountain-lot.jpg",
             "size": 348457,
             "hash": "922dd6ebdec579fe5e34b000b7f1f179506af99988930a79a632eaf3f8695ef8"
@@ -809,15 +797,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/telluride/gallery/pvc-fittings-assembly.jpg",
-            "size": 311464,
-            "hash": "4cca2d4d43e765156d0a3d79cb123fcc7fa1461a280b06ce3c71af2e94316ef2"
+            "name": "images/projects/park-city/gallery/drill-rig-front.jpg",
+            "size": 143157,
+            "hash": "9ee4cd8b907173f41c320a074687f308402756d2269523b8fff7ae519b86c724"
         },
         {
             "type": "file",
-            "name": "images/projects/telluride/gallery/pvc-pipe-install-snow.jpg",
-            "size": 384114,
-            "hash": "1f5dd87f14e4c1cc90b1a435a2888bee8317b590f012daaaad3b637361c53b4d"
+            "name": "images/projects/park-city/gallery/drill-rig-side.jpg",
+            "size": 139438,
+            "hash": "112d3984d7f5b6f6a140f782edf2a3fd1747ec17c843ea0cba37e1bde5451b60"
         },
         {
             "type": "file",
@@ -857,6 +845,18 @@
         },
         {
             "type": "file",
+            "name": "images/projects/telluride/gallery/pvc-fittings-assembly.jpg",
+            "size": 311464,
+            "hash": "4cca2d4d43e765156d0a3d79cb123fcc7fa1461a280b06ce3c71af2e94316ef2"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/telluride/gallery/pvc-pipe-install-snow.jpg",
+            "size": 384114,
+            "hash": "1f5dd87f14e4c1cc90b1a435a2888bee8317b590f012daaaad3b637361c53b4d"
+        },
+        {
+            "type": "file",
             "name": "images/projects/vail/gallery/mechanical-room-inspection.jpg",
             "size": 194476,
             "hash": "508cd8a2e729ddef80e350aac5df5449c746c4bbad837aba5aa597454e81aef4"
@@ -881,6 +881,12 @@
         },
         {
             "type": "file",
+            "name": "images/projects/weber-state-university/gallery/aerial-campus-trenching.jpg",
+            "size": 189760,
+            "hash": "9ce60379cd5258775e9f76c91653d5cdcd307b2237bdd5752e0e412c13f94eca"
+        },
+        {
+            "type": "file",
             "name": "images/projects/weber-state-university/gallery/mechanical-room-insulated-pipes.jpg",
             "size": 175494,
             "hash": "18ad601e87ec138b9db3d96a9d7d5d497ad1c503998003178ae0a5b9ef0ba8d8"
@@ -896,12 +902,6 @@
             "name": "images/projects/weber-state-university/gallery/truck-drilling-rig-hdpe.jpg",
             "size": 252617,
             "hash": "caf4ab540f059ebf61306d56963ef7e68bdb58528426d6d492bd6137d30eeba2"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/weber-state-university/gallery/aerial-campus-trenching.jpg",
-            "size": 189760,
-            "hash": "9ce60379cd5258775e9f76c91653d5cdcd307b2237bdd5752e0e412c13f94eca"
         }
     ]
 }
