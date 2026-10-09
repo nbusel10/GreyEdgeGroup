@@ -1,10 +1,30 @@
+import type { ReactNode } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getInsight, insights } from '../content/insights'
 import FinalCta from '../components/sections/FinalCta'
 import { gaLabel } from '../lib/gaLabel'
-import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
+import { Btn, Container, Eyebrow, Reveal, Section, proseLinkClass } from '../components/ui'
 import { linkGeoTerms } from '../lib/linkGeoTerms'
 import { usePageMeta } from '../lib/meta'
+
+/** Turn [1] markers into superscript links when the article has a source list. */
+function citeMarks(nodes: ReactNode[]): ReactNode[] {
+  return nodes.flatMap((node, i): ReactNode[] => {
+    if (typeof node !== 'string') return [node]
+    const bits = node.split(/(\[\d+\])/g)
+    return bits.map((bit, j) => {
+      const match = bit.match(/^\[(\d+)\]$/)
+      if (!match) return bit
+      return (
+        <sup key={`cite-${i}-${j}`} className="ml-0.5 text-[0.7em] font-medium tracking-normal">
+          <a href={`#insight-source-${match[1]}`} className="text-ge-accent hover:text-ge-black">
+            {match[1]}
+          </a>
+        </sup>
+      )
+    })
+  })
+}
 
 export default function InsightDetail() {
   const { slug } = useParams<{ slug: string }>()
@@ -87,12 +107,40 @@ export default function InsightDetail() {
                         section.heading && pi === 0 ? 'mt-5' : pi > 0 || (i > 0 && !section.heading) ? 'mt-5' : ''
                       }`}
                     >
-                      {linkGeoTerms(p, geoLinked)}
+                      {citeMarks(linkGeoTerms(p, geoLinked))}
                     </p>
                   ))}
                 </div>
               </Reveal>
             ))}
+
+            {insight.sources?.length ? (
+              <Reveal delay={0.08}>
+                <div className="mt-14 border-t border-ge-light pt-10">
+                  <h2 className="font-display text-xl font-bold uppercase tracking-wide text-ge-black sm:text-2xl">
+                    References
+                  </h2>
+                  <ol className="mt-6 space-y-4">
+                    {insight.sources.map((source, i) => (
+                      <li
+                        id={`insight-source-${i + 1}`}
+                        key={source.citation}
+                        className="flex scroll-mt-28 gap-3 font-body text-sm leading-relaxed text-ge-graphite"
+                      >
+                        <span className="shrink-0 font-medium text-ge-accent">[{i + 1}]</span>
+                        {source.href ? (
+                          <a href={source.href} target="_blank" rel="noreferrer" className={proseLinkClass}>
+                            {source.citation}
+                          </a>
+                        ) : (
+                          <span>{source.citation}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </Reveal>
+            ) : null}
 
             <Reveal delay={0.1}>
               <div className="mt-14 border-t border-ge-light pt-10">
