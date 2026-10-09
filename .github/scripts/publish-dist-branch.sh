@@ -25,6 +25,11 @@ fi
 find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 cp -a /tmp/ge-dist/. .
 
+# cPanel's YAML parser rejects CRLF. The file is authored on Windows.
+if [ -f .cpanel.yml ]; then
+  sed -i 's/\r$//' .cpanel.yml
+fi
+
 git add -A
 if git diff --cached --quiet; then
   git commit --allow-empty -m "$message"
