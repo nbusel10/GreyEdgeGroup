@@ -1,0 +1,6 @@
+---
+# This clone is the document root, so pulling main already publishes the site.
+# cPanel hides deployment until this file exists. Do not copy * into the repo.
+deployment:
+  tasks:
+    - /bin/echo "Document root matches the git checkout."
