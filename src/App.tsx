@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Analytics from './components/Analytics'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollIndicator from './components/ScrollIndicator'
 import Home from './pages/Home'
@@ -34,6 +35,7 @@ export default function App() {
   return (
     <div className="flex min-h-screen flex-col bg-ge-offwhite font-body text-ge-black">
       <ScrollToTop />
+      <Analytics />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-ge-black focus:px-5 focus:py-3 focus:font-body focus:text-xs focus:uppercase focus:tracking-widest focus:text-white"

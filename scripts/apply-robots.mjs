@@ -5,12 +5,30 @@
 import { readFile, writeFile } from 'node:fs/promises'
 
 const staging = process.env.SITE_ENVIRONMENT === 'staging'
+const GA_ID = 'G-1KDVP6WJYT'
+const gaBlock = `    <!-- ga4:start -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${GA_ID}', { send_page_view: false });
+    </script>
+    <!-- ga4:end -->
+`
 
 if (!staging) {
+  const indexPath = 'dist/index.html'
+  let html = await readFile(indexPath, 'utf8')
+  html = html.replace(/\s*<!-- ga4:start -->[\s\S]*?<!-- ga4:end -->\n?/, '\n')
+  html = html.replace('</head>', `${gaBlock}  </head>`)
+  await writeFile(indexPath, html)
   console.log('robots: indexable')
+  console.log(`ga4: ${GA_ID}`)
 } else {
   const indexPath = 'dist/index.html'
   let html = await readFile(indexPath, 'utf8')
+  html = html.replace(/\s*<!-- ga4:start -->[\s\S]*?<!-- ga4:end -->\n?/, '\n')
   const blocked = '<meta name="robots" content="noindex, nofollow" />'
   if (/<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/.test(html)) {
     html = html.replace(/<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/, blocked)
