@@ -26,7 +26,7 @@ export default function Home() {
   }, [])
 
   usePageMeta({
-    title: `${org.name} — ${org.tagline}`,
+    title: `${org.name} — Thermal Energy Network Design Experts`,
     description: org.description,
   })
 
