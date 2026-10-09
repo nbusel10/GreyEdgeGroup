@@ -29,8 +29,13 @@ cp -a /tmp/ge-dist/. .
 # unless this file is rewritten and added with autocrlf off.
 printf '%s\n' '---' 'deployment:' '  tasks:' '    - /bin/echo deployed' > .cpanel.yml
 
-git add -A
+# The clone is the live docroot, so cPanel refuses to deploy while logs,
+# ACME files, or anything else untracked show up in git status. Ignore
+# those on this branch only. Tracked site files are still updated.
+git add -A -f
 git -c core.autocrlf=false add --renormalize -- .cpanel.yml
+printf '%s\n' '*' '!.gitignore' > .gitignore
+git add -f .gitignore
 if git diff --cached --quiet; then
   git commit --allow-empty -m "$message"
 else
