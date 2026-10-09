@@ -1,0 +1,19 @@
+name: Staging
+
+on:
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
+    with:
+      environment: staging
+      # cPanel at /home/buselmei/public_html/thegreyedge.buselmeier.com tracks main.
+      dist_branch: main
+      site_url: https://thegreyedge.buselmeier.com

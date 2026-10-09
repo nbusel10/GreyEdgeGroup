@@ -1,0 +1,93 @@
+name: Deploy site
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: GitHub environment (staging or production)
+        required: true
+        type: string
+      dist_branch:
+        description: Branch the cPanel clone has checked out
+        required: true
+        type: string
+      site_url:
+        description: Public URL recorded on the GitHub environment
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-${{ inputs.environment }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ inputs.site_url }}
+    env:
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        env:
+          # production stays indexable; staging rewrites robots after the build
+          SITE_ENVIRONMENT: ${{ inputs.environment }}
+        run: pnpm build
+
+      # Fast-forward only. cPanel cannot update unless this branch stays a
+      # descendant of the checkout it already has.
+      - name: Publish dist to ${{ inputs.dist_branch }}
+        run: bash .github/scripts/publish-dist-branch.sh ${{ inputs.dist_branch }}
+
+      - name: Update ${{ inputs.site_url }}
+        env:
+          ENVIRONMENT: ${{ inputs.environment }}
+          DIST_BRANCH: ${{ inputs.dist_branch }}
+          STAGING_CPANEL_DEPLOY_URL: ${{ secrets.STAGING_CPANEL_DEPLOY_URL }}
+          CPANEL_DEPLOY_URL: ${{ secrets.CPANEL_DEPLOY_URL }}
+          PRODUCTION_CPANEL_DEPLOY_URL: ${{ secrets.PRODUCTION_CPANEL_DEPLOY_URL }}
+        run: |
+          set -euo pipefail
+          if [ "$ENVIRONMENT" = "production" ]; then
+            url="$PRODUCTION_CPANEL_DEPLOY_URL"
+            hint="PRODUCTION_CPANEL_DEPLOY_URL on the production environment"
+          else
+            url="${STAGING_CPANEL_DEPLOY_URL:-$CPANEL_DEPLOY_URL}"
+            hint="STAGING_CPANEL_DEPLOY_URL on the staging environment"
+          fi
+          if [ -z "$url" ]; then
+            echo "Deploy URL is not set."
+            echo "In cPanel: Git Version Control → Manage → Pull or Deploy → copy the deployment URL."
+            echo "In GitHub: Settings → Environments → ${ENVIRONMENT} → Add secret → ${hint}."
+            echo "The built site is on branch ${DIST_BRANCH}. cPanel was not told to pull it."
+            exit 1
+          fi
+          code="$(curl -sS -o /tmp/cpanel-deploy.txt -w '%{http_code}' -X POST "$url" \
+            -H 'Content-Type: application/json' \
+            --data "{\"ref\":\"refs/heads/${DIST_BRANCH}\"}")"
+          echo "cPanel responded ${code}"
+          sed -n '1,40p' /tmp/cpanel-deploy.txt
+          case "$code" in
+            2*) ;;
+            *) exit 1 ;;
+          esac

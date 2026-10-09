@@ -1,9 +1,6 @@
 # Apache SPA fallback. Vite copies this into dist/ on build.
 # Direct hits and refreshes on client routes (e.g. /projects/aspen) must
 # serve index.html; the router then takes over. Existing files are left alone.
-<IfModule mod_headers.c>
-  Header set X-Robots-Tag "noindex, nofollow"
-</IfModule>
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
