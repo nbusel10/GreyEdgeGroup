@@ -8,11 +8,15 @@ on:
         required: true
         type: string
       dist_branch:
-        description: Branch the cPanel clone has checked out
+        description: Branch that stores the built site
         required: true
         type: string
       site_url:
         description: Public URL recorded on the GitHub environment
+        required: true
+        type: string
+      server_dir:
+        description: Document root on the cPanel account, relative to the FTP home
         required: true
         type: string
 
@@ -59,35 +63,12 @@ jobs:
       - name: Publish dist to ${{ inputs.dist_branch }}
         run: bash .github/scripts/publish-dist-branch.sh ${{ inputs.dist_branch }}
 
-      - name: Update ${{ inputs.site_url }}
-        env:
-          ENVIRONMENT: ${{ inputs.environment }}
-          DIST_BRANCH: ${{ inputs.dist_branch }}
-          STAGING_CPANEL_DEPLOY_URL: ${{ secrets.STAGING_CPANEL_DEPLOY_URL }}
-          CPANEL_DEPLOY_URL: ${{ secrets.CPANEL_DEPLOY_URL }}
-          PRODUCTION_CPANEL_DEPLOY_URL: ${{ secrets.PRODUCTION_CPANEL_DEPLOY_URL }}
-        run: |
-          set -euo pipefail
-          if [ "$ENVIRONMENT" = "production" ]; then
-            url="$PRODUCTION_CPANEL_DEPLOY_URL"
-            hint="PRODUCTION_CPANEL_DEPLOY_URL on the production environment"
-          else
-            url="${STAGING_CPANEL_DEPLOY_URL:-$CPANEL_DEPLOY_URL}"
-            hint="STAGING_CPANEL_DEPLOY_URL on the staging environment"
-          fi
-          if [ -z "$url" ]; then
-            echo "Deploy URL is not set."
-            echo "In cPanel: Git Version Control → Manage → Pull or Deploy → copy the deployment URL."
-            echo "In GitHub: Settings → Environments → ${ENVIRONMENT} → Add secret → ${hint}."
-            echo "The built site is on branch ${DIST_BRANCH}. cPanel was not told to pull it."
-            exit 1
-          fi
-          code="$(curl -sS -o /tmp/cpanel-deploy.txt -w '%{http_code}' -X POST "$url" \
-            -H 'Content-Type: application/json' \
-            --data "{\"ref\":\"refs/heads/${DIST_BRANCH}\"}")"
-          echo "cPanel responded ${code}"
-          sed -n '1,40p' /tmp/cpanel-deploy.txt
-          case "$code" in
-            2*) ;;
-            *) exit 1 ;;
-          esac
+      - name: Upload to ${{ inputs.server_dir }}
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ${{ inputs.server_dir }}
+          dangerous-clean-slate: false

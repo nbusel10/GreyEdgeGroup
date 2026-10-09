@@ -14,6 +14,8 @@ jobs:
     secrets: inherit
     with:
       environment: staging
-      # cPanel at /home/buselmei/public_html/thegreyedge.buselmeier.com tracks main.
+      # cPanel document root: /home/buselmei/public_html/staging.greyedgegroup.com
+      # That folder should clone this repo's main branch. main is the built site.
       dist_branch: main
-      site_url: https://thegreyedge.buselmeier.com
+      site_url: https://staging.greyedgegroup.com
+      server_dir: /public_html/staging.greyedgegroup.com/

@@ -1,7 +1,6 @@
 name: Production
 
-# Manual only until go-live. Does not run on push, and does not touch the
-# thegreyedge.buselmeier.com checkout (that clone tracks main, not live).
+# Manual only. Does not run on push. Public site is https://greyedgegroup.com.
 on:
   workflow_dispatch:
 
@@ -16,3 +15,4 @@ jobs:
       environment: production
       dist_branch: live
       site_url: https://greyedgegroup.com
+      server_dir: /public_html/greyedgegroup.com/
