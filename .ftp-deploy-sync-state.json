@@ -1,0 +1,907 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1791583277692,
+    "data": [
+        {
+            "type": "file",
+            "name": ".cpanel.yml",
+            "size": 50,
+            "hash": "91392000719db9c654e171c2016dd01abb5a74c33b8b925d2c5d72754ffa9ed5"
+        },
+        {
+            "type": "folder",
+            "name": ".faq-logs"
+        },
+        {
+            "type": "file",
+            "name": ".htaccess",
+            "size": 849,
+            "hash": "89afdba0245443e437673461648594c2936e3fb63bf6a053bbb340720d467a9f"
+        },
+        {
+            "type": "file",
+            "name": "_redirects",
+            "size": 232,
+            "hash": "f85b6596cabc530d4b276da4d1d8cecd801ed83e1f1b8f7d1b2176441c9df5dd"
+        },
+        {
+            "type": "folder",
+            "name": "assets"
+        },
+        {
+            "type": "file",
+            "name": "contact.php",
+            "size": 1722,
+            "hash": "603c2aecc219c01e3598022fb99af348b5abc1004b9eef2a62dbd849e4a7b362"
+        },
+        {
+            "type": "file",
+            "name": "faq-search.php",
+            "size": 5238,
+            "hash": "030093e497d9cd0dbd63dd2d013d031e55f6566ec44972bd5d44eaf7dedd071c"
+        },
+        {
+            "type": "file",
+            "name": "favicon-32.png",
+            "size": 2742,
+            "hash": "9400c8f2c9fd2b269a8bf797f452ab5d56dae0a075b992f3dd21be0ad274390f"
+        },
+        {
+            "type": "file",
+            "name": "favicon.svg",
+            "size": 6599,
+            "hash": "a570f8a8c6651cb2495356e1dad7f1eb684ec6855a5ca1bb7b25ed9785feafe8"
+        },
+        {
+            "type": "folder",
+            "name": "images"
+        },
+        {
+            "type": "file",
+            "name": "index.html",
+            "size": 3102,
+            "hash": "3fb8eae6c92fb0a038eff01d5023360b5b3b57318b92a1af27f46a65136b347f"
+        },
+        {
+            "type": "file",
+            "name": "robots.txt",
+            "size": 26,
+            "hash": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1"
+        },
+        {
+            "type": "file",
+            "name": "sitemap.xml",
+            "size": 3302,
+            "hash": "31f1b4865962581d3ee9ccd47f042cde9c8da6ef0af7cd1c9775e0946cbdbf21"
+        },
+        {
+            "type": "folder",
+            "name": "videos"
+        },
+        {
+            "type": "file",
+            "name": "assets/index-B2RT-zzd.js",
+            "size": 810901,
+            "hash": "2c8cd1fb69b5702ca3cca6c393ed21149922d5313ea5242b8dacb2fc2f624403"
+        },
+        {
+            "type": "file",
+            "name": "assets/index-Cwe-UKBd.css",
+            "size": 87851,
+            "hash": "5fda72c3c4f3943ccfaee6746b458e0ce45dbd3d7a3e01dd6ad7bfeb2f47616c"
+        },
+        {
+            "type": "folder",
+            "name": "images/brand"
+        },
+        {
+            "type": "file",
+            "name": "images/og-greyedge.webp",
+            "size": 20620,
+            "hash": "3333cac658d9fa2a9eadbb43601edda766a227983e2799ba0976ed9bba1ae66b"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects"
+        },
+        {
+            "type": "folder",
+            "name": "images/site"
+        },
+        {
+            "type": "folder",
+            "name": "images/team"
+        },
+        {
+            "type": "file",
+            "name": "videos/greyedge-lockup.gif",
+            "size": 809734,
+            "hash": "e50102c287787fec124d71591c8c50a396876ccafd288d620c42f8ac148a68e9"
+        },
+        {
+            "type": "file",
+            "name": ".faq-logs/.htaccess",
+            "size": 19,
+            "hash": "fa28d421a28ed9b6f4b997d5119c2b8adbacff6e2dd119a179b71230f9664934"
+        },
+        {
+            "type": "file",
+            "name": "videos/hero-main.mp4",
+            "size": 16832932,
+            "hash": "534d9ed65d99963d5faa308308ac5cb5e47e700f94fe2ae6249e1ac67133908b"
+        },
+        {
+            "type": "file",
+            "name": "videos/thermal-highway.gif",
+            "size": 210093,
+            "hash": "94b4ccb682610a3f8c03aeae5b694729728340997513c4343ed860779ddab389"
+        },
+        {
+            "type": "file",
+            "name": "images/brand/edge-only-white.webp",
+            "size": 2182,
+            "hash": "1b59f0cfb664bb59228484e4eb81ee9ad0a92593341a1ea8db5110f30e6fe7ad"
+        },
+        {
+            "type": "file",
+            "name": "images/brand/favicon.webp",
+            "size": 8640,
+            "hash": "47e22f3ef10597e0dcff009d4b35049f28c925992f090ccfc433856e46f5e9c0"
+        },
+        {
+            "type": "file",
+            "name": "images/brand/ge-mark.webp",
+            "size": 3274,
+            "hash": "cc50b24b0d76b05d8d5ab8ee0efcccb3be8087a6aafc41d1c5bf7e86e87398a3"
+        },
+        {
+            "type": "file",
+            "name": "images/brand/logo-dark-v2.webp",
+            "size": 39876,
+            "hash": "4efd4c7cb71946a700635810d9ece7ecde0788a0c645a4be5103bb5acc0d630b"
+        },
+        {
+            "type": "file",
+            "name": "images/brand/logo-white-v2.webp",
+            "size": 39876,
+            "hash": "ab91f4d74ab0019982159fd9eb61aad19a743aeea2b0d1c32366b53a26effac6"
+        },
+        {
+            "type": "file",
+            "name": "images/brand/favicon.png",
+            "size": 24882,
+            "hash": "eb08b2003beb24396d160b29a0c15f12b6ccc5ea30f6bc96dab70619cf19a8bb"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/32-zed-zero-energy-district"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/32-zed-zero-energy-district.webp",
+            "size": 100394,
+            "hash": "84a268614b1fb94e7254f576c118a948dfc59cf918447d8e878dfbb5ad06449e"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/aspen"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/aspen.webp",
+            "size": 395268,
+            "hash": "9966aa144b5c42b3abb9d7d265002eaf10bbacf330b7b7622aa93fc6ec0b7d4f"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/breckenridge.jpeg",
+            "size": 277748,
+            "hash": "9e8b2b5145a4f7f99e5437be5c9e625e84ff472c872a5c8f906fb0460cfd5056"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/colorado-mesa.webp",
+            "size": 71060,
+            "hash": "e7c1216dbf7833058d4eddf1a3af3441b294eef9f0ddf871632876c7e548c1b2"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/crested-butte"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/crested-butte.jpeg",
+            "size": 418023,
+            "hash": "cdc291c0fc58fc3effe608fe37b32a8c0a065e1fe9e7628bfca9daa426768878"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/fraser"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/fraser.jpg",
+            "size": 154355,
+            "hash": "2382123ca7d717da0f58c06313ac1e34ba7150f5c9101e29875c96259bd3f91b"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/hayden.jpg",
+            "size": 307134,
+            "hash": "f685ec6a6595b2c92f42c21dd705b8cb7f9674b7f66b6ccb61feba0fda316479"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/lexington.jpg",
+            "size": 340687,
+            "hash": "aebf431215fc55d4d59828fd491056d4da9431d6bdcfbea4591d937708421c42"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/mountain-village"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/mountain-village.jpg",
+            "size": 288341,
+            "hash": "2f8ff0a37098255cb3135ed5cff3744454dc4e55f7084a97f1f57b566cb5fd82"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/park-city"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/park-city.webp",
+            "size": 323984,
+            "hash": "7de539db2629ce2e1608358a90df4f141bee200013584042d04a8566558d64c1"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/pitkin-county"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/pitkin-county.jpg",
+            "size": 291930,
+            "hash": "676bbb335b94ccb3b93be5372ce84d57e6240ceeed7f62023cb52671aea7d6cb"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/steamboat-springs"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs.webp",
+            "size": 302004,
+            "hash": "b132314bace3c1b5986eb130c421531a03b4a4a98932b171df524a171c42c6d5"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/telluride"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/telluride.webp",
+            "size": 284556,
+            "hash": "9133fc954677b15d3badfa1c5e5432a7239ccbb1ca9987ae48517f768830d36e"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/vail"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/vail.webp",
+            "size": 276206,
+            "hash": "a8e1db9b907a2beebbbe084c5013253a268ac5e448f26ca77010c80fbf102bdd"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/weber-state-university.webp",
+            "size": 36060,
+            "hash": "d31d585615d78ad93a3cf8caf5335cb46edde51c456efe1c4a16b66a68fe8108"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/winter-park.jpg",
+            "size": 221896,
+            "hash": "24a25a61bd4e1b3eccaa8144c0ebb662b2cd8dca6e2511e96ab12531eac28abb"
+        },
+        {
+            "type": "file",
+            "name": "images/site/advisory-meeting.webp",
+            "size": 60710,
+            "hash": "84611a2c129dd27fb35ac0a152fcbc804813d48105cd9589593ea483eff27bb4"
+        },
+        {
+            "type": "file",
+            "name": "images/site/approach-existing-assets.webp",
+            "size": 93654,
+            "hash": "bc5d71cf470b7f525a7a7ee80c5d73ef76fb685ec8304517b41236a413a2d6ce"
+        },
+        {
+            "type": "file",
+            "name": "images/site/approach-planning-session.webp",
+            "size": 32866,
+            "hash": "0457c3bb7d9fa194000dd9c361378a5a1425f4c128f215bb8a9f1b5f63f6d554"
+        },
+        {
+            "type": "file",
+            "name": "images/site/blueprints.webp",
+            "size": 105000,
+            "hash": "fea60da3f48816fb29616b68d7057abc78766c548642b2edb13c6caf766a4e2b"
+        },
+        {
+            "type": "file",
+            "name": "images/site/atl-schematic-nextemp.png",
+            "size": 79630,
+            "hash": "f1e0ff80e13d2fb9ac8ee593ff28d2ee8a86aef56e00375f9e958eb3b0220b0d"
+        },
+        {
+            "type": "file",
+            "name": "images/site/campus-build.webp",
+            "size": 345930,
+            "hash": "06bed003bc6a2992febb5c739f899916ef3403c36244a6964f9dc79e791d9b96"
+        },
+        {
+            "type": "file",
+            "name": "images/site/conference.webp",
+            "size": 75588,
+            "hash": "cf6763f5a478c7aec0723c5dd6a66c6ff71541fb65e13548abfa9dd223d86aca"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/weber-state-university"
+        },
+        {
+            "type": "file",
+            "name": "images/site/contact.webp",
+            "size": 37312,
+            "hash": "e475db93cffa5662ea936bff54074f21de9fa14de3464a413e813fe99da5da0b"
+        },
+        {
+            "type": "file",
+            "name": "images/site/decarbonization.webp",
+            "size": 233138,
+            "hash": "d2d0bf8ad06fbb25fa496442498c27e355604eba36cb28bdcb1a965e496881b8"
+        },
+        {
+            "type": "file",
+            "name": "images/site/design-meeting.webp",
+            "size": 105756,
+            "hash": "7f033e5d15022228b50c7b7c8e4717485224bc01b2f0fcc41b9dcb7776d6aa74"
+        },
+        {
+            "type": "file",
+            "name": "images/site/design-session-alt.webp",
+            "size": 132852,
+            "hash": "ba892d06dc0b412b47dec3bf5f936ae5b0df2eaf96465378d685949c512300d3"
+        },
+        {
+            "type": "file",
+            "name": "images/site/design-session.webp",
+            "size": 122640,
+            "hash": "d148480c20b5c32a3e9987e26dc854179e8331f6354036dcfeacd221fbe6a267"
+        },
+        {
+            "type": "file",
+            "name": "images/site/electrification.webp",
+            "size": 463712,
+            "hash": "b5fd2b8de986c532003f3a1a0586655b2cf40eeb34ecd0c519c2bda93a59e240"
+        },
+        {
+            "type": "file",
+            "name": "images/site/global-projects.webp",
+            "size": 50118,
+            "hash": "d1ac2cd3b68f91904211c2882b9a475d4e0affbc5a0520db88f36bc181f96258"
+        },
+        {
+            "type": "file",
+            "name": "images/site/growth-flexibility.webp",
+            "size": 274802,
+            "hash": "769956d188d3816d96086ce40192f4142b5ca4ced904780e35334eac5508bbe0"
+        },
+        {
+            "type": "file",
+            "name": "images/site/hero-cityscape.webp",
+            "size": 252290,
+            "hash": "d6e846d1029f2f88662358ce23ae071b1eb052466e318efa9a6d17c3105dadc8"
+        },
+        {
+            "type": "file",
+            "name": "images/site/hero-district.webp",
+            "size": 88086,
+            "hash": "51093b42cc6a8899a37dad8ed0ffbb7528cb6126854ee6289853ab9cdd22a1aa"
+        },
+        {
+            "type": "file",
+            "name": "images/site/hero-mountain.webp",
+            "size": 383286,
+            "hash": "786f798427621bb5854d70c1b15cbbedff31153b0aa7b196e6954531641a950a"
+        },
+        {
+            "type": "file",
+            "name": "images/site/hero-ski-town.webp",
+            "size": 241450,
+            "hash": "aa6e1779b37fb4bf9b166fb5f3691ffb60897c6de88e7de287fbf05577201edf"
+        },
+        {
+            "type": "file",
+            "name": "images/site/infrastructure.webp",
+            "size": 595932,
+            "hash": "d9afbe8670060388bced53e8957d04d1ec3a1390a727b823ac29f3e07622cc46"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-50-90.webp",
+            "size": 178286,
+            "hash": "cc118afc142e4d133ea07f13418772acf23af75b4011ae1ea48aa6474aa02f72"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-cmu.webp",
+            "size": 138664,
+            "hash": "cf6e68a7a6ac0b12b1cb5def675d0dbe9e5545d49226dd1d844a1c329d6efbc0"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-colorado-policy.webp",
+            "size": 230838,
+            "hash": "9e232f5b57f9486fcb9c11ded38bedcd8e0c5f3f4c62fb4569f892e4a4530ac8"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-finance.webp",
+            "size": 63530,
+            "hash": "3bc80625200e9dc15a2f4b99738d1b86bd5dd8f7f7d8cb6bb9f3d919f2e38b25"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-first-cost.webp",
+            "size": 69650,
+            "hash": "c0693854e7da63389e48e0652696df94641771d5fa3965e83894e17a464fb8c0"
+        },
+        {
+            "type": "file",
+            "name": "images/site/district-scale-thermal-systems-site-planning.webp",
+            "size": 154678,
+            "hash": "a9f5afeda9806b3c0fa553792adae88552744290914dbc463dfc01cca26a80c7"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-implementing-tens.webp",
+            "size": 202894,
+            "hash": "a5ac5960574712683634665486525b3d87f5a88dc27d427ac8f02c4a6789178e"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-mountain-town.webp",
+            "size": 226748,
+            "hash": "ee45e96987b1b26e2b2a4512f7b2ba4210cf7169546251c84db20603e9417006"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-share-a-site.webp",
+            "size": 142424,
+            "hash": "83efe0b8e80e3d4bce1b6c485405d13e565870273ad3ce855a02be54cf81e4f4"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-weber-state.webp",
+            "size": 132004,
+            "hash": "78beded47be6d665427fe444084e3ca4549c9321e4a17faf94893277a0665917"
+        },
+        {
+            "type": "file",
+            "name": "images/site/lifecycle-cost.webp",
+            "size": 259918,
+            "hash": "ec87dae68921b4597a73dcd2cf737bc1af7b423a7dd2509c6b3b47b955890b36"
+        },
+        {
+            "type": "file",
+            "name": "images/site/mechanical-room.webp",
+            "size": 240372,
+            "hash": "72e6ec3ab15283fb6d74daf0343ea3956e416cd84ea75365e09209cfb93a5de2"
+        },
+        {
+            "type": "file",
+            "name": "images/site/network-diagram.webp",
+            "size": 146986,
+            "hash": "46ad5cddd9be148aa89fb52255607fc8d10c91fed585a5d2fc3b863e2905523e"
+        },
+        {
+            "type": "file",
+            "name": "images/site/onsite-work.webp",
+            "size": 151018,
+            "hash": "a80d22f51a141cc43af4b3f5d0c29a55769aaa90aa8376994faa3dfbec16e848"
+        },
+        {
+            "type": "file",
+            "name": "images/site/panel-discussion.webp",
+            "size": 89586,
+            "hash": "74373023bce8c06e45ea400487f0f830e04cca9808be52d7750d16b6940c5384"
+        },
+        {
+            "type": "file",
+            "name": "images/site/planning-ten.webp",
+            "size": 197850,
+            "hash": "b7eac7c1791952b4dde3695cee568ef686d0aefb61af1e740310718a4b1d9967"
+        },
+        {
+            "type": "file",
+            "name": "images/site/puzzle.webp",
+            "size": 28040,
+            "hash": "11932192ddfb96b5b9190e00f2554b71147727a9921978c6f2d4d0b6844c420a"
+        },
+        {
+            "type": "file",
+            "name": "images/site/service-advisory.webp",
+            "size": 86136,
+            "hash": "a8f81aece9ba45a720ab695f66b92308192602a9030f221958089925e0e919ac"
+        },
+        {
+            "type": "file",
+            "name": "images/site/service-delivery.webp",
+            "size": 164366,
+            "hash": "0dab971670a22520e4c4f35d72b474d9c8172370bd133905e230f7a6c7b8bb75"
+        },
+        {
+            "type": "file",
+            "name": "images/site/service-ground.webp",
+            "size": 89612,
+            "hash": "173a6663452348fcd5a1fcc8e35a4afc460a425977b2aee3b071d4a4e93f5a2d"
+        },
+        {
+            "type": "file",
+            "name": "images/site/service-network.webp",
+            "size": 85666,
+            "hash": "241dfe42caa3409e561e0c1f2b0f8f21db3715bdf78bc18c39c7790a2d93d057"
+        },
+        {
+            "type": "file",
+            "name": "images/site/shaping-the-future.webp",
+            "size": 70444,
+            "hash": "e0b18e1641953c812d973f6fefb26fdfb91a6f477315879062c510aa25158362"
+        },
+        {
+            "type": "file",
+            "name": "images/site/team-group.webp",
+            "size": 102760,
+            "hash": "fdd0967e1b5dac9c9135b113b80214a68f3f85562afbdbd4d4c44fc03e819994"
+        },
+        {
+            "type": "file",
+            "name": "images/site/team-photo.webp",
+            "size": 133744,
+            "hash": "fd358eab521a8909ab1bf2f6039432f7eb2c4a693abcc0e1006cdef9d1fa2e94"
+        },
+        {
+            "type": "file",
+            "name": "images/site/thermal-plant-engineers-system-inspection.webp",
+            "size": 63560,
+            "hash": "0ef710cea87eff167f4a5a21e53256cffc399d1d0ffd9f9ebac30d0d6d90c04d"
+        },
+        {
+            "type": "file",
+            "name": "images/site/training-classroom.webp",
+            "size": 97422,
+            "hash": "e540fdea66c547d16ceaa6e30f58bd3ed1a77f00a792329e57ea049024ec24d6"
+        },
+        {
+            "type": "file",
+            "name": "images/site/service-planning.webp",
+            "size": 36388,
+            "hash": "62c1d3431dea6f90b63c08ad5c8a12351705610320e6009b2fab658a87e89698"
+        },
+        {
+            "type": "file",
+            "name": "images/team/delaini-moss-marriott.webp",
+            "size": 107344,
+            "hash": "aa3e7e6fac76bf0368d0707ea0b2aa5b0245ef4da0f704664838f90d4a1135e0"
+        },
+        {
+            "type": "file",
+            "name": "images/team/garen-ewbank.webp",
+            "size": 44888,
+            "hash": "851ac0ec286cb21227feea1483c5b6d727c98dcea8bc70ae31a9e35f2a226106"
+        },
+        {
+            "type": "file",
+            "name": "images/team/garry-sexton.webp",
+            "size": 44178,
+            "hash": "104b3f731f2239244c0ea6ea7b843bc97b64b57ef14ec5a21e0ff0a3b04fbc64"
+        },
+        {
+            "type": "file",
+            "name": "images/team/bill-odonnell.webp",
+            "size": 80182,
+            "hash": "94d03934e74b04b31629dfe176f1a383f2b5cb26559dd2ca299f8b96d13d3eff"
+        },
+        {
+            "type": "file",
+            "name": "images/team/cary-smith.webp",
+            "size": 77776,
+            "hash": "7edc6dfa3156190c55ece9da1672cdfa494539eed2feebcd465745536852a844"
+        },
+        {
+            "type": "file",
+            "name": "images/team/ian-talbot.webp",
+            "size": 68526,
+            "hash": "f93559a722c84c9d00bfb93d37fe580f82e094fa76a54d13eb37fa12d9ee262e"
+        },
+        {
+            "type": "file",
+            "name": "images/team/jaiden-marriott.webp",
+            "size": 76668,
+            "hash": "c63155267bbd9a0abbb4915c665640693f0f3e40b118484e29677925402d8f5e"
+        },
+        {
+            "type": "file",
+            "name": "images/team/john-mclennan.webp",
+            "size": 37414,
+            "hash": "fb554f0f7e866a1cb7a5b1508f24139a9d278f233734343a7f10fd70cc2cc61f"
+        },
+        {
+            "type": "file",
+            "name": "images/team/mark-smith.webp",
+            "size": 103284,
+            "hash": "72756e336b2121fbcde36107243e83fecc3b053418de43a4c62893109be9c25d"
+        },
+        {
+            "type": "file",
+            "name": "images/team/matthew-garlick.webp",
+            "size": 52650,
+            "hash": "7b1ce2a54df22b570029b4186c2d185d5ec42841906dd05eba789bb70a722efc"
+        },
+        {
+            "type": "file",
+            "name": "images/team/megan-lim.webp",
+            "size": 48150,
+            "hash": "6e918ef37cb4e416bac82a60aa39cb70c4a9364bd44d0bdcc07d0a5c92e4d381"
+        },
+        {
+            "type": "file",
+            "name": "images/team/paul-bony.webp",
+            "size": 100608,
+            "hash": "6506b2653d85dce419c35a2b55d6bb8e13d6eae1e7b33eea86b3c6ab776a6131"
+        },
+        {
+            "type": "file",
+            "name": "images/team/richard-b-white.webp",
+            "size": 85758,
+            "hash": "0369409be07ffe7641a615df22fe95840fbf0f1d952cc203b8b5f7f37cad89b1"
+        },
+        {
+            "type": "file",
+            "name": "images/team/roshan-revankar.webp",
+            "size": 48988,
+            "hash": "8067424ae12b3672a6fa107dff8ab79b669611bc579cd89057a34970920030f4"
+        },
+        {
+            "type": "file",
+            "name": "images/team/stephen-hamstra.webp",
+            "size": 57132,
+            "hash": "1615d845a6174844705f8f127df93ba779ae38211614f1fb2e67bc8fd09556c2"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/32-zed-zero-energy-district/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/aspen/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/crested-butte/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/fraser/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/mountain-village/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/park-city/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/pitkin-county/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/steamboat-springs/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/telluride/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/vail/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/weber-state-university/gallery"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/32-zed-zero-energy-district/gallery/drill-rig-crew.jpg",
+            "size": 248978,
+            "hash": "613b5685036f7b6b55feadf051fc84b3f01856057249fea28a3f535b00fcb9a9"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/aspen/gallery/geological-cross-section.jpg",
+            "size": 220529,
+            "hash": "a6ab9fa05b33ab5d3285d5a5f93abb56928df95703debf7d9fad3d57bb1f4cce"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/crested-butte/gallery/geothermal-drill-rig-crew.jpg",
+            "size": 105258,
+            "hash": "76ea4e997fe31de7bbe3ff20f29b45373f9ca312ac2705b0001aae0d25698c36"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/aspen/gallery/sonic-drill-rig.jpg",
+            "size": 252692,
+            "hash": "8f470c3e8a673e02a0607221035b5c8b37e4a9d01cbab81bc78fc108beb83d9c"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/crested-butte/gallery/geothermal-drill-rig-front.jpg",
+            "size": 137686,
+            "hash": "a8a5b5821976d0f5b209da6dea1a76279b4623b822b26782652c06f985cc5c39"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/fraser/gallery/excavator-trench.jpg",
+            "size": 328403,
+            "hash": "a45dfed5db680d41fae9283ece78c3ce2a24f77e520779aa5bb42889f1a7260c"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/fraser/gallery/test-pit-groundwater.jpg",
+            "size": 409039,
+            "hash": "6f7a832956afe7bf277a64204bcbc6957bcda1bbd111cdf76ff0fcc77020062d"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/mountain-village/gallery/drill-rig-winter-village.jpg",
+            "size": 37796,
+            "hash": "691e0065d6feac599d4b1f4f44008021cdd13fbea44343d252e7791357858a4e"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/mountain-village/gallery/team-ice-waterfall-cliff.jpg",
+            "size": 1818282,
+            "hash": "47ad8397020de90f2d90fc248c27bc1cb7287964df1364f3bf97a068e19e925b"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/park-city/gallery/drill-rig-front.jpg",
+            "size": 143157,
+            "hash": "9ee4cd8b907173f41c320a074687f308402756d2269523b8fff7ae519b86c724"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/park-city/gallery/drill-rig-side.jpg",
+            "size": 139438,
+            "hash": "112d3984d7f5b6f6a140f782edf2a3fd1747ec17c843ea0cba37e1bde5451b60"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/pitkin-county/gallery/drill-rig-mountain-lot.jpg",
+            "size": 348457,
+            "hash": "922dd6ebdec579fe5e34b000b7f1f179506af99988930a79a632eaf3f8695ef8"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/pitkin-county/gallery/drill-rig-stormy-field.jpg",
+            "size": 211882,
+            "hash": "60afeefb703afd9dfc7534be75488b3b65bbb68faac56b303a4f283252821651"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/telluride/gallery/pvc-fittings-assembly.jpg",
+            "size": 311464,
+            "hash": "4cca2d4d43e765156d0a3d79cb123fcc7fa1461a280b06ce3c71af2e94316ef2"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/telluride/gallery/pvc-pipe-install-snow.jpg",
+            "size": 384114,
+            "hash": "1f5dd87f14e4c1cc90b1a435a2888bee8317b590f012daaaad3b637361c53b4d"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs/gallery/drill-rig-gondola.jpg",
+            "size": 78975,
+            "hash": "35b93fea0fa7144b002407e41d9de02f19b0fa391697e57ca6579b4bfe15f5bd"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs/gallery/drill-rig-stormy-sky.jpg",
+            "size": 228856,
+            "hash": "8d1e84000e61b998832de978e4cbc646b7f8f38246093977fabfd1c723cdf452"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs/gallery/gondola-base.jpg",
+            "size": 235524,
+            "hash": "90ef1e36aefc73b9d59acf3c75a0c06e6f8d951555ad4b409c910e14274dbc0d"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs/gallery/gondola-terrace.jpg",
+            "size": 202474,
+            "hash": "17b4c0aa56c49a56d2ef36274fa7f484ca01f93457c63ed4d52ea88d3c7090e9"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs/gallery/plaza-stage.jpg",
+            "size": 165591,
+            "hash": "796b42e3062c4b5571f894bb30cbfed3ca1c3190f536f01a1f6410a9e140f41a"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs/gallery/plaza-turf.jpg",
+            "size": 164204,
+            "hash": "0f910c095379103aa43522c575b3f9f1c0eff083ea9ab29ae47e0b62e706c7f9"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/vail/gallery/mechanical-room-inspection.jpg",
+            "size": 194476,
+            "hash": "508cd8a2e729ddef80e350aac5df5449c746c4bbad837aba5aa597454e81aef4"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/vail/gallery/project-workshop.jpg",
+            "size": 206352,
+            "hash": "15ac2e48e4575d8872e88d0e28e2936a5ed92f43752a44ca4d4311eaeafd748f"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/vail/gallery/thermal-snowmelt-plaza.jpg",
+            "size": 440419,
+            "hash": "4185726a4de11b47500b1fd07e60ed5459b1fda547a16aaf8a3bfa6a9b4351c2"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/vail/gallery/wastewater-outlet.jpg",
+            "size": 252742,
+            "hash": "90cec9b6a342a83ae11169a8833d99b211af8e574e3457aab3cec11dd1b8781f"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/weber-state-university/gallery/mechanical-room-insulated-pipes.jpg",
+            "size": 175494,
+            "hash": "18ad601e87ec138b9db3d96a9d7d5d497ad1c503998003178ae0a5b9ef0ba8d8"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/weber-state-university/gallery/mountain-drilling-derrick.jpg",
+            "size": 121912,
+            "hash": "bf30ac9e3dee8709b641d8f04fb17278cd5848302cd6e2933098e5328f6bae6c"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/weber-state-university/gallery/truck-drilling-rig-hdpe.jpg",
+            "size": 252617,
+            "hash": "caf4ab540f059ebf61306d56963ef7e68bdb58528426d6d492bd6137d30eeba2"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/weber-state-university/gallery/aerial-campus-trenching.jpg",
+            "size": 189760,
+            "hash": "9ce60379cd5258775e9f76c91653d5cdcd307b2237bdd5752e0e412c13f94eca"
+        }
+    ]
+}
