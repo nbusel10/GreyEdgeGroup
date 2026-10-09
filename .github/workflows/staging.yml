@@ -18,4 +18,5 @@ jobs:
       # That folder should clone this repo's main branch. main is the built site.
       dist_branch: main
       site_url: https://staging.greyedgegroup.com
-      server_dir: /public_html/staging.greyedgegroup.com/
+      # FTP login is already inside public_html, so this is the domain folder only.
+      server_dir: /staging.greyedgegroup.com/

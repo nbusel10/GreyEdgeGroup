@@ -15,4 +15,5 @@ jobs:
       environment: production
       dist_branch: live
       site_url: https://greyedgegroup.com
-      server_dir: /public_html/greyedgegroup.com/
+      # FTP login is already inside public_html, so this is the domain folder only.
+      server_dir: /greyedgegroup.com/
