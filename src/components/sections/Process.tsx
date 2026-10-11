@@ -68,12 +68,10 @@ export default function Process() {
     const pulsing = pulseIndex === index
     return (
       <article
-        id={index >= 3 ? phase.id : undefined}
+        id={phase.id}
         onMouseEnter={() => setHover(index)}
         onMouseLeave={() => setHover(null)}
-        className={`relative flex h-full flex-col border p-5 transition-colors duration-200 lg:p-6 ${
-          index >= 3 ? 'scroll-mt-20' : ''
-        } ${
+        className={`relative flex h-full flex-col scroll-mt-20 border p-5 transition-colors duration-200 lg:p-6 ${
           lit
             ? 'border-ge-accent bg-ge-accent text-white'
             : 'border-ge-light bg-white hover:border-ge-accent'

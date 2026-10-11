@@ -81,7 +81,7 @@ export const team: TeamMember[] = [
     credentials: 'P.E.',
     email: 'rwhite@greyedgegroup.com',
     phone: '801-673-6647',
-    website: 'http://www.rbwhitepe.com/',
+    website: 'https://www.rbwhitepe.com/',
     linkedin: null,
     bio: [
       'With over 45 years of consulting engineering practice, Rich has substantial experience in the assessment, design, and management of civil and environmental engineering projects. Through this experience, he has gained an in-depth understanding of the critical role that surface and subsurface water, soil, and rock play on project success. He has provided consulting engineering services to small and large mining, oil and gas, chemical, and other industrial concerns as well as local, State, and Federal governments throughout the United States and internationally. His designs have been implemented to restore natural conditions, mitigate past environmental impacts, prevent future impacts, allow aquifer storage and recovery of groundwater, and permit ground-source heat exchange.',
@@ -222,7 +222,7 @@ export const team: TeamMember[] = [
     credentials: null,
     email: 'jmclennan@greyedgegroup.com',
     phone: '801-634-4412',
-    website: 'https://faculty.utah.edu/u0607793-JOHN_DAVID_MCLENNAN/teaching/index.hml',
+    website: 'https://faculty.utah.edu/u0607793-JOHN_DAVID_MCLENNAN/teaching/index.html',
     linkedin: 'https://www.linkedin.com/in/john-mclennan-893383a/',
     bio: [
       'Since October 2009, Professor John McLennan has been a faculty member in the Department of Chemical Engineering at the University of Utah. He has been a Senior Research Scientist at the Energy & Geoscience Institute and an Adjunct Professor in the Department of Civil Engineering at the University of Utah since January 2008. He has a Ph.D. in Civil Engineering from the University of Toronto, awarded in 1980. He has more than thirty-five years of experience with petroleum service and technology companies. He worked for Dowell and Dowell Schlumberger in Denver, Tulsa, and Houston, with TerraTek in Salt Lake City, Advantek International in Houston, and ASRC Energy Services in Anchorage. He has worked on projects concerned with subsurface energy recovery and storage (hydrocarbon, geothermal) in a variety of reservoir environments throughout the world. He is a co-principal investigator on the DOE FORGE project (Frontier Observatory for Research in Geothermal Energy) and an American Rock Mechanics Association (ARMA) Fellow.',
