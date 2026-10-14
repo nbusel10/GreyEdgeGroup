@@ -4,6 +4,7 @@ import { hero, org } from '../content/site'
 import { featuredProjects } from '../content/projects'
 import { insights } from '../content/insights'
 import Challenges from '../components/sections/Challenges'
+import FeaturedConversation from '../components/sections/FeaturedConversation'
 import PartnerBrief from '../components/sections/PartnerBrief'
 import Leadership from '../components/sections/Leadership'
 import FinalCta from '../components/sections/FinalCta'
@@ -145,7 +146,9 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <FeaturedConversation />
+
+          <div className="mt-14 grid gap-6 border-t border-ge-light pt-14 md:mt-16 md:grid-cols-3 md:pt-16">
             {insights.slice(0, 3).map((item, i) => (
               <Reveal key={item.slug} delay={i * 0.07}>
                 <Link
