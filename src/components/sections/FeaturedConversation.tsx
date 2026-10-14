@@ -65,7 +65,7 @@ export default function FeaturedConversation() {
             Advancing thermal energy networks in mountain communities
           </h3>
           <p className="mt-4 max-w-prose font-body text-sm leading-relaxed text-ge-graphite sm:text-base">
-            GreyEdge CEO Matt Garlick joins industry leaders to discuss how thoughtful planning, governance, and
+            The GreyEdge Group&apos;s CEO Matt Garlick joins industry leaders to discuss how thoughtful planning, governance, and
             shared thermal infrastructure can help communities move from feasibility to implementation.
           </p>
           <a
