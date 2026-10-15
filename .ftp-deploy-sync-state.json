@@ -1,7 +1,7 @@
 {
     "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
     "version": "1.0.0",
-    "generatedTime": 1792000589896,
+    "generatedTime": 1792092571340,
     "data": [
         {
             "type": "file",
@@ -61,7 +61,7 @@
             "type": "file",
             "name": "index.html",
             "size": 3474,
-            "hash": "5f16758fe81015e8d888338334296701ab5b762a396d6d8fb1e8152188c4e449"
+            "hash": "a6d3700cb931bdd74b21455619717a1a2c57ca96d87e66a7a338d966e0a3f47b"
         },
         {
             "type": "file",
@@ -70,14 +70,14 @@
             "hash": "09feba2711f4eb0d3bf59c43a9492fca17241a61c4ebdec4900583fc29b0153e"
         },
         {
+            "type": "folder",
+            "name": "videos"
+        },
+        {
             "type": "file",
             "name": "sitemap.xml",
             "size": 3302,
-            "hash": "fb0f25e207e91bc08d2f3ea0067a5814fb20754ed0011d3a6ea72b6a6c7dcfff"
-        },
-        {
-            "type": "folder",
-            "name": "videos"
+            "hash": "0471344ca256bbf1b77c9c596f1c275c656245316e61049eda0d315f349055c0"
         },
         {
             "type": "file",
@@ -87,9 +87,9 @@
         },
         {
             "type": "file",
-            "name": "assets/index-BSPCJI_F.js",
-            "size": 814833,
-            "hash": "55ba2071f3e9a002c7b7339c8a3fcefa1f1ce2a4bc2cae83a9731248a2dc5ee5"
+            "name": "assets/index-BS3xa3uT.js",
+            "size": 816850,
+            "hash": "d68fe1c5ee49aff442a54f8f731eef52614418d9aebd980ced0f2a632bdf0575"
         },
         {
             "type": "file",
@@ -139,15 +139,15 @@
         },
         {
             "type": "file",
-            "name": "images/brand/edge-only-white.webp",
-            "size": 2182,
-            "hash": "1b59f0cfb664bb59228484e4eb81ee9ad0a92593341a1ea8db5110f30e6fe7ad"
-        },
-        {
-            "type": "file",
             "name": "images/brand/favicon.png",
             "size": 24882,
             "hash": "eb08b2003beb24396d160b29a0c15f12b6ccc5ea30f6bc96dab70619cf19a8bb"
+        },
+        {
+            "type": "file",
+            "name": "images/brand/edge-only-white.webp",
+            "size": 2182,
+            "hash": "1b59f0cfb664bb59228484e4eb81ee9ad0a92593341a1ea8db5110f30e6fe7ad"
         },
         {
             "type": "file",
@@ -206,14 +206,14 @@
             "hash": "e7c1216dbf7833058d4eddf1a3af3441b294eef9f0ddf871632876c7e548c1b2"
         },
         {
-            "type": "folder",
-            "name": "images/projects/crested-butte"
-        },
-        {
             "type": "file",
             "name": "images/projects/crested-butte.jpeg",
             "size": 418023,
             "hash": "cdc291c0fc58fc3effe608fe37b32a8c0a065e1fe9e7628bfca9daa426768878"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/crested-butte"
         },
         {
             "type": "folder",
@@ -393,12 +393,6 @@
         },
         {
             "type": "file",
-            "name": "images/site/electrification.webp",
-            "size": 463712,
-            "hash": "b5fd2b8de986c532003f3a1a0586655b2cf40eeb34ecd0c519c2bda93a59e240"
-        },
-        {
-            "type": "file",
             "name": "images/site/global-projects.webp",
             "size": 50118,
             "hash": "d1ac2cd3b68f91904211c2882b9a475d4e0affbc5a0520db88f36bc181f96258"
@@ -408,6 +402,12 @@
             "name": "images/site/growth-flexibility.webp",
             "size": 274802,
             "hash": "769956d188d3816d96086ce40192f4142b5ca4ced904780e35334eac5508bbe0"
+        },
+        {
+            "type": "file",
+            "name": "images/site/electrification.webp",
+            "size": 463712,
+            "hash": "b5fd2b8de986c532003f3a1a0586655b2cf40eeb34ecd0c519c2bda93a59e240"
         },
         {
             "type": "file",
@@ -435,15 +435,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/insight-50-90.webp",
-            "size": 178286,
-            "hash": "cc118afc142e4d133ea07f13418772acf23af75b4011ae1ea48aa6474aa02f72"
-        },
-        {
-            "type": "file",
             "name": "images/site/infrastructure.webp",
             "size": 595932,
             "hash": "d9afbe8670060388bced53e8957d04d1ec3a1390a727b823ac29f3e07622cc46"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-50-90.webp",
+            "size": 178286,
+            "hash": "cc118afc142e4d133ea07f13418772acf23af75b4011ae1ea48aa6474aa02f72"
         },
         {
             "type": "file",
@@ -465,15 +465,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/insight-implementing-tens.webp",
-            "size": 202894,
-            "hash": "a5ac5960574712683634665486525b3d87f5a88dc27d427ac8f02c4a6789178e"
-        },
-        {
-            "type": "file",
             "name": "images/site/insight-first-cost.webp",
             "size": 69650,
             "hash": "c0693854e7da63389e48e0652696df94641771d5fa3965e83894e17a464fb8c0"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-implementing-tens.webp",
+            "size": 202894,
+            "hash": "a5ac5960574712683634665486525b3d87f5a88dc27d427ac8f02c4a6789178e"
         },
         {
             "type": "file",
@@ -603,15 +603,15 @@
         },
         {
             "type": "file",
-            "name": "images/team/bill-odonnell.webp",
-            "size": 80182,
-            "hash": "94d03934e74b04b31629dfe176f1a383f2b5cb26559dd2ca299f8b96d13d3eff"
-        },
-        {
-            "type": "file",
             "name": "images/team/cary-smith.webp",
             "size": 77776,
             "hash": "7edc6dfa3156190c55ece9da1672cdfa494539eed2feebcd465745536852a844"
+        },
+        {
+            "type": "file",
+            "name": "images/team/bill-odonnell.webp",
+            "size": 80182,
+            "hash": "94d03934e74b04b31629dfe176f1a383f2b5cb26559dd2ca299f8b96d13d3eff"
         },
         {
             "type": "file",
@@ -633,15 +633,15 @@
         },
         {
             "type": "file",
-            "name": "images/team/jaiden-marriott.webp",
-            "size": 76668,
-            "hash": "c63155267bbd9a0abbb4915c665640693f0f3e40b118484e29677925402d8f5e"
-        },
-        {
-            "type": "file",
             "name": "images/team/ian-talbot.webp",
             "size": 68526,
             "hash": "f93559a722c84c9d00bfb93d37fe580f82e094fa76a54d13eb37fa12d9ee262e"
+        },
+        {
+            "type": "file",
+            "name": "images/team/jaiden-marriott.webp",
+            "size": 76668,
+            "hash": "c63155267bbd9a0abbb4915c665640693f0f3e40b118484e29677925402d8f5e"
         },
         {
             "type": "file",
@@ -693,15 +693,15 @@
         },
         {
             "type": "folder",
-            "name": "images/projects/32-zed-zero-energy-district/gallery"
-        },
-        {
-            "type": "folder",
             "name": "images/projects/aspen/gallery"
         },
         {
             "type": "folder",
             "name": "images/projects/crested-butte/gallery"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/32-zed-zero-energy-district/gallery"
         },
         {
             "type": "folder",
@@ -737,12 +737,6 @@
         },
         {
             "type": "file",
-            "name": "images/projects/32-zed-zero-energy-district/gallery/drill-rig-crew.jpg",
-            "size": 248978,
-            "hash": "613b5685036f7b6b55feadf051fc84b3f01856057249fea28a3f535b00fcb9a9"
-        },
-        {
-            "type": "file",
             "name": "images/projects/aspen/gallery/geological-cross-section.jpg",
             "size": 220529,
             "hash": "a6ab9fa05b33ab5d3285d5a5f93abb56928df95703debf7d9fad3d57bb1f4cce"
@@ -764,6 +758,12 @@
             "name": "images/projects/crested-butte/gallery/geothermal-drill-rig-front.jpg",
             "size": 137686,
             "hash": "a8a5b5821976d0f5b209da6dea1a76279b4623b822b26782652c06f985cc5c39"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/32-zed-zero-energy-district/gallery/drill-rig-crew.jpg",
+            "size": 248978,
+            "hash": "613b5685036f7b6b55feadf051fc84b3f01856057249fea28a3f535b00fcb9a9"
         },
         {
             "type": "file",
@@ -809,15 +809,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/steamboat-springs/gallery/drill-rig-gondola.jpg",
-            "size": 78975,
-            "hash": "35b93fea0fa7144b002407e41d9de02f19b0fa391697e57ca6579b4bfe15f5bd"
-        },
-        {
-            "type": "file",
             "name": "images/projects/pitkin-county/gallery/drill-rig-stormy-field.jpg",
             "size": 211882,
             "hash": "60afeefb703afd9dfc7534be75488b3b65bbb68faac56b303a4f283252821651"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs/gallery/drill-rig-gondola.jpg",
+            "size": 78975,
+            "hash": "35b93fea0fa7144b002407e41d9de02f19b0fa391697e57ca6579b4bfe15f5bd"
         },
         {
             "type": "file",
@@ -875,15 +875,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/vail/gallery/thermal-snowmelt-plaza.jpg",
-            "size": 440419,
-            "hash": "4185726a4de11b47500b1fd07e60ed5459b1fda547a16aaf8a3bfa6a9b4351c2"
-        },
-        {
-            "type": "file",
             "name": "images/projects/vail/gallery/wastewater-outlet.jpg",
             "size": 252742,
             "hash": "90cec9b6a342a83ae11169a8833d99b211af8e574e3457aab3cec11dd1b8781f"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/vail/gallery/thermal-snowmelt-plaza.jpg",
+            "size": 440419,
+            "hash": "4185726a4de11b47500b1fd07e60ed5459b1fda547a16aaf8a3bfa6a9b4351c2"
         },
         {
             "type": "file",
