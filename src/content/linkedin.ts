@@ -25,6 +25,59 @@ export interface LinkedInPost {
 
 export const linkedInPosts: LinkedInPost[] = [
   {
+    id: 'activity-7516452880082534400',
+    publishedAt: '2026-10-15T11:00:15.552Z',
+    title: 'Vail is reimagining one of the nation’s largest snowmelt systems',
+    excerpt:
+      'Discover how Vail is reimagining one of the nation’s largest snowmelt systems through innovative district energy planning that reduces emissions, improves resilience, and creates a roadmap for future growth.',
+    url: 'https://www.linkedin.com/posts/grey-edge_discover-how-vail-is-reimagining-one-of-the-activity-7516452880082534400-l31s',
+    image: '/images/projects/vail.webp',
+    imageAlt:
+      'Aerial view of Vail, Colorado, showing alpine‑style buildings, pedestrian areas, and surrounding forested mountains in a green summer landscape.',
+  },
+  {
+    id: 'activity-7516181115259256832',
+    publishedAt: '2026-10-14T17:00:21.769Z',
+    title: 'Weber State is moving to a multi-source Thermal Energy Network',
+    excerpt:
+      'Explore how Weber State University is transforming a traditional campus district energy system into a multi-source Thermal Energy Network, leveraging geothermal resources, electrification, and infrastructure to improve efficiency, resilience, sustainability.',
+    url: 'https://www.linkedin.com/posts/grey-edge_explore-how-weber-state-university-is-transforming-activity-7516181115259256832-6gAI',
+    image: '/images/projects/weber-state-university.webp',
+    imageAlt: 'Weber State University Campus Project Picture',
+  },
+  {
+    id: 'activity-7516090749629681664',
+    publishedAt: '2026-10-14T11:01:16.924Z',
+    title: 'Colorado Mesa University’s phased geothermal campus',
+    excerpt:
+      'See how Colorado Mesa University became a leading example of campus energy innovation through a phased geothermal and thermal network strategy.',
+    url: 'https://www.linkedin.com/posts/grey-edge_see-how-colorado-mesa-university-became-a-activity-7516090749629681664-oRGf',
+    image: '/images/projects/colorado-mesa.webp',
+    imageAlt: 'Colorado Mesa Project Site Picture',
+  },
+  {
+    id: 'activity-7515728246462697472',
+    publishedAt: '2026-10-13T11:00:49.434Z',
+    title: 'Telluride is combining housing and clean energy planning',
+    excerpt:
+      'Discover how the Town of Telluride is combining housing, infrastructure, and clean energy planning to support long-term community goals and environmental leadership.',
+    url: 'https://www.linkedin.com/posts/grey-edge_discover-how-the-town-of-telluride-is-combining-activity-7515728246462697472-APr1',
+    image: '/images/projects/telluride.webp',
+    imageAlt:
+      'Looking down historic Colorado Avenue in downtown Telluride, Colorado, lined with historic brick and wooden buildings flying Colorado and US flags, leading the eye toward a massive mountain box canyon with green slopes, rocky cliffs, and a waterfall under a bright sky.',
+  },
+  {
+    id: 'activity-7514686576694702080',
+    publishedAt: '2026-10-10T14:01:36.008Z',
+    title: 'Hayden Center is replacing conventional heating with geothermal',
+    excerpt:
+      'See how the Hayden Center is replacing conventional heating with an integrated geothermal HVAC system that supports town sustainability goals and long-term facility performance.',
+    url: 'https://www.linkedin.com/posts/grey-edge_see-how-the-hayden-center-is-replacing-conventional-activity-7514686576694702080-hKRU',
+    image: '/images/projects/hayden.jpg',
+    imageAlt:
+      'Dirt road winding through golden aspens and snow-dusted evergreens toward rugged, snow-capped peaks under a clear blue sky near Hayden, Colorado.',
+  },
+  {
     id: 'activity-7503586165325795328',
     publishedAt: '2026-09-09T22:52:31.701Z',
     title: "Aspen School District sees 'groundbreaking' success with 1,000 foot geo bore",
@@ -57,16 +110,6 @@ export const linkedInPosts: LinkedInPost[] = [
       'Drill crew and a red truck-mounted drilling rig at a Park City work site, with green mountain slopes and a clear blue sky behind a roadside fence.',
   },
   {
-    id: 'activity-7450652859827765248',
-    publishedAt: '2026-04-16',
-    title: 'GreyEdge work with Colorado GETCO grant awardees',
-    excerpt:
-      'The GreyEdge Group is excited to be working with several awardees of the Colorado Energy Office Geothermal Energy Tax Credit Offering (GETCO) grants. If we can do it at 9,000\' and in mountain geology we can do this anywhere. Congrats Town of Vail, Aspen School District, Town of Hayden, and our partners at McKinstry.',
-    url: 'https://www.linkedin.com/posts/matt-garlick-ccp-cem-bemp-585a2833_polis-administration-awards-124-million-activity-7450652859827765248-WM9d',
-    image: site['insight-colorado-policy'].src,
-    imageAlt: site['insight-colorado-policy'].alt,
-  },
-  {
     id: 'activity-7447331999729750016',
     publishedAt: '2026-04-07',
     title: 'Breckenridge is drilling a test borehole',
@@ -76,16 +119,6 @@ export const linkedInPosts: LinkedInPost[] = [
     image: '/images/projects/breckenridge.jpeg',
     imageAlt:
       'Aerial autumn view of Breckenridge, Colorado, with the town nestled in a valley among yellow aspens and evergreen forests, lodge-style buildings and a parking lot in the midground, and layered mountain peaks under a bright sky.',
-  },
-  {
-    id: 'activity-7440104242889199616',
-    publishedAt: '2026-03-18',
-    title: 'TENs as a value proposition for mountain towns',
-    excerpt:
-      'TENs offer a special value proposition for mountain towns. Isolated communities are more at risk for utility disruptions; local thermal resources and higher efficiency deliver resilience that is both cost-effective and carbon-reducing.',
-    url: 'https://www.linkedin.com/posts/matt-garlick-ccp-cem-bemp-585a2833_harnessing-the-heat-beneath-our-feet-how-activity-7440104242889199616-QJix',
-    image: site['insight-mountain-town'].src,
-    imageAlt: site['insight-mountain-town'].alt,
   },
 ]
 
