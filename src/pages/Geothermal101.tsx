@@ -29,12 +29,12 @@ const geoTypes = [
   {
     id: 'building',
     t: 'Geo building',
-    b: 'Heating and cooling for one building from a shallow loop, about 45°F to 60°F. Low temperature.',
+    b: 'Heating and cooling for one building from a shallow loop, about 45°F to 95°F (what heat pumps are happy to operate within). Low temperature. The shallow ground beside it is 45°F to 60°F.',
   },
   {
     id: 'network',
     t: 'Thermal energy network',
-    b: 'Heating and cooling shared across buildings. The shallow ground beside it is about 45°F to 65°F. Low temperature.',
+    b: 'Multiple Geo buildings linked, where heating and cooling is shared across buildings, which increases efficiency. Low temperature.',
   },
 ] as const
 
