@@ -1,7 +1,7 @@
 {
     "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
     "version": "1.0.0",
-    "generatedTime": 1792256363650,
+    "generatedTime": 1793203578343,
     "data": [
         {
             "type": "file",
@@ -61,7 +61,7 @@
             "type": "file",
             "name": "index.html",
             "size": 3120,
-            "hash": "544d07537496fc7bf8b1a2dc085dfb9f2bf0b43ac2cd5d049fa1b82faa1a7a11"
+            "hash": "26dac8944ce9e5fcf032fb08a22bcf0e546671826afe3f5f39b8ba6b9c7d2465"
         },
         {
             "type": "file",
@@ -73,7 +73,7 @@
             "type": "file",
             "name": "sitemap.xml",
             "size": 3302,
-            "hash": "e77e2b83faa6b2640381f29011f98b5d973e47b00daa63094310338e69b6538a"
+            "hash": "ce53cf13bdc2563538e64d15c045c8dd7c36d52cd10785c5469ebc89a75fcca0"
         },
         {
             "type": "folder",
@@ -87,15 +87,15 @@
         },
         {
             "type": "file",
-            "name": "assets/index-09sXL-9q.js",
-            "size": 816958,
-            "hash": "65bdb76e0e98523ea2f150e1b0675e70cfac9b2eb9751183b588acceab0cdd2d"
-        },
-        {
-            "type": "file",
             "name": "assets/index-C_ygqvmN.css",
             "size": 89521,
             "hash": "63bdc60724d5d6f1ca08f93b0d80578b606e6f6223541d67a042f20c20935da0"
+        },
+        {
+            "type": "file",
+            "name": "assets/index-e--TfknW.js",
+            "size": 818835,
+            "hash": "cfbe33ab205fb9b9f884ed5af4c42624e725000795d9854996c0de7ca3e3f6b7"
         },
         {
             "type": "folder",
@@ -109,11 +109,11 @@
         },
         {
             "type": "folder",
-            "name": "images/site"
+            "name": "images/projects"
         },
         {
             "type": "folder",
-            "name": "images/projects"
+            "name": "images/site"
         },
         {
             "type": "folder",
@@ -121,15 +121,15 @@
         },
         {
             "type": "file",
-            "name": "videos/greyedge-lockup.gif",
-            "size": 809734,
-            "hash": "e50102c287787fec124d71591c8c50a396876ccafd288d620c42f8ac148a68e9"
-        },
-        {
-            "type": "file",
             "name": "videos/hero-main.mp4",
             "size": 16832932,
             "hash": "534d9ed65d99963d5faa308308ac5cb5e47e700f94fe2ae6249e1ac67133908b"
+        },
+        {
+            "type": "file",
+            "name": "videos/greyedge-lockup.gif",
+            "size": 809734,
+            "hash": "e50102c287787fec124d71591c8c50a396876ccafd288d620c42f8ac148a68e9"
         },
         {
             "type": "file",
@@ -172,6 +172,146 @@
             "name": "images/brand/logo-white-v2.webp",
             "size": 39876,
             "hash": "ab91f4d74ab0019982159fd9eb61aad19a743aeea2b0d1c32366b53a26effac6"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/32-zed-zero-energy-district.webp",
+            "size": 100394,
+            "hash": "84a268614b1fb94e7254f576c118a948dfc59cf918447d8e878dfbb5ad06449e"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/32-zed-zero-energy-district"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/aspen"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/aspen.webp",
+            "size": 395268,
+            "hash": "9966aa144b5c42b3abb9d7d265002eaf10bbacf330b7b7622aa93fc6ec0b7d4f"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/breckenridge.jpeg",
+            "size": 277748,
+            "hash": "9e8b2b5145a4f7f99e5437be5c9e625e84ff472c872a5c8f906fb0460cfd5056"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/colorado-mesa.webp",
+            "size": 71060,
+            "hash": "e7c1216dbf7833058d4eddf1a3af3441b294eef9f0ddf871632876c7e548c1b2"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/crested-butte"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/crested-butte.jpeg",
+            "size": 418023,
+            "hash": "cdc291c0fc58fc3effe608fe37b32a8c0a065e1fe9e7628bfca9daa426768878"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/fraser"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/fraser.jpg",
+            "size": 154355,
+            "hash": "2382123ca7d717da0f58c06313ac1e34ba7150f5c9101e29875c96259bd3f91b"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/hayden.jpg",
+            "size": 307134,
+            "hash": "f685ec6a6595b2c92f42c21dd705b8cb7f9674b7f66b6ccb61feba0fda316479"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/lexington.jpg",
+            "size": 340687,
+            "hash": "aebf431215fc55d4d59828fd491056d4da9431d6bdcfbea4591d937708421c42"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/mountain-village"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/mountain-village.jpg",
+            "size": 288341,
+            "hash": "2f8ff0a37098255cb3135ed5cff3744454dc4e55f7084a97f1f57b566cb5fd82"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/park-city"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/park-city.webp",
+            "size": 323984,
+            "hash": "7de539db2629ce2e1608358a90df4f141bee200013584042d04a8566558d64c1"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/pitkin-county"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/steamboat-springs"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/pitkin-county.jpg",
+            "size": 291930,
+            "hash": "676bbb335b94ccb3b93be5372ce84d57e6240ceeed7f62023cb52671aea7d6cb"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs.webp",
+            "size": 302004,
+            "hash": "b132314bace3c1b5986eb130c421531a03b4a4a98932b171df524a171c42c6d5"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/telluride"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/telluride.webp",
+            "size": 284556,
+            "hash": "9133fc954677b15d3badfa1c5e5432a7239ccbb1ca9987ae48517f768830d36e"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/vail.webp",
+            "size": 276206,
+            "hash": "a8e1db9b907a2beebbbe084c5013253a268ac5e448f26ca77010c80fbf102bdd"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/vail"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/weber-state-university"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/weber-state-university.webp",
+            "size": 36060,
+            "hash": "d31d585615d78ad93a3cf8caf5335cb46edde51c456efe1c4a16b66a68fe8108"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/winter-park.jpg",
+            "size": 221896,
+            "hash": "24a25a61bd4e1b3eccaa8144c0ebb662b2cd8dca6e2511e96ab12531eac28abb"
         },
         {
             "type": "file",
@@ -289,15 +429,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/infrastructure.webp",
-            "size": 595932,
-            "hash": "d9afbe8670060388bced53e8957d04d1ec3a1390a727b823ac29f3e07622cc46"
-        },
-        {
-            "type": "file",
             "name": "images/site/hero-ski-town.webp",
             "size": 241450,
             "hash": "aa6e1779b37fb4bf9b166fb5f3691ffb60897c6de88e7de287fbf05577201edf"
+        },
+        {
+            "type": "file",
+            "name": "images/site/infrastructure.webp",
+            "size": 595932,
+            "hash": "d9afbe8670060388bced53e8957d04d1ec3a1390a727b823ac29f3e07622cc46"
         },
         {
             "type": "file",
@@ -462,146 +602,6 @@
             "hash": "e540fdea66c547d16ceaa6e30f58bd3ed1a77f00a792329e57ea049024ec24d6"
         },
         {
-            "type": "folder",
-            "name": "images/projects/32-zed-zero-energy-district"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/32-zed-zero-energy-district.webp",
-            "size": 100394,
-            "hash": "84a268614b1fb94e7254f576c118a948dfc59cf918447d8e878dfbb5ad06449e"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/aspen"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/aspen.webp",
-            "size": 395268,
-            "hash": "9966aa144b5c42b3abb9d7d265002eaf10bbacf330b7b7622aa93fc6ec0b7d4f"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/breckenridge.jpeg",
-            "size": 277748,
-            "hash": "9e8b2b5145a4f7f99e5437be5c9e625e84ff472c872a5c8f906fb0460cfd5056"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/colorado-mesa.webp",
-            "size": 71060,
-            "hash": "e7c1216dbf7833058d4eddf1a3af3441b294eef9f0ddf871632876c7e548c1b2"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/crested-butte"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/crested-butte.jpeg",
-            "size": 418023,
-            "hash": "cdc291c0fc58fc3effe608fe37b32a8c0a065e1fe9e7628bfca9daa426768878"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/fraser"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/fraser.jpg",
-            "size": 154355,
-            "hash": "2382123ca7d717da0f58c06313ac1e34ba7150f5c9101e29875c96259bd3f91b"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/hayden.jpg",
-            "size": 307134,
-            "hash": "f685ec6a6595b2c92f42c21dd705b8cb7f9674b7f66b6ccb61feba0fda316479"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/lexington.jpg",
-            "size": 340687,
-            "hash": "aebf431215fc55d4d59828fd491056d4da9431d6bdcfbea4591d937708421c42"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/mountain-village"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/mountain-village.jpg",
-            "size": 288341,
-            "hash": "2f8ff0a37098255cb3135ed5cff3744454dc4e55f7084a97f1f57b566cb5fd82"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/park-city"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/park-city.webp",
-            "size": 323984,
-            "hash": "7de539db2629ce2e1608358a90df4f141bee200013584042d04a8566558d64c1"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/pitkin-county"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/pitkin-county.jpg",
-            "size": 291930,
-            "hash": "676bbb335b94ccb3b93be5372ce84d57e6240ceeed7f62023cb52671aea7d6cb"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/steamboat-springs"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/steamboat-springs.webp",
-            "size": 302004,
-            "hash": "b132314bace3c1b5986eb130c421531a03b4a4a98932b171df524a171c42c6d5"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/telluride"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/telluride.webp",
-            "size": 284556,
-            "hash": "9133fc954677b15d3badfa1c5e5432a7239ccbb1ca9987ae48517f768830d36e"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/vail"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/weber-state-university"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/vail.webp",
-            "size": 276206,
-            "hash": "a8e1db9b907a2beebbbe084c5013253a268ac5e448f26ca77010c80fbf102bdd"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/weber-state-university.webp",
-            "size": 36060,
-            "hash": "d31d585615d78ad93a3cf8caf5335cb46edde51c456efe1c4a16b66a68fe8108"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/winter-park.jpg",
-            "size": 221896,
-            "hash": "24a25a61bd4e1b3eccaa8144c0ebb662b2cd8dca6e2511e96ab12531eac28abb"
-        },
-        {
             "type": "file",
             "name": "images/team/bill-odonnell.webp",
             "size": 80182,
@@ -609,15 +609,15 @@
         },
         {
             "type": "file",
-            "name": "images/team/delaini-moss-marriott.webp",
-            "size": 107344,
-            "hash": "aa3e7e6fac76bf0368d0707ea0b2aa5b0245ef4da0f704664838f90d4a1135e0"
-        },
-        {
-            "type": "file",
             "name": "images/team/cary-smith.webp",
             "size": 77776,
             "hash": "7edc6dfa3156190c55ece9da1672cdfa494539eed2feebcd465745536852a844"
+        },
+        {
+            "type": "file",
+            "name": "images/team/delaini-moss-marriott.webp",
+            "size": 107344,
+            "hash": "aa3e7e6fac76bf0368d0707ea0b2aa5b0245ef4da0f704664838f90d4a1135e0"
         },
         {
             "type": "file",
@@ -663,15 +663,15 @@
         },
         {
             "type": "file",
-            "name": "images/team/megan-lim.webp",
-            "size": 48150,
-            "hash": "6e918ef37cb4e416bac82a60aa39cb70c4a9364bd44d0bdcc07d0a5c92e4d381"
-        },
-        {
-            "type": "file",
             "name": "images/team/paul-bony.webp",
             "size": 100608,
             "hash": "6506b2653d85dce419c35a2b55d6bb8e13d6eae1e7b33eea86b3c6ab776a6131"
+        },
+        {
+            "type": "file",
+            "name": "images/team/megan-lim.webp",
+            "size": 48150,
+            "hash": "6e918ef37cb4e416bac82a60aa39cb70c4a9364bd44d0bdcc07d0a5c92e4d381"
         },
         {
             "type": "file",
@@ -767,27 +767,27 @@
         },
         {
             "type": "file",
-            "name": "images/projects/fraser/gallery/test-pit-groundwater.jpg",
-            "size": 409039,
-            "hash": "6f7a832956afe7bf277a64204bcbc6957bcda1bbd111cdf76ff0fcc77020062d"
-        },
-        {
-            "type": "file",
             "name": "images/projects/fraser/gallery/excavator-trench.jpg",
             "size": 328403,
             "hash": "a45dfed5db680d41fae9283ece78c3ce2a24f77e520779aa5bb42889f1a7260c"
         },
         {
             "type": "file",
-            "name": "images/projects/mountain-village/gallery/drill-rig-winter-village.jpg",
-            "size": 37796,
-            "hash": "691e0065d6feac599d4b1f4f44008021cdd13fbea44343d252e7791357858a4e"
+            "name": "images/projects/fraser/gallery/test-pit-groundwater.jpg",
+            "size": 409039,
+            "hash": "6f7a832956afe7bf277a64204bcbc6957bcda1bbd111cdf76ff0fcc77020062d"
         },
         {
             "type": "file",
             "name": "images/projects/mountain-village/gallery/team-ice-waterfall-cliff.jpg",
             "size": 1818282,
             "hash": "47ad8397020de90f2d90fc248c27bc1cb7287964df1364f3bf97a068e19e925b"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/mountain-village/gallery/drill-rig-winter-village.jpg",
+            "size": 37796,
+            "hash": "691e0065d6feac599d4b1f4f44008021cdd13fbea44343d252e7791357858a4e"
         },
         {
             "type": "file",
@@ -803,15 +803,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/pitkin-county/gallery/drill-rig-mountain-lot.jpg",
-            "size": 348457,
-            "hash": "922dd6ebdec579fe5e34b000b7f1f179506af99988930a79a632eaf3f8695ef8"
-        },
-        {
-            "type": "file",
             "name": "images/projects/pitkin-county/gallery/drill-rig-stormy-field.jpg",
             "size": 211882,
             "hash": "60afeefb703afd9dfc7534be75488b3b65bbb68faac56b303a4f283252821651"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/pitkin-county/gallery/drill-rig-mountain-lot.jpg",
+            "size": 348457,
+            "hash": "922dd6ebdec579fe5e34b000b7f1f179506af99988930a79a632eaf3f8695ef8"
         },
         {
             "type": "file",
@@ -821,15 +821,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/steamboat-springs/gallery/drill-rig-stormy-sky.jpg",
-            "size": 228856,
-            "hash": "8d1e84000e61b998832de978e4cbc646b7f8f38246093977fabfd1c723cdf452"
-        },
-        {
-            "type": "file",
             "name": "images/projects/steamboat-springs/gallery/gondola-base.jpg",
             "size": 235524,
             "hash": "90ef1e36aefc73b9d59acf3c75a0c06e6f8d951555ad4b409c910e14274dbc0d"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/steamboat-springs/gallery/drill-rig-stormy-sky.jpg",
+            "size": 228856,
+            "hash": "8d1e84000e61b998832de978e4cbc646b7f8f38246093977fabfd1c723cdf452"
         },
         {
             "type": "file",
