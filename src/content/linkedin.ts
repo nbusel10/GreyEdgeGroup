@@ -25,6 +25,38 @@ export interface LinkedInPost {
 
 export const linkedInPosts: LinkedInPost[] = [
   {
+    id: 'activity-7517887428989227009',
+    publishedAt: '2026-10-19T10:00:38.664Z',
+    title: 'Lexington evaluated geothermal and an Ambient Temperature Loop',
+    excerpt:
+      'See how Lexington evaluated geothermal infrastructure and Ambient Temperature Loop technology as a pathway for long-term community decarbonization.',
+    url: 'https://www.linkedin.com/posts/grey-edge_see-how-lexington-evaluated-geothermal-infrastructure-activity-7517887428989227009-3K2u',
+    image: '/images/projects/lexington.jpg',
+    imageAlt:
+      'Aerial autumn view of Lexington Battle Green in Lexington, Massachusetts, showing the historic common, white First Parish steeple, surrounding New England homes, and vibrant fall foliage under a clear blue sky.',
+  },
+  {
+    id: 'activity-7517223346367787008',
+    publishedAt: '2026-10-17T14:01:49.029Z',
+    title: 'Steamboat Springs is planning a renewable district energy network',
+    excerpt:
+      'Explore how renewable energy resources and innovative district planning could help power the future of one of Colorado’s premier mountain destinations.',
+    url: 'https://www.linkedin.com/posts/grey-edge_explore-how-renewable-energy-resources-and-activity-7517223346367787008-op6Z',
+    image: '/images/projects/steamboat-springs.webp',
+    imageAlt:
+      'A mountain town at the base of snow‑covered ski slopes in Steamboat Springs, Colorado, showing residential and resort buildings surrounded by green hills and peaks.',
+  },
+  {
+    id: 'activity-7516845689604071424',
+    publishedAt: '2026-10-16T13:01:08.640Z',
+    title: 'Carbondale is building a replicable zero-energy district',
+    excerpt:
+      'Learn how a small mountain community is creating a replicable model for sustainable district energy and community-scale decarbonization.',
+    url: 'https://www.linkedin.com/posts/grey-edge_learn-how-a-small-mountain-community-is-creating-activity-7516845689604071424-YYRG',
+    image: '/images/projects/32-zed-zero-energy-district.webp',
+    imageAlt: '32 ZED Project Site Picture',
+  },
+  {
     id: 'activity-7516452880082534400',
     publishedAt: '2026-10-15T11:00:15.552Z',
     title: 'Vail is reimagining one of the nation’s largest snowmelt systems',
