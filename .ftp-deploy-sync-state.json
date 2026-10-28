@@ -1,7 +1,7 @@
 {
     "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
     "version": "1.0.0",
-    "generatedTime": 1792618725161,
+    "generatedTime": 1793207005834,
     "data": [
         {
             "type": "file",
@@ -61,7 +61,7 @@
             "type": "file",
             "name": "index.html",
             "size": 3474,
-            "hash": "db229264aab67b24b3e9f50bd81c3adb2b9986f566bd4a3a213a3c99a107ac1c"
+            "hash": "44aa02c36b612294dd0e7e8036717040e11884911ed0bdf80a6717bb622ca4ec"
         },
         {
             "type": "file",
@@ -70,14 +70,14 @@
             "hash": "09feba2711f4eb0d3bf59c43a9492fca17241a61c4ebdec4900583fc29b0153e"
         },
         {
-            "type": "folder",
-            "name": "videos"
-        },
-        {
             "type": "file",
             "name": "sitemap.xml",
             "size": 3302,
-            "hash": "67af2a1f0c98692d06d32f1baa34e0004e4023342ba36787a2609f60605c75c0"
+            "hash": "ce53cf13bdc2563538e64d15c045c8dd7c36d52cd10785c5469ebc89a75fcca0"
+        },
+        {
+            "type": "folder",
+            "name": "videos"
         },
         {
             "type": "file",
@@ -87,15 +87,15 @@
         },
         {
             "type": "file",
-            "name": "assets/index-09sXL-9q.js",
-            "size": 816958,
-            "hash": "65bdb76e0e98523ea2f150e1b0675e70cfac9b2eb9751183b588acceab0cdd2d"
-        },
-        {
-            "type": "file",
             "name": "assets/index-C_ygqvmN.css",
             "size": 89521,
             "hash": "63bdc60724d5d6f1ca08f93b0d80578b606e6f6223541d67a042f20c20935da0"
+        },
+        {
+            "type": "file",
+            "name": "assets/index-e--TfknW.js",
+            "size": 818835,
+            "hash": "cfbe33ab205fb9b9f884ed5af4c42624e725000795d9854996c0de7ca3e3f6b7"
         },
         {
             "type": "folder",
@@ -113,11 +113,11 @@
         },
         {
             "type": "folder",
-            "name": "images/site"
+            "name": "images/team"
         },
         {
             "type": "folder",
-            "name": "images/team"
+            "name": "images/site"
         },
         {
             "type": "file",
@@ -151,15 +151,15 @@
         },
         {
             "type": "file",
-            "name": "images/brand/ge-mark.webp",
-            "size": 3274,
-            "hash": "cc50b24b0d76b05d8d5ab8ee0efcccb3be8087a6aafc41d1c5bf7e86e87398a3"
-        },
-        {
-            "type": "file",
             "name": "images/brand/favicon.webp",
             "size": 8640,
             "hash": "47e22f3ef10597e0dcff009d4b35049f28c925992f090ccfc433856e46f5e9c0"
+        },
+        {
+            "type": "file",
+            "name": "images/brand/ge-mark.webp",
+            "size": 3274,
+            "hash": "cc50b24b0d76b05d8d5ab8ee0efcccb3be8087a6aafc41d1c5bf7e86e87398a3"
         },
         {
             "type": "file",
@@ -216,14 +216,14 @@
             "hash": "cdc291c0fc58fc3effe608fe37b32a8c0a065e1fe9e7628bfca9daa426768878"
         },
         {
+            "type": "folder",
+            "name": "images/projects/fraser"
+        },
+        {
             "type": "file",
             "name": "images/projects/fraser.jpg",
             "size": 154355,
             "hash": "2382123ca7d717da0f58c06313ac1e34ba7150f5c9101e29875c96259bd3f91b"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/fraser"
         },
         {
             "type": "file",
@@ -258,14 +258,14 @@
             "hash": "7de539db2629ce2e1608358a90df4f141bee200013584042d04a8566558d64c1"
         },
         {
+            "type": "folder",
+            "name": "images/projects/pitkin-county"
+        },
+        {
             "type": "file",
             "name": "images/projects/pitkin-county.jpg",
             "size": 291930,
             "hash": "676bbb335b94ccb3b93be5372ce84d57e6240ceeed7f62023cb52671aea7d6cb"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/pitkin-county"
         },
         {
             "type": "folder",
@@ -282,14 +282,14 @@
             "name": "images/projects/telluride"
         },
         {
-            "type": "folder",
-            "name": "images/projects/vail"
-        },
-        {
             "type": "file",
             "name": "images/projects/telluride.webp",
             "size": 284556,
             "hash": "9133fc954677b15d3badfa1c5e5432a7239ccbb1ca9987ae48517f768830d36e"
+        },
+        {
+            "type": "folder",
+            "name": "images/projects/vail"
         },
         {
             "type": "file",
@@ -312,294 +312,6 @@
             "name": "images/projects/winter-park.jpg",
             "size": 221896,
             "hash": "24a25a61bd4e1b3eccaa8144c0ebb662b2cd8dca6e2511e96ab12531eac28abb"
-        },
-        {
-            "type": "file",
-            "name": "images/site/advisory-meeting.webp",
-            "size": 60710,
-            "hash": "84611a2c129dd27fb35ac0a152fcbc804813d48105cd9589593ea483eff27bb4"
-        },
-        {
-            "type": "file",
-            "name": "images/site/approach-existing-assets.webp",
-            "size": 93654,
-            "hash": "bc5d71cf470b7f525a7a7ee80c5d73ef76fb685ec8304517b41236a413a2d6ce"
-        },
-        {
-            "type": "file",
-            "name": "images/site/approach-planning-session.webp",
-            "size": 32866,
-            "hash": "0457c3bb7d9fa194000dd9c361378a5a1425f4c128f215bb8a9f1b5f63f6d554"
-        },
-        {
-            "type": "file",
-            "name": "images/site/atl-schematic-nextemp.png",
-            "size": 79630,
-            "hash": "f1e0ff80e13d2fb9ac8ee593ff28d2ee8a86aef56e00375f9e958eb3b0220b0d"
-        },
-        {
-            "type": "file",
-            "name": "images/site/campus-build.webp",
-            "size": 345930,
-            "hash": "06bed003bc6a2992febb5c739f899916ef3403c36244a6964f9dc79e791d9b96"
-        },
-        {
-            "type": "file",
-            "name": "images/site/blueprints.webp",
-            "size": 105000,
-            "hash": "fea60da3f48816fb29616b68d7057abc78766c548642b2edb13c6caf766a4e2b"
-        },
-        {
-            "type": "file",
-            "name": "images/site/conference.webp",
-            "size": 75588,
-            "hash": "cf6763f5a478c7aec0723c5dd6a66c6ff71541fb65e13548abfa9dd223d86aca"
-        },
-        {
-            "type": "file",
-            "name": "images/site/contact.webp",
-            "size": 37312,
-            "hash": "e475db93cffa5662ea936bff54074f21de9fa14de3464a413e813fe99da5da0b"
-        },
-        {
-            "type": "file",
-            "name": "images/site/decarbonization.webp",
-            "size": 233138,
-            "hash": "d2d0bf8ad06fbb25fa496442498c27e355604eba36cb28bdcb1a965e496881b8"
-        },
-        {
-            "type": "file",
-            "name": "images/site/design-meeting.webp",
-            "size": 105756,
-            "hash": "7f033e5d15022228b50c7b7c8e4717485224bc01b2f0fcc41b9dcb7776d6aa74"
-        },
-        {
-            "type": "file",
-            "name": "images/site/design-session-alt.webp",
-            "size": 132852,
-            "hash": "ba892d06dc0b412b47dec3bf5f936ae5b0df2eaf96465378d685949c512300d3"
-        },
-        {
-            "type": "file",
-            "name": "images/site/design-session.webp",
-            "size": 122640,
-            "hash": "d148480c20b5c32a3e9987e26dc854179e8331f6354036dcfeacd221fbe6a267"
-        },
-        {
-            "type": "file",
-            "name": "images/site/district-scale-thermal-systems-site-planning.webp",
-            "size": 154678,
-            "hash": "a9f5afeda9806b3c0fa553792adae88552744290914dbc463dfc01cca26a80c7"
-        },
-        {
-            "type": "file",
-            "name": "images/site/electrification.webp",
-            "size": 463712,
-            "hash": "b5fd2b8de986c532003f3a1a0586655b2cf40eeb34ecd0c519c2bda93a59e240"
-        },
-        {
-            "type": "file",
-            "name": "images/site/global-projects.webp",
-            "size": 50118,
-            "hash": "d1ac2cd3b68f91904211c2882b9a475d4e0affbc5a0520db88f36bc181f96258"
-        },
-        {
-            "type": "file",
-            "name": "images/site/growth-flexibility.webp",
-            "size": 274802,
-            "hash": "769956d188d3816d96086ce40192f4142b5ca4ced904780e35334eac5508bbe0"
-        },
-        {
-            "type": "file",
-            "name": "images/site/hero-cityscape.webp",
-            "size": 252290,
-            "hash": "d6e846d1029f2f88662358ce23ae071b1eb052466e318efa9a6d17c3105dadc8"
-        },
-        {
-            "type": "file",
-            "name": "images/site/hero-district.webp",
-            "size": 88086,
-            "hash": "51093b42cc6a8899a37dad8ed0ffbb7528cb6126854ee6289853ab9cdd22a1aa"
-        },
-        {
-            "type": "file",
-            "name": "images/site/hero-mountain.webp",
-            "size": 383286,
-            "hash": "786f798427621bb5854d70c1b15cbbedff31153b0aa7b196e6954531641a950a"
-        },
-        {
-            "type": "file",
-            "name": "images/site/hero-ski-town.webp",
-            "size": 241450,
-            "hash": "aa6e1779b37fb4bf9b166fb5f3691ffb60897c6de88e7de287fbf05577201edf"
-        },
-        {
-            "type": "file",
-            "name": "images/site/infrastructure.webp",
-            "size": 595932,
-            "hash": "d9afbe8670060388bced53e8957d04d1ec3a1390a727b823ac29f3e07622cc46"
-        },
-        {
-            "type": "file",
-            "name": "images/site/insight-cmu.webp",
-            "size": 138664,
-            "hash": "cf6e68a7a6ac0b12b1cb5def675d0dbe9e5545d49226dd1d844a1c329d6efbc0"
-        },
-        {
-            "type": "file",
-            "name": "images/site/insight-50-90.webp",
-            "size": 178286,
-            "hash": "cc118afc142e4d133ea07f13418772acf23af75b4011ae1ea48aa6474aa02f72"
-        },
-        {
-            "type": "file",
-            "name": "images/site/insight-colorado-policy.webp",
-            "size": 230838,
-            "hash": "9e232f5b57f9486fcb9c11ded38bedcd8e0c5f3f4c62fb4569f892e4a4530ac8"
-        },
-        {
-            "type": "file",
-            "name": "images/site/insight-finance.webp",
-            "size": 63530,
-            "hash": "3bc80625200e9dc15a2f4b99738d1b86bd5dd8f7f7d8cb6bb9f3d919f2e38b25"
-        },
-        {
-            "type": "file",
-            "name": "images/site/insight-first-cost.webp",
-            "size": 69650,
-            "hash": "c0693854e7da63389e48e0652696df94641771d5fa3965e83894e17a464fb8c0"
-        },
-        {
-            "type": "file",
-            "name": "images/site/insight-implementing-tens.webp",
-            "size": 202894,
-            "hash": "a5ac5960574712683634665486525b3d87f5a88dc27d427ac8f02c4a6789178e"
-        },
-        {
-            "type": "file",
-            "name": "images/site/insight-mountain-town.webp",
-            "size": 226748,
-            "hash": "ee45e96987b1b26e2b2a4512f7b2ba4210cf7169546251c84db20603e9417006"
-        },
-        {
-            "type": "file",
-            "name": "images/site/insight-share-a-site.webp",
-            "size": 142424,
-            "hash": "83efe0b8e80e3d4bce1b6c485405d13e565870273ad3ce855a02be54cf81e4f4"
-        },
-        {
-            "type": "file",
-            "name": "images/site/insight-weber-state.webp",
-            "size": 132004,
-            "hash": "78beded47be6d665427fe444084e3ca4549c9321e4a17faf94893277a0665917"
-        },
-        {
-            "type": "file",
-            "name": "images/site/lifecycle-cost.webp",
-            "size": 259918,
-            "hash": "ec87dae68921b4597a73dcd2cf737bc1af7b423a7dd2509c6b3b47b955890b36"
-        },
-        {
-            "type": "file",
-            "name": "images/site/mechanical-room.webp",
-            "size": 240372,
-            "hash": "72e6ec3ab15283fb6d74daf0343ea3956e416cd84ea75365e09209cfb93a5de2"
-        },
-        {
-            "type": "file",
-            "name": "images/site/mt2030-panel.webp",
-            "size": 56174,
-            "hash": "a812b0db6166eaf25fc8fb5269b167e89b47ff7eeb4ab36005a85ef9e68355c2"
-        },
-        {
-            "type": "file",
-            "name": "images/site/network-diagram.webp",
-            "size": 146986,
-            "hash": "46ad5cddd9be148aa89fb52255607fc8d10c91fed585a5d2fc3b863e2905523e"
-        },
-        {
-            "type": "file",
-            "name": "images/site/onsite-work.webp",
-            "size": 151018,
-            "hash": "a80d22f51a141cc43af4b3f5d0c29a55769aaa90aa8376994faa3dfbec16e848"
-        },
-        {
-            "type": "file",
-            "name": "images/site/planning-ten.webp",
-            "size": 197850,
-            "hash": "b7eac7c1791952b4dde3695cee568ef686d0aefb61af1e740310718a4b1d9967"
-        },
-        {
-            "type": "file",
-            "name": "images/site/panel-discussion.webp",
-            "size": 89586,
-            "hash": "74373023bce8c06e45ea400487f0f830e04cca9808be52d7750d16b6940c5384"
-        },
-        {
-            "type": "file",
-            "name": "images/site/puzzle.webp",
-            "size": 28040,
-            "hash": "11932192ddfb96b5b9190e00f2554b71147727a9921978c6f2d4d0b6844c420a"
-        },
-        {
-            "type": "file",
-            "name": "images/site/service-advisory.webp",
-            "size": 86136,
-            "hash": "a8f81aece9ba45a720ab695f66b92308192602a9030f221958089925e0e919ac"
-        },
-        {
-            "type": "file",
-            "name": "images/site/service-delivery.webp",
-            "size": 164366,
-            "hash": "0dab971670a22520e4c4f35d72b474d9c8172370bd133905e230f7a6c7b8bb75"
-        },
-        {
-            "type": "file",
-            "name": "images/site/service-network.webp",
-            "size": 85666,
-            "hash": "241dfe42caa3409e561e0c1f2b0f8f21db3715bdf78bc18c39c7790a2d93d057"
-        },
-        {
-            "type": "file",
-            "name": "images/site/service-ground.webp",
-            "size": 89612,
-            "hash": "173a6663452348fcd5a1fcc8e35a4afc460a425977b2aee3b071d4a4e93f5a2d"
-        },
-        {
-            "type": "file",
-            "name": "images/site/service-planning.webp",
-            "size": 36388,
-            "hash": "62c1d3431dea6f90b63c08ad5c8a12351705610320e6009b2fab658a87e89698"
-        },
-        {
-            "type": "file",
-            "name": "images/site/shaping-the-future.webp",
-            "size": 70444,
-            "hash": "e0b18e1641953c812d973f6fefb26fdfb91a6f477315879062c510aa25158362"
-        },
-        {
-            "type": "file",
-            "name": "images/site/team-group.webp",
-            "size": 102760,
-            "hash": "fdd0967e1b5dac9c9135b113b80214a68f3f85562afbdbd4d4c44fc03e819994"
-        },
-        {
-            "type": "file",
-            "name": "images/site/team-photo.webp",
-            "size": 133744,
-            "hash": "fd358eab521a8909ab1bf2f6039432f7eb2c4a693abcc0e1006cdef9d1fa2e94"
-        },
-        {
-            "type": "file",
-            "name": "images/site/thermal-plant-engineers-system-inspection.webp",
-            "size": 63560,
-            "hash": "0ef710cea87eff167f4a5a21e53256cffc399d1d0ffd9f9ebac30d0d6d90c04d"
-        },
-        {
-            "type": "file",
-            "name": "images/site/training-classroom.webp",
-            "size": 97422,
-            "hash": "e540fdea66c547d16ceaa6e30f58bd3ed1a77f00a792329e57ea049024ec24d6"
         },
         {
             "type": "file",
@@ -692,6 +404,294 @@
             "hash": "1615d845a6174844705f8f127df93ba779ae38211614f1fb2e67bc8fd09556c2"
         },
         {
+            "type": "file",
+            "name": "images/site/advisory-meeting.webp",
+            "size": 60710,
+            "hash": "84611a2c129dd27fb35ac0a152fcbc804813d48105cd9589593ea483eff27bb4"
+        },
+        {
+            "type": "file",
+            "name": "images/site/approach-existing-assets.webp",
+            "size": 93654,
+            "hash": "bc5d71cf470b7f525a7a7ee80c5d73ef76fb685ec8304517b41236a413a2d6ce"
+        },
+        {
+            "type": "file",
+            "name": "images/site/approach-planning-session.webp",
+            "size": 32866,
+            "hash": "0457c3bb7d9fa194000dd9c361378a5a1425f4c128f215bb8a9f1b5f63f6d554"
+        },
+        {
+            "type": "file",
+            "name": "images/site/blueprints.webp",
+            "size": 105000,
+            "hash": "fea60da3f48816fb29616b68d7057abc78766c548642b2edb13c6caf766a4e2b"
+        },
+        {
+            "type": "file",
+            "name": "images/site/atl-schematic-nextemp.png",
+            "size": 79630,
+            "hash": "f1e0ff80e13d2fb9ac8ee593ff28d2ee8a86aef56e00375f9e958eb3b0220b0d"
+        },
+        {
+            "type": "file",
+            "name": "images/site/campus-build.webp",
+            "size": 345930,
+            "hash": "06bed003bc6a2992febb5c739f899916ef3403c36244a6964f9dc79e791d9b96"
+        },
+        {
+            "type": "file",
+            "name": "images/site/conference.webp",
+            "size": 75588,
+            "hash": "cf6763f5a478c7aec0723c5dd6a66c6ff71541fb65e13548abfa9dd223d86aca"
+        },
+        {
+            "type": "file",
+            "name": "images/site/contact.webp",
+            "size": 37312,
+            "hash": "e475db93cffa5662ea936bff54074f21de9fa14de3464a413e813fe99da5da0b"
+        },
+        {
+            "type": "file",
+            "name": "images/site/decarbonization.webp",
+            "size": 233138,
+            "hash": "d2d0bf8ad06fbb25fa496442498c27e355604eba36cb28bdcb1a965e496881b8"
+        },
+        {
+            "type": "file",
+            "name": "images/site/design-meeting.webp",
+            "size": 105756,
+            "hash": "7f033e5d15022228b50c7b7c8e4717485224bc01b2f0fcc41b9dcb7776d6aa74"
+        },
+        {
+            "type": "file",
+            "name": "images/site/design-session-alt.webp",
+            "size": 132852,
+            "hash": "ba892d06dc0b412b47dec3bf5f936ae5b0df2eaf96465378d685949c512300d3"
+        },
+        {
+            "type": "file",
+            "name": "images/site/design-session.webp",
+            "size": 122640,
+            "hash": "d148480c20b5c32a3e9987e26dc854179e8331f6354036dcfeacd221fbe6a267"
+        },
+        {
+            "type": "file",
+            "name": "images/site/district-scale-thermal-systems-site-planning.webp",
+            "size": 154678,
+            "hash": "a9f5afeda9806b3c0fa553792adae88552744290914dbc463dfc01cca26a80c7"
+        },
+        {
+            "type": "file",
+            "name": "images/site/electrification.webp",
+            "size": 463712,
+            "hash": "b5fd2b8de986c532003f3a1a0586655b2cf40eeb34ecd0c519c2bda93a59e240"
+        },
+        {
+            "type": "file",
+            "name": "images/site/global-projects.webp",
+            "size": 50118,
+            "hash": "d1ac2cd3b68f91904211c2882b9a475d4e0affbc5a0520db88f36bc181f96258"
+        },
+        {
+            "type": "file",
+            "name": "images/site/growth-flexibility.webp",
+            "size": 274802,
+            "hash": "769956d188d3816d96086ce40192f4142b5ca4ced904780e35334eac5508bbe0"
+        },
+        {
+            "type": "file",
+            "name": "images/site/hero-cityscape.webp",
+            "size": 252290,
+            "hash": "d6e846d1029f2f88662358ce23ae071b1eb052466e318efa9a6d17c3105dadc8"
+        },
+        {
+            "type": "file",
+            "name": "images/site/hero-district.webp",
+            "size": 88086,
+            "hash": "51093b42cc6a8899a37dad8ed0ffbb7528cb6126854ee6289853ab9cdd22a1aa"
+        },
+        {
+            "type": "file",
+            "name": "images/site/hero-mountain.webp",
+            "size": 383286,
+            "hash": "786f798427621bb5854d70c1b15cbbedff31153b0aa7b196e6954531641a950a"
+        },
+        {
+            "type": "file",
+            "name": "images/site/infrastructure.webp",
+            "size": 595932,
+            "hash": "d9afbe8670060388bced53e8957d04d1ec3a1390a727b823ac29f3e07622cc46"
+        },
+        {
+            "type": "file",
+            "name": "images/site/hero-ski-town.webp",
+            "size": 241450,
+            "hash": "aa6e1779b37fb4bf9b166fb5f3691ffb60897c6de88e7de287fbf05577201edf"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-50-90.webp",
+            "size": 178286,
+            "hash": "cc118afc142e4d133ea07f13418772acf23af75b4011ae1ea48aa6474aa02f72"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-cmu.webp",
+            "size": 138664,
+            "hash": "cf6e68a7a6ac0b12b1cb5def675d0dbe9e5545d49226dd1d844a1c329d6efbc0"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-colorado-policy.webp",
+            "size": 230838,
+            "hash": "9e232f5b57f9486fcb9c11ded38bedcd8e0c5f3f4c62fb4569f892e4a4530ac8"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-finance.webp",
+            "size": 63530,
+            "hash": "3bc80625200e9dc15a2f4b99738d1b86bd5dd8f7f7d8cb6bb9f3d919f2e38b25"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-first-cost.webp",
+            "size": 69650,
+            "hash": "c0693854e7da63389e48e0652696df94641771d5fa3965e83894e17a464fb8c0"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-implementing-tens.webp",
+            "size": 202894,
+            "hash": "a5ac5960574712683634665486525b3d87f5a88dc27d427ac8f02c4a6789178e"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-mountain-town.webp",
+            "size": 226748,
+            "hash": "ee45e96987b1b26e2b2a4512f7b2ba4210cf7169546251c84db20603e9417006"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-share-a-site.webp",
+            "size": 142424,
+            "hash": "83efe0b8e80e3d4bce1b6c485405d13e565870273ad3ce855a02be54cf81e4f4"
+        },
+        {
+            "type": "file",
+            "name": "images/site/insight-weber-state.webp",
+            "size": 132004,
+            "hash": "78beded47be6d665427fe444084e3ca4549c9321e4a17faf94893277a0665917"
+        },
+        {
+            "type": "file",
+            "name": "images/site/lifecycle-cost.webp",
+            "size": 259918,
+            "hash": "ec87dae68921b4597a73dcd2cf737bc1af7b423a7dd2509c6b3b47b955890b36"
+        },
+        {
+            "type": "file",
+            "name": "images/site/mechanical-room.webp",
+            "size": 240372,
+            "hash": "72e6ec3ab15283fb6d74daf0343ea3956e416cd84ea75365e09209cfb93a5de2"
+        },
+        {
+            "type": "file",
+            "name": "images/site/mt2030-panel.webp",
+            "size": 56174,
+            "hash": "a812b0db6166eaf25fc8fb5269b167e89b47ff7eeb4ab36005a85ef9e68355c2"
+        },
+        {
+            "type": "file",
+            "name": "images/site/network-diagram.webp",
+            "size": 146986,
+            "hash": "46ad5cddd9be148aa89fb52255607fc8d10c91fed585a5d2fc3b863e2905523e"
+        },
+        {
+            "type": "file",
+            "name": "images/site/onsite-work.webp",
+            "size": 151018,
+            "hash": "a80d22f51a141cc43af4b3f5d0c29a55769aaa90aa8376994faa3dfbec16e848"
+        },
+        {
+            "type": "file",
+            "name": "images/site/panel-discussion.webp",
+            "size": 89586,
+            "hash": "74373023bce8c06e45ea400487f0f830e04cca9808be52d7750d16b6940c5384"
+        },
+        {
+            "type": "file",
+            "name": "images/site/planning-ten.webp",
+            "size": 197850,
+            "hash": "b7eac7c1791952b4dde3695cee568ef686d0aefb61af1e740310718a4b1d9967"
+        },
+        {
+            "type": "file",
+            "name": "images/site/puzzle.webp",
+            "size": 28040,
+            "hash": "11932192ddfb96b5b9190e00f2554b71147727a9921978c6f2d4d0b6844c420a"
+        },
+        {
+            "type": "file",
+            "name": "images/site/service-advisory.webp",
+            "size": 86136,
+            "hash": "a8f81aece9ba45a720ab695f66b92308192602a9030f221958089925e0e919ac"
+        },
+        {
+            "type": "file",
+            "name": "images/site/service-delivery.webp",
+            "size": 164366,
+            "hash": "0dab971670a22520e4c4f35d72b474d9c8172370bd133905e230f7a6c7b8bb75"
+        },
+        {
+            "type": "file",
+            "name": "images/site/service-ground.webp",
+            "size": 89612,
+            "hash": "173a6663452348fcd5a1fcc8e35a4afc460a425977b2aee3b071d4a4e93f5a2d"
+        },
+        {
+            "type": "file",
+            "name": "images/site/service-network.webp",
+            "size": 85666,
+            "hash": "241dfe42caa3409e561e0c1f2b0f8f21db3715bdf78bc18c39c7790a2d93d057"
+        },
+        {
+            "type": "file",
+            "name": "images/site/service-planning.webp",
+            "size": 36388,
+            "hash": "62c1d3431dea6f90b63c08ad5c8a12351705610320e6009b2fab658a87e89698"
+        },
+        {
+            "type": "file",
+            "name": "images/site/shaping-the-future.webp",
+            "size": 70444,
+            "hash": "e0b18e1641953c812d973f6fefb26fdfb91a6f477315879062c510aa25158362"
+        },
+        {
+            "type": "file",
+            "name": "images/site/team-group.webp",
+            "size": 102760,
+            "hash": "fdd0967e1b5dac9c9135b113b80214a68f3f85562afbdbd4d4c44fc03e819994"
+        },
+        {
+            "type": "file",
+            "name": "images/site/team-photo.webp",
+            "size": 133744,
+            "hash": "fd358eab521a8909ab1bf2f6039432f7eb2c4a693abcc0e1006cdef9d1fa2e94"
+        },
+        {
+            "type": "file",
+            "name": "images/site/thermal-plant-engineers-system-inspection.webp",
+            "size": 63560,
+            "hash": "0ef710cea87eff167f4a5a21e53256cffc399d1d0ffd9f9ebac30d0d6d90c04d"
+        },
+        {
+            "type": "file",
+            "name": "images/site/training-classroom.webp",
+            "size": 97422,
+            "hash": "e540fdea66c547d16ceaa6e30f58bd3ed1a77f00a792329e57ea049024ec24d6"
+        },
+        {
             "type": "folder",
             "name": "images/projects/32-zed-zero-energy-district/gallery"
         },
@@ -717,11 +717,11 @@
         },
         {
             "type": "folder",
-            "name": "images/projects/pitkin-county/gallery"
+            "name": "images/projects/steamboat-springs/gallery"
         },
         {
             "type": "folder",
-            "name": "images/projects/steamboat-springs/gallery"
+            "name": "images/projects/pitkin-county/gallery"
         },
         {
             "type": "folder",
@@ -803,18 +803,6 @@
         },
         {
             "type": "file",
-            "name": "images/projects/pitkin-county/gallery/drill-rig-mountain-lot.jpg",
-            "size": 348457,
-            "hash": "922dd6ebdec579fe5e34b000b7f1f179506af99988930a79a632eaf3f8695ef8"
-        },
-        {
-            "type": "file",
-            "name": "images/projects/pitkin-county/gallery/drill-rig-stormy-field.jpg",
-            "size": 211882,
-            "hash": "60afeefb703afd9dfc7534be75488b3b65bbb68faac56b303a4f283252821651"
-        },
-        {
-            "type": "file",
             "name": "images/projects/steamboat-springs/gallery/drill-rig-gondola.jpg",
             "size": 78975,
             "hash": "35b93fea0fa7144b002407e41d9de02f19b0fa391697e57ca6579b4bfe15f5bd"
@@ -851,6 +839,18 @@
         },
         {
             "type": "file",
+            "name": "images/projects/pitkin-county/gallery/drill-rig-mountain-lot.jpg",
+            "size": 348457,
+            "hash": "922dd6ebdec579fe5e34b000b7f1f179506af99988930a79a632eaf3f8695ef8"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/pitkin-county/gallery/drill-rig-stormy-field.jpg",
+            "size": 211882,
+            "hash": "60afeefb703afd9dfc7534be75488b3b65bbb68faac56b303a4f283252821651"
+        },
+        {
+            "type": "file",
             "name": "images/projects/telluride/gallery/pvc-fittings-assembly.jpg",
             "size": 311464,
             "hash": "4cca2d4d43e765156d0a3d79cb123fcc7fa1461a280b06ce3c71af2e94316ef2"
@@ -863,27 +863,27 @@
         },
         {
             "type": "file",
-            "name": "images/projects/vail/gallery/project-workshop.jpg",
-            "size": 206352,
-            "hash": "15ac2e48e4575d8872e88d0e28e2936a5ed92f43752a44ca4d4311eaeafd748f"
-        },
-        {
-            "type": "file",
             "name": "images/projects/vail/gallery/mechanical-room-inspection.jpg",
             "size": 194476,
             "hash": "508cd8a2e729ddef80e350aac5df5449c746c4bbad837aba5aa597454e81aef4"
         },
         {
             "type": "file",
-            "name": "images/projects/vail/gallery/wastewater-outlet.jpg",
-            "size": 252742,
-            "hash": "90cec9b6a342a83ae11169a8833d99b211af8e574e3457aab3cec11dd1b8781f"
+            "name": "images/projects/vail/gallery/project-workshop.jpg",
+            "size": 206352,
+            "hash": "15ac2e48e4575d8872e88d0e28e2936a5ed92f43752a44ca4d4311eaeafd748f"
         },
         {
             "type": "file",
             "name": "images/projects/vail/gallery/thermal-snowmelt-plaza.jpg",
             "size": 440419,
             "hash": "4185726a4de11b47500b1fd07e60ed5459b1fda547a16aaf8a3bfa6a9b4351c2"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/vail/gallery/wastewater-outlet.jpg",
+            "size": 252742,
+            "hash": "90cec9b6a342a83ae11169a8833d99b211af8e574e3457aab3cec11dd1b8781f"
         },
         {
             "type": "file",
