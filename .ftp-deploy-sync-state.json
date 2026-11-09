@@ -1,7 +1,7 @@
 {
     "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
     "version": "1.0.0",
-    "generatedTime": 1794257651071,
+    "generatedTime": 1794258116572,
     "data": [
         {
             "type": "file",
@@ -61,7 +61,7 @@
             "type": "file",
             "name": "index.html",
             "size": 3120,
-            "hash": "2ab50ec82045a4c9523d06be78271dfadccaea4750be8698ae0517c74a4f177d"
+            "hash": "21cd96cd41b38c369c81a59926728776705ccbf00f62bf28abc36674b62ce203"
         },
         {
             "type": "file",
@@ -87,15 +87,15 @@
         },
         {
             "type": "file",
-            "name": "assets/index-B8ue4a91.js",
-            "size": 821003,
-            "hash": "f78076d681677fd444e74e1c8c6e74bdbec44c1f63ad3618ffc3e7faf5b5dcc7"
+            "name": "assets/index-DKPSXlcy.css",
+            "size": 89667,
+            "hash": "eb5f0fff812c63872eb13327e57f884a02b0dacc4a0f14bc19a770afb6eeefd8"
         },
         {
             "type": "file",
-            "name": "assets/index-C_md3iQJ.css",
-            "size": 89610,
-            "hash": "9c4067d2691a298244adb6efcef0f52a49f563c87ec2206878a3e01a7c72eba9"
+            "name": "assets/index-DsfaxoyY.js",
+            "size": 821169,
+            "hash": "d85afb14abebfbbae39ce2e54102b72cb6d1ee57819fa6c9fe59b9284ee79caf"
         },
         {
             "type": "folder",
@@ -113,11 +113,11 @@
         },
         {
             "type": "folder",
-            "name": "images/team"
+            "name": "images/site"
         },
         {
             "type": "folder",
-            "name": "images/site"
+            "name": "images/team"
         },
         {
             "type": "file",
@@ -139,15 +139,15 @@
         },
         {
             "type": "file",
-            "name": "images/brand/favicon.png",
-            "size": 24882,
-            "hash": "eb08b2003beb24396d160b29a0c15f12b6ccc5ea30f6bc96dab70619cf19a8bb"
-        },
-        {
-            "type": "file",
             "name": "images/brand/edge-only-white.webp",
             "size": 2182,
             "hash": "1b59f0cfb664bb59228484e4eb81ee9ad0a92593341a1ea8db5110f30e6fe7ad"
+        },
+        {
+            "type": "file",
+            "name": "images/brand/favicon.png",
+            "size": 24882,
+            "hash": "eb08b2003beb24396d160b29a0c15f12b6ccc5ea30f6bc96dab70619cf19a8bb"
         },
         {
             "type": "file",
@@ -189,6 +189,12 @@
         },
         {
             "type": "file",
+            "name": "images/projects/breckenridge.jpeg",
+            "size": 277748,
+            "hash": "9e8b2b5145a4f7f99e5437be5c9e625e84ff472c872a5c8f906fb0460cfd5056"
+        },
+        {
+            "type": "file",
             "name": "images/projects/aspen.webp",
             "size": 395268,
             "hash": "9966aa144b5c42b3abb9d7d265002eaf10bbacf330b7b7622aa93fc6ec0b7d4f"
@@ -205,12 +211,6 @@
         },
         {
             "type": "file",
-            "name": "images/projects/breckenridge.jpeg",
-            "size": 277748,
-            "hash": "9e8b2b5145a4f7f99e5437be5c9e625e84ff472c872a5c8f906fb0460cfd5056"
-        },
-        {
-            "type": "file",
             "name": "images/projects/crested-butte.jpeg",
             "size": 418023,
             "hash": "cdc291c0fc58fc3effe608fe37b32a8c0a065e1fe9e7628bfca9daa426768878"
@@ -221,15 +221,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/fraser.jpg",
-            "size": 154355,
-            "hash": "2382123ca7d717da0f58c06313ac1e34ba7150f5c9101e29875c96259bd3f91b"
-        },
-        {
-            "type": "file",
             "name": "images/projects/hayden.jpg",
             "size": 307134,
             "hash": "f685ec6a6595b2c92f42c21dd705b8cb7f9674b7f66b6ccb61feba0fda316479"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/fraser.jpg",
+            "size": 154355,
+            "hash": "2382123ca7d717da0f58c06313ac1e34ba7150f5c9101e29875c96259bd3f91b"
         },
         {
             "type": "file",
@@ -292,14 +292,14 @@
             "name": "images/projects/vail"
         },
         {
+            "type": "folder",
+            "name": "images/projects/weber-state-university"
+        },
+        {
             "type": "file",
             "name": "images/projects/vail.webp",
             "size": 276206,
             "hash": "a8e1db9b907a2beebbbe084c5013253a268ac5e448f26ca77010c80fbf102bdd"
-        },
-        {
-            "type": "folder",
-            "name": "images/projects/weber-state-university"
         },
         {
             "type": "file",
@@ -312,96 +312,6 @@
             "name": "images/projects/winter-park.jpg",
             "size": 221896,
             "hash": "24a25a61bd4e1b3eccaa8144c0ebb662b2cd8dca6e2511e96ab12531eac28abb"
-        },
-        {
-            "type": "file",
-            "name": "images/team/bill-odonnell.webp",
-            "size": 80182,
-            "hash": "94d03934e74b04b31629dfe176f1a383f2b5cb26559dd2ca299f8b96d13d3eff"
-        },
-        {
-            "type": "file",
-            "name": "images/team/cary-smith.webp",
-            "size": 77776,
-            "hash": "7edc6dfa3156190c55ece9da1672cdfa494539eed2feebcd465745536852a844"
-        },
-        {
-            "type": "file",
-            "name": "images/team/delaini-moss-marriott.webp",
-            "size": 107344,
-            "hash": "aa3e7e6fac76bf0368d0707ea0b2aa5b0245ef4da0f704664838f90d4a1135e0"
-        },
-        {
-            "type": "file",
-            "name": "images/team/garry-sexton.webp",
-            "size": 44178,
-            "hash": "104b3f731f2239244c0ea6ea7b843bc97b64b57ef14ec5a21e0ff0a3b04fbc64"
-        },
-        {
-            "type": "file",
-            "name": "images/team/garen-ewbank.webp",
-            "size": 44888,
-            "hash": "851ac0ec286cb21227feea1483c5b6d727c98dcea8bc70ae31a9e35f2a226106"
-        },
-        {
-            "type": "file",
-            "name": "images/team/ian-talbot.webp",
-            "size": 68526,
-            "hash": "f93559a722c84c9d00bfb93d37fe580f82e094fa76a54d13eb37fa12d9ee262e"
-        },
-        {
-            "type": "file",
-            "name": "images/team/jaiden-marriott.webp",
-            "size": 76668,
-            "hash": "c63155267bbd9a0abbb4915c665640693f0f3e40b118484e29677925402d8f5e"
-        },
-        {
-            "type": "file",
-            "name": "images/team/john-mclennan.webp",
-            "size": 37414,
-            "hash": "fb554f0f7e866a1cb7a5b1508f24139a9d278f233734343a7f10fd70cc2cc61f"
-        },
-        {
-            "type": "file",
-            "name": "images/team/mark-smith.webp",
-            "size": 103284,
-            "hash": "72756e336b2121fbcde36107243e83fecc3b053418de43a4c62893109be9c25d"
-        },
-        {
-            "type": "file",
-            "name": "images/team/matthew-garlick.webp",
-            "size": 52650,
-            "hash": "7b1ce2a54df22b570029b4186c2d185d5ec42841906dd05eba789bb70a722efc"
-        },
-        {
-            "type": "file",
-            "name": "images/team/megan-lim.webp",
-            "size": 48150,
-            "hash": "6e918ef37cb4e416bac82a60aa39cb70c4a9364bd44d0bdcc07d0a5c92e4d381"
-        },
-        {
-            "type": "file",
-            "name": "images/team/paul-bony.webp",
-            "size": 100608,
-            "hash": "6506b2653d85dce419c35a2b55d6bb8e13d6eae1e7b33eea86b3c6ab776a6131"
-        },
-        {
-            "type": "file",
-            "name": "images/team/richard-b-white.webp",
-            "size": 85758,
-            "hash": "0369409be07ffe7641a615df22fe95840fbf0f1d952cc203b8b5f7f37cad89b1"
-        },
-        {
-            "type": "file",
-            "name": "images/team/roshan-revankar.webp",
-            "size": 48988,
-            "hash": "8067424ae12b3672a6fa107dff8ab79b669611bc579cd89057a34970920030f4"
-        },
-        {
-            "type": "file",
-            "name": "images/team/stephen-hamstra.webp",
-            "size": 57132,
-            "hash": "1615d845a6174844705f8f127df93ba779ae38211614f1fb2e67bc8fd09556c2"
         },
         {
             "type": "file",
@@ -423,15 +333,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/blueprints.webp",
-            "size": 105000,
-            "hash": "fea60da3f48816fb29616b68d7057abc78766c548642b2edb13c6caf766a4e2b"
-        },
-        {
-            "type": "file",
             "name": "images/site/atl-schematic-nextemp.png",
             "size": 79630,
             "hash": "f1e0ff80e13d2fb9ac8ee593ff28d2ee8a86aef56e00375f9e958eb3b0220b0d"
+        },
+        {
+            "type": "file",
+            "name": "images/site/blueprints.webp",
+            "size": 105000,
+            "hash": "fea60da3f48816fb29616b68d7057abc78766c548642b2edb13c6caf766a4e2b"
         },
         {
             "type": "file",
@@ -465,15 +375,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/design-session.webp",
-            "size": 122640,
-            "hash": "d148480c20b5c32a3e9987e26dc854179e8331f6354036dcfeacd221fbe6a267"
-        },
-        {
-            "type": "file",
             "name": "images/site/design-session-alt.webp",
             "size": 132852,
             "hash": "ba892d06dc0b412b47dec3bf5f936ae5b0df2eaf96465378d685949c512300d3"
+        },
+        {
+            "type": "file",
+            "name": "images/site/design-session.webp",
+            "size": 122640,
+            "hash": "d148480c20b5c32a3e9987e26dc854179e8331f6354036dcfeacd221fbe6a267"
         },
         {
             "type": "file",
@@ -483,15 +393,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/global-projects.webp",
-            "size": 50118,
-            "hash": "d1ac2cd3b68f91904211c2882b9a475d4e0affbc5a0520db88f36bc181f96258"
-        },
-        {
-            "type": "file",
             "name": "images/site/electrification.webp",
             "size": 463712,
             "hash": "b5fd2b8de986c532003f3a1a0586655b2cf40eeb34ecd0c519c2bda93a59e240"
+        },
+        {
+            "type": "file",
+            "name": "images/site/global-projects.webp",
+            "size": 50118,
+            "hash": "d1ac2cd3b68f91904211c2882b9a475d4e0affbc5a0520db88f36bc181f96258"
         },
         {
             "type": "file",
@@ -603,15 +513,15 @@
         },
         {
             "type": "file",
-            "name": "images/site/onsite-work.webp",
-            "size": 151018,
-            "hash": "a80d22f51a141cc43af4b3f5d0c29a55769aaa90aa8376994faa3dfbec16e848"
-        },
-        {
-            "type": "file",
             "name": "images/site/network-diagram.webp",
             "size": 146986,
             "hash": "46ad5cddd9be148aa89fb52255607fc8d10c91fed585a5d2fc3b863e2905523e"
+        },
+        {
+            "type": "file",
+            "name": "images/site/onsite-work.webp",
+            "size": 151018,
+            "hash": "a80d22f51a141cc43af4b3f5d0c29a55769aaa90aa8376994faa3dfbec16e848"
         },
         {
             "type": "file",
@@ -692,6 +602,96 @@
             "hash": "e540fdea66c547d16ceaa6e30f58bd3ed1a77f00a792329e57ea049024ec24d6"
         },
         {
+            "type": "file",
+            "name": "images/team/bill-odonnell.webp",
+            "size": 80182,
+            "hash": "94d03934e74b04b31629dfe176f1a383f2b5cb26559dd2ca299f8b96d13d3eff"
+        },
+        {
+            "type": "file",
+            "name": "images/team/delaini-moss-marriott.webp",
+            "size": 107344,
+            "hash": "aa3e7e6fac76bf0368d0707ea0b2aa5b0245ef4da0f704664838f90d4a1135e0"
+        },
+        {
+            "type": "file",
+            "name": "images/team/cary-smith.webp",
+            "size": 77776,
+            "hash": "7edc6dfa3156190c55ece9da1672cdfa494539eed2feebcd465745536852a844"
+        },
+        {
+            "type": "file",
+            "name": "images/team/garen-ewbank.webp",
+            "size": 44888,
+            "hash": "851ac0ec286cb21227feea1483c5b6d727c98dcea8bc70ae31a9e35f2a226106"
+        },
+        {
+            "type": "file",
+            "name": "images/team/garry-sexton.webp",
+            "size": 44178,
+            "hash": "104b3f731f2239244c0ea6ea7b843bc97b64b57ef14ec5a21e0ff0a3b04fbc64"
+        },
+        {
+            "type": "file",
+            "name": "images/team/ian-talbot.webp",
+            "size": 68526,
+            "hash": "f93559a722c84c9d00bfb93d37fe580f82e094fa76a54d13eb37fa12d9ee262e"
+        },
+        {
+            "type": "file",
+            "name": "images/team/jaiden-marriott.webp",
+            "size": 76668,
+            "hash": "c63155267bbd9a0abbb4915c665640693f0f3e40b118484e29677925402d8f5e"
+        },
+        {
+            "type": "file",
+            "name": "images/team/john-mclennan.webp",
+            "size": 37414,
+            "hash": "fb554f0f7e866a1cb7a5b1508f24139a9d278f233734343a7f10fd70cc2cc61f"
+        },
+        {
+            "type": "file",
+            "name": "images/team/mark-smith.webp",
+            "size": 103284,
+            "hash": "72756e336b2121fbcde36107243e83fecc3b053418de43a4c62893109be9c25d"
+        },
+        {
+            "type": "file",
+            "name": "images/team/matthew-garlick.webp",
+            "size": 52650,
+            "hash": "7b1ce2a54df22b570029b4186c2d185d5ec42841906dd05eba789bb70a722efc"
+        },
+        {
+            "type": "file",
+            "name": "images/team/megan-lim.webp",
+            "size": 48150,
+            "hash": "6e918ef37cb4e416bac82a60aa39cb70c4a9364bd44d0bdcc07d0a5c92e4d381"
+        },
+        {
+            "type": "file",
+            "name": "images/team/paul-bony.webp",
+            "size": 100608,
+            "hash": "6506b2653d85dce419c35a2b55d6bb8e13d6eae1e7b33eea86b3c6ab776a6131"
+        },
+        {
+            "type": "file",
+            "name": "images/team/richard-b-white.webp",
+            "size": 85758,
+            "hash": "0369409be07ffe7641a615df22fe95840fbf0f1d952cc203b8b5f7f37cad89b1"
+        },
+        {
+            "type": "file",
+            "name": "images/team/roshan-revankar.webp",
+            "size": 48988,
+            "hash": "8067424ae12b3672a6fa107dff8ab79b669611bc579cd89057a34970920030f4"
+        },
+        {
+            "type": "file",
+            "name": "images/team/stephen-hamstra.webp",
+            "size": 57132,
+            "hash": "1615d845a6174844705f8f127df93ba779ae38211614f1fb2e67bc8fd09556c2"
+        },
+        {
             "type": "folder",
             "name": "images/projects/32-zed-zero-energy-district/gallery"
         },
@@ -755,15 +755,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/crested-butte/gallery/geothermal-drill-rig-crew.jpg",
-            "size": 105258,
-            "hash": "76ea4e997fe31de7bbe3ff20f29b45373f9ca312ac2705b0001aae0d25698c36"
-        },
-        {
-            "type": "file",
             "name": "images/projects/crested-butte/gallery/geothermal-drill-rig-front.jpg",
             "size": 137686,
             "hash": "a8a5b5821976d0f5b209da6dea1a76279b4623b822b26782652c06f985cc5c39"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/crested-butte/gallery/geothermal-drill-rig-crew.jpg",
+            "size": 105258,
+            "hash": "76ea4e997fe31de7bbe3ff20f29b45373f9ca312ac2705b0001aae0d25698c36"
         },
         {
             "type": "file",
@@ -779,15 +779,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/mountain-village/gallery/drill-rig-winter-village.jpg",
-            "size": 37796,
-            "hash": "691e0065d6feac599d4b1f4f44008021cdd13fbea44343d252e7791357858a4e"
-        },
-        {
-            "type": "file",
             "name": "images/projects/mountain-village/gallery/team-ice-waterfall-cliff.jpg",
             "size": 1818282,
             "hash": "47ad8397020de90f2d90fc248c27bc1cb7287964df1364f3bf97a068e19e925b"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/mountain-village/gallery/drill-rig-winter-village.jpg",
+            "size": 37796,
+            "hash": "691e0065d6feac599d4b1f4f44008021cdd13fbea44343d252e7791357858a4e"
         },
         {
             "type": "file",
@@ -803,15 +803,15 @@
         },
         {
             "type": "file",
-            "name": "images/projects/pitkin-county/gallery/drill-rig-mountain-lot.jpg",
-            "size": 348457,
-            "hash": "922dd6ebdec579fe5e34b000b7f1f179506af99988930a79a632eaf3f8695ef8"
-        },
-        {
-            "type": "file",
             "name": "images/projects/pitkin-county/gallery/drill-rig-stormy-field.jpg",
             "size": 211882,
             "hash": "60afeefb703afd9dfc7534be75488b3b65bbb68faac56b303a4f283252821651"
+        },
+        {
+            "type": "file",
+            "name": "images/projects/pitkin-county/gallery/drill-rig-mountain-lot.jpg",
+            "size": 348457,
+            "hash": "922dd6ebdec579fe5e34b000b7f1f179506af99988930a79a632eaf3f8695ef8"
         },
         {
             "type": "file",
