@@ -40,6 +40,7 @@ const navItems: NavItem[] = [
       { label: 'Thermal Energy Networks', desc: 'District-scale shared infrastructure', to: '/geothermal-101#networks' },
       { label: 'Ambient Temperature Loops', desc: 'The circulatory system of a network', to: '/geothermal-101#ambient-loops' },
       { label: 'The Thermal Highway®', desc: 'How energy moves across a district', to: '/geothermal-101#thermal-highway' },
+      { label: 'Common Questions', desc: 'Cost, climate, ownership, and more', to: '/geothermal-101#faq' },
     ],
   },
   {
@@ -211,7 +212,9 @@ export default function Header() {
                     onMouseLeave={scheduleClose}
                   >
                     <Container>
-                      <div className="grid grid-cols-3 gap-8 py-9">
+                      <div
+                        className={`grid gap-8 py-9 ${item.children.length > 3 ? 'grid-cols-2' : 'grid-cols-3'}`}
+                      >
                         {item.children.map((sub) => (
                           <Link
                             key={sub.label}

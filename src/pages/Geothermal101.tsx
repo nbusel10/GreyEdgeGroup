@@ -440,7 +440,7 @@ export default function Geothermal101() {
       </Section>
 
       {/* FAQ */}
-      <Section className="border-t border-ge-light bg-white">
+      <Section id="faq" className="border-t border-ge-light bg-white">
         <Container>
           <Reveal>
             <Eyebrow>Common Questions</Eyebrow>
