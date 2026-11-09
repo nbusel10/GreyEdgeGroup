@@ -27,6 +27,7 @@ export const industryIds = {
   certification: 'industry-certification',
   atl: 'industry-atl',
   research: 'industry-research',
+  geothermalRising: 'industry-geothermal-rising',
 } as const
 
 /** Official org / program / standard pages linked from Industry Leadership. */
@@ -43,6 +44,7 @@ export const industryUrls = {
     'https://iapmo.org/codes-standards-development/code-development/uniform-solar-hydronics-and-geothermal-code',
   mit: 'https://www.mit.edu/',
   forge: 'https://utahforge.com/',
+  geothermalRising: 'https://www.geothermal.org/',
 } as const
 
 /** Named phrases in credit body copy — not the org label, which is linked separately. */
@@ -62,6 +64,7 @@ export const detailInternalLinks = [
 
 /** Short org labels for the Home teaser proof strip (from real credits). */
 export const teaserProof = [
+  { id: industryIds.geothermalRising, label: 'Geothermal Rising' },
   { id: industryIds.ashrae, label: 'ASHRAE' },
   { id: industryIds.iapmo, label: 'IAPMO' },
   { id: industryIds.igshpa, label: 'IGSHPA' },
@@ -91,6 +94,14 @@ export interface Credit {
 }
 
 export const credits: Credit[] = [
+  {
+    id: industryIds.geothermalRising,
+    title: 'Board of Directors, Heat Pumps seat',
+    org: 'Geothermal Rising',
+    orgHref: industryUrls.geothermalRising,
+    detail:
+      'CEO Matthew Garlick was elected to Geothermal Rising’s Board of Directors, representing the Heat Pumps seat.',
+  },
   {
     id: industryIds.nyserda,
     title: 'Resource-efficient decarbonization framework',

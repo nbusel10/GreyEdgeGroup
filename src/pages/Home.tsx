@@ -13,7 +13,11 @@ import LinkedInFeed from '../components/sections/LinkedInFeed'
 import ProjectCard from '../components/ProjectCard'
 import HeroScrollCue from '../components/HeroScrollCue'
 import { Btn, Container, Eyebrow, Reveal, Section } from '../components/ui'
+import { gaAttrs } from '../lib/gaLabel'
 import { usePageMeta } from '../lib/meta'
+
+const GEOTHERMAL_RISING_ANNOUNCEMENT =
+  'https://www.linkedin.com/posts/geothermalrising_geothermalrising-geothermal-geothermalleadership-activity-7521584676235386880-pRE_'
 
 export default function Home() {
   const [preferReducedMotion, setPreferReducedMotion] = useState(false)
@@ -87,6 +91,41 @@ export default function Home() {
           </div>
         </div>
         <HeroScrollCue />
+      </section>
+
+      <section className="border-b border-ge-light bg-white">
+        <Container className="py-5 sm:py-6">
+          <div className="flex flex-col gap-4 border-l-4 border-ge-accent pl-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+            <div className="min-w-0">
+              <Eyebrow>Industry Leadership</Eyebrow>
+              <h2 className="mt-2 font-body text-base font-medium leading-snug text-ge-black sm:text-lg">
+                GreyEdge CEO Elected to Geothermal Rising Board
+              </h2>
+              <p className="mt-1 font-body text-sm leading-relaxed text-ge-graphite">
+                Matt Garlick will represent the Heat Pumps seat on the Board of Directors.
+              </p>
+            </div>
+            <a
+              href={GEOTHERMAL_RISING_ANNOUNCEMENT}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex shrink-0 items-center gap-2 self-start font-body text-[11px] font-medium uppercase tracking-[0.22em] text-ge-black transition-colors hover:text-ge-accent"
+              {...gaAttrs('home_geothermal_rising_announcement')}
+            >
+              Read the announcement
+              <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" aria-hidden="true">
+                <path
+                  d="M4 12L12 4M12 4H6.5M12 4V9.5"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </div>
+        </Container>
       </section>
 
       <Challenges />
