@@ -7,8 +7,12 @@ import { serviceHashTarget } from '../lib/serviceItemId'
 /** Top-row process phases scroll to the full timeline so every circle stays in view. */
 const processTimelineScrollIds = new Set(phases.slice(0, 3).map((p) => p.id))
 
-/** Section anchors that scroll with fixed header offset instead of scrollIntoView. */
-const headerOffsetScrollIds = new Set(['process-timeline', 'services-head', 'leadership-head'])
+/**
+ * Section anchors that scroll with a fixed header offset instead of scrollIntoView.
+ * `faq` is the question heading. The questions block is taller than the viewport, and
+ * scrollIntoView then aligns the bottom of that block.
+ */
+const headerOffsetScrollIds = new Set(['process-timeline', 'services-head', 'leadership-head', 'faq'])
 
 function scrollTargetId(hashId: string) {
   if (processTimelineScrollIds.has(hashId)) return 'process-timeline'
@@ -18,7 +22,7 @@ function scrollTargetId(hashId: string) {
 }
 
 function headerOffsetFor(targetId: string) {
-  if (targetId === 'services-head' || targetId === 'leadership-head') {
+  if (targetId === 'services-head' || targetId === 'leadership-head' || targetId === 'faq') {
     const header = document.querySelector('header')
     if (header) return header.getBoundingClientRect().height
     return window.matchMedia('(min-width: 1024px)').matches ? 72 : 64
@@ -32,6 +36,11 @@ function scrollToHash(hash: string, behavior: ScrollBehavior = 'smooth') {
   const tryScroll = () => {
     const el = document.getElementById(id)
     if (el) {
+      // A footer or menu link stays focused after navigation, and the browser then
+      // scrolls that link into view — the bottom of the page — instead of the hash.
+      if (el instanceof HTMLElement && el.tabIndex === -1) {
+        el.focus({ preventScroll: true })
+      }
       if (headerOffsetScrollIds.has(id)) {
         const top = el.getBoundingClientRect().top + window.scrollY - headerOffsetFor(id)
         window.scrollTo({ top: Math.max(0, top), behavior })

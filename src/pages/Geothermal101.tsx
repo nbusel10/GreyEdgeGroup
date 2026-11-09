@@ -440,14 +440,16 @@ export default function Geothermal101() {
       </Section>
 
       {/* FAQ */}
-      <Section id="faq" className="border-t border-ge-light bg-white">
+      <Section className="border-t border-ge-light bg-white">
         <Container>
-          <Reveal>
-            <Eyebrow>Common Questions</Eyebrow>
-            <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
-              The questions we get asked most
-            </h2>
-          </Reveal>
+          <div id="faq" tabIndex={-1} className="scroll-mt-24 outline-none">
+            <Reveal>
+              <Eyebrow>Common Questions</Eyebrow>
+              <h2 className="mt-5 font-display text-4xl font-bold uppercase leading-tight tracking-tight text-ge-black sm:text-5xl">
+                The questions we get asked most
+              </h2>
+            </Reveal>
+          </div>
 
           <label className="mt-10 block max-w-xl">
             <span className="font-body text-[11px] font-medium uppercase tracking-[0.18em] text-ge-steel">
